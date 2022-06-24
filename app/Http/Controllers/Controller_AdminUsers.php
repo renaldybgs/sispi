@@ -70,10 +70,6 @@ class Controller_AdminUsers extends Controller
 			'added_by' => $added_by,
 		]);
 
-		if($newuser->id_ulevel == 1 || $newuser->id_ulevel == 5){
-			$newuser->beban_approve = 0;
-		}
-
 		$newuser->save();
 		
 		return redirect('/admin/users');

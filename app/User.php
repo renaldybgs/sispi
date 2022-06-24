@@ -39,6 +39,5 @@ class User extends Authenticatable
 
     protected $attributes = [
         'status_user' => 1,
-        'beban_approve' => NULL
     ];
 }
