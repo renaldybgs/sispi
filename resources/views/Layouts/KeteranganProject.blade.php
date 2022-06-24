@@ -1,0 +1,1 @@
+<a href="{{ $url_notes }}" type="button" class="modallist-show" title="{{ $project->pketerangan_status }}" data-target="#modallist" data-toggle="tooltip" data-placement="top">{{ $project->pketerangan_status }}</a>

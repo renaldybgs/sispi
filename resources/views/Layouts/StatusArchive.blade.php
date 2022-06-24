@@ -1,0 +1,1 @@
+<button id="{{ $data->id }}" class="btn-detail" onclick="showDetails(id)" data-toggle="modal">Details</button>

@@ -1,0 +1,1 @@
+<a href="{{ $url_detail }}" type="button" class="modallist-show" title="{{ $data->typereg_numb }}" data-target="#modallist" data-toggle="tooltip" data-placement="top">{{ $data->typereg_numb }}</a>

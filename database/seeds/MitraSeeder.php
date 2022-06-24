@@ -1,0 +1,21 @@
+<?php
+
+use App\Mitra;
+use Illuminate\Database\Seeder;
+
+class MitraSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        $mitra1 = Mitra::create([
+        	'nama_mitra' => 'Bank BRI',
+        	'added_by' => 'ASPI',
+        ]);
+
+    }
+}

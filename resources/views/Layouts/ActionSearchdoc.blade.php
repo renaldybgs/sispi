@@ -1,0 +1,1 @@
+<button title="List Documents" id="{{ $data->id }}" type="button" class="button" data-toggle="modal"><i class="fa fa-search fa-lg"></i></button>
