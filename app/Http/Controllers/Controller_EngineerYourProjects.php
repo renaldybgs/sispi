@@ -255,12 +255,4 @@ class Controller_EngineerYourProjects extends Controller
         $project->direktori_project = 'Documents/' . $year . '/' . $nama_product . '/' . '[' . $inisial_user . '] ' . $nproject;
     }
 
-    public function getApproverData(){
-        return User::where('beban_approve', '=', function($query){
-            $query->select(DB::raw('min(beban_approve)'))
-                ->from('users');
-        })
-        ->whereIn('id_ulevel', [1,5])
-        ->firstOrFail();
-    }
 }

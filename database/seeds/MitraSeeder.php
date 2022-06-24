@@ -12,10 +12,6 @@ class MitraSeeder extends Seeder
      */
     public function run()
     {
-        $mitra1 = Mitra::create([
-        	'nama_mitra' => 'Bank BRI',
-        	'added_by' => 'ASPI',
-        ]);
 
     }
 }
