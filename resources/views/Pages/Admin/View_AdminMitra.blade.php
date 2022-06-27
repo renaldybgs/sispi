@@ -26,6 +26,7 @@ Aspi | Admin Institusi
                             <th class="text-center">Email</th>
                             <th class="text-center">Data Agreement</th>
                             <th class="text-center">Registration Number</th>
+                            <th class="text-center">No Keanggotaan</th>
                             <th class="text-center" style="width: 75px">Action</th>
                             <th class="text-center">Added By</th>
                             <th class="text-center">Modified By</th>                          
@@ -63,6 +64,7 @@ Aspi | Admin Institusi
             {data: 'email', name: 'email', class: 'text-center'},
             {data: 'data_agreement', name: 'data_agreement', class: 'text-center'},
             {data: 'reg_numb', name: 'req_numb', class: 'text-center'},
+            {data: 'no_anggota', name: 'no_anggota', class: 'text-center'},
         	{data: 'action', name: 'action', class: 'text-center'},
         	{data: 'added_by', name: 'added_by', class: 'text-center'},
         	{data: 'modified_by', name: 'modified_by', class: 'text-center'}

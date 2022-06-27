@@ -64,6 +64,7 @@ class Controller_AdminMitra extends Controller
             'email' => $request->email,
             'data_agreement' => $request->data_agreement,
             'reg_numb' => $request->reg_numb,
+            'no_anggota' => $request->no_anggota,
             'added_by' => $added_by
         ]);
 
@@ -122,6 +123,7 @@ class Controller_AdminMitra extends Controller
         $model->email = $request->email;
         $model->data_agreement = $request->data_agreement;
         $model->reg_numb = $request->reg_numb;
+        $model->no_anggota = $request->no_anggota;
         $model->modified_by = $modified_by;                         //edit modified_by
         $model->save();                                             //menyimpan hasil editan data
     }

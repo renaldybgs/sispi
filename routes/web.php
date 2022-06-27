@@ -63,7 +63,7 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/admin/import/user', 'Controller_AdminImportData@importUser');
 	Route::get('/admin/import/ulevel', 'Controller_AdminImportData@importULevel');
 
-	//List Project admin
+	//List Project admin NSICCS
 	Route::get('/admin/projects', 'Controller_AdminListProjects@openPage');
 	Route::get('/admin/projects/table', 'Controller_AdminListProjects@dataTable')->name('adminlistprojects.table');
 	Route::get('/admin/projects/detail/{id}', 'Controller_AdminListProjects@detail')->name('adminlistprojects.detail');
@@ -71,6 +71,15 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/admin/projects/edit/{id}', 'Controller_AdminListProjects@editProject')->name('adminprojects.edit');
 	Route::put('/admin/projects/update/{id}', 'Controller_AdminListProjects@updateProject')->name('adminprojects.update');
 	Route::get('/admin/projects/delete/{id}', 'Controller_AdminListProjects@deleteProject')->name('adminprojects.delete');
+
+		//List Project admin QRIS Spek
+	Route::get('/admin/qrisspek', 'Controller_AdminListQrisspeks@openPage');
+	Route::get('/admin/qrisspek/table', 'Controller_AdminListQrisspeks@dataTable')->name('adminlistqrisspeks.table');
+	Route::get('/admin/qrisspek/detail/{id}', 'Controller_AdminListQrisspeks@detail')->name('adminlistqrisspeks.detail');
+	Route::get('/admin/qrisspek/export', 'Controller_AdminListQrisspeks@export');
+	Route::get('/admin/qrisspek/edit/{id}', 'Controller_AdminListQrisspeks@editQrisspeks')->name('adminqrisspeks.edit');
+	Route::put('/admin/qrisspek/update/{id}', 'Controller_AdminListQrisspeks@updateQrisspeks')->name('adminqrisspeks.update');
+	Route::get('/admin/qrisspek/delete/{id}', 'Controller_AdminListQrisspeks@deleteQrisspeks')->name('adminqrisspeks.delete');
 	
 	// Mitra
 	Route::get('/admin/anggota', 'Controller_AdminMitra@openPage')->name('mitra.open');
@@ -106,7 +115,7 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/eksekutif/home', 'Controller_ManagerHome@openAllDataPage');
 	Route::get('/eksekutif/projects', 'Controller_ManagerListProjects@openPage');
 
-	// Engineer Assign
+	// Engineer Assign NSICCS
 	Route::get('/engineer/assign', 'Controller_EngineerAddProjects@openPage');
 	Route::post('/engineer/newproject', 'Controller_EngineerAddProjects@storeNew');
 

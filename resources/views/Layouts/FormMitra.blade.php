@@ -91,12 +91,12 @@
 
 	<div class="form-group">
 		<div class ="input-group-addon">
-			<label for="data_agreement" style="font-weight:bolder" style="margin-top: -30px">No Agreement / Keanggotaan</label>
+			<label for="data_agreement" style="font-weight:bolder" style="margin-top: -30px">No Agreement</label>
 				<br>
 			{!! Form::text('data_agreement', null,
 				['class'=>'form-control', 
 					'id' =>'data_agreement', 
-					'placeholder' => 'Masukan Nomor Data Agreement / Keanggotaan', 
+					'placeholder' => 'Masukan Nomor Data Agreement', 
 					'style' =>'margin-bottom: 10px'
 				])
 			!!}
@@ -111,6 +111,20 @@
 				['class'=>'form-control', 
 					'id' =>'req_numb', 
 					'placeholder' => 'Masukan Nomor Registration Number', 
+					'style' =>'margin-bottom: 10px'
+				])
+			!!}
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class ="input-group-addon">
+			<label for="no_anggota" style="font-weight:bolder" style="margin-top: -30px">No Keanggotaan</label>
+				<br>
+			{!! Form::text('no_anggota', null,
+				['class'=>'form-control', 
+					'id' =>'no_anggota', 
+					'placeholder' => 'Masukan Nomor Keanggotaan', 
 					'style' =>'margin-bottom: 10px'
 				])
 			!!}
