@@ -1,0 +1,1 @@
+<a href="{{ $url_detail }}" type="button" class="modallist-show" title="{{ $data->nama_mitra }}" data-target="#modallist" data-toggle="tooltip" data-placement="top">{{ $data->nama_mitra }}</a>

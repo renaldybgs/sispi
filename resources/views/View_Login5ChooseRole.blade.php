@@ -21,20 +21,20 @@
 
   <style>
     body {
-      background-image: url('{{ url('assets/img/painted.jpg') }}');
+      background-image: url('{{ url('assets/img/aspiback.jpeg') }}');
       background-size: 100% 100%;}
   </style>
 </head>
 
-<div class="col-sm-6">
+<!-- <div class="col-sm-6">
   <img class="img-fluid" src="{{ url('assets/img/aspi-logo.png') }}" alt="Photo">
-</div>
+</div> -->
 
 <div class="row role-panel">
 
 <!-- < Role Engineer -- -->
 <div class="role">
-  <h3 class="title">Sertifikasi</h3>
+  <h3 class="title" style="color: white;">Sertifikasi</h3>
   <div class="chooserole">
     <a href="/engineer/projects">
       <div class="content-overlay"></div>
@@ -49,7 +49,7 @@
 
 <!-- < Role Admin -- -->
 <div class="role">
-  <h3 class="title">Admin</h3>
+  <h3 class="title" style="color: white;">Admin</h3>
   <div class="chooserole">
     <a href="/admin/users">
       <div class="content-overlay"></div>

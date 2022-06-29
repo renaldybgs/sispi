@@ -80,6 +80,15 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/admin/qrisspek/edit/{id}', 'Controller_AdminListQrisspeks@editQrisspeks')->name('adminqrisspeks.edit');
 	Route::put('/admin/qrisspek/update/{id}', 'Controller_AdminListQrisspeks@updateQrisspeks')->name('adminqrisspeks.update');
 	Route::get('/admin/qrisspek/delete/{id}', 'Controller_AdminListQrisspeks@deleteQrisspeks')->name('adminqrisspeks.delete');
+
+			//List Project admin QRIS
+	Route::get('/admin/qris', 'Controller_AdminListQris@openPage');
+	Route::get('/admin/qris/table', 'Controller_AdminListQris@dataTable')->name('adminlistqris.table');
+	Route::get('/admin/qris/detail/{id}', 'Controller_AdminListQris@detail')->name('adminlistqris.detail');
+	Route::get('/admin/qris/export', 'Controller_AdminListQris@export');
+	Route::get('/admin/qris/edit/{id}', 'Controller_AdminListQris@editQris')->name('adminqris.edit');
+	Route::put('/admin/qris/update/{id}', 'Controller_AdminListQris@updateQris')->name('adminqris.update');
+	Route::get('/admin/qris/delete/{id}', 'Controller_AdminListQris@deleteQris')->name('adminqris.delete');
 	
 	// Mitra
 	Route::get('/admin/anggota', 'Controller_AdminMitra@openPage')->name('mitra.open');
@@ -119,6 +128,10 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/engineer/assign', 'Controller_EngineerAddProjects@openPage');
 	Route::post('/engineer/newproject', 'Controller_EngineerAddProjects@storeNew');
 
+	// Engineer Assign QRIS
+	Route::get('/engineer/assignqris', 'Controller_EngineerAddQris@openPage');
+	Route::post('/engineer/newprojectqris', 'Controller_EngineerAddQris@storeNew');
+
 	##Engineer
 	Route::get('/engineer', 'Controller_EngineerYourProjects@openPage');
 	// Doc Tools
@@ -141,7 +154,7 @@ Route::group(['middleware' => 'auth'], function(){
 	// Search Doc
 	Route::get('/engineer/searchdocs', 'Controller_EngineerSearchDocuments@openPage');
 
-	// Own Project
+	// Own Project NSICCS
 	Route::get('/engineer/projects', 'Controller_EngineerYourProjects@openPage');
 	Route::get('/engineer/projects/table', 'Controller_EngineerYourProjects@dataTable')->name('projects.table');
 	Route::patch('/engineer/projects/changestat', 'Controller_EngineerYourProjects@changeStatus');
@@ -154,7 +167,22 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/engineer/history', 'Controller_EngineerHistoryProjects@openPage');
 	Route::get('/engineer/history/table', 'Controller_EngineerHistoryProjects@dataTable')->name('history.table');
 
-	Route::get('engineer/projectdir/{id}', 'Conttoller_Engoineer@setProjectDirectory')->name('project.dir');
+	Route::get('engineer/projectdir/{id}', 'Conttoller_Engineer@setProjectDirectory')->name('project.dir');
+
+	// Own Project QRIS
+	Route::get('/engineer/qris', 'Controller_EngineerYourQris@openPage');
+	Route::get('/engineer/qris/table', 'Controller_EngineerYourQris@dataTable')->name('qris.table');
+	Route::patch('/engineer/qris/changestat', 'Controller_EngineerYourQris@changeStatus');
+	Route::get('/engineer/qris/editprogress/{id}', 'Controller_EngineerYourQris@editPBN')->name('progress.edit');
+	Route::put('/engineer/qris/updateprogress/{id}', 'Controller_EngineerYourQris@updatePBN')->name('progress.update');
+	Route::get('/engineer/qris/editpic/{id}', 'Controller_EngineerYourQris@editBussinessPIC')->name('pic.edit');
+	Route::put('/engineer/qris/updatepic/{id}', 'Controller_EngineerYourQris@updateBussinessPIC')->name('pic.update');
+	Route::get('/engineer/approval/notes/{id}', 'Controller_EngineerYourQris@notes')->name('keterangan.notes');
+
+	Route::get('/engineer/history', 'Controller_EngineerHistoryProjects@openPage');
+	Route::get('/engineer/history/table', 'Controller_EngineerHistoryProjects@dataTable')->name('history.table');
+
+	Route::get('engineer/projectdir/{id}', 'Conttoller_Engineer@setProjectDirectory')->name('project.dir');
 
 	//Upload & Download Document
 	Route::get('/engineer/upload/{id}', "Controller_EngineerUploadDocument@openPage")->name('upload.open');

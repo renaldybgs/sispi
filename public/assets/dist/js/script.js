@@ -372,6 +372,80 @@ function deleteProject(id){
 	})
 }
 
+function deleteQris(id){
+	// console.log(id);
+	event.preventDefault();
+	const href = $(this).attr('href');
+
+	var idDel = id;
+
+	Swal.fire({
+	  title: 'Yakin hapus data ini?',
+	  icon: 'warning',
+	  showCancelButton: true,
+	  confirmButtonColor: '#3085d6',
+	  cancelButtonColor: '#d33',
+	  confirmButtonText: 'Ya',
+	  cancelButtonText: 'Tidak',
+
+	}).then((result)=>{
+		if(result.value){
+			$.ajaxSetup({
+				headers: {
+					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				}
+			});
+
+			$.ajax({
+				url: '/admin/qris/delete/'+idDel,
+				type: 'get',
+				data: {
+					'_method': 'DELETE'
+				},
+
+				success: function(response){
+					console.log(response);
+					$('#table1').DataTable().ajax.reload();
+
+					Swal.fire({
+						title:'Data qris berhasil dihapus',
+						icon:'success',
+						toast:true,
+						showConfirmButton:false,
+						position: 'top-end',
+						timer:1500,
+						// timerProgressBar:true,
+						background:'#a3ffa3'
+					})
+				},
+
+				error: function(xhr){
+					Swal.fire({
+						icon: 'error',
+						toast:true,
+						title: 'Error',
+						text: 'Project Qris cant be deleted',
+						timer: 4000,
+						background: 'bisque'
+					})
+				}
+			})
+		} else if (result.dismiss === 'cancel') {
+			Swal.fire({
+				title:'Data Qris tetap tersimpan',
+				icon:'info',
+				toast:true,
+				showConfirmButton:false,
+				position:'top-end',
+				grow:'row',
+				timer:1500,
+				// timerProgressBar:true,
+				background:'#B4F5F0'
+			})
+		}
+	})
+}
+
 
 function donehandover(id) {
 	event.preventDefault();
@@ -780,6 +854,94 @@ function changeStatusProject(id){
 				data: {
 					'_method': 'PATCH',
 					'id': idProj,
+					'pstat': pstat
+				},
+
+				success: function(response){
+					// console.log(response);
+					$('#table1').DataTable().ajax.reload();
+
+					Swal.fire({
+						title:'Status berhasil diganti',
+						icon:'success',
+						toast:true,
+						showConfirmButton:false,
+						position: 'top',
+						timer:1500,
+						timerProgressBar:true,
+						background:'#D4F1F4'
+					})
+				},
+				
+				error: function(xhr){
+					Swal.fire({
+						icon: 'error',
+						toast:true,
+						title: 'Oops...',
+						text: 'Something went wrong!',
+						timer: 4000,
+						background: 'bisque'
+					})
+				}
+			})
+		} else if (result.dismiss === 'cancel') {
+			$.ajaxSetup({
+				headers: {
+					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				}
+			});
+
+			$.ajax({
+				success: function(response){
+					// console.log("masuk pak");
+					$('#table1').DataTable().ajax.reload();
+					Swal.fire({
+						title:'Status tidak terganti',
+						icon: 'warning',
+						toast:true,
+						showConfirmButton:false,
+						position:'top',
+						grow:'row',
+						timer:1500,
+						timerProgressBar:true,
+						background:'#D2FBA4'
+					})
+				}
+			})
+		}
+	})
+};
+
+function changeStatusQris(id){
+	// console.log("tes changeStatus");
+	event.preventDefault();
+
+	var idQris = id;
+	var select = document.getElementById(idQris);
+	var pstat = select.value;	
+
+	Swal.fire({
+	  title: 'Yakin ganti status? ( ͡° ͜ʖ ͡°)',
+	  icon: 'success',
+	  showCancelButton: true,
+	  confirmButtonColor: '#3085d6',
+	  cancelButtonColor: '#d33',
+	  confirmButtonText: 'Ya',
+	  cancelButtonText: 'Tidak',
+	}).then((result)=>{
+		if(result.value){
+			$.ajaxSetup({
+				headers: {
+					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				}
+			});
+
+			$.ajax({
+				url: '/engineer/qris/changestat',
+				type: 'POST',
+				data: {
+					'_method': 'PATCH',
+					'id': idQris,
 					'pstat': pstat
 				},
 

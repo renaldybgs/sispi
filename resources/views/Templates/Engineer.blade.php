@@ -145,7 +145,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="/engineer/qris" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Project QRIS</p>
                                     </a>
@@ -189,13 +189,33 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="/engineer/listprojects" class="nav-link">
+                            <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-clipboard-list"></i>
                                 <p>
-                                      List Project
-                                    <i class="fas fa-clipboard-list-left right"></i>
+                                    &nbsp List Projects
+                                    <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/engineer/listprojects" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Project NSICCS</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Project QRIS</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Project SNAP</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
 
                     </ul>

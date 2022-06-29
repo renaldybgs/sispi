@@ -91,5 +91,21 @@ class ProjectsStatSeeder extends Seeder
         $done = Projects_Stat::create([
             'nama_pstat' => 'Done'
         ]);
+
+        $terimadokumen = Projects_Stat::create([
+            'nama_pstat' => 'Terima Dokumen'
+        ]);
+
+        $perbaikan = Projects_Stat::create([
+            'nama_pstat' => 'Perbaikan'
+        ]);
+
+        $pengajuanpersetujuan = Projects_Stat::create([
+            'nama_pstat' => 'Pengajuan Persetujuan'
+        ]);
+
+        $suratrekomendasi = Projects_Stat::create([
+            'nama_pstat' => 'Surat Rekomendasi'
+        ]);
     }
 }

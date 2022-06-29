@@ -10,17 +10,17 @@
   <div class="card-header p-0 pt-1 border-bottom-0">
     <ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
       <li class="nav-item">
-        <a class="nav-link active" id="custom-tabs-three-home-tab" data-toggle="pill" href="#new" role="tab" aria-controls="custom-tabs-three-profile" aria-selected="false">New Projects NSICCS</a>
+        <a class="nav-link active" id="custom-tabs-three-home-tab" data-toggle="pill" href="#nsiccs" role="tab" aria-controls="custom-tabs-three-profile" aria-selected="false">New Projects NSICCS</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="custom-tabs-three-profile-tab" data-toggle="pill" href="#handover" role="tab" aria-controls="custom-tabs-three-profile" aria-selected="true">New Projects QRIS</a>
+        <a class="nav-link" id="custom-tabs-three-profile-tab" data-toggle="pill" href="#qris" role="tab" aria-controls="custom-tabs-three-profile" aria-selected="true">New Projects QRIS Rekomendasi</a>
       </li>
     </ul>
   </div>
   <div class="card-body">
     <div class="tab-content" id="custom-tabs-three-tabContent">
       
-      <div class="tab-pane fade active show" id="new" role="tabpanel" aria-labelledby="custom-tabs-three-home-tab">
+      <div class="tab-pane fade active show" id="nsiccs" role="tabpanel" aria-labelledby="custom-tabs-three-home-tab">
         <form method="post" action="/engineer/newproject" id="my-form">
         @csrf
 <!--          <div id="pic" class="form-group">
@@ -123,48 +123,45 @@
         </form> 
       </div>
 
-      <!-- HANDOVER -->
-      <div id="handover" class="tab-pane fade" id="handover" role="tabpanel" aria-labelledby="custom-tabs-three-profile-tab">
-        <form method="post" action="/manager/newhandover" id="my-handover">
+      <!-- QRIS -->
+      <div id="qris" class="tab-pane fade" id="qris" role="tabpanel" aria-labelledby="custom-tabs-three-profile-tab">
+        <form method="post" action="/engineer/newprojectqris" id="my-handover">
         @csrf
-          <div class="form-group">
-            <label for="PIC2">PIC</label>
-            <div class="@error('PIC2') is-invalid @enderror">
-              <select class="select2 form-control-border border-width-2 form-control picAsli @error ('PIC2') is-invalid @enderror" id="PIC2" name="id_user1" style="width: 100%;" onchange="getHandoverData(id)">
-              <option value="">Pilih Pic</option>
-              @foreach($users as $usr2)
-                @if (old('id_user1') == $usr2->id)
-                  <option value="{{ $usr2->id }}" selected>{{ $usr2->nama_user }}</option>
+        <div id="mitra" class="form-group">
+            <label for="id_mitra">Mitra</label>
+            <div class="@error('id_mitra') is-invalid @enderror">
+              <select class="select2 form-control-border border-width-2 form-control @error ('id_mitra') is-invalid @enderror" id="id_mitra" name="id_mitra" style="width: 100%;">
+                <option value="">Pilih Mitra</option>
+                @foreach($mitras as $mtr)
+                @if (old('id_mitra') == $mtr->id)
+                  <option value="{{ $mtr->id }}" selected>{{ $mtr->nama_mitra }}</option>
                 @else 
-                  <option value="{{ $usr2->id }}">{{ $usr2->nama_user }}</option>
+                  <option value="{{ $mtr->id }}">{{ $mtr->nama_mitra }}</option>
                 @endif
-              @endforeach
-              </select>
-              @error('PIC2')
-              <div class="invalid-feedback flash" style="margin-top: 2px">
-                {{ $message }}</div>
-            @enderror
+                @endforeach
+                </select>
+                @error('id_mitra')
+                <div class="invalid-feedback flash" style="margin-top: 2px">
+                {{ $message }}
+                </div>
+                @enderror 
             </div>
           </div>
-          <div class="form-group">
-            <label for="nama_project2">Nama Project</label>
-            <div class="@error('nama_project2') is-invalid @enderror">
-              <select class="select2 form-control-border border-width-2 form-control @error ('nama_project2') is-invalid @enderror" id="nama_project2" name="nama_project2" style="width: 100%;">
-                <option value="">Pilih Nama Project</option>
+
+          <div id="produk" class="form-group">
+            <label for="id_product">Produk</label>
+            <div class="@error('id_product') is-invalid @enderror">
+              <select class="select2 form-control-border border-width-2 form-control @error ('id_product') is-invalid @enderror" id="id_product" name="id_product" style="width: 100%;">
+                <option value="" >Pilih Produk</option>
+                @foreach($products as $prod)
+                @if (old('id_product') == $prod->id)
+                  <option value="{{ $prod->id }}" selected>{{ $prod->nama_product }}</option>
+                @else 
+                  <option value="{{ $prod->id }}">{{ $prod->nama_product }}</option>
+                @endif
+                @endforeach
                 </select>
-                @error('nama_project2')
-                  <div class="invalid-feedback flash" style="margin-top: 2px">
-                    {{ $message }}</div>
-                @enderror
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="PIChandover">PIC Handover</label>
-            <div class="@error('PIChandover') is-invalid @enderror">
-              <select class="select2 form-control-border border-width-2 form-control @error ('PIChandover') is-invalid @enderror" id="PIChandover" name="PIChandover" style="width: 100%;">
-                <option value="">Pilih PIC Handover</option>              
-                </select>
-                @error('PIChandover')
+                @error('id_product')
                 <div class="invalid-feedback flash" style="margin-top: 2px">
                   {{ $message }}</div>
                 @enderror

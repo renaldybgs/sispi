@@ -28,7 +28,7 @@
 
   <style>
     body {
-      background-image: url('{{ url('assets/img/painted.jpg') }}');
+      background-image: url('{{ url('assets/img/aspiback.jpeg') }}');
       background-size: 100% 100%;}
   </style>
 </head>
@@ -45,9 +45,9 @@
   </div>
    
 @endif -->
-<div class="col-sm-6">
+<!-- <div class="col-sm-6">
   <img class="img-fluid" src="assets/img/aspi-logo.png" alt="Photo">
-</div>
+</div> -->
 
 <!-- Dialog Login-->
 <div class="box">

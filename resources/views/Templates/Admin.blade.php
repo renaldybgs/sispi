@@ -142,24 +142,37 @@
                                 </p>
                             </a>
                         </li>
-<!--                         <li id="assignpage" class="nav-item">
-                            <a href="/admin/assign" class="nav-link">
-                                <i class="nav-icon fas fa-random"></i>
-                                <p>
-                                    Assign Projects
-                                    <i class="fas fa-random-left right"></i>
-                                </p>
-                            </a>
-                        </li> -->
+
                         <li class="nav-item">
-                            <a href="/admin/projects" class="nav-link">
-                                <i class="nav-icon fas fa-clipboard-list"></i>
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
-                                    List Projects NSICCS
-                                    <i class="fas fa-clipboard-list-left right"></i>
+                                    &nbsp List Projects
+                                    <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/admin/projects" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Project NSICCS</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/admin/qris" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Project QRIS</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Project SNAP</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
+
 <!--                         <li class="nav-item">
                             <a href="/admin/approval" class="nav-link">
                                 <i class="nav-icon fas fa-clipboard-check"></i>
