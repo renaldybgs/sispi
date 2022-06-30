@@ -179,12 +179,12 @@
                                         <p>Project NSICCS</p>
                                     </a>
                                 </li>
-<!--                                 <li class="nav-item">
-                                    <a href="/engineer/historyhover" class="nav-link">
+                                <li class="nav-item">
+                                    <a href="/engineer/historyqris" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Handover Project</p>
+                                        <p>Project QRIS</p>
                                     </a>
-                                </li> -->
+                                </li>
                             </ul>
                         </li>
 
@@ -204,7 +204,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="/engineer/listqris" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Project QRIS</p>
                                     </a>

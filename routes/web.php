@@ -146,10 +146,16 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/engineer/historyhover', 'Controller_EngineerHistoryHandover@openPage');
 	Route::get('/engineer/historyhover/table', 'Controller_EngineerHistoryHandover@dataTable')->name('historyhover.table');
 
-	//List Project enginner
+	//List Project enginner NSICCS
 	Route::get('/engineer/listprojects', 'Controller_EngineerListProjects@openPage');
 	Route::get('/engineer/listprojects/table', 'Controller_EngineerListProjects@dataTable')->name('engineerlistprojects.table');
 	Route::get('/engineer/listprojects/detail/{id}', 'Controller_EngineerListProjects@detail')->name('engineerlistprojects.detail');
+
+
+	//List Project enginner QRIS
+	Route::get('/engineer/listqris', 'Controller_EngineerListQris@openPage');
+	Route::get('/engineer/listqris/table', 'Controller_EngineerListQris@dataTable')->name('engineerlistqris.table');
+	Route::get('/engineer/listqris/detail/{id}', 'Controller_EngineerListQris@detail')->name('engineerlistqris.detail');
 
 	// Search Doc
 	Route::get('/engineer/searchdocs', 'Controller_EngineerSearchDocuments@openPage');
@@ -179,8 +185,8 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::put('/engineer/qris/updatepic/{id}', 'Controller_EngineerYourQris@updateBussinessPIC')->name('pic.update');
 	Route::get('/engineer/approval/notes/{id}', 'Controller_EngineerYourQris@notes')->name('keterangan.notes');
 
-	Route::get('/engineer/history', 'Controller_EngineerHistoryProjects@openPage');
-	Route::get('/engineer/history/table', 'Controller_EngineerHistoryProjects@dataTable')->name('history.table');
+	Route::get('/engineer/historyqris', 'Controller_EngineerHistoryQris@openPage');
+	Route::get('/engineer/historyqris/table', 'Controller_EngineerHistoryQris@dataTable')->name('historyqris.table');
 
 	Route::get('engineer/projectdir/{id}', 'Conttoller_Engineer@setProjectDirectory')->name('project.dir');
 
