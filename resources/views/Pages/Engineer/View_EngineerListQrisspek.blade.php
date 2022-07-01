@@ -2,7 +2,7 @@
 @push('styles')
 @endpush
 
-@section('PageTitle','List Projects QRIS')
+@section('PageTitle','List Projects QRIS Spek')
 @section('content')
 
 
@@ -85,8 +85,9 @@ ASPI | Sertifikasi List Projects QRIS
                         <th class="text-center">Nama Institusi</th>
                         <th class="text-center">Type Product</th>
                         <th class="text-center">Tanggal Mulai</th>
-                        <th class="text-center">No Rekomendasi</th>
-                        <th class="text-center">Jenis Ijin BI</th>
+                        <th class="text-center">No Formulir</th>
+                        <th class="text-center">No Spesifikasi</th>
+                        <th class="text-center">Tanggal Spesifikasi</th>
                         <th class="text-center">Status</th>                      
                     </tr>
                 </thead>
@@ -110,14 +111,15 @@ ASPI | Sertifikasi List Projects QRIS
     "info": true,
     "autoWidth": false,
     "responsive": true,
-    ajax: "{{ route('engineerlistqris.table') }}",
+    ajax: "{{ route('engineerlistqrisspek.table') }}",
     columns: [
       {data: 'DT_RowIndex', name: 'id', class: 'text-center'},
       {data: 'nama_mitra', name: 'nama_mitra', class: 'text-center'},
       {data: 'nama_product', name: 'nama_product', class: 'text-center'},
       {data: 'waktu', name: 'waktu', class: 'text-center'},
-      {data: 'no_rekomendasi', name: 'no_rekomendasi', class: 'text-center'},
-      {data: 'jenis_qrisbi', name: 'jenis_qrisbi', class: 'text-center'},
+      {data: 'no_formulir', name: 'no_formulir', class: 'text-center'},
+      {data: 'no_spek', name: 'no_spek', class: 'text-center'},
+      {data: 'waktu', name: 'waktu', class: 'text-center'},
       {data: 'id_pstat', name: 'id_pstat', class: 'text-center'},
       // {data: 'added_by', name: 'added_by', class: 'text-center'},
       // {data: 'modified_by', name: 'modified_by', class: 'text-center'}

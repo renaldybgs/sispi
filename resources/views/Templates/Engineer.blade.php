@@ -151,6 +151,12 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
+                                    <a href="/engineer/qrisspek" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Project QRIS Spek</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
                                     <a href="#" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Project SNAP</p>
@@ -185,6 +191,12 @@
                                         <p>Project QRIS</p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="/engineer/historyqrisspek" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Project QRIS Spek</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
 
@@ -207,6 +219,12 @@
                                     <a href="/engineer/listqris" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Project QRIS</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/engineer/listqrisspek" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Project QRIS Spek</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">

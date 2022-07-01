@@ -36,14 +36,9 @@ class Controller_EngineerYourQris extends Controller
 
         // $project->id_pstat = $pstat;
 
-        if($pstat == 21){                      //kalo statnys mau diganti
-            $qris->id_pstat = 21;
-            $qris->tgl_skenario = Carbon::now()->toDateTimeString();  
-        }
-
-        else if ($pstat == 24) {
+        if($pstat == 24){                      //kalo statnys mau diganti
             $qris->id_pstat = 24;
-            $qris->surat_rekomendasi = Carbon::now()->toDateTimeString();
+            $qris->surat_rekomendasi = Carbon::now()->toDateTimeString();  
         }
 
         else {

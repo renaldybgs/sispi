@@ -107,5 +107,13 @@ class ProjectsStatSeeder extends Seeder
         $suratrekomendasi = Projects_Stat::create([
             'nama_pstat' => 'Surat Rekomendasi'
         ]);
+
+        $formulirpermohonan = Projects_Stat::create([
+            'nama_pstat' => 'Formulir Permohonan'
+        ]);
+
+        $suratpersetujuan = Projects_Stat::create([
+            'nama_pstat' => 'Surat Persetujuan'
+        ]);
     }
 }

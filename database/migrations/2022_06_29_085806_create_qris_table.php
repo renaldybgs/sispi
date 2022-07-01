@@ -20,7 +20,6 @@ class CreateQrisTable extends Migration
             $table->unsignedBigInteger('id_pstat');
             $table->unsignedBigInteger('id_product');
             $table->unsignedBigInteger('id_mitra');
-            $table->dateTime('tgl_skenario')->nullable();
             $table->dateTime('surat_rekomendasi')->nullable();
             $table->string('no_rekomendasi', 301)->nullable();
             $table->string('jenis_qrisbi', 301)->nullable();

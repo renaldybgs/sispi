@@ -106,7 +106,7 @@ class Controller_AdminListQris extends Controller
 
     public function getPBN($id){
         return DB::table('qris')
-        ->select(DB::raw('qris.id, DATE(qris.tgl_skenario) as waktu, DATE(qris.surat_rekomendasi) as waktu, qris.jenis_qrisbi, qris.ijin_qrisbi, qris.tgl_ijinbi, qris.notes_project'))
+        ->select(DB::raw('qris.id, DATE(qris.surat_rekomendasi) as waktu, qris.jenis_qrisbi, qris.ijin_qrisbi, qris.tgl_ijinbi, qris.notes_project'))
         ->where('qris.id', '=', $id)
         ->orderBy('waktu')
         ->first();
@@ -172,7 +172,7 @@ class Controller_AdminListQris extends Controller
 
     public function getAllQrisData(){   //ambil data buat ditempel di table
         return DB::table('qris')
-            ->select(DB::raw('qris.id, products.nama_product, mitras.nama_mitra, DATE(qris.waktu_assign_project) as waktu, qris.tgl_skenario, qris.no_rekomendasi, qris.jenis_qrisbi, qris.ijin_qrisbi, projects_stats.id as id_pstat'))
+            ->select(DB::raw('qris.id, products.nama_product, mitras.nama_mitra, DATE(qris.waktu_assign_project) as waktu, qris.no_rekomendasi, qris.jenis_qrisbi, qris.ijin_qrisbi, projects_stats.id as id_pstat'))
             ->leftjoin('products', 'qris.id_product', '=', 'products.id')
             ->leftjoin('mitras', 'qris.id_mitra', '=', 'mitras.id')
             ->leftjoin('projects_stats', 'qris.id_pstat', '=', 'projects_stats.id')

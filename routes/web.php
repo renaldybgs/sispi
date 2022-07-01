@@ -132,6 +132,10 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/engineer/assignqris', 'Controller_EngineerAddQris@openPage');
 	Route::post('/engineer/newprojectqris', 'Controller_EngineerAddQris@storeNew');
 
+	// Engineer Assign QRIS Spek
+	Route::get('/engineer/assignqrisspek', 'Controller_EngineerAddQrisspeks@openPage');
+	Route::post('/engineer/newprojectqrisspek', 'Controller_EngineerAddQrisspeks@storeNew');
+
 	##Engineer
 	Route::get('/engineer', 'Controller_EngineerYourProjects@openPage');
 	// Doc Tools
@@ -156,6 +160,11 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/engineer/listqris', 'Controller_EngineerListQris@openPage');
 	Route::get('/engineer/listqris/table', 'Controller_EngineerListQris@dataTable')->name('engineerlistqris.table');
 	Route::get('/engineer/listqris/detail/{id}', 'Controller_EngineerListQris@detail')->name('engineerlistqris.detail');
+
+	//List Project enginner QRIS Spek
+	Route::get('/engineer/listqrisspek', 'Controller_EngineerListQrisspeks@openPage');
+	Route::get('/engineer/listqrisspek/table', 'Controller_EngineerListQrisspeks@dataTable')->name('engineerlistqrisspek.table');
+	Route::get('/engineer/listqrisspek/detail/{id}', 'Controller_EngineerListQrisspeks@detail')->name('engineerlistqrisspek.detail');
 
 	// Search Doc
 	Route::get('/engineer/searchdocs', 'Controller_EngineerSearchDocuments@openPage');
@@ -187,6 +196,21 @@ Route::group(['middleware' => 'auth'], function(){
 
 	Route::get('/engineer/historyqris', 'Controller_EngineerHistoryQris@openPage');
 	Route::get('/engineer/historyqris/table', 'Controller_EngineerHistoryQris@dataTable')->name('historyqris.table');
+
+	Route::get('engineer/projectdir/{id}', 'Conttoller_Engineer@setProjectDirectory')->name('project.dir');
+
+	// Own Project QRIS Spek
+	Route::get('/engineer/qrisspek', 'Controller_EngineerYourQrisspeks@openPage');
+	Route::get('/engineer/qrisspek/table', 'Controller_EngineerYourQrisspeks@dataTable')->name('qrisspek.table');
+	Route::patch('/engineer/qrisspek/changestat', 'Controller_EngineerYourQrisspeks@changeStatus');
+	Route::get('/engineer/qrisspek/editprogress/{id}', 'Controller_EngineerYourQrisspeks@editPBN')->name('progress.edit');
+	Route::put('/engineer/qrisspek/updateprogress/{id}', 'Controller_EngineerYourQrisspeks@updatePBN')->name('progress.update');
+	Route::get('/engineer/qrisspek/editpic/{id}', 'Controller_EngineerYourQrisspeks@editBussinessPIC')->name('pic.edit');
+	Route::put('/engineer/qrisspek/updatepic/{id}', 'Controller_EngineerYourQrisspeks@updateBussinessPIC')->name('pic.update');
+	Route::get('/engineer/approval/notes/{id}', 'Controller_EngineerYourQrisspeks@notes')->name('keterangan.notes');
+
+	Route::get('/engineer/historyqrisspek', 'Controller_EngineerHistoryQrisspeks@openPage');
+	Route::get('/engineer/historyqrisspek/table', 'Controller_EngineerHistoryQrisspeks@dataTable')->name('historyqrisspek.table');
 
 	Route::get('engineer/projectdir/{id}', 'Conttoller_Engineer@setProjectDirectory')->name('project.dir');
 

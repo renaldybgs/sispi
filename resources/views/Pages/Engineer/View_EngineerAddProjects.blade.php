@@ -15,6 +15,9 @@
       <li class="nav-item">
         <a class="nav-link" id="custom-tabs-three-profile-tab" data-toggle="pill" href="#qris" role="tab" aria-controls="custom-tabs-three-profile" aria-selected="true">New Projects QRIS Rekomendasi</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" id="custom-tabs-three-profile-tab" data-toggle="pill" href="#qrisspek" role="tab" aria-controls="custom-tabs-three-profile" aria-selected="true">New Projects QRIS Spek</a>
+      </li>
     </ul>
   </div>
   <div class="card-body">
@@ -166,6 +169,63 @@
                   {{ $message }}</div>
                 @enderror
             </div>
+          </div>
+            <button type="submit" class="btn btn-outline-primary float-right" id="btn-submithandover">Submit</button>
+        </form>
+      </div>
+
+            <!-- QRIS Spek-->
+      <div id="qrisspek" class="tab-pane fade" id="qrisspek" role="tabpanel" aria-labelledby="custom-tabs-three-profile-tab">
+        <form method="post" action="/engineer/newprojectqrisspek" id="my-handover">
+        @csrf
+        <div id="mitra" class="form-group">
+            <label for="id_mitra">Mitra</label>
+            <div class="@error('id_mitra') is-invalid @enderror">
+              <select class="select2 form-control-border border-width-2 form-control @error ('id_mitra') is-invalid @enderror" id="id_mitra" name="id_mitra" style="width: 100%;">
+                <option value="">Pilih Mitra</option>
+                @foreach($mitras as $mtr)
+                @if (old('id_mitra') == $mtr->id)
+                  <option value="{{ $mtr->id }}" selected>{{ $mtr->nama_mitra }}</option>
+                @else 
+                  <option value="{{ $mtr->id }}">{{ $mtr->nama_mitra }}</option>
+                @endif
+                @endforeach
+                </select>
+                @error('id_mitra')
+                <div class="invalid-feedback flash" style="margin-top: 2px">
+                {{ $message }}
+                </div>
+                @enderror 
+            </div>
+          </div>
+
+          <div id="produk" class="form-group">
+            <label for="id_product">Produk</label>
+            <div class="@error('id_product') is-invalid @enderror">
+              <select class="select2 form-control-border border-width-2 form-control @error ('id_product') is-invalid @enderror" id="id_product" name="id_product" style="width: 100%;">
+                <option value="" >Pilih Produk</option>
+                @foreach($products as $prod)
+                @if (old('id_product') == $prod->id)
+                  <option value="{{ $prod->id }}" selected>{{ $prod->nama_product }}</option>
+                @else 
+                  <option value="{{ $prod->id }}">{{ $prod->nama_product }}</option>
+                @endif
+                @endforeach
+                </select>
+                @error('id_product')
+                <div class="invalid-feedback flash" style="margin-top: 2px">
+                  {{ $message }}</div>
+                @enderror
+            </div>
+          </div>
+
+          <div id="no_formulir" class="form-group">
+            <label for="no_formulir">No Formulir</label>
+            <input type="text" class="form-control  @error('no_formulir') is-invalid @enderror" id="no_formulir" placeholder="No Formulir" name="no_formulir" autocomplete="off" value="{{ old('no_formulir') }}" style="width: 100%;">
+            @error('no_formulir')
+              <div class="invalid-feedback flash" style="margin-top: 2px">
+                {{ $message }}</div>
+            @enderror
           </div>
             <button type="submit" class="btn btn-outline-primary float-right" id="btn-submithandover">Submit</button>
         </form>

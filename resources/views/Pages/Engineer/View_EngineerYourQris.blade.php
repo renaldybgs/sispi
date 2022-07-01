@@ -20,7 +20,7 @@ ASPI | Sertifikasi Projects QRIS
                                 <th class="text-center">No</th>
                                 <th class="text-center">Institusi</th>
                                 <th class="text-center">Type Produk</th>
-                                <th class="text-center">Issued Date</th>
+                                <th class="text-center">Tanggal Mulai</th>
                                 <th class="text-center">No Rekomendasi</th>
                                 <th class="text-center">Jenis QRIS BI</th>
                                 <th class="text-center">Ijin QRIS BI</th>

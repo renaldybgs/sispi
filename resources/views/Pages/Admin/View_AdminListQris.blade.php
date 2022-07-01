@@ -84,7 +84,7 @@ ASPI | Admin List Projects Qris
                         <th class="text-center">No</th>
                         <th class="text-center">Nama Institusi</th>
                         <th class="text-center">Type Product</th>
-                        <th class="text-center">Issued Date</th>
+                        <th class="text-center">Tanggal Mulai</th>
                         <th class="text-center">No Rekomendasi</th>
                         <th class="text-center">Jenis Ijin BI</th>
                         <th class="text-center">Status</th>     
