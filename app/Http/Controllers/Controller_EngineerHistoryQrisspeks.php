@@ -33,16 +33,16 @@ class Controller_EngineerHistoryQrisspeks extends Controller
     }
 
    public function getQrisspekData($id){                                     //ngambil data buat ditamplin di halaman Engineer - Project Own Going (Own Project)
-        return DB::table('qrisspek')
-        ->select(DB::raw('qrisspek.id, qrisspek.no_formulir, qrisspek.no_spek, DATE(qrisspek.spek_qris) as waktu, qris.pketerangan_status, products.nama_product, qrisspek.id_pstat, projects_stats.nama_pstat, mitras.nama_mitra, date(qrisspek.waktu_assign_project) as tanggal_assign'))
-        ->leftjoin('products', 'qrisspek.id_product', '=', 'products.id')
+        return DB::table('qrisspeks')
+        ->select(DB::raw('qrisspeks.id, qrisspeks.no_formulir, qrisspeks.no_spek, DATE(qrisspeks.spek_qris) as spek_qris, qrisspeks.pketerangan_status, products.nama_product, qrisspeks.id_pstat, projects_stats.nama_pstat, mitras.nama_mitra, date(qrisspeks.waktu_assign_project) as tanggal_assign'))
+        ->leftjoin('products', 'qrisspeks.id_product', '=', 'products.id')
         // ->leftjoin('projects_types', 'projects.id_ptype', '=', 'projects_types.id')
-        ->leftjoin('projects_stats', 'qrisspek.id_pstat', '=', 'projects_stats.id')
-        ->leftjoin('mitras', 'qrisspek.id_mitra', '=', 'mitras.id')
+        ->leftjoin('projects_stats', 'qrisspeks.id_pstat', '=', 'projects_stats.id')
+        ->leftjoin('mitras', 'qrisspeks.id_mitra', '=', 'mitras.id')
         // ->where('id_current_pic', $id)
         // ->where('status_handover', '=', '0')
-        ->whereIn('id_pstat', [19,20])
-        ->orderBy('waktu', 'tanggal_assign', 'desc')
+        ->whereIn('id_pstat', [15,16])
+        ->orderBy('tanggal_assign', 'desc')
         ->get();
     }
 }

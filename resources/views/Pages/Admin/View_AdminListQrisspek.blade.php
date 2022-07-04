@@ -5,10 +5,15 @@
 @section('PageTitle','List Projects Qris Spek')
 @section('content')
 
-
+@if($userLevel === 4)
 <title>
 ASPI | Admin List Projects Qris
 </title>
+@else
+<title>
+ASPI | Eksekutif List Projects Qris
+</title>
+@endif
 
 <div class="row mt-2">
   <div class="col-md-12">
@@ -88,8 +93,11 @@ ASPI | Admin List Projects Qris
                         <th class="text-center">No Formulir</th>
                         <th class="text-center">No Spesifikasi</th>
                         <th class="text-center">Tanggal Spesifikasi</th>
+                        <th class="text-center">Notes</th>
                         <th class="text-center">Status</th>     
-                        <th class="text-center" style="width: 75px">Action</th>                   
+                        @if($userLevel === 4)
+                        <th class="text-center" style="width: 75px">Action</th>  
+                        @endif                 
                     </tr>
                 </thead>
             </table>
@@ -120,9 +128,12 @@ ASPI | Admin List Projects Qris
       {data: 'waktu', name: 'waktu', class: 'text-center'},
       {data: 'no_formulir', name: 'no_formulir', class: 'text-center'},
       {data: 'no_spek', name: 'no_spek', class: 'text-center'},
-      {data: 'waktu', name: 'waktu', class: 'text-center'},
+      {data: 'spek_qris', name: 'spek_qris', class: 'text-center'},
+      {data: 'notes_project', name: 'notes_project', class: 'text-center'},
       {data: 'id_pstat', name: 'id_pstat', class: 'text-center'},
+      @if($userLevel === 4)
       {data: 'action', name: 'action', class: 'text-center'},
+      @endif  
       // {data: 'added_by', name: 'added_by', class: 'text-center'},
       // {data: 'modified_by', name: 'modified_by', class: 'text-center'}
     ]

@@ -20,7 +20,7 @@ class AccessPolicy
     }
 
     public function isAdmin(User $user){
-        return $user->id_ulevel == '1' || $user->id_ulevel == '4' || $user->id_ulevel == '6';
+        return $user->id_ulevel == '1' || $user->id_ulevel == '4' || $user->id_ulevel == '6' || $user->id_ulevel == '5';
     }
 
     public function isManager(User $user){

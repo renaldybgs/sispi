@@ -37,7 +37,7 @@ class Controller_AdminListQrisspeks extends Controller
         return view('Layouts.FormDetailQrisspek', compact('pbn', 'qrisspek'));
     }
 
-    public function editQris($id){
+    public function editQrisspeks($id){
         $this->authorize('isAdmin', auth()->user());
         
         $qrisspek = $this->getQrisspekById($id); 
@@ -46,7 +46,7 @@ class Controller_AdminListQrisspeks extends Controller
         return View('Layouts.FormProjectQrisspek', compact('qrisspek', 'listproduct', 'listmitra'));
     }
 
-    public function updateQris(Request $request, $id){
+    public function updateQrisspeks(Request $request, $id){
         $this->authorize('isAdmin', auth()->user());
 
         $qrisspek = $this->getQrisspekById($id);
@@ -58,7 +58,7 @@ class Controller_AdminListQrisspeks extends Controller
         $qrisspek->save(); 
     }
 
-    public function deleteQris($id){
+    public function deleteQrisspeks($id){
         $this->authorize('isAdmin', auth()->user());
 
         Qrisspek::where('id', $id)->delete();                            //cari data project berdasarkan id lalu didelete
@@ -84,7 +84,7 @@ class Controller_AdminListQrisspeks extends Controller
             ->addColumn('action', function($data){        
                 return view('Layouts.ActionListQrisspek',[
                     'data'=> $data,
-                    'url_editlist' => route('adminqrisspek.edit', $data->id)
+                    'url_editlist' => route('adminqrisspeks.edit', $data->id)
                 ]);
             })
             ->addIndexColumn()
@@ -106,9 +106,8 @@ class Controller_AdminListQrisspeks extends Controller
 
     public function getPBN($id){
         return DB::table('qrisspeks')
-        ->select(DB::raw('qrisspeks.id, DATE(qrispeks.spek_qris) as waktu, qrisspeks.no_formulir, qrisspeks.no_spek, qrisspeks.notes_project'))
+        ->select(DB::raw('qrisspeks.id, DATE(qrispeks.spek_qris) as spek_qris, qrisspeks.no_formulir, qrisspeks.no_spek, qrisspeks.notes_project'))
         ->where('qrisspeks.id', '=', $id)
-        ->orderBy('waktu')
         ->first();
     }
 
@@ -172,7 +171,7 @@ class Controller_AdminListQrisspeks extends Controller
 
     public function getAllQrisspekData(){   //ambil data buat ditempel di table
         return DB::table('qrisspeks')
-            ->select(DB::raw('qrisspeks.id, products.nama_product, mitras.nama_mitra, DATE(qrisspeks.waktu_assign_project) as waktu, qrisspeks.no_formulir, qrisspeks.no_spek, DATE(qrisspeks.spek_qris) as waktu, projects_stats.id as id_pstat'))
+            ->select(DB::raw('qrisspeks.id, products.nama_product, mitras.nama_mitra, DATE(qrisspeks.waktu_assign_project) as waktu, qrisspeks.no_formulir, qrisspeks.no_spek, qrisspeks.notes_project, DATE(qrisspeks.spek_qris) as spek_qris, projects_stats.id as id_pstat'))
             ->leftjoin('products', 'qrisspeks.id_product', '=', 'products.id')
             ->leftjoin('mitras', 'qrisspeks.id_mitra', '=', 'mitras.id')
             ->leftjoin('projects_stats', 'qrisspeks.id_pstat', '=', 'projects_stats.id')

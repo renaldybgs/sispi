@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/png" href="{{ url('assets/img/aspi-logo.png') }}">
+  <link rel="icon" type="image/png" href="{{ url('assets/img/aspilogo1.jpeg') }}">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
     | Login
@@ -28,7 +28,7 @@
 
   <style>
     body {
-      background-image: url('{{ url('assets/img/aspiback.jpeg') }}');
+      background-image: url('{{ url('assets/img/vectorjan.jpg') }}');
       background-size: 100% 100%;}
   </style>
 </head>
@@ -45,9 +45,9 @@
   </div>
    
 @endif -->
-<!-- <div class="col-sm-6">
-  <img class="img-fluid" src="assets/img/aspi-logo.png" alt="Photo">
-</div> -->
+<div class="col-sm-12">
+  <img class="img-fluid" src="{{ url('assets/img/aspi-logo.png') }}" alt="Photo" align="right">
+</div>
 
 <!-- Dialog Login-->
 <div class="box">

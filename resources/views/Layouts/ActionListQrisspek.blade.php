@@ -1,2 +1,2 @@
 <a href="{{ $url_editlist }}" type="button" class="modal-show btn btn-danger btn-edit " title="Edit Project" id="btn-modal"><i class="fas fa-pencil-alt"></i></a>
-<button id="{{ $data->id }}" onclick="deleteQris(id)" class="btn btn-warning btn-delete" title="Delete Data Qris"><i class="fas fa-trash"></i></button>
+<button id="{{ $data->id }}" onclick="deleteQrisspeks(id)" class="btn btn-warning btn-delete" title="Delete Data Qris"><i class="fas fa-trash"></i></button>

@@ -41,28 +41,28 @@ class Controller_EngineerYourProjects extends Controller
             $project->pif = Carbon::now()->toDateTimeString();  
         }
 
-        else if ($pstat == 10) {
-            $project->id_pstat = 10;
+        else if ($pstat == 6) {
+            $project->id_pstat = 6;
             $project->ctf = Carbon::now()->toDateTimeString();
         }
 
-        else if ($pstat == 11) {
-            $project->id_pstat = 11;
+        else if ($pstat == 8) {
+            $project->id_pstat = 8;
             $project->report_lab = Carbon::now()->toDateTimeString();
+        }
+
+        else if ($pstat == 9) {
+            $project->id_pstat = 9;
+            $project->complience_req = Carbon::now()->toDateTimeString();
+        }
+
+        else if ($pstat == 12) {
+            $project->id_pstat = 12;
+            $project->loa_new = Carbon::now()->toDateTimeString();
         }
 
         else if ($pstat == 13) {
             $project->id_pstat = 13;
-            $project->complience_req = Carbon::now()->toDateTimeString();
-        }
-
-        else if ($pstat == 15) {
-            $project->id_pstat = 15;
-            $project->loa_new = Carbon::now()->toDateTimeString();
-        }
-
-        else if ($pstat == 16) {
-            $project->id_pstat = 16;
             $project->loa_sent = Carbon::now()->toDateTimeString();
         }
 
@@ -168,7 +168,7 @@ class Controller_EngineerYourProjects extends Controller
     public function dataTable(){                                                //generate table di halaman Engineer - Project Own Going (Own Project)
         $userId = auth()->id();                                                 //ambil id user yg lagi login
         $project = $this->getProjectData($userId);                              //ambil data2 projek user yg lagi login
-        $pstat = Projects_Stat::where('id', '!=', 1)->get();                    //ambil list status kecuali reserve untuk ditampilin di dropdown status
+        $pstat = Projects_Stat::whereNotIn('id', [1, 17, 18, 19, 21, 22, 20])->get();                    //ambil list status kecuali reserve untuk ditampilin di dropdown status
         return DataTables::of($project)                                         //bikin table berdasarkan data2 yg udh diambil
             ->addColumn('status', function($project) use ($pstat){              //tambah kolom status buat ganti status
                 return view('Layouts.StatusProject',[
@@ -203,7 +203,7 @@ class Controller_EngineerYourProjects extends Controller
     	->leftjoin('mitras', 'projects.id_mitra', '=', 'mitras.id')
     	// ->where('id_current_pic', $id)
         // ->where('status_handover', '=', '0')
-        ->whereNotIn('id_pstat', [19,20])
+        ->whereNotIn('id_pstat', [15,16])
     	->orderBy('tanggal_assign', 'desc')
     	->get();
     }

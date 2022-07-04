@@ -64,7 +64,7 @@ ASPI | Sertifikasi Projects Done
                 {data: 'tanggal_assign', name: 'tanggal_assign', class: 'text-center'},
                 {data: 'no_formulir', name: 'no_formulir', class: 'text-center'},
                 {data: 'no_spek', name: 'no_spek', class: 'text-center'},
-                {data: 'waktu', name: 'waktu', class: 'text-center'},
+                {data: 'spek_qris', name: 'spek_qris', class: 'text-center'},
                 {data: 'id_pstat', name: 'id_pstat', class: 'text-center'},
             ],
             "order": [

@@ -5,10 +5,15 @@
 @section('PageTitle','List Projects Qris')
 @section('content')
 
-
+@if($userLevel === 4)
 <title>
 ASPI | Admin List Projects Qris
 </title>
+@else
+<title>
+ASPI | Eksekutif List Projects Qris
+</title>
+@endif
 
 <div class="row mt-2">
   <div class="col-md-12">
@@ -87,8 +92,10 @@ ASPI | Admin List Projects Qris
                         <th class="text-center">Tanggal Mulai</th>
                         <th class="text-center">No Rekomendasi</th>
                         <th class="text-center">Jenis Ijin BI</th>
-                        <th class="text-center">Status</th>     
-                        <th class="text-center" style="width: 75px">Action</th>                   
+                        <th class="text-center">Status</th>
+                        @if($userLevel === 4)      
+                        <th class="text-center" style="width: 75px">Action</th>
+                        @endif                 
                     </tr>
                 </thead>
             </table>
@@ -120,7 +127,9 @@ ASPI | Admin List Projects Qris
       {data: 'no_rekomendasi', name: 'no_rekomendasi', class: 'text-center'},
       {data: 'jenis_qrisbi', name: 'jenis_qrisbi', class: 'text-center'},
       {data: 'id_pstat', name: 'id_pstat', class: 'text-center'},
+      @if($userLevel === 4) 
       {data: 'action', name: 'action', class: 'text-center'},
+      @endif  
       // {data: 'added_by', name: 'added_by', class: 'text-center'},
       // {data: 'modified_by', name: 'modified_by', class: 'text-center'}
     ]

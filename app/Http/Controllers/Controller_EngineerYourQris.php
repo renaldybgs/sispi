@@ -98,7 +98,7 @@ class Controller_EngineerYourQris extends Controller
     public function dataTable(){                                                //generate table di halaman Engineer - Project Own Going (Own Project)
         $userId = auth()->id();                                                 //ambil id user yg lagi login
         $qris = $this->getQrisData($userId);                              //ambil data2 projek user yg lagi login
-        $pstat = Projects_Stat::whereIn('id', [21, 14, 22, 23, 24, 19, 20])->get();                    //ambil list status kecuali reserve untuk ditampilin di dropdown status
+        $pstat = Projects_Stat::whereIn('id', [17, 11, 18, 19, 20, 15, 16])->get();                    //ambil list status kecuali reserve untuk ditampilin di dropdown status
         return DataTables::of($qris)                                         //bikin table berdasarkan data2 yg udh diambil
             ->addColumn('status', function($qris) use ($pstat){              //tambah kolom status buat ganti status
                 return view('Layouts.StatusQris',[
@@ -111,7 +111,7 @@ class Controller_EngineerYourQris extends Controller
                 return view('Layouts.ActionQris',[                           //menggunakan layout di file ActionProject
                     'qris'=> $qris,           
                     // 'url_pic' => route('pic.edit', $project->id),               //melempar link untuk tombol edit pic beserta id projek yg mau diubah
-                    'url_progress' => route('progress.edit', $qris->id),     //melempar link untuk tombol edit progress beserta id projek yg mau diubah
+                    'url_progressqris' => route('progressqris.edit', $qris->id),     //melempar link untuk tombol edit progress beserta id projek yg mau diubah
                 ]);
             })
             ->addIndexColumn()
@@ -128,7 +128,7 @@ class Controller_EngineerYourQris extends Controller
         ->leftjoin('mitras', 'qris.id_mitra', '=', 'mitras.id')
         // ->where('id_current_pic', $id)
         // ->where('status_handover', '=', '0')
-        ->whereNotIn('id_pstat', [19,20])
+        ->whereNotIn('id_pstat', [15,16])
         ->orderBy('tanggal_assign', 'desc')
         ->get();
     }

@@ -1,9 +1,16 @@
 @extends('Templates.Admin')
 @section('PageTitle','Institusi')
 @section('content')
+
+@if($userLevel === 4)
 <title>
 Aspi | Admin Institusi
 </title>
+@else
+<title>
+Aspi | Eksekutif Institusi
+</title>
+@endif
 
 <div class="row mt-2">
     <div class="col-md-12">
@@ -11,9 +18,11 @@ Aspi | Admin Institusi
         <div class="card card-info card-outline">
 
             <div class="card-body">
+                @if($userLevel === 4)
                 <a href="{{ route('mitra.create') }}" type="button" class="modal-show add-mitra btn btn-success" title="Tambah Institusi" id="btn-modal" style="float:left">
                     Tambah Institusi &nbsp<i class="fas fa-plus"></i>
                 </a>
+                @endif
                 <table id="table1" class="table table-bordered table-hover">
                     <thead>
                         <tr>
@@ -27,9 +36,11 @@ Aspi | Admin Institusi
                             <th class="text-center">Data Agreement</th>
                             <th class="text-center">Registration Number</th>
                             <th class="text-center">No Keanggotaan</th>
+                            @if($userLevel === 4)
                             <th class="text-center" style="width: 75px">Action</th>
+                            @endif
                             <th class="text-center">Added By</th>
-                            <th class="text-center">Modified By</th>                          
+                            <!-- <th class="text-center">Modified By</th>   -->                        
                         </tr>
                     </thead>
                 </table>
@@ -65,9 +76,11 @@ Aspi | Admin Institusi
             {data: 'data_agreement', name: 'data_agreement', class: 'text-center'},
             {data: 'reg_numb', name: 'req_numb', class: 'text-center'},
             {data: 'no_anggota', name: 'no_anggota', class: 'text-center'},
+            @if($userLevel === 4)
         	{data: 'action', name: 'action', class: 'text-center'},
-        	{data: 'added_by', name: 'added_by', class: 'text-center'},
-        	{data: 'modified_by', name: 'modified_by', class: 'text-center'}
+            @endif  
+        	{data: 'added_by', name: 'added_by', class: 'text-center'}
+        	// {data: 'modified_by', name: 'modified_by', class: 'text-center'}
         ]
     });
 </script>

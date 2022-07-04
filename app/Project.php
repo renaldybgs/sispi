@@ -19,7 +19,7 @@ class Project extends Model
 
     ];
 
-    protected $fillable = ['id_product', 'id_mitra', 'nama_prod', 'number_special', 'typereg_numb', 'security_lab', 'lab', 'pif', 'ctf', 'report_lab', 'complience_req', 'loa_new', 'loa_sent', 'notes_project', 'identification_num', 'certification_no'];
+    protected $fillable = ['waktu_assign_project', 'id_product', 'id_mitra', 'nama_prod', 'number_special', 'typereg_numb', 'security_lab', 'lab', 'pif', 'ctf', 'report_lab', 'complience_req', 'loa_new', 'loa_sent', 'notes_project', 'identification_num', 'certification_no'];
 
     public $timestamps = false;
 }

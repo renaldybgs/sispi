@@ -108,6 +108,10 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/admin/editproduct/{id}', 'Controller_AdminProducts@edit')->name('products.edit');
 	Route::put('/admin/updateproduct/{id}', 'Controller_AdminProducts@update')->name('products.update');
 
+	// Home Admin
+	Route::get('/admin/home', 'Controller_AdminHome@openAllDataPage');
+	Route::post('/admin/home/yearly', 'Controller_AdminHome@openFilteredDataPage');
+
 	// Search Doc
 	Route::get('/admin/searchdocs', 'Controller_AdminSearchDocuments@openPage');
 
@@ -121,8 +125,11 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::put('/admin/updateuser/{id}', 'Controller_AdminUsers@update')->name('users.update');
 
 	##Eksekutif
-	Route::get('/eksekutif/home', 'Controller_ManagerHome@openAllDataPage');
-	Route::get('/eksekutif/projects', 'Controller_ManagerListProjects@openPage');
+	Route::get('/eksekutif/home', 'Controller_AdminHome@openAllDataPage');
+	Route::get('/eksekutif/projects', 'Controller_AdminListProjects@openPage');
+	Route::get('/eksekutif/qrisspek', 'Controller_AdminListQrisspeks@openPage');
+	Route::get('/eksekutif/qris', 'Controller_AdminListQris@openPage');
+	Route::get('/eksekutif/anggota', 'Controller_AdminMitra@openPage')->name('mitra.open');
 
 	// Engineer Assign NSICCS
 	Route::get('/engineer/assign', 'Controller_EngineerAddProjects@openPage');
@@ -188,8 +195,8 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/engineer/qris', 'Controller_EngineerYourQris@openPage');
 	Route::get('/engineer/qris/table', 'Controller_EngineerYourQris@dataTable')->name('qris.table');
 	Route::patch('/engineer/qris/changestat', 'Controller_EngineerYourQris@changeStatus');
-	Route::get('/engineer/qris/editprogress/{id}', 'Controller_EngineerYourQris@editPBN')->name('progress.edit');
-	Route::put('/engineer/qris/updateprogress/{id}', 'Controller_EngineerYourQris@updatePBN')->name('progress.update');
+	Route::get('/engineer/qris/editprogress/{id}', 'Controller_EngineerYourQris@editPBN')->name('progressqris.edit');
+	Route::put('/engineer/qris/updateprogress/{id}', 'Controller_EngineerYourQris@updatePBN')->name('progressqris.update');
 	Route::get('/engineer/qris/editpic/{id}', 'Controller_EngineerYourQris@editBussinessPIC')->name('pic.edit');
 	Route::put('/engineer/qris/updatepic/{id}', 'Controller_EngineerYourQris@updateBussinessPIC')->name('pic.update');
 	Route::get('/engineer/approval/notes/{id}', 'Controller_EngineerYourQris@notes')->name('keterangan.notes');
@@ -203,8 +210,8 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/engineer/qrisspek', 'Controller_EngineerYourQrisspeks@openPage');
 	Route::get('/engineer/qrisspek/table', 'Controller_EngineerYourQrisspeks@dataTable')->name('qrisspek.table');
 	Route::patch('/engineer/qrisspek/changestat', 'Controller_EngineerYourQrisspeks@changeStatus');
-	Route::get('/engineer/qrisspek/editprogress/{id}', 'Controller_EngineerYourQrisspeks@editPBN')->name('progress.edit');
-	Route::put('/engineer/qrisspek/updateprogress/{id}', 'Controller_EngineerYourQrisspeks@updatePBN')->name('progress.update');
+	Route::get('/engineer/qrisspek/editprogress/{id}', 'Controller_EngineerYourQrisspeks@editPBN')->name('progressqrisspek.edit');
+	Route::put('/engineer/qrisspek/updateprogress/{id}', 'Controller_EngineerYourQrisspeks@updatePBN')->name('progressqrisspek.update');
 	Route::get('/engineer/qrisspek/editpic/{id}', 'Controller_EngineerYourQrisspeks@editBussinessPIC')->name('pic.edit');
 	Route::put('/engineer/qrisspek/updatepic/{id}', 'Controller_EngineerYourQrisspeks@updateBussinessPIC')->name('pic.update');
 	Route::get('/engineer/approval/notes/{id}', 'Controller_EngineerYourQrisspeks@notes')->name('keterangan.notes');

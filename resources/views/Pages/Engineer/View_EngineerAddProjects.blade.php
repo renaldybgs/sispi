@@ -26,25 +26,6 @@
       <div class="tab-pane fade active show" id="nsiccs" role="tabpanel" aria-labelledby="custom-tabs-three-home-tab">
         <form method="post" action="/engineer/newproject" id="my-form">
         @csrf
-<!--          <div id="pic" class="form-group">
-            <label for="id_user">PIC</label>
-            <div id="pic-select" class="@error('id_user') is-invalid @enderror">
-              <select class="select2 form-control @error ('id_user') is-invalid @enderror" id="id_user" name="id_user" style="width: 100%;">
-                <option value="">PIC</option>
-                @foreach($users as $usr1)
-                @if (old('id_user') == $usr1->id)
-                  <option value="{{ $usr1->id }}" selected>{{ $usr1->nama_user }}</option>
-                @else 
-                  <option value="{{ $usr1->id }}">{{ $usr1->nama_user }}</option>
-                @endif
-              @endforeach
-              </select>
-              @error('id_user')
-              <div class="invalid-feedback flash">
-                {{ $message }}</div>
-            @enderror
-            </div>
-          </div> -->
 
           <div id="mitra" class="form-group">
             <label for="id_mitra">Mitra</label>
@@ -86,25 +67,7 @@
                 @enderror
             </div>
           </div>
-<!--           <div id="jenisp" class="form-group">
-            <label for="id_ptype">Jenis Project</label>
-            <div class="@error('id_ptype') is-invalid @enderror">
-              <select class="select2 form-control-border border-width-2 form-control @error ('id_ptype') is-invalid @enderror" id="id_ptype" name="id_ptype" style="width: 100%;">
-                <option value="">Pilih Jenis Project</option>
-                @foreach($ptypes as $ptype)
-                  @if (old('id_ptype') == $ptype->id)
-                    <option value="{{ $ptype->id }}" selected>{{ $ptype->nama_ptype }}</option>
-                  @else 
-                    <option value="{{ $ptype->id }}">{{ $ptype->nama_ptype }}</option>
-                  @endif
-              @endforeach
-              </select>
-              @error('id_ptype')
-              <div class="invalid-feedback flash" style="margin-top: 2px">
-                {{ $message }}</div>
-              @enderror
-            </div>
-          </div> -->
+
           <div id="typereqnumb" class="form-group">
             <label for="nama_prod">Product Name</label>
             <input type="text" class="form-control  @error('nama_prod') is-invalid @enderror" id="nama_prod" placeholder="Product Name" name="nama_prod" autocomplete="off" value="{{ old('nama_prod') }}" style="width: 100%;">
@@ -118,6 +81,15 @@
             <label for="typereg_numb">Product Registration Number</label>
             <input type="text" class="form-control  @error('typereg_numb') is-invalid @enderror" id="typereg_numb" placeholder="Product Registration Number" name="typereg_numb" autocomplete="off" value="{{ old('typereg_numb') }}" style="width: 100%;">
             @error('typereg_numb')
+              <div class="invalid-feedback flash" style="margin-top: 2px">
+                {{ $message }}</div>
+            @enderror
+          </div>
+
+          <div id="waktu_assign_project" class="form-group">
+            <label for="waktu_assign_project">Issued Date</label>
+            <input type="date" class="form-control  @error('waktu_assign_project') is-invalid @enderror" id="waktu_assign_project" placeholder="Masukan Issued Date" name="waktu_assign_project" autocomplete="off" value="{{ old('waktu_assign_project') }}" style="width: 100%;">
+            @error('waktu_assign_project')
               <div class="invalid-feedback flash" style="margin-top: 2px">
                 {{ $message }}</div>
             @enderror

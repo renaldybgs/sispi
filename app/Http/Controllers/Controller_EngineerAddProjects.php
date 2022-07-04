@@ -34,6 +34,7 @@ class Controller_EngineerAddProjects extends Controller
             'id_mitra' => 'required',
             'nama_prod' => 'required|max:256',
             'typereg_numb' => 'required|max:256',
+            'waktu_assign_project' => 'required',
 
         ],
         $message = [
@@ -45,6 +46,7 @@ class Controller_EngineerAddProjects extends Controller
                 'nama_prod.max' => 'Nama Products max 201 kata',
             'typereg_numb.required' => 'Mohon isi Type Registration Number',
                 'typereg_numb.max' => 'Type Registration Number max 201 kata',
+            'waktu_assign_project.required' => 'Mohon isi Issued Date',
         ]);
 
         // $project_dir = $this->getProjectDirectory($request->id_product, $request->id_mitra, $request->id_user, $request->nama_project);
@@ -57,6 +59,7 @@ class Controller_EngineerAddProjects extends Controller
             'id_mitra' => $request->id_mitra,
             'nama_prod' => $request->nama_prod,
             'typereg_numb' => $request->typereg_numb,
+            'waktu_assign_project' => $request->waktu_assign_project,
             // 'direktori_project' => $project_dir
         ]);
 

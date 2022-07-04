@@ -35,9 +35,9 @@ class Controller_EngineerYourQrisspeks extends Controller
 
         // $project->id_pstat = $pstat;
 
-        if($pstat == 24){                      //kalo statnys mau diganti
-            $qrisspek->id_pstat = 24;
-            $qrisspek->surat_rekomendasi = Carbon::now()->toDateTimeString();  
+        if($pstat == 20){                      //kalo statnys mau diganti
+            $qrisspek->id_pstat = 20;
+            $qrisspek->spek_qris = Carbon::now()->toDateTimeString();  
         }
 
         else {
@@ -93,7 +93,7 @@ class Controller_EngineerYourQrisspeks extends Controller
     public function dataTable(){                                                //generate table di halaman Engineer - Project Own Going (Own Project)
         $userId = auth()->id();                                                 //ambil id user yg lagi login
         $qrisspek = $this->getQrisspekData($userId);                              //ambil data2 projek user yg lagi login
-        $pstat = Projects_Stat::whereIn('id', [21, 14, 25, 19, 20, 26, 23])->get();                    //ambil list status kecuali reserve untuk ditampilin di dropdown status
+        $pstat = Projects_Stat::whereIn('id', [17, 11, 21, 15, 16, 22, 19])->get();                    //ambil list status kecuali reserve untuk ditampilin di dropdown status
         return DataTables::of($qrisspek)                                         //bikin table berdasarkan data2 yg udh diambil
             ->addColumn('status', function($qrisspek) use ($pstat){              //tambah kolom status buat ganti status
                 return view('Layouts.StatusQrisspek',[
@@ -106,7 +106,7 @@ class Controller_EngineerYourQrisspeks extends Controller
                 return view('Layouts.ActionQrisspek',[                           //menggunakan layout di file ActionProject
                     'qrisspek'=> $qrisspek,           
                     // 'url_pic' => route('pic.edit', $project->id),               //melempar link untuk tombol edit pic beserta id projek yg mau diubah
-                    'url_progress' => route('progress.edit', $qrisspek->id),     //melempar link untuk tombol edit progress beserta id projek yg mau diubah
+                    'url_progressqrisspek' => route('progressqrisspek.edit', $qrisspek->id),     //melempar link untuk tombol edit progress beserta id projek yg mau diubah
                 ]);
             })
             ->addIndexColumn()
@@ -123,7 +123,7 @@ class Controller_EngineerYourQrisspeks extends Controller
         ->leftjoin('mitras', 'qrisspeks.id_mitra', '=', 'mitras.id')
         // ->where('id_current_pic', $id)
         // ->where('status_handover', '=', '0')
-        ->whereNotIn('id_pstat', [19,20])
+        ->whereNotIn('id_pstat', [15,16])
         ->orderBy('tanggal_assign', 'desc')
         ->get();
     }

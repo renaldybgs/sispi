@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="icon" type="image/png" href="{{ url('assets/img/frog.png') }}">
+    <link rel="icon" type="image/png" href="{{ url('assets/img/aspilogo1.jpeg') }}">
     <!-- <title>Engineer | Dashboard</title> -->
 
     <!-- Google Font: Source Sans Pro -->
@@ -106,7 +106,7 @@
                         data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                        @if ($userLevel === 2 || $userLevel === 11)
+                        @if ($userLevel === 2 || $userLevel === 4)
                         <li id="homepage" class="nav-item">
                             <a href="/manager/home" class="nav-link">
                                 <i class="nav-icon fas fa-home"></i>

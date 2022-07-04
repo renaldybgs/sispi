@@ -65,9 +65,8 @@ class Controller_EngineerListQris extends Controller
 
     public function getPBN($id){
         return DB::table('qris')
-        ->select(DB::raw('qris.id, DATE(qris.surat_rekomendasi) as waktu, qris.jenis_qrisbi, qris.ijin_qrisbi, qris.tgl_ijinbi, qris.notes_project'))
+        ->select(DB::raw('qris.id, DATE(qris.surat_rekomendasi) as surat_rekomendasi, qris.jenis_qrisbi, qris.ijin_qrisbi, qris.tgl_ijinbi, qris.notes_project'))
         ->where('qris.id', '=', $id)
-        ->orderBy('waktu')
         ->first();
     }
 

@@ -1,5 +1,5 @@
 {!! Form::model($qrisspek, [
-	'route' => ['progress.update', $qrisspek->id],
+	'route' => ['progressqrisspek.update', $qrisspek->id],
 	'method' => 'PUT'
 ]) !!}
 

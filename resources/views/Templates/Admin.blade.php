@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="icon" type="image/png" href="{{ url('assets/img/aspi-logo.png') }}">
+    <link rel="icon" type="image/png" href="{{ url('assets/img/aspilogo1.jpeg') }}">
     <!-- <title>Engineer | Dashboard</title> -->
 
     <!-- Google Font: Source Sans Pro -->
@@ -101,7 +101,7 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-navy elevation-4">
             <!-- Brand Logo -->
-            <a href="/admin/users" class="brand-link" style="background: linear-gradient(#096279, #00d4ff)">
+            <a href="/admin/home" class="brand-link" style="background: linear-gradient(#096279, #00d4ff)">
                 <img src="{{ url('assets/img/ASPI-logo-light.png') }}" class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">Sistem Aspi</span>
             </a>
@@ -115,6 +115,17 @@
                         data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+                        @if ($userLevel === 4 || $userLevel === 6)
+                        <li id="homepage" class="nav-item">
+                            <a href="/admin/home" class="nav-link">
+                                <i class="nav-icon fas fa-home"></i>
+                                <p>
+                                    Home
+                                    <i class="right fas fa-home-left"></i>
+                                </p>
+                            </a>
+                        </li>
+
                         <li class="nav-item">
                             <a href="/admin/users" class="nav-link">
                                 <i class="nav-icon fas fa-users"></i>
@@ -178,7 +189,62 @@
                                 </li>
                             </ul>
                         </li>
+                        @elseif($userLevel === 5)
+                        <li class="nav-item">
+                            <a href="/eksekutif/home" class="nav-link">
+                                <i class="nav-icon fas fa-home"></i>
+                                <p>
+                                    Home
+                                    <i class="right fas fa-home-left"></i>
+                                </p>
+                            </a>
+                        </li> 
+                        <li class="nav-item">
+                            <a href="/eksekutif/anggota" class="nav-link">
+                                <i class="nav-icon fas fa-university"></i>
+                                <p>
+                                    Keanggotaan
+                                    <i class="fas fa-university-left right"></i>
+                                </p>
+                            </a>
+                        </li>
 
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    &nbsp List Projects
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/eksekutif/projects" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Project NSICCS</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/eksekutif/qris" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Project QRIS</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/eksekutif/qrisspek" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Project QRIS Spek</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Project SNAP</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        @endif
 <!--                         <li class="nav-item">
                             <a href="/admin/approval" class="nav-link">
                                 <i class="nav-icon fas fa-clipboard-check"></i>

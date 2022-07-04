@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use DataTables;
-use App\Project;
+use App\Project; 
 use App\User; 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -58,7 +58,7 @@ class Controller_EngineerListProjects extends Controller
 
     public function getPBN($id){
         return DB::table('projects')
-        ->select(DB::raw('projects.id, projects.progress_sit, projects.progress_uat, projects.notes_project, projects.bobot_project, projects.nodin_in, projects.nodin_out, projects.no_bako, projects.no_bae, projects.no_bato'))
+        ->select(DB::raw('projects.id, projects.security_lab, projects.lab, projects.number_special, DATE(projects.pif) as pif, DATE(projects.ctf) as ctf, DATE(projects.report_lab) as report_lab, DATE(projects.complience_req) as complience_req, DATE(projects.loa_new) as loa_new, DATE(projects.loa_sent) as loa_sent, projects.notes_project, projects.identification_num, projects.certification_no'))
         ->where('projects.id', '=', $id)
         ->first();
     }

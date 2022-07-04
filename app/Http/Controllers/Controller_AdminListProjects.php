@@ -128,7 +128,7 @@ class Controller_AdminListProjects extends Controller
 
     public function getPBN($id){
         return DB::table('projects')
-        ->select(DB::raw('projects.id, projects.security_lab, projects.lab, projects.number_special, projects.pif, projects.ctf, projects.report_lab, projects.complience_req, projects.loa_new, projects.loa_sent, projects.notes_project, projects.identification_num, projects.certification_no'))
+        ->select(DB::raw('projects.id, projects.security_lab, projects.lab, projects.number_special, DATE(projects.pif) as pif, DATE(projects.ctf) as ctf, DATE(projects.report_lab) as report_lab, DATE(projects.complience_req) as complience_req, DATE(projects.loa_new) as loa_new, DATE(projects.loa_sent) as loa_sent, projects.notes_project, projects.identification_num, projects.certification_no'))
         ->where('projects.id', '=', $id)
         ->first();
     }

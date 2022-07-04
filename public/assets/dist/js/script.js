@@ -372,7 +372,7 @@ function deleteProject(id){
 	})
 }
 
-function deleteQrisspek(id){
+function deleteQrisspeks(id){
 	// console.log(id);
 	event.preventDefault();
 	const href = $(this).attr('href');

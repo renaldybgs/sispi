@@ -57,30 +57,30 @@ class Controller_EngineerListQrisspeks extends Controller
     }
 
     public function getOriginalPIC($id){
-        return DB::table('qrisspek')
-        ->select(DB::raw('qrisspek.id, qrisspek.id_original_pic, users.nama_user'))
-        ->leftjoin('users', 'qrisspek.id_original_pic', '=', 'users.id')
-        ->where('qrisspek.id', '=', $id)
+        return DB::table('qrisspeks')
+        ->select(DB::raw('qrisspeks.id, qrisspeks.id_original_pic, users.nama_user'))
+        ->leftjoin('users', 'qrisspeks.id_original_pic', '=', 'users.id')
+        ->where('qrisspeks.id', '=', $id)
         ->first();
     }
 
     public function getPBN($id){
-        return DB::table('qrisspek')
-        ->select(DB::raw('qrisspek.id, DATE(qrisspek.spek_qris) as waktu, qrisspek.no_formulir, qrisspek.no_spek, qrisspek.notes_project'))
-        ->where('qrisspek.id', '=', $id)
+        return DB::table('qrisspeks')
+        ->select(DB::raw('qrisspeks.id, DATE(qrisspeks.spek_qris) as spek_qris, qrisspeks.no_formulir, qrisspeks.no_spek, qrisspeks.notes_project'))
+        ->where('qrisspeks.id', '=', $id)
         ->orderBy('waktu')
         ->first();
     }
 
     public function getInisialUser($id){                             //ngambil data untuk ditampilkan di dropdown form Edit PIC
         return DB::table('users')
-        ->select(DB::raw('count(qrisspek.id) as jml, users.id, users.inisial_user'))
-        ->leftjoin('qrisspek', function($join) use ($id) {
-            $join->on('qrisspek.id', '=', 'qrisspek.id_original_pic')
-            ->where('qrisspek.id', $id);
+        ->select(DB::raw('count(qrisspeks.id) as jml, users.id, users.inisial_user'))
+        ->leftjoin('qrisspeks', function($join) use ($id) {
+            $join->on('qrisspeks.id', '=', 'qrisspeks.id_original_pic')
+            ->where('qrisspeks.id', $id);
         })
         ->whereIn('users.id_ulevel', [1, 2, 4, 5])
-        ->groupBy('qrisspek.id_original_pic', 'users.id', 'users.inisial_user')
+        ->groupBy('qrisspeks.id_original_pic', 'users.id', 'users.inisial_user')
         ->orderBy('jml','DESC')
         ->get()
         ->pluck('inisial_user', 'id')
@@ -89,10 +89,10 @@ class Controller_EngineerListQrisspeks extends Controller
 
     public function getUserList($id){
         return DB::table('users')
-            ->select(DB::raw('count(qrisspek.id) as jml, users.id, users.nama_user'))
-            ->leftjoin('qrisspek', function($join) use ($id) {
-                $join->on('qrisspek.id_current_pic', '=', 'users.id')
-                ->where('qrisspek.id', $id);
+            ->select(DB::raw('count(qrisspeks.id) as jml, users.id, users.nama_user'))
+            ->leftjoin('qrisspeks', function($join) use ($id) {
+                $join->on('qrisspeks.id_current_pic', '=', 'users.id')
+                ->where('qrisspeks.id', $id);
             })
             ->whereIn('users.id_ulevel', [1, 2, 4, 5])
             ->groupBy('users.id','users.nama_user')
@@ -104,10 +104,10 @@ class Controller_EngineerListQrisspeks extends Controller
 
     public function getProductList($id){
         return DB::table('products')
-            ->select(DB::raw('count(qrisspek.id) as jml, products.id, products.nama_product'))
-            ->leftjoin('qrisspek', function($join) use ($id) {
-                $join->on('qrisspek.id_product', '=', 'products.id')
-                ->where('qrisspek.id', $id);
+            ->select(DB::raw('count(qrisspeks.id) as jml, products.id, products.nama_product'))
+            ->leftjoin('qrisspeks', function($join) use ($id) {
+                $join->on('qrisspeks.id_product', '=', 'products.id')
+                ->where('qrisspeks.id', $id);
             })
             ->groupBy('products.id','products.nama_product')
             ->orderBy('jml','DESC')
@@ -118,9 +118,9 @@ class Controller_EngineerListQrisspeks extends Controller
 
     public function getMitraList($id){
         return DB::table('mitras')
-            ->select(DB::raw('count(qrisspek.id) as jml, mitras.id, mitras.nama_mitra'))
-            ->leftjoin('qrisspek', function($join) use ($id) {
-                $join->on('qrisspek.id_mitra', '=', 'mitras.id')
+            ->select(DB::raw('count(qrisspeks.id) as jml, mitras.id, mitras.nama_mitra'))
+            ->leftjoin('qrisspeks', function($join) use ($id) {
+                $join->on('qrisspeks.id_mitra', '=', 'mitras.id')
                 ->where('qrisspek.id', $id);
             })
             ->groupBy('mitras.id','mitras.nama_mitra')
@@ -131,11 +131,11 @@ class Controller_EngineerListQrisspeks extends Controller
     }
 
     public function getAllQrisspekData(){   //ambil data buat ditempel di table
-        return DB::table('qrisspek')
-            ->select(DB::raw('qrisspek.id, products.nama_product, mitras.nama_mitra, DATE(qrisspek.waktu_assign_project) as waktu, qrisspek.no_formulir, qrisspek.no_spek, DATE(qrisspek.spek_qris) as waktu, projects_stats.id as id_pstat'))
-            ->leftjoin('products', 'qrisspek.id_product', '=', 'products.id')
-            ->leftjoin('mitras', 'qrisspek.id_mitra', '=', 'mitras.id')
-            ->leftjoin('projects_stats', 'qrisspek.id_pstat', '=', 'projects_stats.id')
+        return DB::table('qrisspeks')
+            ->select(DB::raw('qrisspeks.id, products.nama_product, mitras.nama_mitra, DATE(qrisspeks.waktu_assign_project) as waktu, qrisspeks.no_formulir, qrisspeks.no_spek, DATE(qrisspeks.spek_qris) as spek_qris, projects_stats.id as id_pstat, qrisspeks.notes_project'))
+            ->leftjoin('products', 'qrisspeks.id_product', '=', 'products.id')
+            ->leftjoin('mitras', 'qrisspeks.id_mitra', '=', 'mitras.id')
+            ->leftjoin('projects_stats', 'qrisspeks.id_pstat', '=', 'projects_stats.id')
             ->orderBy('waktu','DESC')
             ->get();   
     }

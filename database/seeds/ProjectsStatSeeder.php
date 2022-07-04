@@ -15,17 +15,9 @@ class ProjectsStatSeeder extends Seeder
         $reserve = Projects_Stat::create([
         	'nama_pstat' => 'Reserve'
         ]);
-
-        $pifnew = Projects_Stat::create([
-        	'nama_pstat' => 'PIF-New'
-        ]);
-
+ 
         $pifreview = Projects_Stat::create([
         	'nama_pstat' => 'PIF-Review'
-        ]);
-
-        $pifnumbering = Projects_Stat::create([
-            'nama_pstat' => 'PIF-Numbering'
         ]);
 
         $piftobesigned = Projects_Stat::create([
@@ -42,10 +34,6 @@ class ProjectsStatSeeder extends Seeder
 
         $ctfnew = Projects_Stat::create([
             'nama_pstat' => 'CTF-New'
-        ]);
-
-        $ctfsigned = Projects_Stat::create([
-            'nama_pstat' => 'CTF-Signed'
         ]);
 
         $ctfsendtolab = Projects_Stat::create([
@@ -78,10 +66,6 @@ class ProjectsStatSeeder extends Seeder
 
         $invoicesend = Projects_Stat::create([
             'nama_pstat' => 'Invoice Send'
-        ]);
-
-        $piffail = Projects_Stat::create([
-            'nama_pstat' => 'PIF-Failed'
         ]);
 
         $cancel = Projects_Stat::create([

@@ -5,10 +5,15 @@
 @section('PageTitle','List Projects')
 @section('content')
 
-
+@if($userLevel === 4)
 <title>
 ASPI | Admin List Projects
 </title>
+@else
+<title>
+ASPI | Eksekutif List Projects
+</title>
+@endif
 
 <div class="row mt-2">
   <div class="col-md-12">
@@ -87,8 +92,10 @@ ASPI | Admin List Projects
                         <th class="text-center">Nama Product</th>
                         <th class="text-center">Issued Date</th>
                         <th class="text-center">Product Registration Number</th>
-                        <th class="text-center">Status</th>     
-                        <th class="text-center" style="width: 75px">Action</th>                   
+                        <th class="text-center">Status</th>
+                        @if($userLevel === 4)     
+                        <th class="text-center" style="width: 75px">Action</th> 
+                        @endif                   
                     </tr>
                 </thead>
             </table>
@@ -120,7 +127,9 @@ ASPI | Admin List Projects
       {data: 'waktu', name: 'waktu', class: 'text-center'},
       {data: 'typereg_numb', name: 'typereg_numb', class: 'text-center'},
       {data: 'id_pstat', name: 'id_pstat', class: 'text-center'},
+      @if($userLevel === 4) 
       {data: 'action', name: 'action', class: 'text-center'},
+      @endif 
       // {data: 'added_by', name: 'added_by', class: 'text-center'},
       // {data: 'modified_by', name: 'modified_by', class: 'text-center'}
     ]

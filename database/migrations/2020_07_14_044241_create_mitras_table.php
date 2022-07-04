@@ -20,7 +20,7 @@ class CreateMitrasTable extends Migration
             $table->string('keanggotaan', 15)->nullable();
             $table->string('alamat', 255);
             $table->string('nama_pic', 20);
-            $table->string('email', 15)->nullable();
+            $table->string('email', 255)->nullable();
             $table->string('data_agreement', 25)->nullable();
             $table->string('reg_numb', 15)->nullable();
             $table->string('no_anggota', 15)->nullable();

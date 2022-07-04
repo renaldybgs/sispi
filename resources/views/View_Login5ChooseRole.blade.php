@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
-  <link rel="icon" type="image/png" href="{{ url('assets/img/aspi-logo.png') }}">
+  <link rel="icon" type="image/png" href="{{ url('assets/img/aspilogo1.jpeg') }}">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
     | Login
@@ -21,14 +21,14 @@
 
   <style>
     body {
-      background-image: url('{{ url('assets/img/aspiback.jpeg') }}');
+      background-image: url('{{ url('assets/img/vectorjan.jpg') }}');
       background-size: 100% 100%;}
   </style>
 </head>
 
-<!-- <div class="col-sm-6">
-  <img class="img-fluid" src="{{ url('assets/img/aspi-logo.png') }}" alt="Photo">
-</div> -->
+<div class="col-sm-12">
+  <img class="img-fluid" src="{{ url('assets/img/aspi-logo.png') }}" alt="Photo" align="right">
+</div>
 
 <div class="row role-panel">
 
@@ -51,7 +51,7 @@
 <div class="role">
   <h3 class="title" style="color: white;">Admin</h3>
   <div class="chooserole">
-    <a href="/admin/users">
+    <a href="/admin/home">
       <div class="content-overlay"></div>
       <img class="content-image" src="{{ url('assets/img/email.svg') }}">
       <div class="content-details fadeIn-top">

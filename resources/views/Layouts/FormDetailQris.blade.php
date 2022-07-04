@@ -13,7 +13,7 @@
                     <thead>
                         <tr class="text-center">
                             <th>Tanggal Surat Rekomendasi</th>
-                            <td>{{ $pbn->waktu }}</td>
+                            <td>{{ $pbn->surat_rekomendasi }}</td>
                         </tr>
                         <tr class="text-center">
                             <th>Ijin QRIS BI</th>
