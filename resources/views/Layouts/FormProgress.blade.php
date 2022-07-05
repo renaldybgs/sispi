@@ -7,7 +7,7 @@
 		<div class="col-sm-6">
 			<div class="form-group">
 				<div class ="input-group-addon">
-					<label for="lab" style="font-weight:bolder" style="margin-top: -30px">LAB</label>
+					<label for="lab" style="font-weight:bolder" style="margin-top: -30px">Functional Lab</label>
 						<br>
 						{!! Form::select('lab', [' '=> 'Pilih Lab', 'Artajasa' => 'Artajasa', 'Rintis' => 'Rintis', 'Alto' => 'Alto', 'UL' => 'UL'], null,
 							['class'=> 'form-control',

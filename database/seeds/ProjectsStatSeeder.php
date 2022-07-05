@@ -37,7 +37,7 @@ class ProjectsStatSeeder extends Seeder
         ]);
 
         $ctfsendtolab = Projects_Stat::create([
-            'nama_pstat' => 'CTF-Send to Lab'
+            'nama_pstat' => 'CTF-Sent to Lab'
         ]);
 
         $reportreceived = Projects_Stat::create([
@@ -61,11 +61,11 @@ class ProjectsStatSeeder extends Seeder
         ]);
 
         $loasend = Projects_Stat::create([
-            'nama_pstat' => 'Loa-Send'
+            'nama_pstat' => 'Loa-Sent'
         ]);
 
         $invoicesend = Projects_Stat::create([
-            'nama_pstat' => 'Invoice Send'
+            'nama_pstat' => 'Invoice Sent'
         ]);
 
         $cancel = Projects_Stat::create([

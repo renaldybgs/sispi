@@ -16,7 +16,7 @@
                             <td>{{ $pbn->number_special }}</td>
                         </tr>
                         <tr class="text-center">
-                            <th>lab</th>
+                            <th>Functional Lab</th>
                             <td>{{ $pbn->lab }}</td>
                         </tr>
                         <tr class="text-center">
@@ -44,7 +44,7 @@
                             <td>{{ $pbn->loa_new }}</td>
                         </tr>
                         <tr class="text-center">
-                            <th>LOA Send</th>
+                            <th>LOA Sent</th>
                             <td>{{ $pbn->loa_sent }}</td>
                         </tr>
                         <tr class="text-center">

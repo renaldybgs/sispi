@@ -18,7 +18,7 @@
     <small class="badge bg-gray-dark"><i class="fas fa-spinner"></i>&nbsp CTF-New</small>
     @break
   @case(7)
-    <small class="badge bg-purple"><i class="fas fa-paper-plane"></i>&nbsp CTF-Send to Lab</small>
+    <small class="badge bg-purple"><i class="fas fa-paper-plane"></i>&nbsp CTF-Sent to Lab</small>
     @break
   @case(8)
     <small class="badge bg-fuchsia"><i class="fas fa-receipt"></i>&nbsp Report Received</small>
@@ -36,10 +36,10 @@
     <small class="badge bg-teal"><i class="fas fa-spinner"></i>&nbsp Loa-New</small>
     @break
   @case(13)
-    <small class="badge bg-olive"><i class="fas fa-paper-plane"></i>&nbsp Loa-Send</small>
+    <small class="badge bg-olive"><i class="fas fa-paper-plane"></i>&nbsp Loa-Sent</small>
     @break
   @case(14)
-    <small class="badge bg-lightblue"><i class="fas fa-file-invoice"></i>&nbsp Invoice Send</small>
+    <small class="badge bg-lightblue"><i class="fas fa-file-invoice"></i>&nbsp Invoice Sent</small>
     @break
   @case(15)
     <small class="badge bg-danger"><i class="fas fa-times"></i>&nbsp Cancel</small>
