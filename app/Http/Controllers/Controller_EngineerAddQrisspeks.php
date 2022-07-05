@@ -31,11 +31,13 @@ class Controller_EngineerAddQrisspeks extends Controller
             'id_product' => 'required',
             'id_mitra' => 'required',
             'no_formulir' => 'required',
+            'waktu_assign_project' => 'required',
         ],
         $message = [
             'id_product.required' => 'Mohon pilih product',
             'id_mitra.required' => 'Mohon pilih nama mitra',
             'no_formulir.required' => 'Mohon isi No Formulir',
+            'waktu_assign_project.required' => 'Mohon isi Issued Date',
         ]);
 
         // $project_dir = $this->getProjectDirectory($request->id_product, $request->id_mitra, $request->id_user, $request->nama_project);
@@ -44,6 +46,7 @@ class Controller_EngineerAddQrisspeks extends Controller
             'id_product' => $request->id_product,
             'id_mitra' => $request->id_mitra,
             'no_formulir' => $request->no_formulir,
+            'waktu_assign_project' => $request->waktu_assign_project,
             // 'direktori_project' => $project_dir
         ]);
 

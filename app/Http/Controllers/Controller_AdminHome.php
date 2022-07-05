@@ -28,14 +28,20 @@ class Controller_AdminHome extends Controller
 
         // CARD DATA
 
-        $pprjdone = $this->allProjectPstat(20);      // Projek Done NSICCS
+        $pprjdone = $this->allProjectPstat(16);      // Projek Done NSICCS
         $projects = $this->allProjects();           // Jumlah All Projek NSICCS
-        $qrdone = $this->allQrisPstat(20);        // Projek Done QRIS
+        $qrdone = $this->allQrisPstat(16);        // Projek Done QRIS
         $qris = $this->allQris();                   // Jumlah All Projek QRIS
-        $qrsdone = $this->allQrisspekPstat(20);        // Projek Done QRIS Spek
+        $qrsdone = $this->allQrisspekPstat(16);        // Projek Done QRIS Spek
         $qrisspek = $this->allQrisspek();            // Jumlah All Projek QRIS
         $anggota = $this->allAnggota();
         $noanggota = $this->allNoAnggota();
+
+        // $atmproj = $this->allProjectPprod(1); 
+        // $cardproj = $this->allProjectPprod(2);  
+        // $cptproj = $this->allProjectPprod(3);
+        // $edcproj = $this->allProjectPprod(4);
+        // $persoproj = $this->allProjectPprod(5); 
 
         // $percentrsrv = $this->toPercent($preserved, $projects); // 1. Persentase Projek Reserved
         // $percentop = $this->toPercent($ponprogress, $projects); // 2. Persentase Projek On Progress
@@ -51,17 +57,22 @@ class Controller_AdminHome extends Controller
         $projectperproduct = $this->allProjProd();              // 3. total all projek berdasarkan produk
         $qrisperproduct = $this->allQrisProd();              // 3. total all projek Qris berdasarkan produk
         $qrisspekperproduct = $this->allQrisspekProd();   // 3. total all projek Qrisspek berdasarkan produk
+        
+        $projperprod = $this->allProjDd();              // 3. total all projek Done berdasarkan produk
+        $qrisperprod = $this->allQrisPd();              // 3. total all projek Qris Done berdasarkan produk
+        $qrspekperprod = $this->allQrisspekDd();   // 3. total all projek Qrisspek Done berdasarkan produk
+
         // $projectperptype =  $this->allProjPtype();              // 4. total all projek berdasarkan p_type
         // $userprojectperpstat = $this->allEngineerPstat();       // 5. total projek per orang berdasarkan p_stat
         // $userprojectperptype = $this->allEngineerPtype();       // 6. total prokek per orang berdasarkan p_type
 
         // dd($inuser);
 
-        return view('Pages.Admin.View_AdminHome', compact('userLevel', 'products', 'projects', 'mitras', 'pprjdone', 'qrdone', 'qris', 'qrsdone', 'qrisspek', 'projectperproduct', 'qrisperproduct', 'qrisspekperproduct', 'anggota', 'noanggota'));   	
+        return view('Pages.Admin.View_AdminHome', compact('userLevel', 'products', 'projects', 'mitras', 'pprjdone', 'qrdone', 'qris', 'qrsdone', 'qrisspek', 'projectperproduct', 'qrisperproduct', 'qrisspekperproduct', 'anggota', 'noanggota', 'projperprod', 'qrisperprod', 'qrspekperprod'));   	
     }
 
     public function getYears(){
-        return DB::select("select YEAR(waktu_assign_project) as tahun from projects where YEAR(waktu_assign_project) = YEAR(current_timestamp) or id_pstat not in (5, 7) group by tahun order by tahun desc");
+        return DB::select("select YEAR(waktu_assign_project) as tahun from projects where YEAR(waktu_assign_project) = YEAR(current_timestamp) or id_pstat not in (15, 16) group by tahun order by tahun desc");
     }
 
     public function getProducts(){
@@ -84,17 +95,29 @@ class Controller_AdminHome extends Controller
         return DB::table('projects')
         ->where(function($query){
             $query->whereRaw('YEAR(waktu_assign_project) = YEAR(current_timestamp)')
-            ->orWhereNotIn('id_pstat', [19,20]);
+            ->orWhereNotIn('id_pstat', [15,16]);
         })
         ->where('id_pstat', $pstat)
         ->count();
     }
 
+    // public function allProjectPprod($pprod){
+    //     return DB::table('projects')
+    //     ->where(function($query){
+    //         $query->whereRaw('YEAR(waktu_assign_project) = YEAR(current_timestamp)')
+    //         ->orWhereIn('id_product  ');
+    //     })
+    //     ->where('id_product', $pprod)
+    //     ->count();
+    // }
+
+
+
     public function allQrisPstat($pstat){
         return DB::table('qris')
         ->where(function($query){
             $query->whereRaw('YEAR(waktu_assign_project) = YEAR(current_timestamp)')
-            ->orWhereNotIn('id_pstat', [19,20]);
+            ->orWhereNotIn('id_pstat', [15,16]);
         })
         ->where('id_pstat', $pstat)
         ->count();
@@ -104,7 +127,7 @@ class Controller_AdminHome extends Controller
         return DB::table('qrisspeks')
         ->where(function($query){
             $query->whereRaw('YEAR(waktu_assign_project) = YEAR(current_timestamp)')
-            ->orWhereNotIn('id_pstat', [19,20]);
+            ->orWhereNotIn('id_pstat', [15,16]);
         })
         ->where('id_pstat', $pstat)
         ->count();
@@ -132,7 +155,7 @@ class Controller_AdminHome extends Controller
         return DB::table('projects')
         ->where(function($query){
             $query->whereRaw('YEAR(waktu_assign_project) = YEAR(current_timestamp)')
-            ->orWhereNotIn('id_pstat', [19,20]);
+            ->orWhereNotIn('id_pstat', [15,16]);
         })
         ->count();
     }
@@ -141,7 +164,7 @@ class Controller_AdminHome extends Controller
         return DB::table('qris')
         ->where(function($query){
             $query->whereRaw('YEAR(waktu_assign_project) = YEAR(current_timestamp)')
-            ->orWhereNotIn('id_pstat', [19,20]);
+            ->orWhereNotIn('id_pstat', [15,16]);
         })
         ->count();
     }
@@ -150,7 +173,7 @@ class Controller_AdminHome extends Controller
         return DB::table('qrisspeks')
         ->where(function($query){
             $query->whereRaw('YEAR(waktu_assign_project) = YEAR(current_timestamp)')
-            ->orWhereNotIn('id_pstat', [19,20]);
+            ->orWhereNotIn('id_pstat', [15,16]);
         })
         ->count();
     }
@@ -164,15 +187,28 @@ class Controller_AdminHome extends Controller
     // }
 
     public function allProjProd(){
-        return DB::select("select pr.nama_product, count(*) as jumlah_project from (select id_product from projects where YEAR(waktu_assign_project) = YEAR(current_timestamp) or id_pstat not in (5,7)) as p, products as pr where p.id_product = pr.id group by pr.nama_product order by pr.id asc");
+        return DB::select("select pr.nama_product, count(*) as jumlah_project from (select id_product from projects where waktu_assign_project and id_pstat not in (15, 16)) as p, products as pr where p.id_product = pr.id group by pr.nama_product order by pr.id asc");
+    }
+
+    public function allProjDd(){
+        return DB::select("select pr.nama_product, count(*) as jumlah_project from (select id_product from projects where waktu_assign_project and id_pstat in (15, 16) ) as p, products as pr where p.id_product = pr.id group by pr.nama_product order by pr.id asc");
     }
 
     public function allQrisProd(){
-        return DB::select("select pr.nama_product, count(*) as jumlah_project from (select id_product from qris where YEAR(waktu_assign_project) = YEAR(current_timestamp) or id_pstat not in (5,7)) as p, products as pr where p.id_product = pr.id group by pr.nama_product order by pr.id asc");
+        return DB::select("select pr.nama_product, count(*) as jumlah_project from (select id_product from qris where waktu_assign_project and id_pstat not in (15, 16)) as p, products as pr where p.id_product = pr.id group by pr.nama_product order by pr.id asc");
+    }
+
+    public function allQrisPd(){
+        return DB::select("select pr.nama_product, count(*) as jumlah_project from (select id_product from qris where waktu_assign_project and id_pstat in (15, 16)) as p, products as pr where p.id_product = pr.id group by pr.nama_product order by pr.id asc");
     }
 
     public function allQrisspekProd(){
-        return DB::select("select pr.nama_product, count(*) as jumlah_project from (select id_product from qrisspeks where YEAR(waktu_assign_project) = YEAR(current_timestamp) or id_pstat not in (5,7)) as p, products as pr where p.id_product = pr.id group by pr.nama_product order by pr.id asc");
+        return DB::select("select pr.nama_product, count(*) as jumlah_project from (select id_product from qrisspeks where waktu_assign_project and id_pstat not in (15, 16)) as p, products as pr where p.id_product = pr.id group by pr.nama_product order by pr.id asc");
+    }
+
+
+    public function allQrisspekDd(){
+        return DB::select("select pr.nama_product, count(*) as jumlah_project from (select id_product from qrisspeks where waktu_assign_project and id_pstat in (15, 16)) as p, products as pr where p.id_product = pr.id group by pr.nama_product order by pr.id asc");
     }
     // public function allProjPtype(){
     //     return DB::select("select pt.nama_ptype, count(*) as jumlah_project from (select id_ptype from projects where YEAR(waktu_assign_project) = YEAR(current_timestamp) or id_pstat not in (5,7)) as p, projects_types as pt where p.id_ptype = pt.id group by pt.nama_ptype order by pt.id asc");

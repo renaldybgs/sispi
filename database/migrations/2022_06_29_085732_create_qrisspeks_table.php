@@ -15,7 +15,7 @@ class CreateQrisspeksTable extends Migration
     {
         Schema::create('qrisspeks', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('waktu_assign_project')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->dateTime('waktu_assign_project');
             $table->unsignedBigInteger('id_pketerangan')->nullable();
             $table->unsignedBigInteger('id_pstat');
             $table->unsignedBigInteger('id_product');

@@ -15,7 +15,7 @@ class Qrisspek extends Model
 
     ];
 
-    protected $fillable = ['id_product', 'id_mitra', 'nama_prod', 'no_formulir', 'no_spek', 'spek_qris', 'notes_project'];
+    protected $fillable = ['id_product', 'id_mitra', 'nama_prod', 'no_formulir', 'no_spek', 'spek_qris', 'notes_project', 'waktu_assign_project'];
 
     public $timestamps = false;
 }

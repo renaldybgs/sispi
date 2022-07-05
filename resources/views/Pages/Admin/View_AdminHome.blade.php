@@ -123,7 +123,7 @@
 
 <!-- HIGHCHARTZ -->
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-6">
     <div class="card card-chart">
       <div class="card-body ">
         <figure class="highcharts-figure">
@@ -135,9 +135,24 @@
     </div>
   <!-- ./col -->
   </div>
+
+  <div class="col-md-6">
+    <div class="card card-chart">
+      <div class="card-body ">
+        <figure class="highcharts-figure">
+           <div id="BarProduk"></div>
+        </figure>
+      <!-- ./card body -->
+      </div>
+    <!-- ./card -->
+    </div>
+  <!-- ./col -->
+  </div>
 </div>
+
+
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-6">
     <div class="card card-chart">
       <div class="card-body">
          <figure class="highcharts-figure">
@@ -149,15 +164,41 @@
     </div>
   <!-- ./col -->
   </div>
+
+  <div class="col-md-6">
+    <div class="card card-chart">
+      <div class="card-body">
+         <figure class="highcharts-figure">
+           <div id="BarQris"></div>
+        </figure>
+      <!-- ./card body -->
+      </div>       
+    <!-- ./card -->
+    </div>
+  <!-- ./col -->
+  </div>
 <!-- ./row -->
 </div>
 
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-6">
     <div class="card card-chart">
       <div class="card-body">
          <figure class="highcharts-figure">
            <div id="PieQrisspek"></div>
+        </figure>
+      <!-- ./card body -->
+      </div>       
+    <!-- ./card -->
+    </div>
+  <!-- ./col -->
+  </div>
+
+  <div class="col-md-6">
+    <div class="card card-chart">
+      <div class="card-body">
+         <figure class="highcharts-figure">
+           <div id="BarQrisspek"></div>
         </figure>
       <!-- ./card body -->
       </div>       
@@ -338,6 +379,211 @@
       data: qrisspekbyproddata
     }]
   });
+
+  //JUMLAH PROJEK BY PRODUCT
+  //Proses Data
+ var projbyprod = <?php echo json_encode($projperprod) ?>;
+  var projbyproddata = [];
+
+  for(var i=0; i<projbyprod.length; i++){
+    var temp = [];
+
+    temp[0] = projbyprod[i].nama_product;
+    temp[1] = projbyprod[i].jumlah_project;
+
+    projbyproddata.push(temp);
+  }
+
+  //Draw Pie
+  Highcharts.chart('BarProduk', {
+    colors:['#D4BBDD','#FDBFAF','#98D7C2','#F09CA2','#D9CE88'],
+    chart: {
+      type: 'column',
+    },
+    title: {
+      text: 'Total Project Done NSICCS'
+    },
+    subtitle: {
+      text: 'Berdasarkan Type Produk'
+    },
+    credits: {
+      enabled: false
+    },
+
+    xAxis: {
+        categories: projbyproddata,
+        crosshair: true
+    },
+
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Jumlah Project'
+        }
+    },
+
+    tooltip: {
+      headerFormat: '<span style="font-size:12px">{point.key}</span><table>',
+      pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+        '<td style="padding:0"><b>{point.y}</b></td></tr>',
+      footerFormat: '</table>',
+      shared: true,
+      useHTML: true
+    },
+
+    plotOptions: {
+      column: {
+        pointPadding: 0.1,
+        borderWidth: 0,
+        pointPlacement: 0
+      }
+    },
+    series: [{
+      name: 'Total Project Done',
+      data: projbyproddata,
+      pointPadding: 0.1,
+      borderWidth: 0,
+    }
+
+    ]
+  });
+
+  //JUMLAH PROJEK BY PRODUCT
+  //Proses Data
+ var qrisbyprod = <?php echo json_encode($qrisperprod) ?>;
+  var qrisbyproddata = [];
+
+  for(var i=0; i<qrisbyprod.length; i++){
+    var temp = [];
+
+    temp[0] = qrisbyprod[i].nama_product;
+    temp[1] = qrisbyprod[i].jumlah_project;
+
+    qrisbyproddata.push(temp);
+  }
+
+  //Draw Pie
+  Highcharts.chart('BarQris', {
+    colors:['#D4BBDD','#FDBFAF','#98D7C2','#F09CA2','#D9CE88'],
+    chart: {
+      type: 'column',
+    },
+    title: {
+      text: 'Total Project Done QRIS Rekomendasi'
+    },
+    subtitle: {
+      text: 'Berdasarkan Type Produk'
+    },
+    credits: {
+      enabled: false
+    },
+
+    xAxis: {
+        categories: qrisbyproddata,
+        crosshair: true
+    },
+
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Jumlah Project'
+        }
+    },
+
+    tooltip: {
+      headerFormat: '<span style="font-size:12px">{point.key}</span><table>',
+      pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+        '<td style="padding:0"><b>{point.y}</b></td></tr>',
+      footerFormat: '</table>',
+      shared: true,
+      useHTML: true
+    },
+
+    plotOptions: {
+      column: {
+        pointPadding: 0.1,
+        borderWidth: 0,
+        pointPlacement: 0
+      }
+    },
+    series: [{
+      name: 'Total QRIS Rekomendasi Done',
+      data: qrisbyproddata,
+      pointPadding: 0.1,
+      borderWidth: 0,
+    }
+
+    ]
+  });
+
+    //JUMLAH PROJEK BY PRODUCT
+  //Proses Data
+ var qrisspekbyprod = <?php echo json_encode($qrspekperprod) ?>;
+  var qrisspekbyproddata = [];
+
+  for(var i=0; i<qrisspekbyprod.length; i++){
+    var temp = [];
+
+    temp[0] = qrisspekbyprod[i].nama_product;
+    temp[1] = qrisspekbyprod[i].jumlah_project;
+
+    qrisspekbyproddata.push(temp);
+  }
+
+  //Draw Pie
+  Highcharts.chart('BarQrisspek', {
+    colors:['#D4BBDD','#FDBFAF','#98D7C2','#F09CA2','#D9CE88'],
+    chart: {
+      type: 'column',
+    },
+    title: {
+      text: 'Total Project Done QRIS Spesifikasi'
+    },
+    subtitle: {
+      text: 'Berdasarkan Type Produk'
+    },
+    credits: {
+      enabled: false
+    },
+
+    xAxis: {
+        categories: qrisspekbyproddata,
+        crosshair: true
+    },
+
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Jumlah Project'
+        }
+    },
+
+    tooltip: {
+      headerFormat: '<span style="font-size:12px">{point.key}</span><table>',
+      pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+        '<td style="padding:0"><b>{point.y}</b></td></tr>',
+      footerFormat: '</table>',
+      shared: true,
+      useHTML: true
+    },
+
+    plotOptions: {
+      column: {
+        pointPadding: 0.1,
+        borderWidth: 0,
+        pointPlacement: 0
+      }
+    },
+    series: [{
+      name: 'Total QRIS Spesifikasi Done',
+      data: qrisspekbyproddata,
+      pointPadding: 0.1,
+      borderWidth: 0,
+    }
+
+    ]
+  });
+
 </script>
 
 @endpush

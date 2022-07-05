@@ -30,11 +30,14 @@ class Controller_EngineerAddQris extends Controller
         $request->validate([                                            //validasi data input projek
             'id_product' => 'required',
             'id_mitra' => 'required',
+            'waktu_assign_project' => 'required',
 
         ],
         $message = [
             'id_product.required' => 'Mohon pilih product',
             'id_mitra.required' => 'Mohon pilih nama mitra',
+            'waktu_assign_project.required' => 'Mohon isi Issued Date',
+
         ]);
 
         // $project_dir = $this->getProjectDirectory($request->id_product, $request->id_mitra, $request->id_user, $request->nama_project);
@@ -42,6 +45,7 @@ class Controller_EngineerAddQris extends Controller
         $newprojectqris = Qris::create([                                 //bikin data project baru    
             'id_product' => $request->id_product,
             'id_mitra' => $request->id_mitra,
+            'waktu_assign_project' => $request->waktu_assign_project,
             // 'direktori_project' => $project_dir
         ]);
 

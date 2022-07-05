@@ -6,7 +6,7 @@
 <title>
   | {Engineer} Add Projects
 </title>
-<div class="card card-lightblue card-tabs">
+<div class="card card-info card-tabs">
   <div class="card-header p-0 pt-1 border-bottom-0">
     <ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
       <li class="nav-item">
@@ -28,10 +28,10 @@
         @csrf
 
           <div id="mitra" class="form-group">
-            <label for="id_mitra">Mitra</label>
+            <label for="id_mitra">Institusi</label>
             <div class="@error('id_mitra') is-invalid @enderror">
               <select class="select2 form-control-border border-width-2 form-control @error ('id_mitra') is-invalid @enderror" id="id_mitra" name="id_mitra" style="width: 100%;">
-                <option value="">Pilih Mitra</option>
+                <option value="">Pilih Institusi</option>
                 @foreach($mitras as $mtr)
                 @if (old('id_mitra') == $mtr->id)
                   <option value="{{ $mtr->id }}" selected>{{ $mtr->nama_mitra }}</option>
@@ -103,10 +103,10 @@
         <form method="post" action="/engineer/newprojectqris" id="my-handover">
         @csrf
         <div id="mitra" class="form-group">
-            <label for="id_mitra">Mitra</label>
+            <label for="id_mitra">Institusi</label>
             <div class="@error('id_mitra') is-invalid @enderror">
               <select class="select2 form-control-border border-width-2 form-control @error ('id_mitra') is-invalid @enderror" id="id_mitra" name="id_mitra" style="width: 100%;">
-                <option value="">Pilih Mitra</option>
+                <option value="">Pilih Institusi</option>
                 @foreach($mitras as $mtr)
                 @if (old('id_mitra') == $mtr->id)
                   <option value="{{ $mtr->id }}" selected>{{ $mtr->nama_mitra }}</option>
@@ -142,6 +142,15 @@
                 @enderror
             </div>
           </div>
+
+          <div id="waktu_assign_project" class="form-group">
+            <label for="waktu_assign_project">Issued Date</label>
+            <input type="date" class="form-control  @error('waktu_assign_project') is-invalid @enderror" id="waktu_assign_project" placeholder="Masukan Issued Date" name="waktu_assign_project" autocomplete="off" value="{{ old('waktu_assign_project') }}" style="width: 100%;">
+            @error('waktu_assign_project')
+              <div class="invalid-feedback flash" style="margin-top: 2px">
+                {{ $message }}</div>
+            @enderror
+          </div>
             <button type="submit" class="btn btn-outline-primary float-right" id="btn-submithandover">Submit</button>
         </form>
       </div>
@@ -151,10 +160,10 @@
         <form method="post" action="/engineer/newprojectqrisspek" id="my-handover">
         @csrf
         <div id="mitra" class="form-group">
-            <label for="id_mitra">Mitra</label>
+            <label for="id_mitra">Institusi</label>
             <div class="@error('id_mitra') is-invalid @enderror">
               <select class="select2 form-control-border border-width-2 form-control @error ('id_mitra') is-invalid @enderror" id="id_mitra" name="id_mitra" style="width: 100%;">
-                <option value="">Pilih Mitra</option>
+                <option value="">Pilih Institusi</option>
                 @foreach($mitras as $mtr)
                 @if (old('id_mitra') == $mtr->id)
                   <option value="{{ $mtr->id }}" selected>{{ $mtr->nama_mitra }}</option>
@@ -195,6 +204,15 @@
             <label for="no_formulir">No Formulir</label>
             <input type="text" class="form-control  @error('no_formulir') is-invalid @enderror" id="no_formulir" placeholder="No Formulir" name="no_formulir" autocomplete="off" value="{{ old('no_formulir') }}" style="width: 100%;">
             @error('no_formulir')
+              <div class="invalid-feedback flash" style="margin-top: 2px">
+                {{ $message }}</div>
+            @enderror
+          </div>
+
+          <div id="waktu_assign_project" class="form-group">
+            <label for="waktu_assign_project">Issued Date</label>
+            <input type="date" class="form-control  @error('waktu_assign_project') is-invalid @enderror" id="waktu_assign_project" placeholder="Masukan Issued Date" name="waktu_assign_project" autocomplete="off" value="{{ old('waktu_assign_project') }}" style="width: 100%;">
+            @error('waktu_assign_project')
               <div class="invalid-feedback flash" style="margin-top: 2px">
                 {{ $message }}</div>
             @enderror

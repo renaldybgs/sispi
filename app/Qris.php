@@ -15,7 +15,7 @@ class Qris extends Model
 
     ];
 
-    protected $fillable = ['id_product', 'id_mitra',  'surat_rekomendasi', 'no_rekomendasi', 'jenis_qrisbi', 'ijin_qrisbi', 'tgl_ijinbi'];
+    protected $fillable = ['id_product', 'id_mitra',  'surat_rekomendasi', 'no_rekomendasi', 'jenis_qrisbi', 'ijin_qrisbi', 'tgl_ijinbi', 'waktu_assign_project'];
 
     public $timestamps = false;
 }
