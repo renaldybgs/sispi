@@ -100,7 +100,7 @@
 
       <!-- QRIS -->
       <div id="qris" class="tab-pane fade" id="qris" role="tabpanel" aria-labelledby="custom-tabs-three-profile-tab">
-        <form method="post" action="/engineer/newprojectqris" id="my-handover">
+        <form method="post" action="/engineer/newprojectqris" id="my-qris">
         @csrf
         <div id="mitra" class="form-group">
             <label for="id_mitra">Institusi</label>
@@ -151,13 +151,13 @@
                 {{ $message }}</div>
             @enderror
           </div>
-            <button type="submit" class="btn btn-outline-primary float-right" id="btn-submithandover">Submit</button>
+            <button type="submit" class="btn btn-outline-primary float-right" id="btn-submitqris">Submit</button>
         </form>
       </div>
 
             <!-- QRIS Spek-->
       <div id="qrisspek" class="tab-pane fade" id="qrisspek" role="tabpanel" aria-labelledby="custom-tabs-three-profile-tab">
-        <form method="post" action="/engineer/newprojectqrisspek" id="my-handover">
+        <form method="post" action="/engineer/newprojectqrisspek" id="my-qrisspek">
         @csrf
         <div id="mitra" class="form-group">
             <label for="id_mitra">Institusi</label>
@@ -217,7 +217,7 @@
                 {{ $message }}</div>
             @enderror
           </div>
-            <button type="submit" class="btn btn-outline-primary float-right" id="btn-submithandover">Submit</button>
+            <button type="submit" class="btn btn-outline-primary float-right" id="btn-submitqrisspek">Submit</button>
         </form>
       </div>
     </div>
@@ -243,9 +243,23 @@
    
     $(document).ready(function () {
     
-        $("#my-handover").submit(function (e) {
+        $("#my-qris").submit(function (e) {
    
-            $("#btn-submithandover").attr("disabled", true);
+            $("#btn-submitqris").attr("disabled", true);
+   
+            return true;
+    
+        });
+    });
+</script>
+
+<script type="text/javascript">
+   
+    $(document).ready(function () {
+    
+        $("#my-qrisspek").submit(function (e) {
+   
+            $("#btn-submitqrisspek").attr("disabled", true);
    
             return true;
     
