@@ -49,7 +49,7 @@ class Controller_EngineerAddProjects extends Controller
             'waktu_assign_project.required' => 'Mohon isi Issued Date',
         ]);
 
-        // $project_dir = $this->getProjectDirectory($request->id_product, $request->id_mitra, $request->id_user, $request->nama_project);
+        // $project_dir = $this->getProjectDirectory($request->id_product, $request->id_mitra, $request->id_user, $request->typereq_numb);
 
         $newproject = Project::create([                                 //bikin data project baru    
             // 'id_current_pic' => $request->id_user,
@@ -142,7 +142,7 @@ class Controller_EngineerAddProjects extends Controller
         return Project::where('id', $id)->firstOrFail();
     }
 
-    public function getProjectDirectory($product, $mitra, $user, $req_numb){
+    public function getProjectDirectory($product, $mitra, $user, $typereq_numb){
         $year = strval(Carbon::now()->format('Y'));
         $nama_product = DB::table('products')
                   ->select(DB::raw('products.nama_product'))
@@ -156,7 +156,7 @@ class Controller_EngineerAddProjects extends Controller
                         ->get()
                         ->implode('inisial_user');
 
-        $project_dir = 'Documents/' . $year . '/' . $nama_product . '/' . '[' . $inisial_user . '] ' . $nama_project;
+        $project_dir = 'Documents/' . $year . '/' . $nama_product . '/' . '[' . $inisial_user . '] ' . $typereq_numb;
 
         return $project_dir; 
     }

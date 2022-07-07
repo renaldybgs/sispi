@@ -4,7 +4,7 @@
 @section('PageTitle','Tambah Projects')
 @section('content')
 <title>
-  | {Engineer} Add Projects
+ ASPI | Sertifikasi Add Projects
 </title>
 <div class="card card-info card-tabs">
   <div class="card-header p-0 pt-1 border-bottom-0">
