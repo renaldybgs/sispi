@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cas;
+use App\User;
 use DataTables;
 use Response;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ class Controller_AdminCA extends Controller
         $this->authorize('isAdmin', auth()->user());
 
         $userLevel = auth()->user()->id_ulevel;
-        return view('Pages.Admin.View_AdminCa', compact('userLevel'));
+        return view('Pages.Admin.View_AdminCA', compact('userLevel'));
     }
 
       /**
@@ -30,7 +31,7 @@ class Controller_AdminCA extends Controller
     public function create(){                       //nyiapin form Tambah Mitra
         $this->authorize('isAdmin', auth()->user());
         
-        $model = new Mitra();                       //menyiapkan variabel mitra baru untuk dilempar dan nantinya diisi di form Tambah Mitra
+        $model = new Cas();                       //menyiapkan variabel mitra baru untuk dilempar dan nantinya diisi di form Tambah Mitra
         return view('Layouts.FormCa', compact('model'));
     }
 
@@ -70,7 +71,7 @@ class Controller_AdminCA extends Controller
     public function destroy($id){                                   //delete data
         $this->authorize('isAdmin', auth()->user());
         
-        Mitra::where('id', $id)->delete();                          //mencari data mitra berdasarkan idnya lalu menghapusnya
+        Cas::where('id', $id)->delete();                          //mencari data mitra berdasarkan idnya lalu menghapusnya
         $caData['data'] = Cas::orderby("id", "asc")->get();    //mengambil semua data mitra yg baru, setelah sudah menghapus data, untuk direturn
 
         return response()->json($caData);
@@ -88,20 +89,19 @@ class Controller_AdminCA extends Controller
         $this->authorize('isAdmin', auth()->user());
         
         $model = Cas::where('id', $id)->firstOrFail();              //mengambil data mitra untuk nanti ditempel datanya di form Edit Mitra
-        return view('Layouts.FormCa', compact('model'));
+        return view('Layouts.FormCaedit', compact('model'));
     }
 
     public function update(Request $request, $id){                  //ngedit data yg udh diinput dari form Edit Mitra
         $this->authorize('isAdmin', auth()->user());
         
         $request->validate([                        //validasi data yg sudah diisi di form Tambah Mitra
-            'nama_issuer' => 'required|unique:cas|max:51',
+            'nama_issuer' => 'required|max:51',
             'bin' => 'required|max:100',
             'reg_ca' => 'required|max:50',
         ],
         $message = [
             'nama_issuer.required' => ' Mohon isi Nama Issuer',
-                'nama_issuer.unique' => ' Nama Issuer sudah terdaftar',
                 'nama_issuer.max' => ' Nama Issuer maksimal 51 huruf',
             'bin.required' => ' Mohon isi BIN',
                 'bin.max' => ' BIN Maksimal 100 huruf',
@@ -114,12 +114,14 @@ class Controller_AdminCA extends Controller
         $model->nama_issuer = $request->nama_issuer;                //edit nama
         $model->bin = $request->bin;
         $model->reg_ca = $request->reg_ca;
+        $model->status = $request->status;
         $model->modified_by = $modified_by;                         //edit modified_by
         $model->save();                                             //menyimpan hasil editan data
     }
 
+
     public function dataTable(){                                    //generate table di halaman Admin - Mitra
-        $model = Cas::query();                                    //mengambil semua data mitra
+        $model = DB::select("select id, nama_issuer, bin, reg_ca, status, modified_by, added_by, DATE(waktu_assign_project) as waktu from cas");
         return DataTables::of($model)                               //membuat datatable berdasarkan data yg udh diambil
             ->addColumn('action', function($model){                 //nambahin yg gak ada di query, disini yg ditambah action
                 return view('Layouts.ActionCa',[

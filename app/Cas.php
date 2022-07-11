@@ -4,16 +4,16 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Mitra extends Model
+class Cas extends Model
 {
 
     protected $attributes = [
-        'id_pstat' => 1,
-        'nama_issuer' => '',
+        'status' => 'New',
+        
 
     ];
 
-    protected $fillable = ['bin', 'reg_ca', 'added_by', 'modified_by', 'waktu_assign_project'];
+    protected $fillable = ['nama_issuer', 'bin', 'reg_ca', 'status', 'added_by', 'modified_by', 'waktu_assign_project'];
 
     public $timestamps = false;
 }

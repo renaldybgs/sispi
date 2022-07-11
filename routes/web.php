@@ -99,6 +99,16 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/admin/editanggota/{id}', 'Controller_AdminMitra@edit')->name('mitra.edit');
 	Route::put('/admin/updateanggota/{id}', 'Controller_AdminMitra@update')->name('mitra.update');
 
+
+	// CA
+	Route::get('/admin/ca', 'Controller_AdminCA@openPage')->name('ca.open');
+	Route::get('/admin/ca/table', 'Controller_AdminCA@dataTable')->name('ca.table');
+	Route::post('/admin/submitca', 'Controller_AdminCA@store')->name('ca.store');
+	Route::get('/admin/delca/{id}', 'Controller_AdminCA@destroy');
+	Route::get('/admin/createca', 'Controller_AdminCA@create')->name('ca.create');
+	Route::get('/admin/editca/{id}', 'Controller_AdminCA@edit')->name('ca.edit');
+	Route::put('/admin/updateca/{id}', 'Controller_AdminCA@update')->name('ca.update');
+
 	// Product
 	Route::get('/admin/products', 'Controller_AdminProducts@openPage');
 	Route::get('/admin/products/table', 'Controller_AdminProducts@dataTable')->name('products.table');

@@ -153,6 +153,15 @@
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="/admin/ca" class="nav-link">
+                                <i class="nav-icon fas fa-university"></i>
+                                <p>
+                                    CA
+                                    <i class="fas fa-university-left right"></i>
+                                </p>
+                            </a>
+                        </li>
 
                         <li class="nav-item">
                             <a href="#" class="nav-link">

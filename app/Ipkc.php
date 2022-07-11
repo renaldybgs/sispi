@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class Qrisspek extends Model
+class Ipkc extends Model
 {
     protected $attributes = [
     	'id_pstat' => 1,
