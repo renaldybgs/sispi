@@ -18,6 +18,9 @@
       <li class="nav-item">
         <a class="nav-link" id="custom-tabs-three-profile-tab" data-toggle="pill" href="#qrisspek" role="tab" aria-controls="custom-tabs-three-profile" aria-selected="true">New Projects QRIS Spek</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" id="custom-tabs-three-profile-tab" data-toggle="pill" href="#ipkc" role="tab" aria-controls="custom-tabs-three-profile" aria-selected="true">New Projects IPKC</a>
+      </li>
     </ul>
   </div>
   <div class="card-body">
@@ -220,6 +223,52 @@
             <button type="submit" class="btn btn-outline-primary float-right" id="btn-submitqrisspek">Submit</button>
         </form>
       </div>
+
+      <!-- IPKC -->
+      <div id="ipkc" class="tab-pane fade" id="ipkc" role="tabpanel" aria-labelledby="custom-tabs-three-profile-tab">
+        <form method="post" action="/engineer/newprojectipkc" id="my-ipkc">
+        @csrf
+        <div id="ca" class="form-group">
+            <label for="id_ca">Nama Issuer</label>
+            <div class="@error('id_ca') is-invalid @enderror">
+              <select class="select2 form-control-border border-width-2 form-control @error ('id_ca') is-invalid @enderror" id="id_ca" name="id_ca" style="width: 100%;">
+                <option value="">Pilih Issuer</option>
+                @foreach($cas as $cas)
+                @if (old('id_ca') == $cas->id)
+                  <option value="{{ $cas->id }}" selected>{{ $cas->nama_issuer }}</option>
+                @else 
+                  <option value="{{ $cas->id }}">{{ $cas->nama_issuer }}</option>
+                @endif
+                @endforeach
+                </select>
+                @error('id_ca')
+                <div class="invalid-feedback flash" style="margin-top: 2px">
+                {{ $message }}
+                </div>
+                @enderror 
+            </div>
+          </div>
+
+          <div id="no_ipkc" class="form-group">
+            <label for="no_ipkc">No IPKC</label>
+            <input type="text" class="form-control  @error('no_ipkc') is-invalid @enderror" id="no_ipkc" placeholder="No IPKC" name="no_ipkc" autocomplete="off" value="{{ old('no_ipkc') }}" style="width: 100%;">
+            @error('no_ipkc')
+              <div class="invalid-feedback flash" style="margin-top: 2px">
+                {{ $message }}</div>
+            @enderror
+          </div>
+
+          <div id="waktu_assign_project" class="form-group">
+            <label for="waktu_assign_project">Issued Date</label>
+            <input type="date" class="form-control  @error('waktu_assign_project') is-invalid @enderror" id="waktu_assign_project" placeholder="Masukan Issued Date" name="waktu_assign_project" autocomplete="off" value="{{ old('waktu_assign_project') }}" style="width: 100%;">
+            @error('waktu_assign_project')
+              <div class="invalid-feedback flash" style="margin-top: 2px">
+                {{ $message }}</div>
+            @enderror
+          </div>
+            <button type="submit" class="btn btn-outline-primary float-right" id="btn-submitipkc">Submit</button>
+        </form>
+      </div>
     </div>
   </div>
 @endsection
@@ -260,6 +309,20 @@
         $("#my-qrisspek").submit(function (e) {
    
             $("#btn-submitqrisspek").attr("disabled", true);
+   
+            return true;
+    
+        });
+    });
+</script>
+
+<script type="text/javascript">
+   
+    $(document).ready(function () {
+    
+        $("#my-ipkc").submit(function (e) {
+   
+            $("#btn-submitipkc").attr("disabled", true);
    
             return true;
     

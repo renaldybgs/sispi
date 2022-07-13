@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\DB;
 
 class Controller_AdminListIpkc extends Controller
 {
-    {
     public function openPage(){                             //buka halaman Manager - List Project
         $this->authorize('isAdmin', auth()->user());
 
@@ -20,7 +19,7 @@ class Controller_AdminListIpkc extends Controller
         $ca = DB::table('cas')->select('nama_issuer')->orderBy('nama_issuer', 'ASC')->get();
         $pstat = DB::table('projects_stats')->select('id' , 'nama_pstat')->orderBy('id', 'ASC')->get();
         
-        return view('Pages.Admin.View_AdminListIpkc', compact('userLevel', 'mitra', 'pstat'));  
+        return view('Pages.Admin.View_AdminListIpkc', compact('userLevel', 'ca', 'pstat'));  
     }
 
     public function export(){
@@ -59,8 +58,8 @@ class Controller_AdminListIpkc extends Controller
     public function deleteIpkc($id){
         $this->authorize('isAdmin', auth()->user());
 
-        Ipkcs::where('id', $id)->delete();                            //cari data project berdasarkan id lalu didelete
-        $ipkcData['data'] = Ipkcs::orderby("id", "desc")->get();    //mengambil semua data mitra yg baru, setelah sudah menghapus data, untuk direturn
+        Ipkc::where('id', $id)->delete();                            //cari data project berdasarkan id lalu didelete
+        $ipkcData['data'] = Ipkc::orderby("id", "desc")->get();    //mengambil semua data mitra yg baru, setelah sudah menghapus data, untuk direturn
 
         return response()->json($ipkcData);
     }
@@ -76,7 +75,7 @@ class Controller_AdminListIpkc extends Controller
             ->addColumn('action', function($data){        
                 return view('Layouts.ActionListIpkc',[
                     'data'=> $data,
-                    'url_editlist' => route('adminipkc.edit', $data->id)
+                    'url_editlist' => route('adminlistipkc.edit', $data->id)
                 ]);
             })
             ->addIndexColumn()
@@ -85,7 +84,7 @@ class Controller_AdminListIpkc extends Controller
     }
 
     public function getIpkcById($id){
-        return Ipkcs::where('id', $id)->firstOrFail();
+        return Ipkc::where('id', $id)->firstOrFail();
     }
 
     public function getOriginalPIC($id){

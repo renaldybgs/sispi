@@ -89,6 +89,15 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/admin/qris/edit/{id}', 'Controller_AdminListQris@editQris')->name('adminqris.edit');
 	Route::put('/admin/qris/update/{id}', 'Controller_AdminListQris@updateQris')->name('adminqris.update');
 	Route::get('/admin/qris/delete/{id}', 'Controller_AdminListQris@deleteQris')->name('adminqris.delete');
+
+		//List Project admin IPKC
+	Route::get('/admin/ipkc', 'Controller_AdminListIpkc@openPage');
+	Route::get('/admin/ipkc/table', 'Controller_AdminListIpkc@dataTable')->name('adminlistipkc.table');
+	Route::get('/admin/ipkc/detail/{id}', 'Controller_AdminListIpkc@detail')->name('adminlistipkc.detail');
+	Route::get('/admin/ipkc/export', 'Controller_AdminListIpkc@export');
+	Route::get('/admin/ipkc/edit/{id}', 'Controller_AdminListIpkc@editIpkc')->name('adminlistipkc.edit');
+	Route::put('/admin/ipkc/update/{id}', 'Controller_AdminListIpkc@updateIpkc')->name('adminlistipkc.update');
+	Route::get('/admin/ipkc/delete/{id}', 'Controller_AdminListIpkc@deleteIpkc')->name('adminlistipkc.delete');
 	
 	// Mitra
 	Route::get('/admin/anggota', 'Controller_AdminMitra@openPage')->name('mitra.open');
@@ -139,7 +148,9 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/eksekutif/projects', 'Controller_AdminListProjects@openPage');
 	Route::get('/eksekutif/qrisspek', 'Controller_AdminListQrisspeks@openPage');
 	Route::get('/eksekutif/qris', 'Controller_AdminListQris@openPage');
+	Route::get('/eksekutif/ipkc', 'Controller_AdminListIpkc@openPage');
 	Route::get('/eksekutif/anggota', 'Controller_AdminMitra@openPage')->name('mitra.open');
+	Route::get('/eksekutif/ca', 'Controller_AdminCA@openPage')->name('ca.open');
 
 	// Engineer Assign NSICCS
 	Route::get('/engineer/assign', 'Controller_EngineerAddProjects@openPage');
@@ -152,6 +163,10 @@ Route::group(['middleware' => 'auth'], function(){
 	// Engineer Assign QRIS Spek
 	Route::get('/engineer/assignqrisspek', 'Controller_EngineerAddQrisspeks@openPage');
 	Route::post('/engineer/newprojectqrisspek', 'Controller_EngineerAddQrisspeks@storeNew');
+
+	// Engineer Assign IPKC
+	Route::get('/engineer/assignipkc', 'Controller_EngineerAddIpkc@openPage');
+	Route::post('/engineer/newprojectipkc', 'Controller_EngineerAddIpkc@storeNew');
 
 	##Engineer
 	Route::get('/engineer', 'Controller_EngineerYourProjects@openPage');
@@ -182,6 +197,11 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/engineer/listqrisspek', 'Controller_EngineerListQrisspeks@openPage');
 	Route::get('/engineer/listqrisspek/table', 'Controller_EngineerListQrisspeks@dataTable')->name('engineerlistqrisspek.table');
 	Route::get('/engineer/listqrisspek/detail/{id}', 'Controller_EngineerListQrisspeks@detail')->name('engineerlistqrisspek.detail');
+
+	//List Project enginner IPKC
+	Route::get('/engineer/listipkc', 'Controller_EngineerListIpkc@openPage');
+	Route::get('/engineer/listipkc/table', 'Controller_EngineerListIpkc@dataTable')->name('engineerlistipkc.table');
+	Route::get('/engineer/listipkc/detail/{id}', 'Controller_EngineerListIpkc@detail')->name('engineerlistipkc.detail');
 
 	// Search Doc
 	Route::get('/engineer/searchdocs', 'Controller_EngineerSearchDocuments@openPage');
@@ -228,6 +248,21 @@ Route::group(['middleware' => 'auth'], function(){
 
 	Route::get('/engineer/historyqrisspek', 'Controller_EngineerHistoryQrisspeks@openPage');
 	Route::get('/engineer/historyqrisspek/table', 'Controller_EngineerHistoryQrisspeks@dataTable')->name('historyqrisspek.table');
+
+	Route::get('engineer/projectdir/{id}', 'Conttoller_Engineer@setProjectDirectory')->name('project.dir');
+
+	// Own Project QRIS Spek
+	Route::get('/engineer/ipkc', 'Controller_EngineerYourIpkc@openPage');
+	Route::get('/engineer/ipkc/table', 'Controller_EngineerYourIpkc@dataTable')->name('ipkc.table');
+	Route::patch('/engineer/ipkc/changestat', 'Controller_EngineerYourIpkc@changeStatus');
+	Route::get('/engineer/ipkc/editprogress/{id}', 'Controller_EngineerYourIpkc@editPBN')->name('progressipkc.edit');
+	Route::put('/engineer/ipkc/updateprogress/{id}', 'Controller_EngineerYourIpkc@updatePBN')->name('progressipkc.update');
+	Route::get('/engineer/ipkc/editpic/{id}', 'Controller_EngineerYourIpkc@editBussinessPIC')->name('pic.edit');
+	Route::put('/engineer/ipkc/updatepic/{id}', 'Controller_EngineerYourIpkc@updateBussinessPIC')->name('pic.update');
+	Route::get('/engineer/approval/notes/{id}', 'Controller_EngineerYourIpkc@notes')->name('keterangan.notes');
+
+	Route::get('/engineer/historyipkc', 'Controller_EngineerHistoryIpkc@openPage');
+	Route::get('/engineer/historyipkc/table', 'Controller_EngineerHistoryIpkc@dataTable')->name('historyipkc.table');
 
 	Route::get('engineer/projectdir/{id}', 'Conttoller_Engineer@setProjectDirectory')->name('project.dir');
 

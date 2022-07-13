@@ -14,12 +14,12 @@ class Controller_EngineerAddIpkc extends Controller
     public function openPage(){             //buka halaman Manager - Assign
         //Autentikasi level user yg boleh msk
         $this->authorize('isEngineer', auth()->user());
-
+ 
         $userLevel = auth()->user()->id_ulevel;
-        $cas = DB::select("select * from cas order by nama_issuer asc");           //ngambil data semua mitra
+        $cas = DB::select("select * from cas order by nama_issuer asc");           
         $users = $this->getUser();                                                      //ngambil data engineer dan adminxengineer
         
-        return view('Pages.Engineer.View_EngineerAddIpkc', compact('userLevel', 'users','cas'));
+        return view('Pages.Engineer.View_EngineerAddProjects', compact('userLevel', 'cas', 'users'));
     }
 
     public function storeNew(Request $request){                         //tambah data projek baru
@@ -28,13 +28,11 @@ class Controller_EngineerAddIpkc extends Controller
         $request->validate([                                            //validasi data input projek
             'id_ca' => 'required',
             'no_ipkc' => 'required',
-            'jenis_ipkc' => 'required'
             'waktu_assign_project' => 'required',
         ],
         $message = [
             'id_ca.required' => 'Mohon pilih nama issuer',
             'no_ipkc.required' => 'Mohon isi No Ipkc',
-            'jenis_ipkc.required' => 'Mohon Pilih Jenis Ipkc'
             'waktu_assign_project.required' => 'Mohon isi Issued Date',
         ]);
 
@@ -43,8 +41,6 @@ class Controller_EngineerAddIpkc extends Controller
         $newprojectipkc = Ipkc::create([                                 //bikin data project baru    
             'id_ca' => $request->id_ca,
             'no_ipkc' => $request->no_ipkc,
-            'bin' => $request->bin,
-            'jenis_ipkc' => $request->jenis_ipkc,
             'waktu_assign_project' => $request->waktu_assign_project,
             // 'direktori_project' => $project_dir
         ]);
@@ -57,7 +53,7 @@ class Controller_EngineerAddIpkc extends Controller
     }
 
     public function getIpkcById($id){                                        //ngamabil data projek berdasarkan idnya
-        return Ipkcs::where('id', $id)->firstOrFail();
+        return Ipkc::where('id', $id)->firstOrFail();
     }
 
     public function getIpkcDirectory($ca, $user){

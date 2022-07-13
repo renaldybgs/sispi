@@ -153,14 +153,29 @@
                                 </p>
                             </a>
                         </li>
+
                         <li class="nav-item">
-                            <a href="/admin/ca" class="nav-link">
-                                <i class="nav-icon fas fa-university"></i>
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
-                                    CA
-                                    <i class="fas fa-university-left right"></i>
+                                    &nbsp CA
+                                    <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/admin/ca" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Data CA</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/admin/ipkc" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>List Project Ipkc</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
 
                         <li class="nav-item">
@@ -216,6 +231,30 @@
                                     <i class="fas fa-university-left right"></i>
                                 </p>
                             </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    &nbsp CA
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/eksekutif/ca" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Data CA</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/eksekutif/ipkc" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>List Project Ipkc</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
 
                         <li class="nav-item">

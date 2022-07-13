@@ -157,9 +157,9 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="/engineer/ipkc" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Project SNAP</p>
+                                        <p>Project IPKC</p>
                                     </a>
                                 </li>
 <!--                                 <li class="nav-item">
@@ -197,6 +197,12 @@
                                         <p>Project QRIS Spek</p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="/engineer/historyipkc" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Project IPKC</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
 
@@ -228,9 +234,9 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="/engineer/listipkc" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Project SNAP</p>
+                                        <p>Project IPKC</p>
                                     </a>
                                 </li>
                             </ul>

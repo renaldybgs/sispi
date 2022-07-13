@@ -99,5 +99,21 @@ class ProjectsStatSeeder extends Seeder
         $suratpersetujuan = Projects_Stat::create([
             'nama_pstat' => 'Surat Persetujuan'
         ]);
+
+        $formulirsent = Projects_Stat::create([
+            'nama_pstat' => 'Formulir Sent'
+        ]);
+
+        $formulirreceived = Projects_Stat::create([
+            'nama_pstat' => 'Formulir Received'
+        ]);
+
+        $ipkmodulusreceived = Projects_Stat::create([
+            'nama_pstat' => 'IPK Modulus Received'
+        ]);
+
+        $ipkcsent = Projects_Stat::create([
+            'nama_pstat' => 'IPKC Sent'
+        ]);
     }
 }

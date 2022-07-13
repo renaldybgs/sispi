@@ -592,6 +592,79 @@ function deleteQris(id){
 	})
 }
 
+function deleteIpkc(id){
+	// console.log(id);
+	event.preventDefault();
+	const href = $(this).attr('href');
+
+	var idDel = id;
+
+	Swal.fire({
+	  title: 'Yakin hapus data ini?',
+	  icon: 'warning',
+	  showCancelButton: true,
+	  confirmButtonColor: '#3085d6',
+	  cancelButtonColor: '#d33',
+	  confirmButtonText: 'Ya',
+	  cancelButtonText: 'Tidak',
+
+	}).then((result)=>{
+		if(result.value){
+			$.ajaxSetup({
+				headers: {
+					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				}
+			});
+
+			$.ajax({
+				url: '/admin/ipkc/delete/'+idDel,
+				type: 'get',
+				data: {
+					'_method': 'DELETE'
+				},
+
+				success: function(response){
+					console.log(response);
+					$('#table1').DataTable().ajax.reload();
+
+					Swal.fire({
+						title:'Data Ipkc berhasil dihapus',
+						icon:'success',
+						toast:true,
+						showConfirmButton:false,
+						position: 'top-end',
+						timer:1500,
+						// timerProgressBar:true,
+						background:'#a3ffa3'
+					})
+				},
+
+				error: function(xhr){
+					Swal.fire({
+						icon: 'error',
+						toast:true,
+						title: 'Error',
+						text: 'Project Ipkc cant be deleted',
+						timer: 4000,
+						background: 'bisque'
+					})
+				}
+			})
+		} else if (result.dismiss === 'cancel') {
+			Swal.fire({
+				title:'Data Ipkc tetap tersimpan',
+				icon:'info',
+				toast:true,
+				showConfirmButton:false,
+				position:'top-end',
+				grow:'row',
+				timer:1500,
+				// timerProgressBar:true,
+				background:'#B4F5F0'
+			})
+		}
+	})
+}
 
 function donehandover(id) {
 	event.preventDefault();
@@ -1058,7 +1131,7 @@ function changeStatusProject(id){
 	})
 };
 
-function changeStatusCa(id){
+function changeStatusIpkc(id){
 	// console.log("tes changeStatus");
 	event.preventDefault();
 
@@ -1083,7 +1156,7 @@ function changeStatusCa(id){
 			});
 
 			$.ajax({
-				url: '/admin/ca/changestat',
+				url: '/engineer/ipkc/changestat',
 				type: 'POST',
 				data: {
 					'_method': 'PATCH',

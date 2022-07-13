@@ -8,6 +8,8 @@ use App\Product;
 use App\Mitra;
 use App\Qris;
 use App\Qrisspek;
+use App\cas;
+use App\Ipkc;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -24,7 +26,8 @@ class Controller_AdminHome extends Controller
         //ESSENTIAL COUNTER
         $products = $this->getProducts();           //Data All Product
         $mitras = $this->getMitras();      
-        $inuser = $this->getInisial();              //Data All Inisial      
+        $inuser = $this->getInisial();              //Data All Inisial  
+        $cas = $this->getCas();    
 
         // CARD DATA
 
@@ -36,6 +39,9 @@ class Controller_AdminHome extends Controller
         $qrisspek = $this->allQrisspek();            // Jumlah All Projek QRIS
         $anggota = $this->allAnggota();
         $noanggota = $this->allNoAnggota();
+        $regcas = $this->allregcas();
+        $ipkctest = $this->allipkctest();
+        $ipkclive = $this->allipkclive();
 
         // $atmproj = $this->allProjectPprod(1); 
         // $cardproj = $this->allProjectPprod(2);  
@@ -68,7 +74,7 @@ class Controller_AdminHome extends Controller
 
         // dd($inuser);
 
-        return view('Pages.Admin.View_AdminHome', compact('userLevel', 'products', 'projects', 'mitras', 'pprjdone', 'qrdone', 'qris', 'qrsdone', 'qrisspek', 'projectperproduct', 'qrisperproduct', 'qrisspekperproduct', 'anggota', 'noanggota', 'projperprod', 'qrisperprod', 'qrspekperprod'));   	
+        return view('Pages.Admin.View_AdminHome', compact('userLevel', 'products', 'projects', 'mitras', 'pprjdone', 'qrdone', 'qris', 'qrsdone', 'qrisspek', 'projectperproduct', 'qrisperproduct', 'qrisspekperproduct', 'anggota', 'noanggota', 'projperprod', 'qrisperprod', 'qrspekperprod', 'cas', 'regcas', 'ipkclive', 'ipkctest'));   	
     }
 
     public function getYears(){
@@ -81,6 +87,10 @@ class Controller_AdminHome extends Controller
 
     public function getMitras(){
         return DB::select('select nama_mitra from mitras');
+    }
+
+    public function getCas(){
+        return DB::select('select nama_issuer from cas');
     }
 
     public function getPTypes(){
@@ -151,11 +161,28 @@ class Controller_AdminHome extends Controller
         ->count();
     }
 
+    public function allipkclive(){
+        return DB::table('ipkcs')
+        ->where(function($query){
+            $query->whereRaw('nama_issuer')
+            ->orWhereIn('keanggotaan', ['Anggota']);
+        })
+        ->count();
+    }
+
     public function allProjects(){
         return DB::table('projects')
         ->where(function($query){
             $query->whereRaw('YEAR(waktu_assign_project) = YEAR(current_timestamp)')
             ->orWhereNotIn('id_pstat', [15,16]);
+        })
+        ->count();
+    }
+
+    public function allregcas(){
+        return DB::table('cas')
+        ->where(function($query){
+            $query->whereRaw('waktu_assign_project');
         })
         ->count();
     }

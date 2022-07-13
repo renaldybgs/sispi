@@ -65,6 +65,18 @@
   @case(22)
     <small class="badge bg-maroon"><i class="fas fa-check-double"></i>&nbsp Surat Persetujuan</small>
     @break
+  @case(23)
+    <small class="badge bg-lightblue"><i class="fas fa-file-invoice"></i>&nbsp Formulir Sent</small>
+    break
+  @case(24)
+    <small class="badge bg-fuchsia"><i class="fas fa-receipt"></i>&nbsp Formulir Received</small>
+    @break
+  @case(25)
+    <small class="badge bg-teal"><i class="fas fa-spinner"></i>&nbsp IPK Modulus Received</small>
+    @break
+  @case(26)
+    <small class="badge bg-olive"><i class="fas fa-paper-plane"></i>&nbsp IPKC Sent</small>
+    @break
   @default
     @break
 @endswitch

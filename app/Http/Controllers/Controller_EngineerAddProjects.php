@@ -17,11 +17,12 @@ class Controller_EngineerAddProjects extends Controller
 
         $userLevel = auth()->user()->id_ulevel;
         $products = DB::select("select * from products order by nama_product asc");     //ngambil data semua product
-        $mitras = DB::select("select * from mitras order by nama_mitra asc");           //ngambil data semua mitra
+        $mitras = DB::select("select * from mitras order by nama_mitra asc"); 
+        $cas = DB::select("select * from cas order by nama_issuer asc");            //ngambil data semua mitra
         $ptypes = DB::select("select * from projects_types order by nama_ptype asc");   //ngambil data semua project type
         $users = $this->getUser();                                                      //ngambil data engineer dan adminxengineer
         
-        return view('Pages.Engineer.View_EngineerAddProjects', compact('userLevel', 'users', 'products','mitras','ptypes'));
+        return view('Pages.Engineer.View_EngineerAddProjects', compact('userLevel', 'users', 'products','mitras','ptypes', 'cas'));
     }
 
     public function storeNew(Request $request){                         //tambah data projek baru

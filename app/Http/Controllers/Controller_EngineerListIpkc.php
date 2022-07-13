@@ -52,7 +52,7 @@ class Controller_EngineerListIpkc extends Controller
     }
 
     public function getIpkcById($id){
-        return Ipkcs::where('id', $id)->firstOrFail();
+        return Ipkc::where('id', $id)->firstOrFail();
     }
 
     public function getOriginalPIC($id){

@@ -15,7 +15,7 @@ class Controller_EngineerHistoryIpkc extends Controller
         $this->authorize('isEngineer', auth()->user());
 
         $userLevel = auth()->user()->id_ulevel;
-        return view('Pages.Engineer.View_EngineerHistoryQrisspek', compact('userLevel'));
+        return view('Pages.Engineer.View_EngineerHistoryIpkc', compact('userLevel'));
     }
 
     public function dataTable(){                            //generate table di halaman Engineer - Project Done (Own Project)
