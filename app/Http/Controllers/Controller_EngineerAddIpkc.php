@@ -41,6 +41,8 @@ class Controller_EngineerAddIpkc extends Controller
         $newprojectipkc = Ipkc::create([                                 //bikin data project baru    
             'id_ca' => $request->id_ca,
             'no_ipkc' => $request->no_ipkc,
+            'jenis_ipkc' => $request->jenis_ipkc,
+            'bin' => $request->bin,
             'waktu_assign_project' => $request->waktu_assign_project,
             // 'direktori_project' => $project_dir
         ]);

@@ -67,7 +67,7 @@
     @break
   @case(23)
     <small class="badge bg-lightblue"><i class="fas fa-file-invoice"></i>&nbsp Formulir Sent</small>
-    break
+    @break
   @case(24)
     <small class="badge bg-fuchsia"><i class="fas fa-receipt"></i>&nbsp Formulir Received</small>
     @break

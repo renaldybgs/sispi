@@ -29,7 +29,6 @@
       <div class="tab-pane fade active show" id="nsiccs" role="tabpanel" aria-labelledby="custom-tabs-three-home-tab">
         <form method="post" action="/engineer/newproject" id="my-form">
         @csrf
-
           <div id="mitra" class="form-group">
             <label for="id_mitra">Institusi</label>
             <div class="@error('id_mitra') is-invalid @enderror">
@@ -258,6 +257,31 @@
             @enderror
           </div>
 
+          <div id="jenis_ipkc" class="form-group">
+            <label for="jenis_ipkc">Jenis IPKC</label>
+            <div class="@error('jenis_ipkc') is-invalid @enderror">
+              <select class="select2 form-control-border border-width-2 form-control @error ('jenis_ipkc') is-invalid @enderror" id="jenis_ipkc" name="jenis_ipkc" style="width: 100%;">
+                <option selected="selected">Pilih IPKC</option>
+                <option >IPKC Test</option>
+                <option>IPKC Live</option>
+                </select>
+                @error('jenis_ipkc')
+                <div class="invalid-feedback flash" style="margin-top: 2px">
+                {{ $message }}
+                </div>
+                @enderror 
+            </div>
+          </div>
+
+          <div id="bin" class="form-group">
+            <label for="bin">BIN</label>
+            <input type="text" class="form-control  @error('bin') is-invalid @enderror" id="bin" placeholder="BIN" name="bin" autocomplete="off" value="{{ old('bin') }}" style="width: 100%;">
+            @error('bin')
+              <div class="invalid-feedback flash" style="margin-top: 2px">
+                {{ $message }}</div>
+            @enderror
+          </div>
+
           <div id="waktu_assign_project" class="form-group">
             <label for="waktu_assign_project">Issued Date</label>
             <input type="date" class="form-control  @error('waktu_assign_project') is-invalid @enderror" id="waktu_assign_project" placeholder="Masukan Issued Date" name="waktu_assign_project" autocomplete="off" value="{{ old('waktu_assign_project') }}" style="width: 100%;">
@@ -271,8 +295,9 @@
       </div>
     </div>
   </div>
+</div>
+
 @endsection
-  
 @push('scripts')
 <script type="text/javascript">
    
@@ -329,5 +354,4 @@
         });
     });
 </script>
-
 @endpush
