@@ -40,6 +40,7 @@ class Controller_AdminHome extends Controller
         $anggota = $this->allAnggota();
         $noanggota = $this->allNoAnggota();
         $regcas = $this->allregcas();
+        $regipkc = $this->allregipkc();
         $ipkctest = $this->allipkctest();
         $ipkclive = $this->allipkclive();
 
@@ -74,7 +75,7 @@ class Controller_AdminHome extends Controller
 
         // dd($inuser);
 
-        return view('Pages.Admin.View_AdminHome', compact('userLevel', 'products', 'projects', 'mitras', 'pprjdone', 'qrdone', 'qris', 'qrsdone', 'qrisspek', 'projectperproduct', 'qrisperproduct', 'qrisspekperproduct', 'anggota', 'noanggota', 'projperprod', 'qrisperprod', 'qrspekperprod', 'cas', 'regcas', 'ipkclive', 'ipkctest'));   	
+        return view('Pages.Admin.View_AdminHome', compact('userLevel', 'products', 'projects', 'mitras', 'pprjdone', 'qrdone', 'qris', 'qrsdone', 'qrisspek', 'projectperproduct', 'qrisperproduct', 'qrisspekperproduct', 'anggota', 'noanggota', 'projperprod', 'qrisperprod', 'qrspekperprod', 'cas', 'regcas', 'ipkclive', 'ipkctest', 'regipkc'));   	
     }
 
     public function getYears(){
@@ -164,8 +165,15 @@ class Controller_AdminHome extends Controller
     public function allipkclive(){
         return DB::table('ipkcs')
         ->where(function($query){
-            $query->whereRaw('nama_issuer')
-            ->orWhereIn('keanggotaan', ['Anggota']);
+            $query->WhereIn('jenis_ipkc', ['IPKC Live']);
+        })
+        ->count();
+    }
+
+    public function allipkctest(){
+        return DB::table('ipkcs')
+        ->where(function($query){
+            $query->WhereIn('jenis_ipkc', ['IPKC Test']);
         })
         ->count();
     }
@@ -181,6 +189,14 @@ class Controller_AdminHome extends Controller
 
     public function allregcas(){
         return DB::table('cas')
+        ->where(function($query){
+            $query->whereRaw('waktu_assign_project');
+        })
+        ->count();
+    }
+
+    public function allregipkc(){
+        return DB::table('ipkcs')
         ->where(function($query){
             $query->whereRaw('waktu_assign_project');
         })

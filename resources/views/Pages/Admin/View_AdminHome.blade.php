@@ -47,7 +47,7 @@
         <p>Projects QRIS</p>
       </div>
       <div class="icon">
-        <i class="fas fa-history"></i>
+        <i class="fas fa-qrcode"></i>
       </div>
         <a class="small-box-footer">QRIS</a>
     </div>
@@ -75,7 +75,7 @@
         <p>Projects Qris Spek</p>
       </div>
       <div class="icon">
-        <i class="fas fa-history"></i>
+        <i class="fas fa-qrcode"></i>
       </div>
         <a class="small-box-footer">QRIS SPESIFIKASI</a>
     </div>
@@ -114,9 +114,63 @@
         <p>Non Anggota </p>
       </div>
       <div class="icon">
-        <i class="ion ion-stats-bars"></i>
+        <i class="ion ion-person-add"></i>
       </div>
         <a class="small-box-footer">Total Non Anggota</a>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3 col-sm-6 col-12">
+    <div class="small-box bg-navy">
+      <div class="inner">
+        <h3>{{ $regcas }}</h3>
+        <p>Registrasi CA</p>
+      </div>
+      <div class="icon">
+        <i class="fas fa-credit-card"></i>
+      </div>
+        <a class="small-box-footer">Total CA Registrasi</a>
+    </div>
+  </div>
+
+  <div class="col-md-3 col-sm-6 col-12">
+    <div class="small-box bg-fuchsia">
+      <div class="inner">
+        <h3>{{ $regipkc }}</h3>
+        <p>Total Projects IPKC </p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-stats-bars"></i>
+      </div>
+        <a class="small-box-footer">Total Project IPKC</a>
+    </div>
+  </div>
+
+  <div class="col-md-3 col-sm-6 col-12">
+    <div class="small-box bg-lime">
+      <div class="inner">
+        <h3>{{ $ipkctest }}</h3>
+        <p>IPKC Test</p>
+      </div>
+      <div class="icon">
+        <i class="fas fa-id-card"></i>
+      </div>
+        <a class="small-box-footer">Total IPKC Test</a>
+    </div>
+  </div>
+
+  <div class="col-md-3 col-sm-6 col-12">
+    <div class="small-box bg-lightblue">
+      <div class="inner">
+        <h3>{{ $ipkclive }}</h3>
+        <p>IPKC Live</p>
+      </div>
+      <div class="icon">
+        <i class="fas fa-id-card"></i>
+      </div>
+        <a class="small-box-footer">Total IPKC Live</a>
     </div>
   </div>
 </div>
