@@ -40,7 +40,6 @@ class Controller_AdminCA extends Controller
         
         $request->validate([                        //validasi data yg sudah diisi di form Tambah Mitra
             'nama_issuer' => 'required|unique:cas|max:51',
-            'bin' => 'required|max:100',
             'reg_ca' => 'required|max:50',
             'waktu_assign_project' => 'required',
         ],
@@ -48,8 +47,6 @@ class Controller_AdminCA extends Controller
             'nama_issuer.required' => ' Mohon isi Nama Issuer',
                 'nama_issuer.unique' => ' Nama Issuer sudah terdaftar',
                 'nama_issuer.max' => ' Nama Issuer maksimal 51 huruf',
-            'bin.required' => ' Mohon isi BIN',
-                'bin.max' => ' BIN Maksimal 100 huruf',
             'req_ca.required' => ' Mohon isi No Registrasi CA',
                 'req_ca.max' => ' No Registrasi CA Maksimal 50 huruf',
             'waktu_assign_project.required' => 'Mohon isi Issued Date',
