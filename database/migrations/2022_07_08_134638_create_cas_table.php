@@ -17,8 +17,8 @@ class CreateCasTable extends Migration
             $table->id();
             $table->dateTime('waktu_assign_project');
             $table->string('status', 20);
-            $table->string('nama_issuer', 51);
-            $table->string('bin', 100)->nullable();
+            $table->string('nama_issuer', 255);
+            $table->string('bin', 255)->nullable();
             $table->string('reg_ca', 50)->nullable();
             $table->string('added_by', 5);
             $table->string('modified_by', 3)->nullable();

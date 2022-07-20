@@ -15,11 +15,11 @@ class CreateMitrasTable extends Migration
     {
         Schema::create('mitras', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_mitra', 51);
+            $table->string('nama_mitra', 255);
             $table->string('jenis', 20)->nullable();
             $table->string('keanggotaan', 15)->nullable();
-            $table->string('alamat', 255);
-            $table->string('nama_pic', 20);
+            $table->string('alamat', 255)->nullable();
+            $table->string('nama_pic', 20)->nullable();
             $table->string('email', 255)->nullable();
             $table->string('data_agreement', 25)->nullable();
             $table->string('reg_numb', 15)->nullable();

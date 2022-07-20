@@ -38,18 +38,16 @@ class Controller_AdminMitra extends Controller
         $this->authorize('isAdmin', auth()->user());
         
         $request->validate([                        //validasi data yg sudah diisi di form Tambah Mitra
-            'nama_mitra' => 'required|unique:mitras|max:51',
-            'alamat' => 'required|max:255',
-            'nama_pic' => 'required|max:20',
+            'nama_mitra' => 'required|unique:mitras|max:255',
+            'alamat' => 'max:255',
+            'nama_pic' => 'max:20',
         ],
         $message = [
             'nama_mitra.required' => ' Mohon isi Nama Mitra',
                 'nama_mitra.unique' => ' Nama Mitra sudah terdaftar',
-                'nama_mitra.max' => ' Nama Mitra maksimal 51 huruf',
+                'nama_mitra.max' => ' Nama Mitra maksimal 255 huruf',
                 'nama_mitra.regex' => ' Nama Mitra hanya boleh berisi huruf',
-            'alamat.required' => ' Mohon isi Alamat',
                 'alamat.max' => ' Alamat Anggota Maksimal 255 huruf',
-            'nama_pic.required' => ' Mohon isi Nama Pic',
                 'nama_pic.max' => ' Nama Pic Maksimal 20 huruf',
         ]);
 
@@ -99,17 +97,15 @@ class Controller_AdminMitra extends Controller
         $this->authorize('isAdmin', auth()->user());
         
         $request->validate([
-            'nama_mitra' => 'required|max:51',
-            'alamat' => 'required|max:255',
-            'nama_pic' => 'required|max:20',
+            'nama_mitra' => 'required|max:255',
+            'alamat' => 'max:255',
+            'nama_pic' => 'max:20',
         ],
         $message = [
             'nama_mitra.required' => ' Mohon isi Nama Mitra',
-                'nama_mitra.max' => ' Nama Mitra maksimal 51 huruf',
+                'nama_mitra.max' => ' Nama Mitra maksimal 255 huruf',
                 'nama_mitra.regex' => ' Nama Mitra hanya boleh berisi huruf',
-            'alamat.required' => ' Mohon isi Alamat',
                 'alamat.max' => ' Alamat Anggota Maksimal 255 huruf',
-            'nama_pic.required' => ' Mohon isi Nama Pic',
                 'nama_pic.max' => ' Nama Pic Maksimal 20 huruf',
         ]);
 
