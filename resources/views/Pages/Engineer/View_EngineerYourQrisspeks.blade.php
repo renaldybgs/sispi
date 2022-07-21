@@ -11,7 +11,7 @@ ASPI | Sertifikasi Projects QRIS
             <!-- /.card-header -->
             <div class="card card-info card-outline">
                 <div class="card-body">
-                    <a href="/engineer/assign" type="button" class="btn btn-success" title="Tambah Projects" id="btn-modal" style="float:left">
+                    <a href="/engineer/assignqrisspek" type="button" class="btn btn-success" title="Tambah Projects" id="btn-modal" style="float:left">
                     Tambah Projects &nbsp<i class="fas fa-plus"></i>
                     </a>
                     <table id="table1" class="table table-bordered table-hover">

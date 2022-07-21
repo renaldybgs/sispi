@@ -21,7 +21,7 @@ class Controller_EngineerAddQris extends Controller
         $ptypes = DB::select("select * from projects_types order by nama_ptype asc");   //ngambil data semua project type
         $users = $this->getUser();                                                      //ngambil data engineer dan adminxengineer
         
-        return view('Pages.Engineer.View_EngineerAddProjects', compact('userLevel', 'users', 'products','mitras','ptypes'));
+        return view('Pages.Engineer.View_EngineerAddProjectsQris', compact('userLevel', 'users', 'products','mitras','ptypes'));
     }
 
     public function storeNew(Request $request){                         //tambah data projek baru
