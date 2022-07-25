@@ -212,7 +212,7 @@ class Controller_AdminListProjects extends Controller
             // ->leftjoin('projects_types', 'projects.id_ptype', '=', 'projects_types.id')
             ->leftjoin('mitras', 'projects.id_mitra', '=', 'mitras.id')
             ->leftjoin('projects_stats', 'projects.id_pstat', '=', 'projects_stats.id')
-            ->orderBy('waktu','DESC')
+            ->orderBy('waktu','asc')
             ->get();   
     }
 }

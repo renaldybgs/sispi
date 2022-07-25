@@ -102,7 +102,7 @@
         <aside class="main-sidebar sidebar-dark-navy elevation-4">
             <!-- Brand Logo -->
             <a href="/admin/home" class="brand-link" style="background: linear-gradient(#096279, #00d4ff)">
-                <img src="{{ url('assets/img/ASPI-logo-light.png') }}" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <img src="{{ url('assets/img/aspilogo1.jpeg') }}" class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">Sistem Aspi</span>
             </a>
 

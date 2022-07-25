@@ -205,7 +205,7 @@ class Controller_EngineerYourProjects extends Controller
     	// ->where('id_current_pic', $id)
         // ->where('status_handover', '=', '0')
         ->whereNotIn('id_pstat', [15,16])
-    	->orderBy('tanggal_assign', 'desc')
+    	->orderBy('tanggal_assign', 'asc')
     	->get();
     }
 

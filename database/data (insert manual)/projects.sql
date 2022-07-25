@@ -58,13 +58,13 @@ CREATE TABLE `projects` (
 --
 
 INSERT INTO `projects` (`id`, `waktu_assign_project`, `id_pketerangan`, `id_pstat`, `id_product`, `id_mitra`, `number_special`, `nama_prod`, `typereg_numb`, `security_lab`, `lab`, `pif`, `ctf`, `report_lab`, `complience_req`, `loa_new`, `loa_sent`, `stats_temp`, `pketerangan_status`, `notes_project`, `identification_num`, `certification_no`, `last_updated`) VALUES
-(1, '2018-04-10 00:00:00', NULL, 1, 2, 3, '', 'I-J3H0XX-MVA3-2.1-PL6-CBI', 'ASPI-18PRN-0410001', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', NULL),
-(2, '2018-04-20 00:00:00', NULL, 1, 1, 5, '', 'DT-7000', 'ASPI-18PRN-0420002', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', NULL),
-(3, '2018-05-22 00:00:00', NULL, 1, 4, 8, '', 'Q20', 'ASPI-18PRN-0522003', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', NULL),
+(1, '2018-04-10 00:00:00', NULL, 13, 2, 3, '', 'I-J3H0XX-MVA3-2.1-PL6-CBI', 'ASPI-18PRN-0410001', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', NULL),
+(2, '2018-04-20 00:00:00', NULL, 1, 1, 13, '', 'DT-7000', 'ASPI-18PRN-0420002', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', NULL),
+(3, '2018-05-22 00:00:00', NULL, 1, 4, 19, '', 'Q20', 'ASPI-18PRN-0522003', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', NULL),
 (4, '2018-05-09 00:00:00', NULL, 1, 4, 2, '', 'WPOS-3', 'ASPI-18PRN-0509004', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', NULL),
-(5, '2018-06-22 00:00:00', NULL, 1, 1, 11, '', 'OKI', 'ASPI-18PRN-0622005', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', NULL),
-(6, '2018-07-20 00:00:00', NULL, 1, 4, 12, '', 'Valina', 'ASPI-18PRN-0720006', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', NULL),
-(7, '2018-08-01 00:00:00', NULL, 1, 2, 7, '', 'FXR5 v1.0', 'ASPI-18PRN-0801007', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', NULL),
+(5, '2018-06-22 00:00:00', NULL, 1, 1, 28, '', 'OKI', 'ASPI-18PRN-0622005', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', NULL),
+(6, '2018-07-20 00:00:00', NULL, 1, 4, 29, '', 'Valina', 'ASPI-18PRN-0720006', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', NULL),
+(7, '2018-08-01 00:00:00', NULL, 1, 2, 15, '', 'FXR5 v1.0', 'ASPI-18PRN-0801007', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', NULL),
 (8, '2018-08-09 00:00:00', NULL, 1, 1, 16, '', 'The Kalignite Software Platform on Microsoft Windows', 'ASPI-18PRN-0809007', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', NULL),
 (9, '2018-08-09 00:00:00', NULL, 1, 4, 6, '', 'MT280, CT280; Bluebird Payment EMV Kernel 3.0', 'ASPI-18PRN-0809008', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', NULL),
 (10, '2018-09-05 00:00:00', NULL, 1, 4, 1, '', 'BluePad-55', 'ASPI-18PRN-0905010', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', NULL),

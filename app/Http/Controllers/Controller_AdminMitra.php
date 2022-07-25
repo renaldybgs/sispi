@@ -81,7 +81,7 @@ class Controller_AdminMitra extends Controller
     public function get(){           
         $this->authorize('isAdmin', auth()->user());
                                        
-        $all_mitra['data'] = Mitra::orderby("id", "asc")->get();    //mengambil semua data mitra
+        $all_mitra['data'] = Mitra::orderby("reg_numb", "asc")->get();    //mengambil semua data mitra
 
         return response()->json($all_mitra);
     }
