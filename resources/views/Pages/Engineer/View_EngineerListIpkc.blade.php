@@ -24,9 +24,9 @@ ASPI | Sertifikasi List Projects IPKC
                       <th class="text-center">No</th>
                       <th class="text-center">Issuer</th>
                       <th class="text-center">Tanggal Mulai</th>
-                      <th class="text-center">No Ipkc</th>
+                      <th class="text-center">No IPKC</th>
                       <th class="text-center">BIN</th>
-                      <th class="text-center">Jenis Ipkc</th>
+                      <th class="text-center">Jenis IPKC</th>
                       <th class="text-center">Notes</th>
                       <th class="text-center">Status</th>                     
                     </tr>

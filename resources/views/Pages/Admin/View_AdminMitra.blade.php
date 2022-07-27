@@ -29,7 +29,7 @@ Aspi | Eksekutif Institusi
                             <th class="text-center">No</th>
                             <th class="text-center">Nama Institusi</th>
                             <th class="text-center">Jenis</th>
-                            <th class="text-center">keanggotaan</th>
+                            <th class="text-center">Keanggotaan</th>
                             <th class="text-center">Alamat</th>
                             <th class="text-center">Nama Pic</th>
                             <th class="text-center">Email</th>

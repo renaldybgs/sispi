@@ -172,7 +172,7 @@
                                 <li class="nav-item">
                                     <a href="/admin/ipkc" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>List Project IPKC</p>
+                                        <p>List Project Ipkc</p>
                                     </a>
                                 </li>
                             </ul>

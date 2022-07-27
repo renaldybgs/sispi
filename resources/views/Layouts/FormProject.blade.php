@@ -31,7 +31,7 @@
 		</div>
 	</div>
 
-	<div class="form-group">
+	<div class="form-group"> 
 		<div class ="input-group-addon">
 			<label for="nama_prod" style="font-weight:bolder" style="margin-top: -30px">Product Name</label>
 				<br>
@@ -55,5 +55,59 @@
 				])
 			!!}	
 		</div>
+	</div>
+
+			<div class="form-group">
+				<div class ="input-group-addon">
+					<label for="identification_num" style="font-weight:bolder" style="margin-top: -30px">Identification Number</label>
+						<br>
+					{!! Form::text('identification_num', null,
+						['class'=> 'form-control',
+							'rows' => '2',
+							'id' =>'identification_num', 
+							'placeholder' => 'Masukan Nomor identification number',
+							'style' =>'margin-bottom: 10px'
+						])
+					!!}		
+					<!-- {!!$errors->first('nama_product','<div class="invalid-feedback flash">$message</div>')!!} -->
+				</div>
+			</div>
+
+
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group">
+				<div class ="input-group-addon">
+					<label for="number_special" style="font-weight:bolder" style="margin-top: -30px">Number Special</label>
+						<br>
+					{!! Form::text('number_special', null,
+						['class'=> 'form-control',
+							'rows' => '2',
+							'id' =>'number_special', 
+							'placeholder' => 'Masukan Number Special',
+							'style' =>'margin-bottom: 10px'
+						])
+					!!}		
+					<!-- {!!$errors->first('nama_product','<div class="invalid-feedback flash">$message</div>')!!} -->
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<div class ="input-group-addon">
+					<label for="certification_no" style="font-weight:bolder" style="margin-top: -30px">Certification No</label>
+						<br>
+					{!! Form::text('certification_no', null,
+						['class'=> 'form-control',
+							'rows' => '2',
+							'id' =>'certification_no',
+							'placeholder' => 'Masukan Nomor Certification No',
+							'style' =>'margin-bottom: 10px'
+						])
+					!!}		
+					<!-- {!!$errors->first('nama_product','<div class="invalid-feedback flash">$message</div>')!!} -->
+				</div>
+			</div>
+		</div>	
 	</div>
 {!! Form::close() !!}

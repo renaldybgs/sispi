@@ -10,7 +10,7 @@ use App\Qris;
 use App\Qrisspek;
 use App\cas;
 use App\Ipkc;
-use Illuminate\Http\Request;
+use Illuminate\Http\Request; 
 use Illuminate\Support\Facades\DB;
 
 class Controller_AdminHome extends Controller
@@ -105,7 +105,7 @@ class Controller_AdminHome extends Controller
     public function allProjectPstat($pstat){
         return DB::table('projects')
         ->where(function($query){
-            $query->whereRaw('YEAR(waktu_assign_project) = YEAR(current_timestamp)')
+            $query->whereRaw('waktu_assign_project')
             ->orWhereNotIn('id_pstat', [16]);
         })
         ->where('id_pstat', $pstat)
@@ -127,7 +127,7 @@ class Controller_AdminHome extends Controller
     public function allQrisPstat($pstat){
         return DB::table('qris')
         ->where(function($query){
-            $query->whereRaw('YEAR(waktu_assign_project) = YEAR(current_timestamp)')
+            $query->whereRaw('waktu_assign_project')
             ->orWhereNotIn('id_pstat', [16]);
         })
         ->where('id_pstat', $pstat)
@@ -137,7 +137,7 @@ class Controller_AdminHome extends Controller
     public function allQrisspekPstat($pstat){
         return DB::table('qrisspeks')
         ->where(function($query){
-            $query->whereRaw('YEAR(waktu_assign_project) = YEAR(current_timestamp)')
+            $query->whereRaw('waktu_assign_project')
             ->orWhereNotIn('id_pstat', [16]);
         })
         ->where('id_pstat', $pstat)
@@ -181,7 +181,7 @@ class Controller_AdminHome extends Controller
     public function allProjects(){
         return DB::table('projects')
         ->where(function($query){
-            $query->whereRaw('YEAR(waktu_assign_project) = YEAR(current_timestamp)')
+            $query->whereRaw('waktu_assign_project')
             ->orWhereNotIn('id_pstat', [16]);
         })
         ->count();
@@ -206,7 +206,7 @@ class Controller_AdminHome extends Controller
     public function allQris(){
         return DB::table('qris')
         ->where(function($query){
-            $query->whereRaw('YEAR(waktu_assign_project) = YEAR(current_timestamp)')
+            $query->whereRaw('waktu_assign_project')
             ->orWhereNotIn('id_pstat', [16]);
         })
         ->count();
@@ -215,7 +215,7 @@ class Controller_AdminHome extends Controller
     public function allQrisspek(){
         return DB::table('qrisspeks')
         ->where(function($query){
-            $query->whereRaw('YEAR(waktu_assign_project) = YEAR(current_timestamp)')
+            $query->whereRaw('waktu_assign_project')
             ->orWhereNotIn('id_pstat', [16]);
         })
         ->count();

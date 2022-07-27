@@ -74,6 +74,9 @@ class Controller_AdminListProjects extends Controller
         $project->nama_prod = $request->nama_prod;
         // $project->number_special = $request->number_special;
         $project->typereg_numb = $request->typereg_numb; 
+        $project->identification_num = $request->identification_num; 
+        $project->number_special = $request->number_special;
+        $project->certification_no = $request->certification_no; 
         // $project->modified_by = $request->modified_by;                                 
         // $project->id_current_pic = $project->id_original_pic;
 

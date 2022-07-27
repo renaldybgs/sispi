@@ -29,7 +29,7 @@ ASPI | Eksekutif List Projects IPKC
                         <th class="text-center">No</th>
                         <th class="text-center">Nama Issuer</th>
                         <th class="text-center">Issued Date</th>
-                        <th class="text-center">No Ipkc</th>
+                        <th class="text-center">No IPKC</th>
                         <th class="text-center">BIN</th>
                         <th class="text-center">Jenis IPKC</th>
                         <th class="text-center">Notes</th>
