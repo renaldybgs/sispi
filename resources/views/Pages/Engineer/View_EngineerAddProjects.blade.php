@@ -90,6 +90,43 @@
                 {{ $message }}</div>
             @enderror
           </div>
+
+          <div id="identification_num" class="form-group">
+            <label for="identification_num">identification_num</label>
+            <input type="text" class="form-control  @error('identification_num') is-invalid @enderror" id="identification_num" placeholder="identification_num" name="identification_num" autocomplete="off" value="{{ old('identification_num') }}" style="width: 100%;">
+            @error('identification_num')
+              <div class="invalid-feedback flash" style="margin-top: 2px">
+                {{ $message }}</div>
+            @enderror
+          </div>
+
+          <div id="certification_no" class="form-group">
+            <label for="certification_no">certification_no</label>
+            <input type="text" class="form-control  @error('certification_no') is-invalid @enderror" id="certification_no" placeholder="certification_no" name="certification_no" autocomplete="off" value="{{ old('certification_no') }}" style="width: 100%;">
+            @error('certification_no')
+              <div class="invalid-feedback flash" style="margin-top: 2px">
+                {{ $message }}</div>
+            @enderror
+          </div>
+
+          <div id="number_special" class="form-group">
+            <label for="certification_no">number_special</label>
+            <input type="text" class="form-control  @error('number_special') is-invalid @enderror" id="number_special" placeholder="number_special" name="number_special" autocomplete="off" value="{{ old('number_special') }}" style="width: 100%;">
+            @error('number_special')
+              <div class="invalid-feedback flash" style="margin-top: 2px">
+                {{ $message }}</div>
+            @enderror
+          </div>
+
+          <div id="loa_new" class="form-group">
+            <label for="loa_new">Issued Date</label>
+            <input type="date" class="form-control  @error('loa_new') is-invalid @enderror" id="loa_new" placeholder="Masukan Issued Date" name="loa_new" autocomplete="off" value="{{ old('loa_new') }}" style="width: 100%;">
+            @error('loa_new')
+              <div class="invalid-feedback flash" style="margin-top: 2px">
+                {{ $message }}</div>
+            @enderror
+          </div>
+
           <button type="submit" class="btn btn-outline-primary float-right" id="btn-submit">Submit</button>
         </form> 
       </div>

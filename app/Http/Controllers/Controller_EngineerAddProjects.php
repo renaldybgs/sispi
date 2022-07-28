@@ -61,6 +61,10 @@ class Controller_EngineerAddProjects extends Controller
             'nama_prod' => $request->nama_prod,
             'typereg_numb' => $request->typereg_numb,
             'waktu_assign_project' => $request->waktu_assign_project,
+            'identification_num' => $request->identification_num,
+            'certification_no' => $request->certification_no,
+            'number_special' => $request->number_special,
+            'loa_new' => $request->loa_new
             // 'direktori_project' => $project_dir
         ]);
 

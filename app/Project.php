@@ -9,13 +9,13 @@ class Project extends Model
 {
     protected $attributes = [
     	'id_pstat' => 1,
-    	'number_special' => '',
+    	// 'number_special' => '',
     	'nama_prod' => '',
     	'security_lab' => '',
     	'lab' => '',
         'notes_project' => '',
-        'identification_num' => '',
-        'certification_no' => '',
+        // 'identification_num' => '',
+        // 'certification_no' => '', 
 
     ];
 
