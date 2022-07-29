@@ -26,6 +26,7 @@ ASPI | Sertifikasi Projects QRIS
                                 <th class="text-center">Ijin QRIS BI</th>
                                 <th class="text-center" style="width: 175px">Status</th>
                                 <th class="text-center">Action</th>
+                                <th class="text-center">Last Updated</th>
                             </tr>
                         </thead>
                     </table>
@@ -59,7 +60,8 @@ ASPI | Sertifikasi Projects QRIS
                 {data: 'jenis_qrisbi', name: 'jenis_qrisbi', class: 'text-center'},
                 {data: 'ijin_qrisbi', name: 'ijin_qrisbi', class: 'text-center'},
                 {data: 'status', name: 'status', class: 'text-center'},
-                {data: 'action', name: 'action', class: 'text-center'}
+                {data: 'action', name: 'action', class: 'text-center'},
+                {data: 'last_updated', name: 'last_updated', class: 'text-center'}
                 ],
             });
         });

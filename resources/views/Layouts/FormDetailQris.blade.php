@@ -27,6 +27,11 @@
                             <th>Notes Project</th>
                             <td>{{ $pbn->notes_project }}</td>
                         </tr>
+                        <tr class="text-center">
+                            <th>Last Updated</th>
+                            <td>{{ $pbn->last_updated }}</td>
+                        </tr>
+
                     </thead>
                 </table>
             </div>

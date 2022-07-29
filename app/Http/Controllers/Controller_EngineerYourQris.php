@@ -43,6 +43,7 @@ class Controller_EngineerYourQris extends Controller
 
         else {
             $qris->id_pstat = $pstat;
+            $qris->last_updated = Carbon::now()->toDateTimeString();
         }
 
         $qris->save();                                                       //save perubahan data 
@@ -121,7 +122,7 @@ class Controller_EngineerYourQris extends Controller
 
     public function getQrisData($id){                                     //ngambil data buat ditamplin di halaman Engineer - Project Own Going (Own Project)
         return DB::table('qris')
-        ->select(DB::raw('qris.id, qris.no_rekomendasi, qris.jenis_qrisbi, qris.ijin_qrisbi, qris.pketerangan_status, products.nama_product, qris.id_pstat, projects_stats.nama_pstat, mitras.nama_mitra, date(qris.waktu_assign_project) as tanggal_assign'))
+        ->select(DB::raw('qris.id, qris.no_rekomendasi, qris.jenis_qrisbi, qris.ijin_qrisbi, qris.pketerangan_status, products.nama_product, qris.id_pstat, projects_stats.nama_pstat, mitras.nama_mitra, date(qris.waktu_assign_project) as tanggal_assign, date(qris.last_updated) as last_updated'))
         ->leftjoin('products', 'qris.id_product', '=', 'products.id')
         // ->leftjoin('projects_types', 'projects.id_ptype', '=', 'projects_types.id')
         ->leftjoin('projects_stats', 'qris.id_pstat', '=', 'projects_stats.id')
