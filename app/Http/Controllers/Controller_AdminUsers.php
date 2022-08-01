@@ -81,13 +81,14 @@ class Controller_AdminUsers extends Controller
     	if(auth()->id() != $id){						//pembatas agar user gak bisa ngapus data sendiri
     		User::where('id', $id)->update(['status_user' => 0]);	//ubah status menjadi 0, tanda user non aktif
     	}
+    	// User::where('id', $id)->delete();                          //mencari data mitra berdasarkan idnya lalu menghapusnya
     	$userData['data'] = User::orderby("id", "asc")->get();	//ngambil data yg lain setelah delete data
 
 	    return response()->json($userData);						//balikin data yg udh diambil ke js buat refresh table
     }
 
     public function edit($id){						   //nyiapin form Edit User
-    	$this->authorize('isAdmin', auth()->user());
+    	$this->authorize('isAdmin', auth()->user()); 
         
     	$model = User::where('id', $id)->firstOrFail();//ngambil data yg mau diedit
     	$levels = $this->getrole($id); 				   //ngambil data 
