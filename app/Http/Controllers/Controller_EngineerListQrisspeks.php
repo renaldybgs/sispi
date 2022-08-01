@@ -132,7 +132,7 @@ class Controller_EngineerListQrisspeks extends Controller
 
     public function getAllQrisspekData(){   //ambil data buat ditempel di table
         return DB::table('qrisspeks')
-            ->select(DB::raw('qrisspeks.id, products.nama_product, mitras.nama_mitra, DATE(qrisspeks.waktu_assign_project) as waktu, qrisspeks.no_formulir, qrisspeks.no_spek, DATE(qrisspeks.spek_qris) as spek_qris, projects_stats.id as id_pstat, qrisspeks.notes_project'))
+            ->select(DB::raw('qrisspeks.id, products.nama_product, mitras.nama_mitra, DATE(qrisspeks.waktu_assign_project) as waktu, qrisspeks.no_formulir, qrisspeks.no_spek, DATE(qrisspeks.spek_qris) as spek_qris, projects_stats.id as id_pstat, qrisspeks.notes_project, DATE(qrisspeks.last_updated) as last_updated'))
             ->leftjoin('products', 'qrisspeks.id_product', '=', 'products.id')
             ->leftjoin('mitras', 'qrisspeks.id_mitra', '=', 'mitras.id')
             ->leftjoin('projects_stats', 'qrisspeks.id_pstat', '=', 'projects_stats.id')

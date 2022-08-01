@@ -34,7 +34,7 @@ class Controller_EngineerHistoryQrisspeks extends Controller
 
    public function getQrisspekData($id){                                     //ngambil data buat ditamplin di halaman Engineer - Project Own Going (Own Project)
         return DB::table('qrisspeks')
-        ->select(DB::raw('qrisspeks.id, qrisspeks.no_formulir, qrisspeks.no_spek, DATE(qrisspeks.spek_qris) as spek_qris, qrisspeks.pketerangan_status, products.nama_product, qrisspeks.id_pstat, projects_stats.nama_pstat, mitras.nama_mitra, date(qrisspeks.waktu_assign_project) as tanggal_assign'))
+        ->select(DB::raw('qrisspeks.id, qrisspeks.no_formulir, qrisspeks.no_spek, DATE(qrisspeks.spek_qris) as spek_qris, qrisspeks.pketerangan_status, products.nama_product, qrisspeks.id_pstat, projects_stats.nama_pstat, mitras.nama_mitra, date(qrisspeks.waktu_assign_project) as tanggal_assign, DATE(qrisspeks.last_updated) as last_updated'))
         ->leftjoin('products', 'qrisspeks.id_product', '=', 'products.id')
         // ->leftjoin('projects_types', 'projects.id_ptype', '=', 'projects_types.id')
         ->leftjoin('projects_stats', 'qrisspeks.id_pstat', '=', 'projects_stats.id')

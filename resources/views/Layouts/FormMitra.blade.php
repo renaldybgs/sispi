@@ -21,7 +21,7 @@
 		<div class ="input-group-addon">
 			<label for="jenis" style="font-weight:bolder" style="margin-top: -30px">Jenis</label>
 				<br>
-			{!! Form::select('jenis', [' '=> 'Pilih Jenis', 'Bank' => 'Bank', 'Non Bank' => 'Non Bank', 'Fintek' => 'Fintek', 'Switching' => 'Switching', 'Vendor' => 'Vendor'], null,
+			{!! Form::select('jenis', [' '=> 'Pilih Jenis', 'Bank' => 'Bank', 'Non Bank' => 'Non Bank', 'Fintek' => 'Fintek', 'Switching' => 'Switching', 'Vendor' => 'Vendor', 'Telekomunikasi' => 'Telekomunikasi'], null,
 				['class'=> 'form-control',
 					'id' =>'jenis', 
 					'style' =>'margin-bottom: 10px'

@@ -26,6 +26,8 @@ ASPI | Sertifikasi Projects QRIS
                                 <th class="text-center">Tanggal Spesifikasi</th>
                                 <th class="text-center" style="width: 175px">Status</th>
                                 <th class="text-center">Action</th>
+                                <th class="text-center">Last Updated</th>
+
                             </tr>
                         </thead>
                     </table>
@@ -57,9 +59,10 @@ ASPI | Sertifikasi Projects QRIS
                 {data: 'tanggal_assign', name: 'tanggal_assign', class: 'text-center'},
                 {data: 'no_formulir', name: 'no_formulir', class: 'text-center'},
                 {data: 'no_spek', name: 'no_spek', class: 'text-center'},
-                {data: 'tanggal_assign', name: 'tanggal_assign', class: 'text-center'},
+                {data: 'spek_qris', name: 'spek_qris', class: 'text-center'},
                 {data: 'status', name: 'status', class: 'text-center'},
-                {data: 'action', name: 'action', class: 'text-center'}
+                {data: 'action', name: 'action', class: 'text-center'},
+                {data: 'last_updated', name: 'last_updated', class: 'text-center'},
                 ],
             });
         });

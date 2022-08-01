@@ -89,7 +89,8 @@ ASPI | Sertifikasi List Projects QRIS
                         <th class="text-center">No Spesifikasi</th>
                         <th class="text-center">Tanggal Spesifikasi</th>
                         <th class="text-center">Notes</th>
-                        <th class="text-center">Status</th>                      
+                        <th class="text-center">Status</th>
+                        <th class="text-center">Last Updated</th>                       
                     </tr>
                 </thead>
             </table>
@@ -123,7 +124,7 @@ ASPI | Sertifikasi List Projects QRIS
       {data: 'spek_qris', name: 'spek_qris', class: 'text-center'},
       {data: 'notes_project', name: 'notes_project', class: 'text-center'},
       {data: 'id_pstat', name: 'id_pstat', class: 'text-center'},
-      // {data: 'added_by', name: 'added_by', class: 'text-center'},
+      {data: 'last_updated', name: 'last_updated', class: 'text-center'},
       // {data: 'modified_by', name: 'modified_by', class: 'text-center'}
     ]
   });

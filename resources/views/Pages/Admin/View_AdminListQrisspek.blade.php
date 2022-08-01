@@ -97,7 +97,8 @@ ASPI | Eksekutif List Projects Qris
                         <th class="text-center">Status</th>     
                         @if($userLevel === 4)
                         <th class="text-center" style="width: 75px">Action</th>  
-                        @endif                 
+                        @endif
+                        <th class="text-center">Last Updated</th>                 
                     </tr>
                 </thead>
             </table>
@@ -134,7 +135,7 @@ ASPI | Eksekutif List Projects Qris
       @if($userLevel === 4)
       {data: 'action', name: 'action', class: 'text-center'},
       @endif  
-      // {data: 'added_by', name: 'added_by', class: 'text-center'},
+      {data: 'last_updated', name: 'last_updated', class: 'text-center'},
       // {data: 'modified_by', name: 'modified_by', class: 'text-center'}
     ]
   });
