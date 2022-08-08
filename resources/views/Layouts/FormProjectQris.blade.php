@@ -2,6 +2,20 @@
 	'route' => ['adminqris.update', $qris->id],
 	'method' => 'PUT'
 ]) !!}
+	
+	<div class="form-group">
+		<div class ="input-group-addon">
+			<label for="waktu_assign_project" style="font-weight:bolder" style="margin-top: -30px">Tanggal Mulai</label>
+				<br>
+			{!! Form::date('waktu_assign_project', null,
+				['class'=> 'form-control',
+					'id' =>'waktu_assign_project',
+					'placeholder' => 'Masukan Tanggal Mulai',
+					'style' =>'margin-bottom: 10px'
+				])
+			!!}		
+		</div>
+	</div>
 
 	<div class="form-group">
 		<div class ="input-group-addon">
@@ -37,7 +51,8 @@
 				<br>
 			{!! Form::text('no_rekomendasi', null,
 				['class'=> 'form-control',
-					'id' =>'no_rekomendasi', 
+					'id' =>'no_rekomendasi',
+					'placeholder' => 'No Rekomendasi',  
 					'style' =>'margin-bottom: 10px'
 				])
 			!!}	
@@ -54,6 +69,20 @@
 						'style' =>'margin-bottom: 10px'
 					]);
 				!!}		
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class ="input-group-addon">
+			<label for="tgl_ijinbi" style="font-weight:bolder" style="margin-top: -30px">Tanggal Ijin BI</label>
+				<br>
+			{!! Form::date('tgl_ijinbi', null,
+				['class'=> 'form-control',
+					'id' =>'tgl_ijinbi',
+					'placeholder' => 'Masukan Tanggal Ijin BI',
+					'style' =>'margin-bottom: 10px'
+				])
+			!!}		
 		</div>
 	</div>
 {!! Form::close() !!}

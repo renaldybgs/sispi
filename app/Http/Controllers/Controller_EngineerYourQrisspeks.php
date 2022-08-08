@@ -35,8 +35,8 @@ class Controller_EngineerYourQrisspeks extends Controller
 
         // $project->id_pstat = $pstat;
 
-        if($pstat == 20){                      //kalo statnys mau diganti
-            $qrisspek->id_pstat = 20;
+        if($pstat == 22){                      //kalo statnys mau diganti
+            $qrisspek->id_pstat = 22;
             $qrisspek->spek_qris = Carbon::now()->toDateTimeString();  
         }
 

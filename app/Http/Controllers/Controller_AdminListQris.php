@@ -53,7 +53,9 @@ class Controller_AdminListQris extends Controller
         $qris->id_mitra = $request->id_mitra;                  
         $qris->id_product = $request->id_product;                             
         $qris->no_rekomendasi = $request->no_rekomendasi;
-        $qris->jenis_qrisbi = $request->jenis_qrisbi; 
+        $qris->jenis_qrisbi = $request->jenis_qrisbi;
+        $qris->tgl_ijinbi = $request->tgl_ijinbi;
+        $qris->waktu_assign_project = $request->waktu_assign_project;
 
         $qris->save(); 
     }
@@ -106,7 +108,7 @@ class Controller_AdminListQris extends Controller
 
     public function getPBN($id){
         return DB::table('qris')
-        ->select(DB::raw('qris.id, DATE(qris.surat_rekomendasi) as surat_rekomendasi, qris.jenis_qrisbi, qris.ijin_qrisbi, DATE(qris.tgl_ijinbi) as tgl_ijinbi, qris.notes_project, DATE(qris.last_updated) as last_updated'))
+        ->select(DB::raw('qris.id, DATE(qris.waktu_assign_project) as waktu_assign_project, DATE(qris.surat_rekomendasi) as surat_rekomendasi, qris.jenis_qrisbi, qris.ijin_qrisbi, DATE(qris.tgl_ijinbi) as tgl_ijinbi, qris.notes_project, DATE(qris.last_updated) as last_updated'))
         ->where('qris.id', '=', $id)
         ->first();
     }
