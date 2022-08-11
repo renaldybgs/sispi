@@ -10,7 +10,7 @@ class Qris extends Model
     protected $attributes = [
     	'id_pstat' => 1,
     	'jenis_qrisbi' => '',
-    	'jenis_qrisbi' => '',
+    	'ijin_qrisbi' => '',
         'notes_project' => '',
 
     ];

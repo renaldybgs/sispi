@@ -45,6 +45,20 @@
 			!!}		
 		</div>
 	</div>
+
+	<div class="form-group">
+		<div class ="input-group-addon">
+			<label for="spek_qris" style="font-weight:bolder" style="margin-top: -30px">Tanggal Spek</label>
+				<br>
+			{!! Form::date('spek_qris', null,
+				['class'=> 'form-control',
+					'id' =>'spek_qris',
+					'placeholder' => 'Masukan Tanggal Spek Qris',
+					'style' =>'margin-bottom: 10px'
+				])
+			!!}		
+		</div>
+	</div>
 	
 
 {!! Form::close() !!}

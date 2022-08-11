@@ -55,8 +55,9 @@ class Controller_EngineerYourQrisspeks extends Controller
         $no_formulir = $qrisspek->no_formulir;                                         //ngambil lab
         $no_spek = $qrisspek->no_spek;                       //ngambil security_lab
         $notes = $qrisspek->notes_project;                                       //ngambil notes
+        $spek_qris = $qrisspek->spek_qris;
 
-        return view('Layouts.FormProgresQrisspek', compact('qrisspek', 'no_formulir', 'no_spek', 'notes'));  //buka formnya dengan data2 yg udh disiapin sebelumnya
+        return view('Layouts.FormProgresQrisspek', compact('qrisspek', 'no_formulir', 'no_spek', 'notes', 'spek_qris'));  //buka formnya dengan data2 yg udh disiapin sebelumnya
     }
 
         public function updatePBN(Request $request, $id){                           //update data setelah nginput di form
@@ -79,7 +80,8 @@ class Controller_EngineerYourQrisspeks extends Controller
 
         $qrisspek->no_formulir = $request->no_formulir;                      
         $qrisspek->no_spek = $request->no_spek;                       
-        $qrisspek->notes_project = $request->notes_project;                      
+        $qrisspek->notes_project = $request->notes_project; 
+        $qrisspek->spek_qris = $request->spek_qris;                     
         $qrisspek->last_updated = Carbon::now()->toDateTimeString();
 
         $qrisspek->save();                                                       //simpan perubahan

@@ -58,8 +58,9 @@ class Controller_EngineerYourQris extends Controller
         $notes = $qris->notes_project;                                       //ngambil notes
         $ijin_qrisbi = $qris->ijin_qrisbi;
         $tgl_ijinbi = $qris->tgl_ijinbi;
+        $surat_rekomendasi = $qris->surat_rekomendasi;
 
-        return view('Layouts.FormProgresQris', compact('qris', 'no_rekomendasi', 'jenis_qrisbi', 'notes', 'ijin_qrisbi', 'tgl_ijinbi'));  //buka formnya dengan data2 yg udh disiapin sebelumnya
+        return view('Layouts.FormProgresQris', compact('qris', 'no_rekomendasi', 'jenis_qrisbi', 'notes', 'ijin_qrisbi', 'tgl_ijinbi', 'surat_rekomendasi'));  //buka formnya dengan data2 yg udh disiapin sebelumnya
     }
 
         public function updatePBN(Request $request, $id){                           //update data setelah nginput di form
@@ -85,6 +86,7 @@ class Controller_EngineerYourQris extends Controller
         $qris->notes_project = $request->notes_project;                      
         $qris->ijin_qrisbi = $request->ijin_qrisbi;
         $qris->tgl_ijinbi = $request->tgl_ijinbi;
+        $qris->surat_rekomendasi = $request->surat_rekomendasi;
         $qris->last_updated = Carbon::now()->toDateTimeString();
 
         $qris->save();                                                       //simpan perubahan

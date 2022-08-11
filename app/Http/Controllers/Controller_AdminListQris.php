@@ -108,7 +108,7 @@ class Controller_AdminListQris extends Controller
 
     public function getPBN($id){
         return DB::table('qris')
-        ->select(DB::raw('qris.id, DATE(qris.waktu_assign_project) as waktu_assign_project, DATE(qris.surat_rekomendasi) as surat_rekomendasi, qris.jenis_qrisbi, qris.ijin_qrisbi, DATE(qris.tgl_ijinbi) as tgl_ijinbi, qris.notes_project, DATE(qris.last_updated) as last_updated'))
+        ->select(DB::raw('qris.id, DATE(qris.surat_rekomendasi) as surat_rekomendasi, qris.jenis_qrisbi, qris.ijin_qrisbi, DATE(qris.tgl_ijinbi) as tgl_ijinbi, qris.notes_project, DATE(qris.last_updated) as last_updated'))
         ->where('qris.id', '=', $id)
         ->first();
     }
