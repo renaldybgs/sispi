@@ -18,17 +18,16 @@ ASPI | Eksekutif List Projects Qris
 <div class="row mt-2">
   <div class="col-md-12">
 
-<!--   <div class="card card-outline card-primary collapsed-card">
+  <div id="accordion">
+  <div class="card card-info">
     <div class="card-header">
-    <h3 class="card-title">Filter List Project</h3>
-
-    <div class="card-tools">
-      <button type="button" class="btn btn-tool" data-card-widget="collapse">
-        <i class="fas fa-plus"></i>
-      </button>
+      <h4 class="card-title w-100">
+        <a class="d-block w-100 collapsed" data-toggle="collapse" href="#collapseOne" aria-expanded="false">
+        Filter List Project
+        </a>
+      </h4>
     </div>
-    </div>
-    
+    <div id="collapseOne" class="collapse" data-parent="#accordion" style="">
       <div class="card-body">
         <div class="row">
           <div class="col-md-4 col-sm-6 col-12">
@@ -45,27 +44,8 @@ ASPI | Eksekutif List Projects Qris
 
           <div class="col-md-4 col-sm-6 col-12">
             <div class="form-group">
-              <label>Mitra</label>
-                <select class="select2 form-control filter" data-column="4" style="width: 100%;">
-                  <option value="">-</option>
-                  @foreach($mitra as $mtr)
-                    <option value="{{$mtr->nama_mitra}}">{{$mtr->nama_mitra}}</option>
-                  @endforeach
-                </select>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-md-4 col-sm-6 col-12">
-            <label>Project</label>
-            <input data-column="5" type="search" class="form-control filter" placeholder aria-controls="table1">
-          </div>
-
-          <div class="col-md-4 col-sm-6 col-12">
-            <div class="form-group">
               <label>Status</label>
-                <select class="select2 form-control filter" data-column="7" style="width: 100%;">
+                <select class="select2 form-control filter" data-column="6" style="width: 100%;">
                   <option value="">-</option>
                   @foreach($pstat as $pst)
                     <option value="{{$pst->nama_pstat}}">{{$pst->nama_pstat}}</option>
@@ -75,7 +55,9 @@ ASPI | Eksekutif List Projects Qris
           </div>
         </div>
       </div>
-  </div> -->
+    </div>
+    </div>
+  </div>
 
     <div class="card card-info card-outline">
 
