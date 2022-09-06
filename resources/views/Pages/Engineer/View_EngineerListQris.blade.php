@@ -69,35 +69,6 @@ ASPI | Sertifikasi List Projects QRIS
                         <th class="text-center">Tanggal Mulai</th>
                         <th class="text-center">No Rekomendasi</th>
                         <th class="text-center">Jenis Ijin BI</th>
-                        <th class="text-center">Status</th>
-                        @if($userLevel === 4)      
-                        <th class="text-center" style="width: 75px">Action</th>
-                        @endif                 
-                    </tr>
-                </thead>
-            </table>
-        </div>
-        <!-- /.card-body -->
-    </div>
-    <!-- /.card -->
-  </div>
-    <!-- /.col -->
-</div>
-    <div class="card card-info card-outline">
-
-        <div class="card-body">
-<!--             <a href="/admin/project/export" type="button" class="btn btn-success" style="float:left">
-                Excel &nbsp<i class="fas fa-file-download"></i>
-            </a> -->
-            <table id="table1" class="table table-bordered table-hover">
-                <thead>
-                    <tr>
-                        <th class="text-center">No</th>
-                        <th class="text-center">Nama Institusi</th>
-                        <th class="text-center">Type Product</th>
-                        <th class="text-center">Tanggal Mulai</th>
-                        <th class="text-center">No Rekomendasi</th>
-                        <th class="text-center">Jenis Ijin BI</th>
                         <th class="text-center">Status</th>                      
                     </tr>
                 </thead>
