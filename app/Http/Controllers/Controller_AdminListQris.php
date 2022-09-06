@@ -55,7 +55,7 @@ class Controller_AdminListQris extends Controller
         $qris->no_rekomendasi = $request->no_rekomendasi;
         $qris->jenis_qrisbi = $request->jenis_qrisbi;
         $qris->tgl_ijinbi = $request->tgl_ijinbi;
-        $qris->waktu_assign_project = $request->waktu_assign_project;
+        $qris->surat_rekomendasi = $request->surat_rekomendasi;
 
         $qris->save(); 
     }

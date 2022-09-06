@@ -3,19 +3,6 @@
 	'method' => 'PUT'
 ]) !!}
 	
-	<div class="form-group">
-		<div class ="input-group-addon">
-			<label for="waktu_assign_project" style="font-weight:bolder" style="margin-top: -30px">Tanggal Mulai</label>
-				<br>
-			{!! Form::date('waktu_assign_project', null,
-				['class'=> 'form-control',
-					'id' =>'waktu_assign_project',
-					'placeholder' => 'Masukan Tanggal Mulai',
-					'style' =>'margin-bottom: 10px'
-				])
-			!!}		
-		</div>
-	</div>
 
 	<div class="form-group">
 		<div class ="input-group-addon">
@@ -80,6 +67,20 @@
 				['class'=> 'form-control',
 					'id' =>'tgl_ijinbi',
 					'placeholder' => 'Masukan Tanggal Ijin BI',
+					'style' =>'margin-bottom: 10px'
+				])
+			!!}		
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class ="input-group-addon">
+			<label for="surat_rekomendasi" style="font-weight:bolder" style="margin-top: -30px">Tanggal Surat Rekomendasi</label>
+				<br>
+			{!! Form::date('surat_rekomendasi', null,
+				['class'=> 'form-control',
+					'id' =>'surat_rekomendasi',
+					'placeholder' => 'Masukan Tanggal Surat Rekomendasi',
 					'style' =>'margin-bottom: 10px'
 				])
 			!!}		
