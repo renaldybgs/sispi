@@ -62,9 +62,9 @@ ASPI | Eksekutif List Projects Qris
     <div class="card card-info card-outline">
 
         <div class="card-body">
-<!--             <a href="/admin/project/export" type="button" class="btn btn-success" style="float:left">
-                Excel &nbsp<i class="fas fa-file-download"></i>
-            </a> -->
+              <a href="/admin/qris/export" type="button" class="btn btn-success" style="float:left">
+                  Excel &nbsp<i class="fas fa-file-download"></i>
+              </a>
             <table id="table1" class="table table-bordered table-hover">
                 <thead>
                     <tr>
