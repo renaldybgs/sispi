@@ -2,7 +2,7 @@
 
 namespace App\Exports;
 
-use App\Qris;
+use App\Qrisspek;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Concerns\Exportable;
@@ -13,7 +13,7 @@ use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Events\BeforeExport;
 use Maatwebsite\Excel\Events\AfterSheet;
 
-class QrisExport implements FromQuery, ShouldAutoSize, WithHeadings, WithEvents
+class QrisspekExport implements FromQuery, ShouldAutoSize, WithHeadings, WithEvents
 {
 	use Exportable;
     /**
@@ -21,11 +21,11 @@ class QrisExport implements FromQuery, ShouldAutoSize, WithHeadings, WithEvents
     */
     public function query()
     {
-    	return DB::table('qris')
-            ->select(DB::raw('qris.id, DATE(qris.waktu_assign_project) as waktu, products.nama_product, mitras.nama_mitra, projects_stats.nama_pstat, qris.no_rekomendasi, DATE(qris.surat_rekomendasi) as surat_rekomendasi, qris.jenis_qrisbi, qris.ijin_qrisbi, DATE(tgl_ijinbi) as tgl_ijinbi, qris.notes_project, DATE(qris.last_updated) as last_updated'))
-            ->leftjoin('products', 'qris.id_product', '=', 'products.id')
-            ->leftjoin('mitras', 'qris.id_mitra', '=', 'mitras.id')
-            ->leftjoin('projects_stats', 'qris.id_pstat', '=', 'projects_stats.id')
+    	return DB::table('qrisspeks')
+            ->select(DB::raw('qrisspeks.id, DATE(qrisspeks.waktu_assign_project) as waktu, products.nama_product, mitras.nama_mitra, qrisspeks.no_formulir, qrisspeks.no_spek, DATE(qrisspeks.spek_qris) as spek_qris, projects_stats.nama_pstat, qrisspeks.notes_project, DATE(qrisspeks.last_updated) as last_updated'))
+            ->leftjoin('products', 'qrisspeks.id_product', '=', 'products.id')
+            ->leftjoin('mitras', 'qrisspeks.id_mitra', '=', 'mitras.id')
+            ->leftjoin('projects_stats', 'qrisspeks.id_pstat', '=', 'projects_stats.id')
             ->orderBy('id','asc');  
     }
 
@@ -35,14 +35,12 @@ class QrisExport implements FromQuery, ShouldAutoSize, WithHeadings, WithEvents
     		'Issued Date',
     		'Nama Product',
     		'Nama Institusi',
+            'No Formulir',
+            'No Spesifikasi',
+            'Tanggal Spesifikasi',
             'Status',
-            'No Rekomendasi',
-            'Tanggal Rekomendasi',
-            'Jenis Ijin BI',
-            'Ijin BI',
-            'Tanggal Ijin BI',
             'Notes Project',
-            'Last Update'
+            'Last Updated'
     	];	
     }
 
@@ -53,7 +51,7 @@ class QrisExport implements FromQuery, ShouldAutoSize, WithHeadings, WithEvents
             },
 
     		AfterSheet::class => function(AfterSheet $event){
-    			$event->sheet->getStyle('A1:L1')->applyFromArray([
+    			$event->sheet->getStyle('A1:J1')->applyFromArray([
     				'font' => [
     					'bold' => true
     				],

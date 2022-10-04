@@ -75,9 +75,9 @@ ASPI | Sertifikasi List Projects
     <div class="card card-info card-outline">
 
         <div class="card-body">
-<!--             <a href="/admin/project/export" type="button" class="btn btn-success" style="float:left">
+            <a href="/admin/project/export" type="button" class="btn btn-success" style="float:left">
                 Excel &nbsp<i class="fas fa-file-download"></i>
-            </a> -->
+            </a>
             <table id="table1" class="table table-bordered table-hover">
                 <thead>
                     <tr>

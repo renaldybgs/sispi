@@ -2,7 +2,7 @@
 
 namespace App\Exports;
 
-use App\Project;
+use App\Ipkc;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Concerns\Exportable;
@@ -13,7 +13,7 @@ use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Events\BeforeExport;
 use Maatwebsite\Excel\Events\AfterSheet;
 
-class AdminProjectExport implements FromQuery, ShouldAutoSize, WithHeadings, WithEvents
+class IpkcExport implements FromQuery, ShouldAutoSize, WithHeadings, WithEvents
 {
 	use Exportable;
     /**
@@ -21,40 +21,34 @@ class AdminProjectExport implements FromQuery, ShouldAutoSize, WithHeadings, Wit
     */
     public function query()
     {
-    	return DB::table('projects')
-    	->select(DB::raw('projects.id, users.inisial_user, products.nama_product, projects_types.nama_ptype, mitras.nama_mitra, projects.nama_project, projects_stats.nama_pstat, projects.progress_sit, projects.progress_uat, date(projects.waktu_assign_project) as tanggal_assign'))
-    	->leftjoin('users', 'projects.id_current_pic', '=', 'users.id')
-    	->leftjoin('products', 'projects.id_product', '=', 'products.id')
-    	->leftjoin('projects_types', 'projects.id_ptype', '=', 'projects_types.id')
-        ->leftjoin('projects_stats', 'projects.id_pstat', '=', 'projects_stats.id')
-    	->leftjoin('mitras', 'projects.id_mitra', '=', 'mitras.id')
-        ->where('id_ptype', '!=', 5)
-    	->orderBy('id', 'asc');
+    	return DB::table('ipkcs')
+            ->select(DB::raw('ipkcs.id, DATE(ipkcs.waktu_assign_project) as waktu, cas.nama_issuer,  ipkcs.no_ipkc, ipkcs.jenis_ipkc, ipkcs.bin, projects_stats.nama_pstat, ipkcs.notes_project'))
+            ->leftjoin('cas', 'ipkcs.id_ca', '=', 'cas.id')
+            ->leftjoin('projects_stats', 'ipkcs.id_pstat', '=', 'projects_stats.id')
+            ->orderBy('id','asc');  
     }
 
     public function headings(): array{
     	return[
-    		'#',
-    		'PIC',
-    		'Produk',
-    		'Project Type',
-    		'Mitra',
-    		'Nama Projek',
-    		'Status',
-            'Progress SIT (%)',
-            'Progress UAT (%)', 
-    		'Tanggal Assign'
+    		'No',
+    		'Issued Date',
+    		'Nama Issuer',
+            'No IPKC',
+            'Jenis IPKC',
+            'BIN',
+            'Status',
+            'Notes Project',
     	];	
     }
 
     public function registerEvents(): array{
     	return[
     		BeforeExport::class => function(BeforeExport $event) {
-                $event->writer->getProperties()->setCreator('Kodok');
+                $event->writer->getProperties()->setCreator('Sispi');
             },
 
     		AfterSheet::class => function(AfterSheet $event){
-    			$event->sheet->getStyle('A1:J1')->applyFromArray([
+    			$event->sheet->getStyle('A1:H1')->applyFromArray([
     				'font' => [
     					'bold' => true
     				],

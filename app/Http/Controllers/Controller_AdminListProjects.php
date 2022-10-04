@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use DataTables;
 use App\Project;
 use App\User;
-use App\Exports\AdminProjectExport;
+use App\Exports\ProjectNsiccsExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB; 
@@ -27,7 +27,7 @@ class Controller_AdminListProjects extends Controller
 
     public function export(){
         $this->authorize('isAdmin', auth()->user());
-        return (new AdminProjectExport)->download('Data All Project.xlsx');
+        return (new ProjectNsiccsExport)->download('Data All Project NSICCS.xlsx');
     }
 
     public function detail($id){                     //buka detail projek

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use DataTables;
 use App\Qrisspek;
 use App\User;
-use App\Exports\AdminProjectExport;
+use App\Exports\QrisspekExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB; 
@@ -25,7 +25,7 @@ class Controller_AdminListQrisspeks extends Controller
 
     public function export(){
         $this->authorize('isAdmin', auth()->user());
-        return (new AdminProjectExport)->download('Data All Project.xlsx');
+        return (new QrisspekExport)->download('Data All QRISSpek.xlsx');
     }
 
     public function detail($id){                     //buka detail projek
