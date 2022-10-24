@@ -98,7 +98,16 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/admin/ipkc/edit/{id}', 'Controller_AdminListIpkc@editIpkc')->name('adminlistipkc.edit');
 	Route::put('/admin/ipkc/update/{id}', 'Controller_AdminListIpkc@updateIpkc')->name('adminlistipkc.update');
 	Route::get('/admin/ipkc/delete/{id}', 'Controller_AdminListIpkc@deleteIpkc')->name('adminlistipkc.delete');
-	
+
+	//List Project Perlindungan Konsumen
+	Route::get('/admin/perlindungan', 'Controller_AdminPerlindungan@openPage');
+	Route::get('/admin/perlindungan/table', 'Controller_AdminPerlindungan@dataTable')->name('adminperlindungan.table');
+	Route::get('/admin/perlindungan/detail/{id}', 'Controller_AdminPerlindungan@detail')->name('adminperlindungan.detail');
+	Route::get('/admin/perlindungan/export', 'Controller_AdminPerlindungan@export');
+	Route::get('/admin/perlindungan/edit/{id}', 'Controller_AdminPerlindungan@editPerlindungan')->name('adminperlindungan.edit');
+	Route::put('/admin/perlindungan/update/{id}', 'Controller_AdminPerlindungan@updatePerlindungan')->name('adminperlindungan.update');
+	Route::get('/admin/perlindungan/delete/{id}', 'Controller_AdminPerlindungan@deletePerlindungan')->name('adminperlindungan.delete');
+
 	// Mitra
 	Route::get('/admin/anggota', 'Controller_AdminMitra@openPage')->name('mitra.open');
 	Route::get('/admin/anggota/table', 'Controller_AdminMitra@dataTable')->name('mitra.table');

@@ -206,9 +206,9 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="/admin/perlindungan" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Project SNAP</p>
+                                        <p>Perlindungan Konsumen</p>
                                     </a>
                                 </li>
                             </ul>
