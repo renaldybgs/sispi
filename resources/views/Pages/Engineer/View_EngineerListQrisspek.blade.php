@@ -2,12 +2,12 @@
 @push('styles')
 @endpush
 
-@section('PageTitle','List Projects QRIS Spek')
+@section('PageTitle','List Sertifikasi QRIS Spesifikasi')
 @section('content')
 
 
 <title>
-ASPI | Sertifikasi List Projects QRIS
+ASPI | Sertifikasi List QRIS Spesifikasi
 </title>
 
 <div class="row mt-2">

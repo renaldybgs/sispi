@@ -1,9 +1,9 @@
 @extends('Templates.Engineer')
 @push('styles')
-@section('PageTitle', 'Sertifikasi Projects QRIS')
+@section('PageTitle', 'Sertifikasi QRIS')
 @section('content')
 <title>
-ASPI | Sertifikasi Projects QRIS
+ASPI | Sertifikasi QRIS
 </title>
 
     <div class="row mt-2">
@@ -11,8 +11,8 @@ ASPI | Sertifikasi Projects QRIS
             <!-- /.card-header -->
             <div class="card card-info card-outline">
                 <div class="card-body">
-                    <a href="/engineer/assignqris" type="button" class="btn btn-success" title="Tambah Projects" id="btn-modal" style="float:left">
-                    Tambah Projects &nbsp<i class="fas fa-plus"></i>
+                    <a href="/engineer/assignqris" type="button" class="btn btn-success" title="Tambah QRIS" id="btn-modal" style="float:left">
+                    Tambah QRIS &nbsp<i class="fas fa-plus"></i>
                     </a>
                     <table id="table1" class="table table-bordered table-hover">
                         <thead>

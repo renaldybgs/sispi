@@ -2,16 +2,16 @@
 @push('styles')
 @endpush
 
-@section('PageTitle','List Projects Qris Spek')
+@section('PageTitle','List Sertifikasi QRIS Spesifikasi')
 @section('content')
 
 @if($userLevel === 4)
 <title>
-ASPI | Admin List Projects Qris
+ASPI | Admin List Sertifikasi QRIS Spesifikasi
 </title>
 @else
 <title>
-ASPI | Eksekutif List Projects Qris
+ASPI | Eksekutif List Sertifikasi QRIS Spesifikasi
 </title>
 @endif
 
@@ -26,7 +26,7 @@ ASPI | Eksekutif List Projects Qris
     <div class="card-header">
       <h4 class="card-title w-100">
         <a class="d-block w-100 collapsed" data-toggle="collapse" href="#collapseOne" aria-expanded="false">
-        Filter List Project
+        Filter List Sertifikasi
         </a>
       </h4>
     </div>

@@ -1,16 +1,16 @@
 @extends('Templates.Engineer')
 @push('styles')
 @endpush
-@section('PageTitle','Tambah Projects Qris Spek')
+@section('PageTitle','Tambah Sertifikasi QRIS Spesifikasi')
 @section('content')
 <title>
- ASPI | Sertifikasi Add Projects QRIS Spek
+ ASPI | Sertifikasi QRIS Spesifikasi
 </title>
 <div class="card card-info card-tabs">
   <div class="card-header p-0 pt-1 border-bottom-0">
     <ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
       <li class="nav-item">
-        <a class="nav-link active" id="custom-tabs-three-home-tab" data-toggle="pill" href="#qrisspek" role="tab" aria-controls="custom-tabs-three-profile" aria-selected="false">New Projects QRIS Spesifikasi</a>
+        <a class="nav-link active" id="custom-tabs-three-home-tab" data-toggle="pill" href="#qrisspek" role="tab" aria-controls="custom-tabs-three-profile" aria-selected="false">New Sertifikasi QRIS Spesifikasi</a>
       </li>
     </ul>
   </div>

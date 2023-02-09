@@ -1,19 +1,19 @@
 @extends('Templates.Engineer')
 @push('styles')
 @endpush
-@section('PageTitle','Tambah Projects')
+@section('PageTitle','Tambah Sertifikasi')
 @section('content')
 <title>
- ASPI | Sertifikasi Add Projects
+ ASPI | Sertifikasi
 </title>
 <div class="card card-info card-tabs">
   <div class="card-header p-0 pt-1 border-bottom-0">
     <ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
       <li class="nav-item">
-        <a class="nav-link active" id="custom-tabs-three-home-tab" data-toggle="pill" href="#nsiccs" role="tab" aria-controls="custom-tabs-three-profile" aria-selected="false">New Projects NSICCS</a>
+        <a class="nav-link active" id="custom-tabs-three-home-tab" data-toggle="pill" href="#nsiccs" role="tab" aria-controls="custom-tabs-three-profile" aria-selected="false">New Sertifikasi NSICCS</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="custom-tabs-three-profile-tab" data-toggle="pill" href="#ipkc" role="tab" aria-controls="custom-tabs-three-profile" aria-selected="true">New Projects IPKC</a>
+        <a class="nav-link" id="custom-tabs-three-profile-tab" data-toggle="pill" href="#ipkc" role="tab" aria-controls="custom-tabs-three-profile" aria-selected="true">New Sertifikasi IPKC</a>
       </li>
     </ul>
   </div>

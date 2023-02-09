@@ -133,7 +133,7 @@
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
-                                    &nbsp Project On Going
+                                    &nbsp Sertifikasi On Going
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
@@ -141,25 +141,25 @@
                                 <li class="nav-item">
                                     <a href="/engineer/projects" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Project NSICCS</p>
+                                        <p>NSICCS</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/engineer/qris" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Project QRIS</p>
+                                        <p>QRIS Rekomendasi</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/engineer/qrisspek" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Project QRIS Spek</p>
+                                        <p>QRIS Spesifikasi</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/engineer/ipkc" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Project IPKC</p>
+                                        <p>IPKC</p>
                                     </a>
                                 </li>
 <!--                                 <li class="nav-item">
@@ -174,7 +174,7 @@
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-copy"></i>
                                 <p>
-                                    &nbsp Project Done
+                                    &nbsp Sertifikasi Done
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
@@ -182,25 +182,25 @@
                                 <li class="nav-item">
                                     <a href="/engineer/history" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Project NSICCS</p>
+                                        <p>NSICCS</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/engineer/historyqris" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Project QRIS</p>
+                                        <p>QRIS Rekomendasi</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/engineer/historyqrisspek" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Project QRIS Spek</p>
+                                        <p>QRIS Spesifikasi</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/engineer/historyipkc" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Project IPKC</p>
+                                        <p>IPKC</p>
                                     </a>
                                 </li>
                             </ul>
@@ -210,7 +210,7 @@
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-clipboard-list"></i>
                                 <p>
-                                    &nbsp List Projects
+                                    &nbsp List Sertifikasi
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
@@ -218,25 +218,25 @@
                                 <li class="nav-item">
                                     <a href="/engineer/listprojects" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Project NSICCS</p>
+                                        <p>NSICCS</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/engineer/listqris" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Project QRIS</p>
+                                        <p>QRIS Rekomendasi</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/engineer/listqrisspek" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Project QRIS Spek</p>
+                                        <p>QRIS Spesifikasi</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/engineer/listipkc" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Project IPKC</p>
+                                        <p>IPKC</p>
                                     </a>
                                 </li>
                             </ul>

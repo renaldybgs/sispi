@@ -18,7 +18,7 @@
     <div class="small-box bg-warning">
       <div class="inner">
         <h3>{{ $projects }}</h3>
-        <p>Projects NSICCS</p>
+        <p>Sertifikasi NSICCS</p>
       </div>
       <div class="icon">
         <i class="fas fa-hourglass-half"></i>
@@ -31,7 +31,7 @@
     <div class="small-box bg-success">
       <div class="inner">
         <h3>{{ $pprjdone }}</h3>
-        <p>Projects Done NSICCS</p>
+        <p>Sertifikasi Done NSICCS</p>
       </div>
       <div class="icon">
         <i class="fas fa-check"></i>
@@ -44,7 +44,7 @@
     <div class="small-box bg-purple">
       <div class="inner">
         <h3>{{ $qris }}</h3>
-        <p>Projects QRIS</p>
+        <p>Sertifikasi QRIS</p>
       </div>
       <div class="icon">
         <i class="fas fa-qrcode"></i>
@@ -57,7 +57,7 @@
     <div class="small-box bg-info">
       <div class="inner">
         <h3>{{ $qrdone }}</h3>
-        <p>Projects Done QRIS </p>
+        <p>Sertifikasi Done QRIS </p>
       </div>
       <div class="icon">
         <i class="fas fa-check-double"></i>
@@ -72,7 +72,7 @@
     <div class="small-box bg-pink">
       <div class="inner">
         <h3>{{ $qrisspek }}</h3>
-        <p>Projects Qris Spek</p>
+        <p>Sertifikasi Qris Spesifikasi</p>
       </div>
       <div class="icon">
         <i class="fas fa-qrcode"></i>
@@ -85,7 +85,7 @@
     <div class="small-box bg-danger">
       <div class="inner">
         <h3>{{ $qrsdone }}</h3>
-        <p>Projects Done Qris Spek</p>
+        <p>Sertifikasi Done QRIS Spesifikasi</p>
       </div>
       <div class="icon">
         <i class="fas fa-check-double"></i>
@@ -139,12 +139,12 @@
     <div class="small-box bg-fuchsia">
       <div class="inner">
         <h3>{{ $regipkc }}</h3>
-        <p>Total Projects IPKC </p>
+        <p>Total Sertifikasi IPKC </p>
       </div>
       <div class="icon">
         <i class="ion ion-stats-bars"></i>
       </div>
-        <a class="small-box-footer">Total Project IPKC</a>
+        <a class="small-box-footer">Total Sertifikasi IPKC</a>
     </div>
   </div>
 
@@ -304,7 +304,7 @@
       }
     },
     title: {
-      text: 'Total Project NSICCS'
+      text: 'Total Sertifikasi NSICCS'
     },
     subtitle: {
       text: 'Berdasarkan Type Produk'
@@ -325,7 +325,7 @@
     },
     series: [{
       type: 'pie',
-      name: 'Total Project',
+      name: 'Total Sertifikasi',
       data: projbyproddata
     }]
   });
@@ -356,7 +356,7 @@
       }
     },
     title: {
-      text: 'Total Project QRIS Rekomendasi'
+      text: 'Total Sertifikasi QRIS Rekomendasi'
     },
     subtitle: {
       text: 'Berdasarkan Type Produk'
@@ -377,7 +377,7 @@
     },
     series: [{
       type: 'pie',
-      name: 'Total Project',
+      name: 'Total Sertifikasi',
       data: qrisbyproddata
     }]
   });
@@ -408,7 +408,7 @@
       }
     },
     title: {
-      text: 'Total Project QRIS Spesifikasi'
+      text: 'Total Sertifikasi QRIS Spesifikasi'
     },
     subtitle: {
       text: 'Berdasarkan Type Produk'
@@ -429,7 +429,7 @@
     },
     series: [{
       type: 'pie',
-      name: 'Total Project',
+      name: 'Total Sertifikasi',
       data: qrisspekbyproddata
     }]
   });
@@ -455,7 +455,7 @@
       type: 'column',
     },
     title: {
-      text: 'Total Project Done NSICCS'
+      text: 'Total Sertifikasi Done NSICCS'
     },
     subtitle: {
       text: 'Berdasarkan Type Produk'
@@ -472,7 +472,7 @@
     yAxis: {
         min: 0,
         title: {
-            text: 'Jumlah Project'
+            text: 'Jumlah Sertifikasi'
         }
     },
 
@@ -493,7 +493,7 @@
       }
     },
     series: [{
-      name: 'Total Project Done',
+      name: 'Total Sertifikasi Done',
       data: projbyproddata,
       pointPadding: 0.1,
       borderWidth: 0,
@@ -523,7 +523,7 @@
       type: 'column',
     },
     title: {
-      text: 'Total Project Done QRIS Rekomendasi'
+      text: 'Total Sertifikasi Done QRIS Rekomendasi'
     },
     subtitle: {
       text: 'Berdasarkan Type Produk'
@@ -540,7 +540,7 @@
     yAxis: {
         min: 0,
         title: {
-            text: 'Jumlah Project'
+            text: 'Jumlah Sertifikasi'
         }
     },
 
@@ -591,7 +591,7 @@
       type: 'column',
     },
     title: {
-      text: 'Total Project Done QRIS Spesifikasi'
+      text: 'Total Sertifikasi Done QRIS Spesifikasi'
     },
     subtitle: {
       text: 'Berdasarkan Type Produk'
@@ -608,7 +608,7 @@
     yAxis: {
         min: 0,
         title: {
-            text: 'Jumlah Project'
+            text: 'Jumlah Sertifikasi'
         }
     },
 

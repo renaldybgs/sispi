@@ -1,9 +1,9 @@
 @extends('Templates.Engineer')
 @push('styles')
-@section('PageTitle', 'Project Done Qrisspek')
+@section('PageTitle', 'Sertifikasi QRIS Spesifikasi Done')
 @section('content')
     <title>
-ASPI | Sertifikasi Projects Done 
+ASPI | Sertifikasi QRIS Spesifikasi Done 
     </title>
     <div class="row mt-2">
         <div class="col-md-12">

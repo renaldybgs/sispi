@@ -1,9 +1,9 @@
 @extends('Templates.Engineer')
 @push('styles')
-@section('PageTitle', 'Sertifikasi Projects')
+@section('PageTitle', 'Sertifikasi NSICCS')
 @section('content')
 <title>
-ASPI | Sertifikasi Projects
+ASPI | Sertifikasi NSICCS
 </title>
 
     <div class="row mt-2">
@@ -11,8 +11,8 @@ ASPI | Sertifikasi Projects
             <!-- /.card-header -->
             <div class="card card-info card-outline">
                 <div class="card-body">
-                    <a href="/engineer/assign" type="button" class="btn btn-success" title="Tambah Projects" id="btn-modal" style="float:left">
-                    Tambah Projects &nbsp<i class="fas fa-plus"></i>
+                    <a href="/engineer/assign" type="button" class="btn btn-success" title="Tambah NSICCS" id="btn-modal" style="float:left">
+                    Tambah NSICCS &nbsp<i class="fas fa-plus"></i>
                     </a>
                     <table id="table1" class="table table-bordered table-hover">
                         <thead>

@@ -172,7 +172,7 @@
                                 <li class="nav-item">
                                     <a href="/admin/ipkc" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>List Project IPKC</p>
+                                        <p>List Sertifikasi IPKC</p>
                                     </a>
                                 </li>
                             </ul>
@@ -182,7 +182,7 @@
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
-                                    &nbsp List Projects
+                                    &nbsp List Sertifikasi
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
@@ -190,19 +190,19 @@
                                 <li class="nav-item">
                                     <a href="/admin/projects" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Project NSICCS</p>
+                                        <p>NSICCS</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/admin/qris" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Project QRIS</p>
+                                        <p>QRIS Rekomendasi</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/admin/qrisspek" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Project QRIS Spek</p>
+                                        <p>QRIS Spesifikasi</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -251,7 +251,7 @@
                                 <li class="nav-item">
                                     <a href="/eksekutif/ipkc" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>List Project Ipkc</p>
+                                        <p>List Sertifikasi Ipkc</p>
                                     </a>
                                 </li>
                             </ul>
@@ -261,7 +261,7 @@
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
-                                    &nbsp List Projects
+                                    &nbsp List Sertifikasi
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
@@ -269,25 +269,25 @@
                                 <li class="nav-item">
                                     <a href="/eksekutif/projects" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Project NSICCS</p>
+                                        <p>NSICCS</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/eksekutif/qris" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Project QRIS</p>
+                                        <p>QRIS Rekomendasi</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/eksekutif/qrisspek" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Project QRIS Spek</p>
+                                        <p>QRIS Spesifikasi</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="#" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Project SNAP</p>
+                                        <p>SNAP</p>
                                     </a>
                                 </li>
                             </ul>

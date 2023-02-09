@@ -2,16 +2,16 @@
 @push('styles')
 @endpush
 
-@section('PageTitle','List Projects')
+@section('PageTitle','List Sertifikasi NSICCS')
 @section('content')
 
 @if($userLevel === 4)
 <title>
-ASPI | Admin List Projects
+ASPI | Admin List Sertifikasi NSICCS
 </title>
 @else
 <title>
-ASPI | Eksekutif List Projects
+ASPI | Eksekutif List Sertifikasi NSICCS
 </title>
 @endif
 
