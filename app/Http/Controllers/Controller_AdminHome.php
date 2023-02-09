@@ -127,7 +127,7 @@ class Controller_AdminHome extends Controller
     public function allQrisPstat($pstat){
         return DB::table('qris')
         ->where(function($query){
-            $query->whereRaw('YEAR(waktu_assign_project) = YEAR(current_timestamp)')
+            $query->whereRaw('waktu_assign_project')
             ->orWhereNotIn('id_pstat', [16]);
         })
         ->where('id_pstat', $pstat)
@@ -206,7 +206,7 @@ class Controller_AdminHome extends Controller
     public function allQris(){
         return DB::table('qris')
         ->where(function($query){
-            $query->whereRaw('YEAR(waktu_assign_project) = YEAR(current_timestamp)')
+            $query->whereRaw('waktu_assign_project')
             ->orWhereNotIn('id_pstat', [16]);
         })
         ->count();
@@ -238,11 +238,11 @@ class Controller_AdminHome extends Controller
     }
 
     public function allQrisProd(){
-        return DB::select("select pr.nama_product, count(*) as jumlah_project from (select id_product from qris where YEAR(waktu_assign_project) = YEAR(current_timestamp) and id_pstat not in (16)) as p, products as pr where p.id_product = pr.id group by pr.nama_product order by pr.id asc");
+        return DB::select("select pr.nama_product, count(*) as jumlah_project from (select id_product from qris where waktu_assign_project and id_pstat not in (16)) as p, products as pr where p.id_product = pr.id group by pr.nama_product order by pr.id asc");
     }
 
     public function allQrisPd(){
-        return DB::select("select pr.nama_product, count(*) as jumlah_project from (select id_product from qris where YEAR(waktu_assign_project) = YEAR(current_timestamp) and id_pstat in (16)) as p, products as pr where p.id_product = pr.id group by pr.nama_product order by pr.id asc");
+        return DB::select("select pr.nama_product, count(*) as jumlah_project from (select id_product from qris where waktu_assign_project and id_pstat in (16)) as p, products as pr where p.id_product = pr.id group by pr.nama_product order by pr.id asc");
     }
 
     public function allQrisspekProd(){
