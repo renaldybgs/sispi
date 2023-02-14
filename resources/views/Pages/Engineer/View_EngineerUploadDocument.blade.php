@@ -44,19 +44,22 @@
         <table id="table1" class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th class="text-center">No</th>
+                    <th class="text-center"> No</th>
                     <th class="text-center">Nama Document</th>
+                    
                 </tr>
             </thead>
             <tbody>
+            	
             	<tr>
                 	<td class="text-center">hahah</td>
-                	<td class="text-center">hahaha.pdf</td>
+                	<td>{{ $id_project->nama_prod }}</td>
                 </tr>
                 <tr>
                 	<td class="text-center">hahah</td>
                 	<td class="text-center">hahaha.pdf</td>
                 </tr>
+                
             </tbody>
         </table>
 	</div>

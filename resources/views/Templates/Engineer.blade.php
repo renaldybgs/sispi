@@ -104,9 +104,9 @@
         <aside class="main-sidebar sidebar-dark-navy elevation-4">
             <!-- Brand Logo -->
             <a href="/engineer/projects" class="brand-link" style="background: linear-gradient(#096279, #00d4ff)">
-                <img src="{{ url('assets/img/ASPI-logo-light.png') }}"
+                <img src="{{ url('assets/img/aspilogo1.jpeg') }}"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">Sistem Aspi</span>
+                <span class="brand-text font-weight-light">Sertifikasi ASPI</span>
             </a>
 
             <!-- Sidebar -->

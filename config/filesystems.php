@@ -67,7 +67,7 @@ return [
 
         'upload-dest' => [
             'driver' => 'local',
-            'root' => 'D:\Kerjaan\Web\UploadedFile',
+            'root' => 'E:\Renaldy\REY\Renaldy Pribadi',
         ],
     ],
 

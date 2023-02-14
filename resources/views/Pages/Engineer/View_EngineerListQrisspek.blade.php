@@ -18,7 +18,7 @@ ASPI | Sertifikasi List QRIS Spesifikasi
     <div class="card-header">
       <h4 class="card-title w-100">
         <a class="d-block w-100 collapsed" data-toggle="collapse" href="#collapseOne" aria-expanded="false">
-        Filter List Project
+        Filter List Sertifikasi
         </a>
       </h4>
     </div>

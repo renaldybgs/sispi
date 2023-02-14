@@ -19,9 +19,7 @@ class CreateDocumentsTable extends Migration
             $table->unsignedBigInteger('id_dtype');
             $table->string('nama_document', 240);
             $table->string('direktori_document', 200);
-            $table->boolean('softcopy_status')->default(0);
-            $table->boolean('hardcopy_status')->default(0);
-            $table->unsignedBigInteger('uploaded_by');
+            $table->string('uploaded_by');
         });
     }
 

@@ -12,6 +12,7 @@ ASPI | Sertifikasi List IPKC
 
 <div class="row mt-2">
   <div class="col-md-12">
+    
     <div class="card card-info card-outline">
 
         <div class="card-body">

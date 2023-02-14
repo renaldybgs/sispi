@@ -78,10 +78,10 @@ class Controller_AdminUsers extends Controller
     public function destroy($id){						//delete data
     	$this->authorize('isAdmin', auth()->user());
         
-    	if(auth()->id() != $id){						//pembatas agar user gak bisa ngapus data sendiri
-    		User::where('id', $id)->update(['status_user' => 0]);	//ubah status menjadi 0, tanda user non aktif
-    	}
-    	// User::where('id', $id)->delete();                          //mencari data mitra berdasarkan idnya lalu menghapusnya
+    	// if(auth()->id() != $id){						//pembatas agar user gak bisa ngapus data sendiri
+    	// 	User::where('id', $id)->update(['status_user' => 0]);	//ubah status menjadi 0, tanda user non aktif
+    	// }
+    	User::where('id', $id)->delete();                          //mencari data mitra berdasarkan idnya lalu menghapusnya
     	$userData['data'] = User::orderby("id", "asc")->get();	//ngambil data yg lain setelah delete data
 
 	    return response()->json($userData);						//balikin data yg udh diambil ke js buat refresh table
@@ -133,7 +133,7 @@ class Controller_AdminUsers extends Controller
     }
 
 	public function dataTable(){					  //generate table di halaman Admin - User
-        $model = DB::select("select a.id, a.nama_user, a.inisial_user, b.nama_ulevel, a.added_by, a.modified_by from users as a, users_levels as b where a.id_ulevel = b.id and a.status_user = 1");//ngambil data buat nanti ditampilin di table halaman Admin - User
+        $model = DB::select("select a.id, a.nama_user, a.inisial_user, b.nama_ulevel, a.added_by, a.modified_by from users as a, users_levels as b where a.id_ulevel = b.id");//and a.status_user = 1 ngambil data buat nanti ditampilin di table halaman Admin - User
         return DataTables::of($model)				  //membuat datatable berdasarkan data yg udh diambil
             ->addColumn('action', function($model){	  //nambahin yg gak ada di query, disini yg ditambah action
                 return view('Layouts.ActionUser',[

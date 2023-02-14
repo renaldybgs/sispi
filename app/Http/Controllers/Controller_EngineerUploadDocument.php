@@ -9,6 +9,7 @@ use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class Controller_EngineerUploadDocument extends Controller
 {
@@ -42,13 +43,14 @@ class Controller_EngineerUploadDocument extends Controller
 
         $upload = $file->storeAs($filelocation, $filename);
         $filelocation = $filelocation . $filename;                     //update file location, tamabah nama filenya 
+        $uploaded_by = Auth::user()->inisial_user;
 
         $newdocument = Document::create([
             'id_project' => $pid,
             'id_dtype' => $doctype,
             'nama_document' => $filename,
             'direktori_document' => $filelocation,
-            'uploaded_by' => $user
+            'uploaded_by' => $uploaded_by
         ]);
 
         return back()->with('success','Document berhasil di Upload');
@@ -66,5 +68,12 @@ class Controller_EngineerUploadDocument extends Controller
 
     public function getDocumentByID($id){
         return Document::where('id', $id)->firstOrFail();
+    }
+
+    public function getDoc($id){
+        return DB::table('documents')
+        ->select(DB::raw('documents.id, documents.nama_document, documents.uploaded_by'))
+        ->where('documents.id', '=', $id)
+        ->first();
     }
 }
