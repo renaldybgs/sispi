@@ -44,7 +44,7 @@ $('#table1').DataTable( {
       {data: 'DT_RowIndex', name: 'id_project'},
       {data: 'nama_mitra', name: 'nama_mitra'},
       {data: 'nama_product', name: 'nama_product'},
-      {data: 'nama_project', name: 'nama_project'},
+      {data: 'nama_prod', name: 'nama_prod'},
       {data: 'action', name: 'action'},
       {data: 'inisial_user', name: 'inisial_user'},
       {data: 'tahun', name: 'tahun'}

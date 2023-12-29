@@ -70,10 +70,4 @@ class Controller_EngineerUploadDocument extends Controller
         return Document::where('id', $id)->firstOrFail();
     }
 
-    public function getDoc($id){
-        return DB::table('documents')
-        ->select(DB::raw('documents.id, documents.nama_document, documents.uploaded_by'))
-        ->where('documents.id', '=', $id)
-        ->first();
-    }
 }

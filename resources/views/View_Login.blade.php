@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" href="{{ url('assets/img/aspilogo1.jpeg') }}">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    | Login
+ASPI | Login
   </title>
  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->

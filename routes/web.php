@@ -279,7 +279,6 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/engineer/upload/{id}', "Controller_EngineerUploadDocument@openPage")->name('upload.open');
 	Route::post('/engineer/upload', "Controller_EngineerUploadDocument@upload");
 	Route::get('/engineer/download/{id}', "Controller_EngineerUploadDocument@download");
-
 	##GUEST
 	Route::get('/guest', 'Controller_GuestSearchDocuments@openPage');
 	Route::get('/guest/searchdocs', 'Controller_GuestSearchDocuments@openPage');
@@ -314,6 +313,7 @@ Route::group(['middleware' => 'auth'], function(){
 
 	// Search Doc
 	Route::get('/manager/searchdocs', 'Controller_ManagerSearchDocuments@openPage');
+	Route::get('/engineer/searchdocs/download/{id}', "Controller_EngineerUploadDocument@download");
 
 	##TABLE
 	Route::get('/searchdocs/table', 'Controller_ManagerSearchDocuments@dataTable')->name('searchdocs.table');

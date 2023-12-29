@@ -23,7 +23,7 @@
 				<div class ="input-group-addon">
 					<label for="jenis_qrisbi" style="font-weight:bolder" style="margin-top: -30px">Jenis Ijin BI</label>
 						<br>
-						{!! Form::select('jenis_qrisbi', [' '=> 'Pilih', 'Acquirer Kartu Kredit' => 'Acquirer Kartu Kredit', 'ATM' => 'ATM', 'Debet' => 'Debet', 'Dompet Elektronik' => 'Dompet Elektronik', 'E-walet' => 'E-walet', 'Payment Gateway' => 'Payment Gateway', 'Switching' => 'Switching', 'Unik' => 'Unik', 'Unik & Debet' => 'Unik & Debet', 'Sedang diproses' => 'Sedang diproses'], null,
+						{!! Form::select('jenis_qrisbi', [' '=> 'Pilih', 'Acquirer Kartu Kredit' => 'Acquirer Kartu Kredit', 'ATM' => 'ATM', 'Debet' => 'Debet', 'Dompet Elektronik' => 'Dompet Elektronik', 'E-walet' => 'E-walet', 'Payment Gateway' => 'Payment Gateway', 'Switching' => 'Switching', 'Unik' => 'Unik', 'Unik & Debet' => 'Unik & Debet', 'Uang Elektronik' => 'Uang Elektronik', 'Sedang diproses' => 'Sedang diproses'], null,
 							['class'=> 'form-control',
 								'id' =>'jenis_qrisbi', 
 								'style' =>'margin-bottom: 10px'
