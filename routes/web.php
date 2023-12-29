@@ -108,6 +108,15 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::put('/admin/perlindungan/update/{id}', 'Controller_AdminPerlindungan@updatePerlindungan')->name('adminperlindungan.update');
 	Route::get('/admin/perlindungan/delete/{id}', 'Controller_AdminPerlindungan@deletePerlindungan')->name('adminperlindungan.delete');
 
+	//List Penomoran Surat
+	Route::get('/admin/surat', 'Controller_AdminListSurat@openPage');
+	Route::get('/admin/surat/table', 'Controller_AdminListSurat@dataTable')->name('adminlistsurat.table');
+	Route::get('/admin/surat/detail/{id}', 'Controller_AdminListSurat@detail')->name('adminlistsurat.detail');
+	Route::get('/admin/surat/export', 'Controller_AdminListSurat@export');
+	Route::get('/admin/surat/edit/{id}', 'Controller_AdminListSurat@editSurat')->name('adminsurat.edit');
+	Route::put('/admin/surat/update/{id}', 'Controller_AdminListSurat@updateSurat')->name('adminsurat.update');
+	Route::get('/admin/surat/delete/{id}', 'Controller_AdminListSurat@deleteSurat')->name('adminsurat.delete');
+
 	// Mitra
 	Route::get('/admin/anggota', 'Controller_AdminMitra@openPage')->name('mitra.open');
 	Route::get('/admin/anggota/table', 'Controller_AdminMitra@dataTable')->name('mitra.table');
@@ -168,6 +177,10 @@ Route::group(['middleware' => 'auth'], function(){
 	// Engineer Assign QRIS
 	Route::get('/engineer/assignqris', 'Controller_EngineerAddQris@openPage');
 	Route::post('/engineer/newprojectqris', 'Controller_EngineerAddQris@storeNew');
+
+	// Engineer Assign Surat
+	Route::get('/engineer/assignsurat', 'Controller_EngineerAddSurat@openPage');
+	Route::post('/engineer/newprojectsurat', 'Controller_EngineerAddSurat@storeNew');
 
 	// Engineer Assign QRIS Spek
 	Route::get('/engineer/assignqrisspek', 'Controller_EngineerAddQrisspeks@openPage');
@@ -260,7 +273,7 @@ Route::group(['middleware' => 'auth'], function(){
 
 	Route::get('engineer/projectdir/{id}', 'Conttoller_Engineer@setProjectDirectory')->name('project.dir');
 
-	// Own Project QRIS Spek
+	// Own Project IPKC
 	Route::get('/engineer/ipkc', 'Controller_EngineerYourIpkc@openPage');
 	Route::get('/engineer/ipkc/table', 'Controller_EngineerYourIpkc@dataTable')->name('ipkc.table');
 	Route::patch('/engineer/ipkc/changestat', 'Controller_EngineerYourIpkc@changeStatus');
