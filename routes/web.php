@@ -179,8 +179,8 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::post('/engineer/newprojectqris', 'Controller_EngineerAddQris@storeNew');
 
 	// Engineer Assign Surat
-	Route::get('/engineer/assignsurat', 'Controller_EngineerAddSurat@openPage');
-	Route::post('/engineer/newprojectsurat', 'Controller_EngineerAddSurat@storeNew');
+	Route::get('/engineer/assignsurat', 'Controller_EngineerAddSurats@openPage');
+	Route::post('/engineer/newprojectsurat', 'Controller_EngineerAddSurats@storeNew');
 
 	// Engineer Assign QRIS Spek
 	Route::get('/engineer/assignqrisspek', 'Controller_EngineerAddQrisspeks@openPage');
@@ -257,6 +257,13 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/engineer/historyqris/table', 'Controller_EngineerHistoryQris@dataTable')->name('historyqris.table');
 
 	Route::get('engineer/projectdir/{id}', 'Conttoller_Engineer@setProjectDirectory')->name('project.dir');
+
+		// Own Project Surat
+	Route::get('/engineer/surat', 'Controller_EngineerYourSurat@openPage');
+	Route::get('/engineer/surat/table', 'Controller_EngineerYourSurat@dataTable')->name('surat.table');
+	Route::get('/engineer/surat/editprogress/{id}', 'Controller_EngineerYoursurat@editPenomoran')->name('progresssurat.edit');
+	Route::put('/engineer/qris/updateprogress/{id}', 'Controller_EngineerYoursurat@updatePenomoran')->name('progresssurat.update');
+
 
 	// Own Project QRIS Spek
 	Route::get('/engineer/qrisspek', 'Controller_EngineerYourQrisspeks@openPage');

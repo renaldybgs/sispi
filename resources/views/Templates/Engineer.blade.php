@@ -243,7 +243,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="/engineer/surats" class="nav-link">
+                            <a href="/engineer/surat" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Penomoran Surat</p>
                             </a>

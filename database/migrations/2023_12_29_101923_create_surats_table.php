@@ -17,12 +17,13 @@ class CreateSuratsTable extends Migration
             $table->id();
             $table->dateTime('waktu_assign_surat');
             $table->unsignedBigInteger('id_mitra');
-            $table->unsignedBigInteger('id_original_pic');
             $table->string('no_surat')->nullable();
             $table->string('no_unik')->nullable();
             $table->string('perihal', 255)->nullable();
             $table->string('notes_surat', 255)->nullable(); 
             $table->dateTime('last_updated')->nullable();
+            $table->string('added_by', 5);
+            $table->string('modified_by', 3)->nullable();
             $table->timestamps();
         });
     }
