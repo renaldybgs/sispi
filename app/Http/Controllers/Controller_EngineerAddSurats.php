@@ -40,9 +40,22 @@ class Controller_EngineerAddSurats extends Controller
 
         $added_by = Auth::user()->inisial_user;
 
-        //No Urutan
-        
+        // No Urutan
+        // format waktu_assign_surat -> YYYY-DD-MM dengan tiper data string. contoh 16 Maret 2024 = 2024-03-16
+        // format nomor surat: Sek.ASPI/SR/(urutan)/(bulan dalam angka romawi)/(tahun)
+        $suratNew = new Surat();
 
+        $year = substr($request->waktu_assign_surat, 0, 4);
+        $month = substr($request->waktu_assign_surat, 5, 2);
+        $monthInRoman = $this->convertToRoman((int)$month);
+        
+        if($suratNew->id != null){
+            $lastUrutan = $suratNew->orderBy('id', 'desc')->first();
+            $newUrutan = $this->generateUrutanBaru(substr($lastUrutan->no_surat, 12, 3),substr($lastUrutan->waktu_assign_surat, 0, 4),$year);
+        }
+        else $newUrutan = "001";
+
+        $nomorSurat = "Sek.ASPI/SR/" . $newUrutan . "/" . $monthInRoman . "/" . $year;
 
         //No Unik
         $loop = rand(5,7);
@@ -59,40 +72,17 @@ class Controller_EngineerAddSurats extends Controller
                 break;
             }
         }
-
-        dd($randomNumber);
-
-        // //No Urutan
-        // $suratnew = new Surat();
-
-        // $tanggal = date('d');
-        // $bulan = date('m');
-        // $tahun = date('Y');
-        // $lastUrutan = $suratnew->orderBy('id', 'desc')->first();
-        // $lastTahun = $lastUrutan ? substr($lastUrutan->no_surat, 5, 2) : null;
-        // $newUrutanNumber = ($lastTahun == substr($tahun, -0)) ? intval(substr($lastUrutan->no_surat, -3)) + 1 : 1;
-        // $newUrutanFormatted = str_pad($newUrutanNumber, 3, '0', STR_PAD_LEFT);
-        // //Sek.ASPI/SR/-Tahun -TanggalBulanUrutanformkeseluruhan
-        // $nomorUrutan = 'Sek.ASPI/SR/' . $newUrutanFormatted . '/'. $bulan .'/'. substr($tahun, -0);
-
-        // //No Unik
-        // $randno1 = random_int(10, 99);
-        // $randno2 = random_int(100, 999);
-        // $randno3 = random_int(0, 9);
-        // $randno4 = random_int(10, 99);
-        // $newrandom = $randno1. '.'.$randno2. '.'.$randno3. '.'.$randno4;
         
+        $newprojectsurat = Surat::create([ 
+            'id_mitra' => $request->id_mitra,   
+            'no_unik'  => $randomNumber,                   
+            'no_surat' => $nomorSurat,
+            'perihal' => $request->perihal,
+            'waktu_assign_surat' => $request->waktu_assign_surat,
+            'added_by' => $added_by,
+        ]);
 
-        // $newprojectsurat = Surat::create([ 
-        //     'id_mitra' => $request->id_mitra,   
-        //     'no_unik'  => $newrandom,                   
-        //     'no_surat' => $nomorUrutan,
-        //     'perihal' => $request->perihal,
-        //     'waktu_assign_surat' => $request->waktu_assign_surat,
-        //     'added_by' => $added_by,
-        // ]);
-
-        // return redirect('/engineer/surat')->with('success','No Surat berhasil di tambahkan');
+        return redirect('/engineer/surat')->with('success','No Surat berhasil di tambahkan');
     }
 
     public function getUser(){                                      //ngambil data user engineer dan adminxengineer
@@ -101,5 +91,54 @@ class Controller_EngineerAddSurats extends Controller
 
     public function getSuratById($id){                                        //ngamabil data projek berdasarkan idnya
         return Surat::where('id', $id)->firstOrFail();
+    }
+
+    public function convertToRoman($integer){
+        // Convert the integer into an integer (just to make sure).
+        $integer = intval($integer);
+        $result = '';
+
+        // Create a lookup array that contains all of the Roman numerals.
+        $lookup = [
+            'M' => 1000,
+            'CM' => 900,
+            'D' => 500,
+            'CD' => 400,
+            'C' => 100,
+            'XC' => 90,
+            'L' => 50,
+            'XL' => 40,
+            'X' => 10,
+            'IX' => 9,
+            'V' => 5,
+            'IV' => 4,
+            'I' => 1
+        ];
+
+        foreach ($lookup as $roman => $value) {
+            // Determine the number of matches.
+            $matches = intval($integer / $value);
+
+            // Add the same number of characters to the string.
+            $result .= str_repeat($roman, $matches);
+
+            // Set the integer to be the remainder of the integer and the value.
+            $integer = $integer % $value;
+        }
+
+        // The Roman numeral should be built, return it.
+        return $result;
+    }
+
+    public function generateUrutanBaru($lastUrutan, $lastYear, $currentYear){
+        if($lastYear == $currentYear){                        //kalo tahunnya sama, maka urutannya ditambah
+            $newUrutan = (int)substr($lastUrutan, 2, 1) + 1;  //urutan terbaru dalam bentuk integer
+            for($i = 0; $i <= 3-strlen($newUrutan); $i++){    //kasih di depan buat nomor yang butuh 0, misal 16 diubah jadi 016
+                $newUrutan = (string)("0" . $newUrutan);
+            }
+
+            return $newUrutan;
+        }
+        else return "001";                                    //kalo tahunnya udh ganti, maka urutannya reset
     }
 }
