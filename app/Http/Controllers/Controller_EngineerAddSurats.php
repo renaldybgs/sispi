@@ -45,31 +45,33 @@ class Controller_EngineerAddSurats extends Controller
         // format nomor surat: Sek.ASPI/SR/(urutan)/(bulan dalam angka romawi)/(tahun)
         $suratNew = new Surat();
 
-        $year = substr($request->waktu_assign_surat, 0, 4);
-        $month = substr($request->waktu_assign_surat, 5, 2);
-        $monthInRoman = $this->convertToRoman((int)$month);
+        $year = substr($request->waktu_assign_surat, 0, 4);     //ambil tahun
+        $month = substr($request->waktu_assign_surat, 5, 2);    //ambil bulan
+        $monthInRoman = $this->convertToRoman((int)$month);     //ubah bulan ke bentuk angka romawi
         
-        if($suratNew->id != null){
+        if($suratNew->id != null){                              //kalo db lagi gak kosong, maka generate biasa
             $lastUrutan = $suratNew->orderBy('id', 'desc')->first();
-            $newUrutan = $this->generateUrutanBaru(substr($lastUrutan->no_surat, 12, 3),substr($lastUrutan->waktu_assign_surat, 0, 4),$year);
+            $newUrutan = $this->generateUrutanBaru(substr($lastUrutan->no_surat, 12, 3),substr($lastUrutan->waktu_assign_surat, 0, 4),$year);                                   //generate nomor urutan baru
         }
-        else $newUrutan = "001";
+        else $newUrutan = "001";                                //kalo db lagi kosong, set urutan ke 001
 
         $nomorSurat = "Sek.ASPI/SR/" . $newUrutan . "/" . $monthInRoman . "/" . $year;
 
-        //No Unik
-        $loop = rand(5,7);
+        // No Unik
+        // formatnnya adalah 5 - 7 angka dengan range angka 0 - 999 yang antara digitnya dipisahkan oleh titik. 
+        // contoh no unik: 16.3.1996.777.69 
+        $loop = rand(5,7);                  //randomize jumlah angka
         $randomNumber = "";
 
-        for($i = 0; $i<$loop; $i++){
-            $randomUnit = rand(0,999);
-            $randomNumber .= $randomUnit;
+        for($i = 0; $i<$loop; $i++){        //lakukan loop sejumlah jumlah angka
+            $randomUnit = rand(0,999);      //randomize angka
+            $randomNumber .= $randomUnit;   //angka pertama dimasukkan ke dalam variabel akhir
 
-            if($i != $loop-1){
-                $randomNumber .= ".";
+            if($i != $loop-1){              //loop sesuai dengan jumlah angka - 1
+                $randomNumber .= ".";       //tambahkan pembatas berupa titik setelah angka
             }
             else{
-                break;
+                break;                      //jika sudah diangka terakhir, maka jangan tambahkan titik
             }
         }
         
