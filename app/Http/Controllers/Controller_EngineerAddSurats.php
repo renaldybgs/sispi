@@ -43,14 +43,15 @@ class Controller_EngineerAddSurats extends Controller
         // No Urutan
         // format waktu_assign_surat -> YYYY-DD-MM dengan tiper data string. contoh 16 Maret 2024 = 2024-03-16
         // format nomor surat: Sek.ASPI/SR/(urutan)/(bulan dalam angka romawi)/(tahun)
-        $suratNew = new Surat();
+        $newSurat = new Surat();
+        $lastUrutan = $newSurat->first();            //ambil 1 data dari tabel Surat buat cek dia udh ada isinya atau blm
 
         $year = substr($request->waktu_assign_surat, 0, 4);     //ambil tahun
         $month = substr($request->waktu_assign_surat, 5, 2);    //ambil bulan
         $monthInRoman = $this->convertToRoman((int)$month);     //ubah bulan ke bentuk angka romawi
         
-        if($suratNew->id != null){                              //kalo db lagi gak kosong, maka generate biasa
-            $lastUrutan = $suratNew->orderBy('id', 'desc')->first();
+        if($lastUrutan != null){                              //kalo db lagi gak kosong, maka generate biasa
+            $lastUrutan = $newSurat->orderBy('id', 'desc')->first();
             $newUrutan = $this->generateUrutanBaru(substr($lastUrutan->no_surat, 12, 3),substr($lastUrutan->waktu_assign_surat, 0, 4),$year);                                   //generate nomor urutan baru
         }
         else $newUrutan = "001";                                //kalo db lagi kosong, set urutan ke 001
