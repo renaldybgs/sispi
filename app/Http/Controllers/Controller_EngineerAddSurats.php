@@ -11,13 +11,13 @@ use Illuminate\Support\Facades\DB;
 
 class Controller_EngineerAddSurats extends Controller
 {
-    public function openPage(){             //buka halaman Manager - Assign
+    public function openPage(){            
         //Autentikasi level user yg boleh msk
         $this->authorize('isEngineer', auth()->user());
 
         $userLevel = auth()->user()->id_ulevel;
-        $mitras = DB::select("select * from mitras order by nama_mitra asc");           //ngambil data semua mitra
-        $users = $this->getUser();                                                      //ngambil data engineer dan adminxengineer
+        $mitras = DB::select("select * from mitras order by nama_mitra asc");           
+        $users = $this->getUser();                              //ngambil data engineer dan adminxengineer
         
         return view('Pages.Engineer.View_EngineerAddProjectsSurat', compact('userLevel', 'mitras', 'users'));
     }
@@ -73,11 +73,11 @@ class Controller_EngineerAddSurats extends Controller
         return redirect('/engineer/surat')->with('success','No Surat berhasil di tambahkan');
     }
 
-    public function getUser(){                                      //ngambil data user engineer dan adminxengineer
+    public function getUser(){                                      
         return User::select(DB::raw('*'))->whereIn('id_ulevel', [1, 2, 4, 5])->get();
     }
 
-    public function getSuratById($id){                                        //ngamabil data projek berdasarkan idnya
+    public function getSuratById($id){                                        
         return Surat::where('id', $id)->firstOrFail();
     }
 }
