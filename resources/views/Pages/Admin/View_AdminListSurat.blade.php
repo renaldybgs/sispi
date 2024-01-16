@@ -1,33 +1,29 @@
-@extends('Templates.Engineer')
+@extends('Templates.Admin')
 @push('styles')
 @endpush
 
 @section('PageTitle','Daftar Surat Sertifikasi')
 @section('content')
 
-
+@if($userLevel === 4)
 <title>
 ASPI | Daftar Surat Sertifikasi
 </title>
+@else
+<title> 
+ASPI | Daftar Surat Sertifikasi
+</title>
+@endif
 
 <div class="row mt-2">
   <div class="col-md-12">
 
     <div class="card card-info card-outline">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-sm-4 col-md-2">
-                    <a href="/engineer/assignsurat" type="button" class="btn btn-success" title="Tambah Surat" id="btn-modal" style="float:left">
-                            Tambah Surat &nbsp<i class="fas fa-plus"></i>
-                    </a>
-                </div>
-                <div class="col-sm-4 col-md-2">
-                    <a href="/admin/surat/export" type="button" class="btn btn-info" style="float:left">
-                        Excel &nbsp<i class="fas fa-file-download"></i>
-                    </a> 
-                </div>
-            </div>
 
+        <div class="card-body">
+              <a href="/admin/surat/export" type="button" class="btn btn-success" style="float:left">
+                  Excel &nbsp<i class="fas fa-file-download"></i>
+              </a>
             <table id="table1" class="table table-bordered table-hover">
                 <thead>
                     <tr>
@@ -37,9 +33,11 @@ ASPI | Daftar Surat Sertifikasi
                         <th class="text-center">No Unik</th>
                         <th class="text-center">Perihal</th>
                         <th class="text-center">Tanggal Surat</th>
-                        <th class="text-center" style="width: 175px">Status</th>
+                        <th class="text-center">Status</th>
                         <th class="text-center">Dibuat</th>
-                        <th class="text-center">Aksi</th>             
+                        @if($userLevel === 4)      
+                        <th class="text-center">Aksi</th>
+                        @endif                 
                     </tr>
                 </thead>
             </table>
@@ -62,7 +60,7 @@ ASPI | Daftar Surat Sertifikasi
     "info": true,
     "autoWidth": false,
     "responsive": true,
-    ajax: "{{ route('surat.table') }}",
+    ajax: "{{ route('adminlistsurat.table') }}",
     columns: [
       {data: 'DT_RowIndex', name: 'id', class: 'text-center'},
       {data: 'nama_mitra', name: 'nama_mitra', class: 'text-center'},
@@ -70,9 +68,12 @@ ASPI | Daftar Surat Sertifikasi
       {data: 'no_unik', name: 'no_unik', class: 'text-center'},
       {data: 'perihal', name: 'perihal', class: 'text-center'},
       {data: 'tanggal_surat', name: 'tanggal_surat', class: 'text-center'},
-      {data: 'status', name: 'status', class: 'text-center'},
+      {data: 'id_pstat', name: 'id_pstat', class: 'text-center'},
       {data: 'added_by', name: 'added_by', class: 'text-center'},
+      @if($userLevel === 4) 
       {data: 'action', name: 'action', class: 'text-center'},
+      @endif  
+      // {data: 'added_by', name: 'added_by', class: 'text-center'},
       // {data: 'modified_by', name: 'modified_by', class: 'text-center'}
     ]
   });

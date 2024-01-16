@@ -99,6 +99,15 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::put('/admin/ipkc/update/{id}', 'Controller_AdminListIpkc@updateIpkc')->name('adminlistipkc.update');
 	Route::get('/admin/ipkc/delete/{id}', 'Controller_AdminListIpkc@deleteIpkc')->name('adminlistipkc.delete');
 
+	//List Project admin QRIS
+	Route::get('/admin/surat', 'Controller_AdminListSurat@openPage');
+	Route::get('/admin/surat/table', 'Controller_AdminListSurat@dataTable')->name('adminlistsurat.table');
+	Route::get('/admin/surat/detail/{id}', 'Controller_AdminListSurat@detail')->name('adminlistsurat.detail');
+	Route::get('/admin/surat/export', 'Controller_AdminListSurat@export');
+	Route::get('/admin/surat/edit/{id}', 'Controller_AdminListSurat@editQris')->name('adminsurat.edit');
+	Route::put('/admin/surat/update/{id}', 'Controller_AdminListSurat@updateQris')->name('adminsurat.update');
+	Route::get('/admin/surat/delete/{id}', 'Controller_AdminListSurat@deleteQris')->name('adminsurat.delete');
+
 	//List Project Perlindungan Konsumen
 	Route::get('/admin/perlindungan', 'Controller_AdminPerlindungan@openPage');
 	Route::get('/admin/perlindungan/table', 'Controller_AdminPerlindungan@dataTable')->name('adminperlindungan.table');

@@ -25,6 +25,7 @@ class CreateSuratsTable extends Migration
             $table->dateTime('last_updated')->nullable();
             $table->string('added_by', 5);
             $table->string('modified_by', 3)->nullable();
+            $table->string('file_surat')->nullable();
             $table->timestamps();
         });
     }

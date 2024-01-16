@@ -213,6 +213,14 @@
                                 </li>
                             </ul>
                         </li>
+
+                        <li class="nav-item">
+                            <a href="/admin/surat" class="nav-link">
+                                <i class="far fa-envelope nav-icon"></i>
+                                <p>Penomoran Surat</p>
+                            </a>
+                        </li>
+                        
                         @elseif($userLevel === 5)
                         <li class="nav-item">
                             <a href="/eksekutif/home" class="nav-link">
