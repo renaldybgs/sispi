@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 class Surat extends Model
 {
     protected $attributes = [
+        'id_pstat' => 1,
         'no_surat' => '',
         'no_unik' => '',
         'perihal' => '',

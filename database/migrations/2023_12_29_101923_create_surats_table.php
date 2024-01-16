@@ -17,6 +17,7 @@ class CreateSuratsTable extends Migration
             $table->id();
             $table->dateTime('waktu_assign_surat');
             $table->unsignedBigInteger('id_mitra');
+            $table->unsignedBigInteger('id_pstat');
             $table->string('no_surat')->nullable();
             $table->string('no_unik')->nullable();
             $table->string('perihal', 255)->nullable();

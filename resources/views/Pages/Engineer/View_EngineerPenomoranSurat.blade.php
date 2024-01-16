@@ -39,7 +39,7 @@ ASPI | Daftar Surat Sertifikasi
                         <th class="text-center">No Unik</th>
                         <th class="text-center">Perihal</th>
                         <th class="text-center">Tanggal Surat</th>
-                        <th class="text-center">Catatan</th>
+                        <th class="text-center" style="width: 175px">Status</th>
                         <th class="text-center">Dibuat</th>
                         <th class="text-center">Aksi</th>             
                     </tr>
@@ -72,7 +72,7 @@ ASPI | Daftar Surat Sertifikasi
       {data: 'no_unik', name: 'no_unik', class: 'text-center'},
       {data: 'perihal', name: 'perihal', class: 'text-center'},
       {data: 'tanggal_surat', name: 'tanggal_surat', class: 'text-center'},
-      {data: 'notes_surat', name: 'notes_surat', class: 'text-center'},
+      {data: 'status', name: 'status', class: 'text-center'},
       {data: 'added_by', name: 'added_by', class: 'text-center'},
       {data: 'action', name: 'action', class: 'text-center'},
       // {data: 'modified_by', name: 'modified_by', class: 'text-center'}

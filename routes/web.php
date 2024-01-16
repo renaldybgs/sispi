@@ -261,8 +261,9 @@ Route::group(['middleware' => 'auth'], function(){
 		// Own Project Surat
 	Route::get('/engineer/surat', 'Controller_EngineerYourSurat@openPage');
 	Route::get('/engineer/surat/table', 'Controller_EngineerYourSurat@dataTable')->name('surat.table');
-	Route::get('/engineer/surat/editprogress/{id}', 'Controller_EngineerYoursurat@editPenomoran')->name('progresssurat.edit');
-	Route::put('/engineer/qris/updateprogress/{id}', 'Controller_EngineerYoursurat@updatePenomoran')->name('progresssurat.update');
+	Route::get('/engineer/surat/editprogress/{id}', 'Controller_EngineerYourSurat@editPenomoran')->name('progresssurat.edit');
+	Route::put('/engineer/surat/updateprogress/{id}', 'Controller_EngineerYourSurat@updatePenomoran')->name('progresssurat.update');
+	Route::patch('/engineer/surat/changestat', 'Controller_EngineerYourSurat@changeStatus');
 
 
 	// Own Project QRIS Spek

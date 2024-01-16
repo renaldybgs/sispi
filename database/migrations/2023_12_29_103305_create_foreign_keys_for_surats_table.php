@@ -15,6 +15,7 @@ class CreateForeignKeysForSuratsTable extends Migration
     {
         Schema::table('surats', function (Blueprint $table) {
             $table->foreign('id_mitra')->references('id')->on('mitras');
+            $table->foreign('id_pstat')->references('id')->on('projects_stats');
             
         });
     }
@@ -27,6 +28,7 @@ class CreateForeignKeysForSuratsTable extends Migration
     public function down()
     {
         $table->dropForeign('projects_id_mitra_foreign');
+        $table->dropForeign('projects_id_PStatus_foreign');
         
     }
 }
