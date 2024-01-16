@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.7
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 09, 2023 at 10:57 AM
--- Server version: 5.7.35
--- PHP Version: 7.4.33
+-- Generation Time: Jan 16, 2024 at 02:39 PM
+-- Server version: 8.0.35
+-- PHP Version: 8.1.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -29,14 +28,14 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `cas` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `id` bigint UNSIGNED NOT NULL,
   `waktu_assign_project` datetime NOT NULL,
-  `status` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nama_issuer` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `bin` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `reg_ca` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `added_by` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `modified_by` varchar(3) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `status` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama_issuer` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `bin` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `reg_ca` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `added_by` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `modified_by` varchar(3) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -160,14 +159,14 @@ INSERT INTO `cas` (`id`, `waktu_assign_project`, `status`, `nama_issuer`, `bin`,
 --
 
 CREATE TABLE `documents` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `id_project` bigint(20) UNSIGNED NOT NULL,
-  `id_dtype` bigint(20) UNSIGNED NOT NULL,
-  `nama_document` varchar(240) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `direktori_document` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` bigint UNSIGNED NOT NULL,
+  `id_project` bigint UNSIGNED NOT NULL,
+  `id_dtype` bigint UNSIGNED NOT NULL,
+  `nama_document` varchar(240) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `direktori_document` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `softcopy_status` tinyint(1) NOT NULL DEFAULT '0',
   `hardcopy_status` tinyint(1) NOT NULL DEFAULT '0',
-  `uploaded_by` bigint(20) UNSIGNED NOT NULL
+  `uploaded_by` bigint UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -177,8 +176,8 @@ CREATE TABLE `documents` (
 --
 
 CREATE TABLE `documents_categories` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `nama_dcategory` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL
+  `id` bigint UNSIGNED NOT NULL,
+  `nama_dcategory` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -188,10 +187,10 @@ CREATE TABLE `documents_categories` (
 --
 
 CREATE TABLE `documents_types` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `id_dcategory` bigint(20) UNSIGNED NOT NULL,
-  `nama_dtype` varchar(51) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `sub_folder` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `id` bigint UNSIGNED NOT NULL,
+  `id_dcategory` bigint UNSIGNED NOT NULL,
+  `nama_dtype` varchar(51) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sub_folder` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -201,15 +200,15 @@ CREATE TABLE `documents_types` (
 --
 
 CREATE TABLE `ipkcs` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `id` bigint UNSIGNED NOT NULL,
   `waktu_assign_project` datetime NOT NULL,
-  `id_pstat` bigint(20) UNSIGNED NOT NULL,
-  `id_ca` bigint(20) UNSIGNED NOT NULL,
-  `bin` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `jenis_ipkc` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `no_ipkc` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `stats_temp` bigint(20) UNSIGNED DEFAULT NULL,
-  `notes_project` varchar(301) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id_pstat` bigint UNSIGNED NOT NULL,
+  `id_ca` bigint UNSIGNED NOT NULL,
+  `bin` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `jenis_ipkc` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `no_ipkc` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `stats_temp` bigint UNSIGNED DEFAULT NULL,
+  `notes_project` varchar(301) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `last_updated` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -412,9 +411,9 @@ INSERT INTO `ipkcs` (`id`, `waktu_assign_project`, `id_pstat`, `id_ca`, `bin`, `
 --
 
 CREATE TABLE `migrations` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int(11) NOT NULL
+  `id` int UNSIGNED NOT NULL,
+  `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -452,18 +451,18 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 --
 
 CREATE TABLE `mitras` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `nama_mitra` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `jenis` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `keanggotaan` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `alamat` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `nama_pic` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `data_agreement` varchar(25) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `reg_numb` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `no_anggota` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `added_by` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `modified_by` varchar(3) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `id` bigint UNSIGNED NOT NULL,
+  `nama_mitra` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jenis` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `keanggotaan` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `alamat` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nama_pic` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `data_agreement` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `reg_numb` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `no_anggota` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `added_by` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `modified_by` varchar(3) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -601,7 +600,7 @@ INSERT INTO `mitras` (`id`, `nama_mitra`, `jenis`, `keanggotaan`, `alamat`, `nam
 (128, 'Fujian Morefun Electronic Technology Co. Ltd.', 'Vendor', 'Non Anggota', NULL, NULL, NULL, '20CON-1221009', '201106009', NULL, 'RBB', NULL),
 (129, 'Vanstone Electronic (Beijing) Co, Ltd.', 'Vendor', 'Non Anggota', NULL, NULL, NULL, '21CON-0412012', '201106010', NULL, 'RBB', NULL),
 (130, 'PT. Bank Perkreditan Rakyat Dana Nusantara', 'Bank', 'Anggota', NULL, NULL, NULL, NULL, '201106011', NULL, 'RBB', NULL),
-(131, 'PT BANK MAYORA', 'Bank', 'Anggota', NULL, NULL, NULL, NULL, '201120012', NULL, 'RBB', NULL),
+(131, 'PT BANK MAYORA (HIBANK)', 'Bank', 'Anggota', NULL, NULL, NULL, NULL, '201120012', NULL, 'RBB', 'RBB'),
 (132, 'PT. BPR PALU LOKADANA UTAMA', 'Bank', 'Anggota', NULL, NULL, NULL, NULL, '201204013', NULL, 'RBB', NULL),
 (133, 'PT BANK NET INDONESIA SYARIAH TBK', 'Bank', 'Anggota', NULL, NULL, NULL, NULL, '210104001', NULL, 'RBB', NULL),
 (134, 'PT Ingenico International Indonesia', 'Vendor', 'Non Anggota', NULL, NULL, NULL, '21CON-0412010', '210104002', NULL, 'RBB', NULL),
@@ -709,7 +708,28 @@ INSERT INTO `mitras` (`id`, `nama_mitra`, `jenis`, `keanggotaan`, `alamat`, `nam
 (238, 'Advance Intelligence Group', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'RBB', NULL),
 (239, 'PT. Bank IBK Indonesia Tbk', 'Bank', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'RBB', NULL),
 (240, 'PT Traveloka Indonesia', 'Fintek', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'RBB', NULL),
-(241, 'PT BPR Bhakti Daya Ekonomi', 'Bank', 'Non Anggota', NULL, NULL, NULL, NULL, '220902010', NULL, 'ENP', NULL);
+(241, 'PT BPR Bhakti Daya Ekonomi', 'Bank', 'Non Anggota', NULL, NULL, NULL, NULL, '220902010', NULL, 'ENP', NULL),
+(242, 'PT Cashlez Worldwide Indonesia Tbk', 'Non Bank', 'Anggota', NULL, NULL, NULL, NULL, NULL, NULL, 'RBB', NULL),
+(243, 'PT. Unique Teknologi Pembayaran.', 'Non Bank', 'Anggota', NULL, NULL, NULL, NULL, NULL, NULL, 'RBB', NULL),
+(244, 'PT MCP Indo Utama', 'Non Bank', 'Anggota', NULL, NULL, NULL, NULL, NULL, NULL, 'RBB', NULL),
+(245, 'PT Ionpay Networks (NICEPAY)', 'Non Bank', 'Anggota', NULL, NULL, NULL, NULL, NULL, NULL, 'RBB', NULL),
+(246, 'PT Indivara Sejahtera Sukses Makmur', 'Non Bank', 'Anggota', NULL, NULL, NULL, NULL, NULL, NULL, 'RBB', NULL),
+(247, 'PT Mobivision Teknologi Inno (KilatPay)', 'Fintek', 'Anggota', NULL, NULL, NULL, NULL, NULL, NULL, 'RBB', NULL),
+(248, 'PT Honest Financial Technologies', 'Fintek', 'Anggota', NULL, NULL, NULL, NULL, NULL, NULL, 'RBB', NULL),
+(249, 'PT Harsya Remitindo', 'Fintek', 'Anggota', NULL, NULL, NULL, NULL, NULL, NULL, 'AUF', 'AUF'),
+(250, 'PT Jasamarga Tollroad Operator', 'Fintek', 'Anggota', NULL, NULL, NULL, NULL, NULL, NULL, 'AUF', NULL),
+(251, 'PT Global Pay Indonesia', 'Fintek', 'Non Anggota', NULL, NULL, NULL, NULL, NULL, NULL, 'AUF', NULL),
+(252, 'FlashPay Indonesia', 'Fintek', 'Non Anggota', NULL, NULL, NULL, NULL, NULL, NULL, 'AUF', NULL),
+(253, 'PT BPR Karyajatnika Sadaya', 'Bank', 'Anggota', NULL, NULL, NULL, NULL, NULL, NULL, 'AUF', NULL),
+(254, 'PT BPRS Hijra Alami', 'Bank', 'Anggota', NULL, NULL, NULL, NULL, NULL, NULL, 'AUF', NULL),
+(255, 'PT Indo Sukses Mandiri', 'Fintek', 'Anggota', NULL, NULL, NULL, NULL, NULL, NULL, 'AUF', NULL),
+(256, 'PT Reka Multi Aptika', 'Vendor', 'Non Anggota', NULL, NULL, NULL, NULL, NULL, NULL, 'AUF', NULL),
+(257, 'PT Wahana Pembayaran Digital', 'Fintek', 'Anggota', NULL, NULL, NULL, NULL, NULL, NULL, 'RBB', NULL),
+(258, 'BPR Supra Artapersada', 'Bank', 'Anggota', NULL, NULL, NULL, NULL, NULL, NULL, 'RBB', NULL),
+(259, 'PT Midazpay Digital Indonesia', 'Fintek', 'Anggota', NULL, NULL, NULL, NULL, NULL, NULL, 'RBB', NULL),
+(260, 'PT Krom Bank', 'Bank', 'Anggota', NULL, NULL, NULL, NULL, NULL, NULL, 'RBB', NULL),
+(261, 'PT Module Intracs Yasatama', 'Non Bank', 'Anggota', NULL, NULL, NULL, NULL, NULL, NULL, 'IDR', NULL),
+(262, 'PT Ayopop Teknologi Indonesia', 'Fintek', 'Anggota', NULL, NULL, NULL, NULL, NULL, NULL, 'IDR', NULL);
 
 -- --------------------------------------------------------
 
@@ -718,10 +738,10 @@ INSERT INTO `mitras` (`id`, `nama_mitra`, `jenis`, `keanggotaan`, `alamat`, `nam
 --
 
 CREATE TABLE `products` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `nama_product` varchar(24) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `added_by` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `modified_by` varchar(3) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `id` bigint UNSIGNED NOT NULL,
+  `nama_product` varchar(24) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `added_by` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `modified_by` varchar(3) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -736,9 +756,12 @@ INSERT INTO `products` (`id`, `nama_product`, `added_by`, `modified_by`) VALUES
 (5, 'PERSO', 'ASPI', NULL),
 (6, 'QRIS CPM', 'ASPI', NULL),
 (7, 'QRIS MPM', 'ASPI', NULL),
-(8, 'QRIS TTS', 'ASPI', NULL),
-(9, 'QRIS CrossBorder', 'ASPI', NULL),
-(11, 'QRIS KKP', 'RBB', NULL);
+(8, 'QRIS Tuntas', 'ASPI', 'RBB'),
+(9, 'QRIS Antarnegara THB', 'ASPI', 'RBB'),
+(11, 'QRIS KKP', 'RBB', NULL),
+(12, 'QRIS Antarnegara MYR', 'RBB', NULL),
+(13, 'KKP Domestik', 'RBB', NULL),
+(14, 'QRIS Antarnegara SGD', 'RBB', NULL);
 
 -- --------------------------------------------------------
 
@@ -747,28 +770,28 @@ INSERT INTO `products` (`id`, `nama_product`, `added_by`, `modified_by`) VALUES
 --
 
 CREATE TABLE `projects` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `id` bigint UNSIGNED NOT NULL,
   `waktu_assign_project` datetime NOT NULL,
-  `id_pketerangan` bigint(20) UNSIGNED DEFAULT NULL,
-  `id_pstat` bigint(20) UNSIGNED NOT NULL,
-  `id_product` bigint(20) UNSIGNED NOT NULL,
-  `id_mitra` bigint(20) UNSIGNED NOT NULL,
-  `number_special` varchar(51) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `nama_prod` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `typereg_numb` varchar(51) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `security_lab` varchar(51) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `lab` varchar(51) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id_pketerangan` bigint UNSIGNED DEFAULT NULL,
+  `id_pstat` bigint UNSIGNED NOT NULL,
+  `id_product` bigint UNSIGNED NOT NULL,
+  `id_mitra` bigint UNSIGNED NOT NULL,
+  `number_special` varchar(51) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nama_prod` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `typereg_numb` varchar(51) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `security_lab` varchar(51) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `lab` varchar(51) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `pif` datetime DEFAULT NULL,
   `ctf` datetime DEFAULT NULL,
   `report_lab` datetime DEFAULT NULL,
   `complience_req` datetime DEFAULT NULL,
   `loa_new` datetime DEFAULT NULL,
   `loa_sent` datetime DEFAULT NULL,
-  `stats_temp` bigint(20) UNSIGNED DEFAULT NULL,
-  `pketerangan_status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `notes_project` varchar(301) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `identification_num` varchar(51) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `certification_no` varchar(51) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `stats_temp` bigint UNSIGNED DEFAULT NULL,
+  `pketerangan_status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `notes_project` varchar(301) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `identification_num` varchar(51) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `certification_no` varchar(51) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `last_updated` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -940,7 +963,7 @@ INSERT INTO `projects` (`id`, `waktu_assign_project`, `id_pketerangan`, `id_psta
 (162, '2022-05-31 00:00:00', NULL, 16, 3, 72, NULL, '-', 'ASPI-22COM-0531051', NULL, 'Artajasa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ASPI-22COM-0425036', '2022-08-04 09:16:49'),
 (163, '2022-04-06 00:00:00', NULL, 16, 3, 39, NULL, '-', 'ASPI-22CPTTN-0406035', NULL, 'Rintis', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ASPI-22COM-0531052', '2022-08-04 09:21:48'),
 (164, '2022-04-08 00:00:00', NULL, 7, 3, 49, NULL, '-', 'ASPI-22CPTTN-0408036', NULL, 'Artajasa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-08-04 09:23:16'),
-(165, '2022-04-11 00:00:00', NULL, 10, 3, 88, NULL, '-', 'ASPI-22CPTTN-0411037', NULL, 'Rintis', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-08-04 09:43:02'),
+(165, '2022-04-11 00:00:00', NULL, 9, 3, 88, NULL, '-', 'ASPI-22CPTTN-0411037', NULL, 'Rintis', NULL, NULL, NULL, '2023-09-13 10:12:36', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-08-04 09:43:02'),
 (166, '2022-04-13 00:00:00', NULL, 3, 3, 18, NULL, '-', 'ASPI-22CPTTN-0413038', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
 (167, '2022-04-18 00:00:00', NULL, 7, 3, 99, NULL, '-', 'ASPI-22CPTTN-0418039', NULL, 'Rintis', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-08-04 09:47:00'),
 (168, '2022-04-18 00:00:00', NULL, 16, 3, 96, NULL, '-', 'ASPI-22CPTTN-0418040', NULL, 'Rintis', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ASPI-22COM-0527047', '2022-08-04 09:49:06'),
@@ -1020,26 +1043,26 @@ INSERT INTO `projects` (`id`, `waktu_assign_project`, `id_pketerangan`, `id_psta
 (243, '2023-01-02 00:00:00', NULL, 7, 3, 46, NULL, '-', 'ASPI-23CPTTN-0102001', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
 (244, '2023-01-02 00:00:00', NULL, 7, 3, 46, NULL, '-', 'ASPI-23CPTTN-0102002', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
 (245, '2023-02-01 00:00:00', NULL, 7, 3, 46, NULL, '-', 'ASPI-23CPTTN-0102003', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
-(246, '2023-02-01 00:00:00', NULL, 10, 3, 46, NULL, '-', 'ASPI-23CPTTN-0102004', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
-(247, '2023-02-01 00:00:00', NULL, 12, 3, 146, NULL, '-', 'ASPI-23CPTTN-0102005', NULL, 'Rintis', NULL, NULL, NULL, NULL, '2023-01-24 15:46:37', NULL, NULL, NULL, NULL, NULL, NULL, '2023-01-24 15:46:32'),
-(248, '2023-01-06 00:00:00', NULL, 7, 3, 146, NULL, '-', 'ASPI-23CPTTN-0106006', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
-(249, '2023-01-06 00:00:00', NULL, 10, 3, 46, NULL, '-', 'ASPI-23CPTTN-0106007', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(246, '2023-02-01 00:00:00', NULL, 16, 3, 46, NULL, '-', 'ASPI-23CPTTN-0102004', NULL, 'Artajasa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ASPI-23COM-0222017', '2023-03-02 10:21:35'),
+(247, '2023-02-01 00:00:00', NULL, 16, 3, 146, NULL, '-', 'ASPI-23CPTTN-0102005', NULL, 'Rintis', NULL, NULL, NULL, NULL, '2023-01-24 15:46:37', NULL, NULL, NULL, NULL, NULL, 'ASPI-23COM-0120005', '2023-03-02 10:23:47'),
+(248, '2023-01-06 00:00:00', NULL, 16, 3, 146, NULL, '-', 'ASPI-23CPTTN-0106006', NULL, 'Rintis', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ASPI-23COM-0228021', '2023-03-02 10:25:18'),
+(249, '2023-01-06 00:00:00', NULL, 16, 3, 46, NULL, '-', 'ASPI-23CPTTN-0106007', NULL, 'Artajasa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ASPI-23COM-0222018', '2023-03-02 10:22:22'),
 (250, '2023-01-09 00:00:00', NULL, 7, 3, 96, NULL, '-', 'ASPI-23CPTTN-0109008', NULL, 'Artajasa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-01-24 15:57:33'),
-(251, '2023-01-11 00:00:00', NULL, 7, 3, 71, NULL, '-', 'ASPI-23CPTTN-0111009', NULL, 'Alto', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-01-24 15:59:05'),
-(252, '2023-01-11 00:00:00', NULL, 10, 3, 46, NULL, '-', 'ASPI-23CPTTN-0111010', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(251, '2023-01-11 00:00:00', NULL, 16, 3, 71, NULL, '-', 'ASPI-23CPTTN-0111009', NULL, 'Alto', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ASPI-23COM-0308024', '2023-03-14 10:56:17'),
+(252, '2023-01-11 00:00:00', NULL, 16, 3, 46, NULL, '-', 'ASPI-23CPTTN-0111010', NULL, 'Artajasa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ASPI-23COM-0222019', '2023-03-02 10:22:50'),
 (253, '2023-01-11 00:00:00', NULL, 7, 3, 46, NULL, '-', 'ASPI-23CPTTN-0111011', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
 (254, '2023-01-11 00:00:00', NULL, 7, 3, 46, NULL, '-', 'ASPI-23CPTTN-0111012', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
 (255, '2023-01-12 00:00:00', NULL, 7, 3, 31, NULL, '-', 'ASPI-23CPTTN-0112013', NULL, 'Rintis', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-01-26 10:19:44'),
-(256, '2023-01-12 00:00:00', NULL, 7, 3, 31, NULL, '-', 'ASPI-23CPTTN-0112014', NULL, 'Rintis', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-01-26 10:20:58'),
-(257, '2023-01-12 00:00:00', NULL, 7, 3, 31, NULL, '-', 'ASPI-23CPTTN-0112015', NULL, 'Rintis', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-01-26 10:22:05');
+(256, '2023-01-12 00:00:00', NULL, 7, 3, 31, NULL, '-', 'ASPI-23CPTTN-0112014', NULL, 'Rintis', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-01-26 10:20:58');
 INSERT INTO `projects` (`id`, `waktu_assign_project`, `id_pketerangan`, `id_pstat`, `id_product`, `id_mitra`, `number_special`, `nama_prod`, `typereg_numb`, `security_lab`, `lab`, `pif`, `ctf`, `report_lab`, `complience_req`, `loa_new`, `loa_sent`, `stats_temp`, `pketerangan_status`, `notes_project`, `identification_num`, `certification_no`, `last_updated`) VALUES
+(257, '2023-01-12 00:00:00', NULL, 7, 3, 31, NULL, '-', 'ASPI-23CPTTN-0112015', NULL, 'Rintis', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-01-26 10:22:05'),
 (258, '2023-01-16 00:00:00', NULL, 7, 3, 31, NULL, '-', 'ASPI-23CPTTN-0112016', NULL, 'Rintis', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-01-26 10:23:09'),
 (259, '2023-01-12 00:00:00', NULL, 7, 3, 31, NULL, '-', 'ASPI-23CPTTN-0112017', NULL, 'Rintis', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-01-26 10:23:42'),
 (260, '2023-01-12 00:00:00', NULL, 7, 3, 31, NULL, '-', 'ASPI-23CPTTN-0112018', NULL, 'Rintis', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-01-26 10:25:06'),
-(261, '2023-01-19 00:00:00', NULL, 3, 3, 46, NULL, '-', 'ASPI-23CPTTN-0119019', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
-(262, '2023-01-24 00:00:00', NULL, 10, 3, 96, NULL, '-', 'ASPI-23CPTTN-0124020', NULL, 'Artajasa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'KKP', NULL, NULL, '2023-02-07 15:58:09'),
+(261, '2023-01-19 00:00:00', NULL, 16, 3, 46, NULL, '-', 'ASPI-23CPTTN-0119019', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(262, '2023-01-24 00:00:00', NULL, 16, 3, 96, NULL, '-', 'ASPI-23CPTTN-0124020', NULL, 'Artajasa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'KKP', NULL, 'ASPI-23COM-0314013', '2023-02-14 14:10:48'),
 (263, '2023-01-24 00:00:00', NULL, 3, 3, 46, NULL, '-', 'ASPI-23CPTTN-0124021', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
-(265, '2023-01-24 00:00:00', NULL, 7, 3, 58, NULL, '-', 'ASPI-23CPTTN-0124022', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'KKP', NULL, NULL, '2023-02-07 15:56:59'),
+(265, '2023-01-24 00:00:00', NULL, 16, 3, 58, NULL, '-', 'ASPI-23CPTTN-0124022', 'AJ23REP02-8-01', 'Artajasa', NULL, NULL, NULL, '2023-02-10 11:35:54', NULL, NULL, NULL, NULL, 'KKP BJB', NULL, 'ASPI-23COM-0224020', '2023-03-02 10:00:12'),
 (266, '2022-12-02 00:00:00', NULL, 16, 3, 39, NULL, '-', 'ASPI-22CPTTN-1202080', NULL, 'Rintis', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ASPI-23COM-0126007', '2023-02-07 15:37:46'),
 (267, '2022-12-07 00:00:00', NULL, 16, 3, 146, NULL, '-', 'ASPI-22CPTTN-1207081', NULL, 'Rintis', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ASPI-22COM-1223104', '2023-02-07 15:40:39'),
 (268, '2022-12-08 00:00:00', NULL, 3, 3, 9, NULL, '-', 'ASPI-22CPTTN-1208082', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
@@ -1048,8 +1071,113 @@ INSERT INTO `projects` (`id`, `waktu_assign_project`, `id_pketerangan`, `id_psta
 (271, '2022-12-23 00:00:00', NULL, 16, 3, 31, NULL, '-', 'ASPI-22CPTTN-1230085', NULL, 'Artajasa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'KKP', NULL, 'ASPI-23COM-0203012', '2023-02-07 15:46:18'),
 (272, '2023-01-30 00:00:00', NULL, 6, 3, 141, NULL, '-', 'ASPI-23CPTTN-0130023', '', '', NULL, '2023-02-07 15:52:59', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
 (273, '2023-02-01 00:00:00', NULL, 3, 3, 108, NULL, '-', 'ASPI-23CPTTN-0201024', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
-(274, '2023-02-07 00:00:00', NULL, 3, 3, 39, NULL, '-', 'ASPI-23CPTTN-0207025', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
-(275, '2023-02-07 00:00:00', NULL, 3, 3, 39, NULL, '-', 'ASPI-23CPTTN-0207026', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL);
+(274, '2023-02-07 00:00:00', NULL, 7, 3, 39, NULL, '-', 'ASPI-23CPTTN-0207025', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(275, '2023-02-07 00:00:00', NULL, 7, 3, 39, NULL, '-', 'ASPI-23CPTTN-0207026', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(276, '2023-02-08 00:00:00', NULL, 7, 3, 46, NULL, 'KKP BRI', 'ASPI-23CPTTN-0208027', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(277, '2023-02-08 00:00:00', NULL, 15, 3, 46, NULL, 'KKP BRI', 'ASPI-23CPTTN-0208028', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(278, '2023-02-14 00:00:00', NULL, 16, 3, 139, NULL, 'Kartu ATM NSICCS', 'ASPI-23CPTTN-0214029', NULL, 'Rintis', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ASPI-23COM-0309025', '2023-03-14 11:06:41'),
+(279, '2023-03-13 00:00:00', NULL, 16, 13, 170, NULL, 'Rekomendasi KKPD', '-', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Rekomendasi KKPD\r\nTerima Dokumen, 03/13/2023\r\nPemeriksaan 1,  03/20/23\r\nPerbaikan 1, 03/21/23\r\nPemeriksaan 1, 03/20/23\r\nPerbaikan 2, 03/21/23\r\nPemeriksaan 2, 03/24/23 - Done', NULL, 'Sek.ASPI/043/IV/2023', '2023-04-10 17:52:10'),
+(280, '2023-03-28 00:00:00', NULL, 16, 13, 171, NULL, 'Rekomendasi KKPD', '-', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'KKPD, \r\nTerima Dokumen, 03/28/23\r\nPemeriksaan 1, 03/30/23\r\nPerbaikan 1, 04/05/23\r\nPemeriksaan 2, 04/06/23\r\nPerbaikan 2, 04/16/23\r\nPemeriksaan 3, 04/17/23 -Done', NULL, 'Sek.ASPI/108/IV/2023', '2023-04-26 08:10:20'),
+(281, '2023-03-28 00:00:00', NULL, 16, 13, 169, NULL, 'Rekomendasi KKPD', '-', NULL, NULL, NULL, NULL, NULL, NULL, '2023-03-28 00:00:00', NULL, NULL, NULL, 'Terima Dokumen, 03/28/23\r\nPemeriksaan 1, 03/30/23 -done', NULL, 'Sek.ASPl/073/IV/2023', '2023-04-17 08:13:55'),
+(282, '2023-03-29 00:00:00', NULL, 16, 13, 47, NULL, 'Rekomendasi KKPD', '-', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Terima Dokumen, 03/29/23\r\nPemeriksaan 1, 03/30/23\r\nPerbaikan 1, 04/17/23\r\nPemeriksaan 2, 04/18/23', NULL, 'Sek.ASPI/110/IV/2023', '2023-04-26 08:10:07'),
+(283, '2023-03-31 00:00:00', NULL, 16, 13, 96, NULL, 'Rekomendasi KKPD', '-', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Rekomendasi KKPD, 03/31/23\r\nPemeriksaan 1, 04/03/23\r\nPerbaikan 1, 04/04/23\r\nPemeriksaan 2, 04/04/23 -Done', NULL, 'Sek.ASPI/074/IV/2023', '2023-04-10 17:52:37'),
+(284, '2023-04-12 00:00:00', NULL, 16, 13, 8, NULL, 'Rekomendasi KKPD', '-', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Terima dokumen, 04/12/23\r\nPemeriksaan 1, 04/18/23\r\nPerbaikan 1, 04/18/23\r\nPemeriksaan 2, 04/26/23 -Done', NULL, 'Sek.ASPI/113/IV/2023', '2023-05-03 10:23:38'),
+(285, '2023-04-17 00:00:00', NULL, 16, 13, 95, NULL, 'Rekomendasi KKPD', '-', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'terima dokumen, 04/17/23\r\nPemeriksaan 1, 04/18/23\r\nPerbaikan 1, 04/18/23\r\nPemeriksaan 2, 04/26/23 - Done', NULL, 'Sek.ASPI/115/IV/2023', '2023-04-28 07:59:52'),
+(286, '2023-04-18 00:00:00', NULL, 16, 13, 58, NULL, 'Rekomendasi KKPD', '-', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Terima Dokumen, 04/18/23\r\nPemeriksaan 1, 04/26/23 - Done', NULL, 'Sek.ASPI/114/IV/2023', '2023-04-28 07:59:24'),
+(287, '2023-04-18 00:00:00', NULL, 16, 13, 147, NULL, 'Rekomendasi KKPD', '-', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Terima Dokumen, 04/18/23\r\nPemeriksaan 1, 04/26/23', NULL, 'Sek.ASPI/139/V/2023', '2023-05-05 15:41:01'),
+(288, '2023-04-18 00:00:00', NULL, 16, 13, 172, NULL, 'Rekomendasi KKPD', '-', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Terima dokumen, 04/18/23\r\nPemeriksaan 1, 04/26/23\r\nPerbaikan 1, 05/03/23\r\nPemeriksaan 2, 05/03/23', NULL, 'Sek.ASPI/131/V/2023', '2023-05-04 18:01:55'),
+(289, '2023-05-04 00:00:00', NULL, 16, 13, 46, NULL, 'Rekomendasi KKP Domestik', '-', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Terima Dokumen, 05/04/23\r\nPemeriksaan 1, 05/04/23', NULL, 'Sek.ASPI/137/V/2023', '2023-05-05 15:40:52'),
+(290, '2023-02-14 00:00:00', NULL, 16, 3, 139, NULL, 'Kartu ATM NSICCS', 'ASPI-23CPTTN-0214029', 'RS23CPG02-21-1', 'Rintis', NULL, NULL, NULL, NULL, '2023-03-14 00:00:00', NULL, NULL, NULL, NULL, NULL, 'ASPI-23COM-0309025', '2023-05-22 12:58:41'),
+(291, '2023-02-15 00:00:00', NULL, 16, 3, 8, NULL, 'KKP Domestik', 'ASPI-23CPTTN-0215030', 'AJ23REP03-01-01', 'Artajasa', NULL, NULL, NULL, NULL, '2023-04-10 00:00:00', NULL, NULL, NULL, NULL, NULL, 'ASPI-23COM-0405035', '2023-05-22 13:02:16'),
+(292, '2023-02-14 00:00:00', NULL, 16, 2, 139, NULL, '-', 'ASPI-23CPTTN-0214029', NULL, 'Rintis', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ASPI-23COM-0309025', '2023-06-09 15:39:37'),
+(293, '2023-02-15 00:00:00', NULL, 16, 2, 8, NULL, '-', 'ASPI-23CPTTN-0215030', NULL, 'Artajasa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ASPI-23COM-0405035', '2023-06-09 15:42:03'),
+(294, '2023-02-17 00:00:00', NULL, 8, 2, 146, NULL, '-', 'ASPI-23CPTTN-0217031', NULL, 'Rintis', NULL, NULL, '2023-08-02 09:15:58', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-06-09 15:43:00'),
+(295, '2023-02-17 00:00:00', NULL, 16, 2, 46, NULL, '-', 'ASPI-23CPTTN-0217032', NULL, 'Rintis', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ASPI-23COM-0324028', '2023-06-09 15:43:51'),
+(296, '2023-02-23 00:00:00', NULL, 16, 2, 4, NULL, '-', 'ASPI-23CPTTN-0223033', NULL, 'Artajasa', NULL, NULL, NULL, '2023-06-09 15:44:45', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-06-09 15:44:30'),
+(297, '2023-02-23 00:00:00', NULL, 16, 2, 46, NULL, '-', 'ASPI-23CPTTN-0223034', NULL, 'Rintis', NULL, NULL, NULL, '2023-06-09 15:45:28', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-06-09 15:45:22'),
+(298, '2023-02-23 00:00:00', NULL, 16, 2, 39, NULL, '-', 'ASPI-23CPTTN-0223035', NULL, 'Rintis', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ASPI-23COM-0426044', '2023-06-09 15:46:22'),
+(299, '2023-02-23 00:00:00', NULL, 16, 2, 9, NULL, '-', 'ASPI-23CPTTN-0223036', NULL, 'Artajasa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-06-09 15:47:11'),
+(300, '2023-02-24 00:00:00', NULL, 16, 2, 147, NULL, '-', 'ASPI-23CPTTN-0224037', NULL, 'Artajasa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-06-09 15:47:55'),
+(301, '2023-02-27 00:00:00', NULL, 8, 2, 146, NULL, '-', 'ASPI-23CPTTN-0227038', NULL, 'Rintis', NULL, NULL, '2023-08-02 09:16:10', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-06-09 15:48:45'),
+(302, '2023-02-27 00:00:00', NULL, 16, 2, 162, NULL, '-', 'ASPI-23CPTTN-0227039', NULL, 'Artajasa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-06-09 15:49:33'),
+(303, '2023-02-28 00:00:00', NULL, 7, 2, 96, NULL, '-', 'ASPI-23CPTTN-0228040', NULL, 'Artajasa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-06-09 15:50:21'),
+(304, '2023-03-08 00:00:00', NULL, 16, 2, 56, NULL, '-', 'ASPI-23CPTTN-0308041', NULL, 'Artajasa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-06-09 15:51:14'),
+(305, '2023-03-09 00:00:00', NULL, 16, 2, 9, NULL, '-', 'ASPI-23CPTTN-0309042', NULL, 'Artajasa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ASPI-23COM-0502045', '2023-06-09 15:51:50'),
+(306, '2023-03-10 00:00:00', NULL, 9, 2, 137, NULL, '-', 'ASPI-23CPTTN-0310043', NULL, 'Artajasa', NULL, NULL, NULL, '2023-06-09 15:52:37', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-06-09 15:52:30'),
+(307, '2023-03-16 00:00:00', NULL, 16, 2, 214, NULL, '-', 'ASPI-23CPTTN-0316044', NULL, 'Rintis', NULL, NULL, NULL, '2023-07-11 08:55:47', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-06-09 15:53:13'),
+(308, '2023-03-16 00:00:00', NULL, 16, 2, 214, NULL, '-', 'ASPI-23CPTTN-0316045', NULL, 'Rintis', NULL, NULL, NULL, '2023-07-11 08:55:53', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-06-09 15:53:41'),
+(309, '2023-03-17 00:00:00', NULL, 16, 2, 105, NULL, '-', 'ASPI-23CPTTN-0317046', NULL, 'Artajasa', NULL, NULL, NULL, '2023-06-09 15:54:12', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-06-09 15:54:15'),
+(310, '2023-03-17 00:00:00', NULL, 16, 2, 235, NULL, '-', 'ASPI-23CPTTN-0317047', NULL, 'Artajasa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ASPI-23COM-0511049', '2023-06-09 15:54:46'),
+(311, '2023-03-24 00:00:00', NULL, 16, 2, 64, NULL, '-', 'ASPI-23CPTTN-0324048', NULL, 'Rintis', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ASPI-23COM-0530054', '2023-06-09 15:55:28'),
+(312, '2023-03-27 00:00:00', NULL, 16, 2, 31, NULL, '-', 'ASPI-23CPTTN-0327049', NULL, 'Rintis', NULL, NULL, NULL, '2023-06-09 15:56:06', NULL, NULL, NULL, NULL, NULL, NULL, 'ASPI-23COM-0607060', '2023-06-09 16:16:56'),
+(313, '2023-03-27 00:00:00', NULL, 16, 2, 31, NULL, '-', 'ASPI-23CPTTN-0327050', NULL, 'Rintis', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ASPI-23COM-0418041', '2023-06-09 15:56:41'),
+(314, '2023-03-27 00:00:00', NULL, 16, 2, 31, NULL, '-', 'ASPI-23CPTTN-0327051', NULL, 'Rintis', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ASPI-23COM-0418042', '2023-06-09 15:57:21'),
+(315, '2023-03-27 00:00:00', NULL, 16, 2, 31, NULL, '-', 'ASPI-23CPTTN-0327052', NULL, 'Rintis', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ASPI-23COM-0418043', '2023-06-09 15:57:51'),
+(316, '2023-03-27 00:00:00', NULL, 16, 2, 31, NULL, '-', 'ASPI-23CPTTN-0327053', NULL, 'Rintis', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ASPI-23COM-0523050', '2023-06-09 15:58:27'),
+(317, '2023-03-27 00:00:00', NULL, 16, 2, 31, NULL, '-', 'ASPI-23CPTTN-0327054', NULL, 'Rintis', NULL, NULL, NULL, '2023-06-09 16:17:23', NULL, NULL, NULL, NULL, NULL, NULL, 'ASPI-23COM-0607061', '2023-06-09 16:17:17'),
+(318, '2023-04-04 00:00:00', NULL, 16, 2, 71, NULL, '-', 'ASPI-23CPTTN-0404055', NULL, 'Rintis', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ASPI-23COM-0525051', '2023-06-09 15:59:38'),
+(319, '2023-04-04 00:00:00', NULL, 16, 2, 96, NULL, '-', 'ASPI-23CPTTN-0404056', NULL, 'Artajasa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ASPI-23COM-0502047', '2023-06-09 16:00:13'),
+(320, '2023-04-04 00:00:00', NULL, 16, 2, 51, NULL, '-', 'ASPI-23CPTTN-0404057', NULL, 'Rintis', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ASPI-23COM-0530055', '2023-06-09 16:01:10'),
+(321, '2023-04-10 00:00:00', NULL, 16, 2, 32, NULL, '-', 'ASPI-23CPTTN-0410058', NULL, 'Artajasa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-06-09 16:03:28'),
+(322, '2023-04-14 00:00:00', NULL, 9, 2, 7, NULL, '-', 'ASPI-23CPTTN-0414059', NULL, 'Rintis', NULL, NULL, NULL, '2023-06-09 16:04:03', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-06-09 16:04:10'),
+(323, '2023-04-14 00:00:00', NULL, 16, 2, 12, NULL, '-', 'ASPI-23CPTTN-0414060', NULL, 'Rintis', NULL, NULL, '2023-06-14 20:48:12', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ASPI-23COM-0620066', '2023-06-21 12:01:39'),
+(324, '2023-04-14 00:00:00', NULL, 16, 2, 12, NULL, '-', 'ASPI-23CPTTN-0414061', NULL, 'Rintis', NULL, NULL, '2023-06-14 20:48:08', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ASPI-23COM-0620067', '2023-06-21 12:01:47'),
+(325, '2023-04-14 00:00:00', NULL, 16, 2, 12, NULL, '-', 'ASPI-23CPTTN-0414062', NULL, 'Rintis', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ASPI-23COM-0607058', '2023-06-09 16:16:28'),
+(326, '2023-04-18 00:00:00', NULL, 16, 2, 138, NULL, '-', 'ASPI-23CPTTN-0418063', NULL, 'Rintis', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ASPI-23COM-0525053', '2023-06-09 16:06:32'),
+(327, '2023-04-27 00:00:00', NULL, 7, 2, 27, NULL, '-', 'ASPI-23CPTTN-0427064', NULL, 'Alto', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-06-09 16:07:11'),
+(328, '2023-04-27 00:00:00', NULL, 16, 2, 84, NULL, '-', 'ASPI-23CPTTN-0427065', NULL, 'Artajasa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ASPI-23COM-0607057', '2023-06-09 16:15:35'),
+(329, '2023-04-27 00:00:00', NULL, 16, 2, 35, NULL, '-', 'ASPI-23CPTTN-0427066', NULL, 'Rintis', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ASPI-23CPTTN-0102002', '2023-06-09 16:16:01'),
+(330, '2023-04-28 00:00:00', NULL, 9, 2, 88, NULL, '-', 'ASPI-23CPTTN-0428067', '', '', NULL, '2023-08-29 13:42:32', NULL, '2023-08-30 11:18:11', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(331, '2023-05-05 00:00:00', NULL, 16, 2, 17, NULL, '-', 'ASPI-23CPTTN-0505068', NULL, 'Artajasa', NULL, NULL, '2023-06-12 15:53:13', '2023-06-12 15:53:27', NULL, NULL, NULL, NULL, NULL, NULL, 'ASPI-23COM-0615062', '2023-06-21 12:08:22'),
+(332, '2023-05-05 00:00:00', NULL, 16, 2, 17, NULL, '-', 'ASPI-23CPTTN-0505069', NULL, 'Artajasa', NULL, NULL, '2023-06-12 15:53:17', '2023-06-12 15:53:31', NULL, NULL, NULL, NULL, NULL, NULL, 'ASPI-23COM-0615063', '2023-06-21 12:08:30'),
+(333, '2023-05-05 00:00:00', NULL, 16, 2, 126, NULL, '-', 'ASPI-23CPTTN-0505070', NULL, 'Artajasa', NULL, NULL, NULL, '2023-06-12 13:54:54', NULL, NULL, NULL, NULL, NULL, NULL, 'ASPI-23COM-0616064', '2023-06-21 12:04:04'),
+(334, '2023-05-09 00:00:00', NULL, 16, 2, 107, NULL, '-', 'ASPI-23CPTTN-0509071', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(335, '2023-05-19 00:00:00', NULL, 16, 2, 71, NULL, '-', 'ASPI-23CPTTN-0519072', NULL, 'Rintis', NULL, NULL, '2023-06-09 16:24:50', '2023-06-09 17:37:28', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-06-09 16:12:26'),
+(336, '2023-05-30 00:00:00', NULL, 16, 2, 58, NULL, '-', 'ASPI-23CPTTN-0530073', NULL, 'Artajasa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-06-09 16:13:35'),
+(337, '2023-05-31 00:00:00', NULL, 16, 2, 216, NULL, '-', 'ASPI-23CPTTN-0531074', NULL, 'Rintis', NULL, NULL, '2023-09-29 16:42:57', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-06-09 16:14:55'),
+(338, '2023-06-12 00:00:00', NULL, 16, 2, 22, NULL, 'PermataDebit', 'ASPI-23CPTTN-0612075', '', '', '2023-07-31 10:16:15', NULL, NULL, '2023-08-22 11:57:44', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(339, '2023-06-20 00:00:00', NULL, 16, 2, 9, NULL, 'UNIONPAY GOLD DEBIT CARD', 'ASPI-23CPTTN-0620076', '', '', NULL, '2023-06-22 13:34:11', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(340, '2023-06-20 00:00:00', NULL, 16, 2, 9, NULL, 'NPG Debit Card', 'ASPI-23CPTTN-0620077', '', '', NULL, '2023-06-22 13:34:16', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(341, '2023-06-30 00:00:00', NULL, 16, 2, 27, NULL, 'BNC GPN Debit Card', 'ASPI-23CPTTN-0630078', '', '', NULL, '2023-07-07 15:21:48', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(342, '2023-06-30 00:00:00', NULL, 16, 2, 27, NULL, 'BNC VISA Debit Card', 'ASPI-23CPTTN-0630079', '', '', NULL, '2023-07-07 15:21:16', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(343, '2023-06-30 00:00:00', NULL, 8, 2, 146, NULL, 'KARTU DEBIT CIMB', 'ASPI-23CPTTN-0630080', '', '', NULL, '2023-07-14 13:17:08', '2023-08-02 09:16:23', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(344, '2023-07-05 00:00:00', NULL, 16, 2, 122, NULL, 'Kartu ATM Debit BBA', 'ASPI-23CPTTN-0705081', '', '', NULL, NULL, '2023-07-28 13:12:22', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(345, '2023-07-24 00:00:00', NULL, 7, 3, 81, NULL, 'ATM / DEBIT NSICCS', 'ASPI-23CPTTN-0724082', '', '', '2023-08-07 15:42:14', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(346, '2023-07-24 00:00:00', NULL, 16, 3, 81, NULL, 'ATM / DEBIT NSICCS', 'ASPI-23CPTTN-0724083', '', '', '2023-08-07 15:42:07', NULL, NULL, '2023-10-12 09:43:11', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(347, '2023-07-28 00:00:00', NULL, 16, 3, 44, NULL, 'KARTU DEBIT BANK MANTAP', 'ASPI-23CPTTN-0731084', '', '', '2023-08-04 14:43:59', NULL, NULL, '2023-09-04 13:40:04', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(348, '2023-08-02 00:00:00', NULL, 16, 3, 225, NULL, 'Kartu Debit GPN', 'ASPI-23CPTTN-0802085', '', '', NULL, '2023-08-02 15:57:22', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(349, '2023-08-03 00:00:00', NULL, 9, 3, 146, NULL, 'KARTU DEBIT CIMB', 'ASPI-23CPTTN-0804086', '', '', '2023-08-11 16:20:42', '2023-08-22 11:19:33', NULL, '2023-08-22 15:12:55', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(350, '2023-08-18 00:00:00', NULL, 16, 3, 164, NULL, 'DEBIT NSICCS', 'ASPI-23CPTTN-0818087', '', '', '2023-08-18 13:14:55', NULL, NULL, '2023-10-12 09:24:38', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(351, '2023-08-23 00:00:00', NULL, 16, 3, 258, NULL, 'KARTU DEBIT BPR SUPRA ARTAPERSADA', 'ASPI-23CPTTN-0823088', '', '', NULL, '2023-08-24 10:43:46', NULL, '2023-12-01 14:44:01', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(352, '2023-08-29 00:00:00', NULL, 9, 3, 96, NULL, 'Kartu Debit NSICCS BNI', 'ASPI-23CPTTN-0829089', '', '', NULL, '2023-09-06 14:52:00', NULL, '2023-10-25 15:56:31', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(353, '2023-09-07 00:00:00', NULL, 16, 3, 71, NULL, 'Kartu Debit Danamon', 'ASPI-23CPTTN-0907090', NULL, NULL, '2023-09-12 11:03:55', NULL, NULL, '2023-10-10 09:51:20', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-09-07 17:29:31'),
+(354, '2023-09-12 00:00:00', NULL, 16, 3, 7, NULL, 'Corporate Debit Card', 'ASPI-23CPTTN-0912091', '', '', NULL, '2023-09-13 09:48:19', NULL, '2023-09-26 13:35:23', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(355, '2023-09-14 00:00:00', NULL, 16, 3, 146, NULL, 'KARTU DEBIT CIMB', 'ASPI-23CPTTN-0914092', '', '', NULL, NULL, '2023-09-29 16:43:09', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(356, '2023-09-18 00:00:00', NULL, 3, 3, 109, NULL, 'HSBC VISA Debit', 'ASPI-23CPTTN-0918093', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(357, '2023-10-02 00:00:00', NULL, 16, 3, 39, NULL, 'BCA ATM Debit Contactless Chip Card', 'ASPI-23CPTTN-1002094', '', '', NULL, '2023-10-04 09:41:31', NULL, '2023-10-13 16:03:57', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(358, '2023-10-06 00:00:00', NULL, 16, 3, 16, NULL, 'BTN Visa Debit Contactless', 'ASPI-23CPTTN-1006095', '', '', NULL, NULL, '2023-11-20 14:43:16', '2023-11-20 14:50:43', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(359, '2023-10-06 00:00:00', NULL, 8, 3, 16, NULL, 'BTN Visa Debit Contactless', 'ASPI-23CPTTN-1006096', '', '', NULL, NULL, '2024-01-10 10:23:31', '2023-10-11 11:21:55', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(360, '2023-10-09 00:00:00', NULL, 16, 3, 53, NULL, 'KARTU DEBIT BERCHIP', 'ASPI-23CPTTN-1009097', '', '', NULL, '2023-10-10 09:29:43', NULL, '2023-10-16 11:42:02', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(361, '2023-10-11 00:00:00', NULL, 16, 3, 58, NULL, 'bjb Debit NXP P71', 'ASPI-23CPTTN-1011098', '', '', NULL, '2023-10-26 09:16:40', NULL, '2023-11-07 09:27:35', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(362, '2023-10-11 00:00:00', NULL, 16, 3, 58, NULL, 'bjb Debit Visa Dual Applet UBJ WKI', 'ASPI-23CPTTN-1011099', '', '', NULL, '2023-10-26 09:16:34', NULL, '2023-11-07 09:27:40', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(363, '2023-10-12 00:00:00', NULL, 16, 3, 44, NULL, 'KARTU DEBIT BANK MANTAP', 'ASPI-23CPTTN-1012100', '', '', NULL, '2023-10-13 15:56:39', NULL, '2023-11-14 10:49:20', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(364, '2023-10-17 00:00:00', NULL, 16, 3, 96, NULL, 'Kartu Debit NSICCS BNI', 'ASPI-23CPTTN-1017101', '', '', NULL, '2023-10-18 15:42:51', NULL, '2023-11-24 14:32:55', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(365, '2023-10-18 00:00:00', NULL, 9, 3, 63, NULL, 'Kartu Bank Debit BANTEN', 'ASPI-23CPTTN-1018102', '', '', NULL, '2023-10-25 14:01:13', '2024-01-09 09:26:27', '2024-01-09 10:27:09', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(366, '2023-10-18 00:00:00', NULL, 16, 3, 91, NULL, 'Kartu Debit NSICCS BPR Danagung Bakti', 'ASPI-23CPTTN-1018103', '', '', NULL, '2023-10-19 11:02:01', NULL, '2023-11-06 14:51:52', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(367, '2023-10-18 00:00:00', NULL, 16, 3, 89, NULL, 'Kartu Debit NSICCS BPR Danagung Ramulti', 'ASPI-23CPTTN-1018104', '', '', NULL, '2023-10-19 11:02:06', NULL, '2023-11-06 14:55:20', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(368, '2023-10-27 00:00:00', NULL, 16, 3, 75, NULL, 'DEBIT NSICCS BANK SULTRA GOLD', 'ASPI-23CPTTN-1027105', '', '', NULL, '2023-11-02 15:01:31', NULL, '2023-11-27 15:52:47', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(369, '2023-10-30 00:00:00', NULL, 9, 3, 67, NULL, 'Debit Card', 'ASPI-23CPTTN-1030106', '', '', NULL, '2023-10-31 08:58:41', NULL, '2023-11-07 09:21:39', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(370, '2023-10-30 00:00:00', NULL, 16, 3, 157, NULL, 'Blu Debit Card', 'ASPI-23CPTTN-1102107', '', '', NULL, '2023-11-03 09:37:38', NULL, '2023-11-14 09:24:02', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(371, '2023-11-06 00:00:00', NULL, 9, 3, 146, NULL, 'KARTU DEBIT CIMB', 'ASPI-23CPTTN-1106108', '', '', NULL, '2023-11-10 10:16:59', NULL, '2023-11-27 09:36:58', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(372, '2023-11-06 00:00:00', NULL, 9, 3, 146, NULL, 'KARTU DEBIT CIMB', 'ASPI-23CPTTN-1106109', '', '', NULL, '2023-11-10 10:16:54', NULL, '2023-11-29 12:10:29', NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(373, '2023-11-09 00:00:00', NULL, 7, 3, 43, NULL, 'ATM Debit Card', 'ASPI-23CPTTN-1109110', '', '', NULL, '2023-11-13 10:58:34', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(374, '2023-11-09 00:00:00', NULL, 7, 3, 43, NULL, 'ATM Debit Card', 'ASPI-23CPTTN-1109111', '', '', NULL, '2023-11-13 10:58:39', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(375, '2023-11-28 00:00:00', NULL, 8, 3, 86, NULL, 'Kartu ATM Debit Bank INA', 'ASPI-23CPTTN-1128112', '', '', NULL, '2023-11-30 11:21:05', '2024-01-05 10:50:27', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(376, '2023-11-29 00:00:00', NULL, 7, 3, 96, NULL, 'Kartu Debit NSICCS BNI', 'ASPI-23CPTTN-1129113', '', '', NULL, '2023-12-01 16:11:49', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(377, '2023-12-06 00:00:00', NULL, 7, 3, 18, NULL, 'Kartu Kredit Indonesia', 'ASPI-23CPTTN-1206114', '', '', NULL, '2023-12-22 09:53:30', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(378, '2023-12-15 00:00:00', NULL, 16, 3, 43, NULL, 'ATM Debit Card', 'ASPI-23CPTTN-1512003', '', '', NULL, '2023-12-19 11:09:02', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(379, '2023-12-22 00:00:00', NULL, 7, 3, 62, NULL, 'Kartu Shar-E Debit Bank Muamalat', 'ASPI-23CPTTN-2212004', '', '', NULL, '2024-01-04 11:11:20', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL),
+(380, '2024-01-05 00:00:00', NULL, 7, 3, 43, NULL, 'ATM Debit Card', 'ASPI-24CPTTN-0501004', '', '', NULL, '2024-01-05 15:43:43', NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1058,8 +1186,8 @@ INSERT INTO `projects` (`id`, `waktu_assign_project`, `id_pketerangan`, `id_psta
 --
 
 CREATE TABLE `projects_keterangans` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `nama_pketerangan` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL
+  `id` bigint UNSIGNED NOT NULL,
+  `nama_pketerangan` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1080,8 +1208,8 @@ INSERT INTO `projects_keterangans` (`id`, `nama_pketerangan`) VALUES
 --
 
 CREATE TABLE `projects_stats` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `nama_pstat` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `id` bigint UNSIGNED NOT NULL,
+  `nama_pstat` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1123,8 +1251,8 @@ INSERT INTO `projects_stats` (`id`, `nama_pstat`) VALUES
 --
 
 CREATE TABLE `projects_types` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `nama_ptype` varchar(24) COLLATE utf8mb4_unicode_ci NOT NULL
+  `id` bigint UNSIGNED NOT NULL,
+  `nama_ptype` varchar(24) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1145,20 +1273,20 @@ INSERT INTO `projects_types` (`id`, `nama_ptype`) VALUES
 --
 
 CREATE TABLE `qris` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `id` bigint UNSIGNED NOT NULL,
   `waktu_assign_project` datetime NOT NULL,
-  `id_pketerangan` bigint(20) UNSIGNED DEFAULT NULL,
-  `id_pstat` bigint(20) UNSIGNED NOT NULL,
-  `id_product` bigint(20) UNSIGNED NOT NULL,
-  `id_mitra` bigint(20) UNSIGNED NOT NULL,
+  `id_pketerangan` bigint UNSIGNED DEFAULT NULL,
+  `id_pstat` bigint UNSIGNED NOT NULL,
+  `id_product` bigint UNSIGNED NOT NULL,
+  `id_mitra` bigint UNSIGNED NOT NULL,
   `surat_rekomendasi` datetime DEFAULT NULL,
-  `no_rekomendasi` varchar(301) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `jenis_qrisbi` varchar(301) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ijin_qrisbi` varchar(301) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `no_rekomendasi` varchar(301) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `jenis_qrisbi` varchar(301) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ijin_qrisbi` varchar(301) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `tgl_ijinbi` datetime DEFAULT NULL,
-  `stats_temp` bigint(20) UNSIGNED DEFAULT NULL,
-  `pketerangan_status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `notes_project` varchar(301) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `stats_temp` bigint UNSIGNED DEFAULT NULL,
+  `pketerangan_status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `notes_project` varchar(301) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `last_updated` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -1176,7 +1304,7 @@ INSERT INTO `qris` (`id`, `waktu_assign_project`, `id_pketerangan`, `id_pstat`, 
 (7, '2022-07-29 00:00:00', NULL, 16, 9, 170, '2022-08-04 12:26:56', 'Sek.ASPI/137/VIII/2022', NULL, NULL, NULL, NULL, NULL, '- Pemeriksaan ke-1 tanggal 01 Agustus 2022\r\n- Pemeriksaan ke-2 tanggal 01 Agustus 2022\r\n- Pemeriksaan ke-3 tanggal 02 Agustus 2022 - done', '2022-08-16 15:41:28'),
 (8, '2022-07-29 00:00:00', NULL, 16, 9, 47, '2022-08-09 14:21:25', 'Sek.ASPI/148/VIII/2022', NULL, NULL, NULL, NULL, NULL, '- Pemeriksaan ke-1 tanggal 01 Agustus 2022\r\n- Pemeriksaan 2, 04/8/2022', '2022-08-16 15:41:33'),
 (9, '2021-09-21 00:00:00', NULL, 16, 6, 8, NULL, 'Sek-ASPI/208/IX/2021', NULL, NULL, NULL, NULL, NULL, '- Pemeriksaan -1, 21/09/2021\r\n- Pemeriksaan-2, 22/09/2021\r\n- Pemeriksaan-3, 23/09/2022 - done', '2022-08-01 15:41:22'),
-(10, '2021-10-13 00:00:00', NULL, 18, 6, 46, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Terima Dokumen 13/10/21\r\n- Pemeriksaan 1, 05/01/22', '2022-10-12 08:45:46'),
+(10, '2021-10-13 00:00:00', NULL, 18, 6, 46, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Terima Dokumen 13/10/21\r\n- Pemeriksaan 1, 05/01/22', '2023-07-04 14:45:19'),
 (11, '2021-11-17 00:00:00', NULL, 16, 6, 114, '2022-05-13 00:00:00', 'Sek.ASPI/088/V/2022', NULL, NULL, NULL, NULL, NULL, '- Pemeriksaan 1, 29/11/21\r\n- Pemeriksaan 2, 04/4/22\r\n- Pemeriksaan 3, 21/4/22\r\n- Pemeriksaan 4, 27/4/22\r\n- Pemeriksaan 5, 9/5/22\r\n- Pemeriksaan 6, 13/5/22 - done', '2022-08-01 15:51:00'),
 (12, '2022-02-14 00:00:00', NULL, 16, 6, 107, '2022-06-13 00:00:00', 'Sek.ASPI/110/VI/2022', NULL, NULL, NULL, NULL, NULL, '- Pemeriksaan 1, 1/3/22\r\n- Pemeriksaan 2, 14/3/22\r\n- Pemeriksaan 3, 21/3/2022\r\n- Pemeriksaan 4, 13/6/2022 - done', '2022-08-01 15:52:30'),
 (13, '2022-02-17 00:00:00', NULL, 16, 6, 146, '2022-12-16 11:25:58', 'Sek.ASPI/250/XII/2022', NULL, NULL, NULL, NULL, NULL, 'Pemeriksaan 1, 4/4/22\r\nPerbaikan 1, 20/4/22\r\nPemeriksaan 2, 21/4/22\r\nPerbaikan 2, 16/6/22\r\nPemeriksaan 3, 21/6/22 Perbaikan 3, xx/9/22 Pemeriksaan 4, 03/10/22 Perbaikan 4, 24/11/22 Pemeriksaan 5, 28/11/22, Perbaikan 5, 12/5/22, Pemeriksaan  6 12/06/22, Perbaikan 6 12/13/22, Pemeriksaan 7 12/14/22', '2022-12-16 11:26:04'),
@@ -1291,21 +1419,21 @@ INSERT INTO `qris` (`id`, `waktu_assign_project`, `id_pketerangan`, `id_pstat`, 
 (122, '2022-09-09 00:00:00', NULL, 16, 7, 225, '2022-10-18 00:00:00', 'Sek.ASPI/200/X/2022', NULL, NULL, NULL, NULL, NULL, 'Terimaka Dokumen, 09/09/22 as issuer\r\nPemeriksaan ke-1 - 12/09/22\r\nPerbaikan ke-1,  29/09/22\r\nPemeriksaan ke-2, 04/10/22\r\nPerbaikan ke-2,  07/10/22\r\nPemeriksaan ke-3, 13/10/22 - Done', '2022-10-19 14:05:07'),
 (124, '2022-09-23 00:00:00', NULL, 16, 7, 138, '2022-12-01 00:00:00', 'Sek.ASPI/244/XI/2022', NULL, NULL, NULL, NULL, NULL, 'As issuer\r\nTerima Dokumen 23/09/22\r\nPemeriksaan ke-1, 27/09/22\r\nPerbaikan ke-1, 14/10/22\r\nPemeriksaan ke-2, 17/10/22\r\nPerbaikan ke-2, 18/10/22\r\nPemeriksaan ke-3, 27/10/22\r\nperbaikan 3, 24/11/22\r\nPemeriksaan ke-4, 11/28/22 - Done', '2022-12-02 11:44:15'),
 (125, '2022-10-04 00:00:00', NULL, 16, 6, 173, '2022-12-23 14:42:27', 'Sek.ASPI/253/XII/2022', NULL, NULL, NULL, NULL, NULL, 'Terima Dokumen 04/10/2022 (Laporan UAT dan BA UAT switching)\r\nPemeriksaan ke-1, 10/10/22\r\nPerbaikan ke-1, 12/07/22\r\nPemeriksaan ke-2, 12/13/22\r\nPerbaikan 2, 12/19/22\r\nPemeriksaan 3, 12/21/22\r\nPerbaikan 3, 12/22/22\r\nPemeriksaan 4, 12/22/22 - Done', '2022-12-23 14:42:33'),
-(126, '2022-10-07 00:00:00', NULL, 18, 6, 185, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Terima Dokumen 07/10/2022\r\nPemeriksaan ke-1, 13/10/22\r\nPerbaikan ke-1, 27/10/22\r\nPemeriksaan ke-2, 02/11/22\r\nPerbaikan ke-2, 02/11/22\r\nPemeriksaan ke-3, 07/11/22', '2022-11-07 14:20:32'),
+(126, '2022-10-07 00:00:00', NULL, 16, 6, 185, '2023-10-30 00:00:00', 'Sek.ASPI/309/X/2023', NULL, NULL, NULL, NULL, NULL, 'Terima Dokumen 07/10/2022\r\nPemeriksaan ke-1, 13/10/22\r\nPerbaikan ke-1, 27/10/22\r\nPemeriksaan ke-2, 02/11/22\r\nPerbaikan ke-2, 02/11/22\r\nPemeriksaan ke-3, 07/11/22\r\nPerbaikan 3, 10/24/23\r\nPemeriksaan 4, 10/26/23', '2023-10-31 15:23:56'),
 (127, '2022-10-28 00:00:00', NULL, 16, 6, 196, '2022-12-01 00:00:00', 'Sek.ASPI/243/XI/2022', NULL, NULL, NULL, NULL, NULL, 'Terima Dokumen, 28/10/22\r\nPemeriksaan ke-1, 11/11/22\r\nPerbaikan 1, 11/14/22\r\nPemeriksaan ke-2, 11/22/22\r\nPerbaikan 2, 11/24/22\r\nPemeriksaan ke-2, 11/28/22 - Done', '2022-12-02 11:44:25'),
 (128, '2022-11-03 00:00:00', NULL, 16, 7, 182, '2022-12-09 00:00:00', 'Sek.ASPI/247/XI/2022', NULL, NULL, NULL, NULL, NULL, 'Sebagai Issuer & Acquirer\r\nTerima dokumen, 03/11/22\r\nPemeriksaan ke-1, 11/11/22\r\nPerbaikan 1, 11/29/22\r\nPemeriksaan 2, 11/30/22\r\nPerbaikan 2, 12/08/22\r\nPemeriksaan 3, 12/09/22\r\nPerbaikan 3, 12/09/22\r\nPemeriksaan 4, 12/09/22 - Done', '2022-12-13 12:22:45'),
-(129, '2022-11-04 00:00:00', NULL, 18, 7, 66, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Terima Dokumen, 04/11/2022 as acquirer.\r\nPemeriksaan ke-1, 11/16/22\r\nPerbaikan 1, 12/1/22\r\nPemeriksaan 2, 12/5/22', '2022-12-05 17:30:22'),
+(129, '2022-11-04 00:00:00', NULL, 16, 7, 66, '2023-07-05 15:55:31', 'Sek.ASPI/195/VII/2023', NULL, NULL, NULL, NULL, NULL, 'Terima Dokumen, 04/11/2022 as acquirer.\r\nPemeriksaan ke-1, 11/16/22\r\nPerbaikan 1, 12/1/22\r\nPemeriksaan 2, 12/5/22\r\nPerbaikan 2, 04/26/23\r\nPemeriksaan 3, 04/26/23\r\nPerbaikan 3, 05/16/23\r\nPemeriksaan 4, 05/22/23\r\nPerbaikan 4, 07/03/23\r\nPemeriksaan 5, 07/03/23', '2023-07-05 15:55:59'),
 (130, '2022-11-11 00:00:00', NULL, 16, 7, 223, '2023-01-11 00:00:00', 'Sek.ASPI/004/1/2023', NULL, NULL, NULL, NULL, NULL, 'Issuer\r\nTerima Dokumen, 11/11/22\r\nPemeriksaan ke-1, 11/06/22\r\nPerbaikan 1, 12/09/22\r\nPemeriksaan ke-2, 12/13/22\r\nPerbaikan 2, 12/15/22\r\nPemeriksaan 3, 12/15/22\r\nPerbaikan 3, 12/15/22\r\nPemeriksaan 4, 12/20/22\r\nPerbaikan 4, 12/27/22\r\nPemeriksaan 5, 01/02/23\r\nPerbaikan 5, 01/06/23\r\nPemeriksaan 6, 01/09/', '2023-01-11 16:57:24'),
 (131, '2022-11-14 00:00:00', NULL, 16, 7, 168, '2023-01-27 15:53:59', 'Sek.ASPI/009/1/2023', NULL, NULL, NULL, NULL, NULL, 'Paylater\r\nTerima Dokumen, 11/14/22\r\nPemeriksaan 1, 11/23/22\r\nPerbaikan 1, 12/16/22\r\nPemeriksaan 2, 12/20/22\r\nPerbaikan 2, 12/23/22\r\nPemeriksaan 3, 01/02/23\r\nPerbaikan 3, 01/06/23\r\nPemeriksaan 4, 01/09/23\r\nPerbaikan 4, 01/17/23\r\nPemeriksaan 5, 01/18/23 -Done', '2023-01-27 15:54:26'),
-(132, '2022-11-22 00:00:00', NULL, 18, 11, 95, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Terima Dokumen 22/11/22\r\nPemeriksaan 1, 11/30/22', '2022-11-30 19:15:36'),
+(132, '2022-11-22 00:00:00', NULL, 18, 11, 95, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Terima Dokumen 22/11/22\r\nPemeriksaan 1, 11/30/22\r\nPerbaikan 1, 02/15/23\r\nPemeriksaan 2, 02/21/23', '2023-02-21 18:14:37'),
 (133, '2022-11-28 00:00:00', NULL, 16, 11, 47, '2022-12-13 15:40:15', 'Sek.ASPI/246/XII/2022', NULL, NULL, NULL, NULL, NULL, 'Terima Dokumen, 11/28/22\r\nPemeriksaan 1, 11/30/22\r\nPerbaikan 1, 12/03/22\r\nPemeriksaan 2, 12/5/22\r\nPerbaikan 2, 12/05/22\r\nPemeriksaan 3, 12/6/22\r\nPerbaikan 3, 12/07/22\r\nPemeriksaan 4, 12/8/22\r\nPerbaikan 4, 12/09/22\r\nPemeriksaan 5, 12/09/22 - Done', '2022-12-13 15:40:23'),
 (134, '2022-12-01 00:00:00', NULL, 16, 7, 178, '2022-12-23 00:00:00', 'Sek.ASPI/254/XII/2022', NULL, NULL, NULL, NULL, NULL, 'As Issuer\r\nTerima Dokumen, 12/1/22\r\nPemeriksaan 1, 12/5/22\r\nPerbaikan 1, 12/13/22\r\nPemeriksaan 2, 12/15/22\r\nPerbaikan 2, 12/20/22\r\nPemeriksaan 3, 12/22/22 - Done', '2022-12-23 14:41:47'),
-(136, '2022-12-05 00:00:00', NULL, 18, 8, 39, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Fitur Transfer,\r\nTerima Dokumen, 12/06/22\r\nPemeriksaan 1, 12/13/22\r\nPerbaikan 1, 12/14/22\r\nPemeriksaan 2, 12/16/22', '2022-12-16 14:13:51'),
-(137, '2022-12-13 00:00:00', NULL, 19, 8, 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Fitur Transfer\r\nTerima Dokumen 12/13/22\r\nPemeriksaan 1, 12/16/22\r\nPerbaikan 1, 12/22/22\r\nPemeriksaan 2, 12/23/22\r\nPerbaikan 2, 01/26/23\r\nPemeriksaan 3, 02/01/23\r\nPerbaikan 3, 02/06/23\r\nPemeriksaan 4, 02/08/23', '2023-02-08 18:41:40'),
+(136, '2022-12-05 00:00:00', NULL, 16, 8, 39, '2023-08-14 00:00:00', 'Sek.ASPI/229/VIII/2023', NULL, NULL, NULL, NULL, NULL, 'Fitur Transfer,\r\nTerima Dokumen, 12/06/22\r\nPemeriksaan 1, 12/13/22\r\nPerbaikan 1, 12/14/22\r\nPemeriksaan 2, 12/16/22\r\nPerbaikan 2, 08/04/23\r\nPemeriksaan 3, 08/07/23\r\nPerbaikan 3 08/11/23\r\nPemeriksaan 4 08/11/23', '2023-08-18 15:27:01'),
+(137, '2022-12-13 00:00:00', NULL, 16, 8, 8, '2023-02-14 18:05:14', 'Sek.ASPI/017/II/2023', NULL, NULL, NULL, NULL, NULL, 'Fitur Transfer\r\nTerima Dokumen 12/13/22\r\nPemeriksaan 1, 12/16/22\r\nPerbaikan 1, 12/22/22\r\nPemeriksaan 2, 12/23/22\r\nPerbaikan 2, 01/26/23\r\nPemeriksaan 3, 02/01/23\r\nPerbaikan 3, 02/06/23\r\nPemeriksaan 4, 02/08/23', '2023-02-14 18:05:35'),
 (138, '2022-12-16 00:00:00', NULL, 16, 11, 58, '2022-12-23 19:17:22', 'Sek.ASPI/255/XII/2022', NULL, NULL, NULL, NULL, NULL, 'Terima Dokumen, 12/19/22\r\nPemeriksaan 1, 12/20/22\r\nPerbaikan 1, 12/21/22\r\nPemeriksaan 2, 12/22/22 - Done', '2022-12-23 19:17:30'),
 (139, '2022-12-16 00:00:00', NULL, 16, 7, 27, '2023-01-11 00:00:00', 'Sek.ASPI/003/1/2023', NULL, NULL, NULL, NULL, NULL, 'Acquirer\r\nTerima Dokumen, 12/16/22\r\nPemeriksaan 1, 12/20/22\r\nPerbaikan 1, 12/30/22\r\nPemeriksaan 2, 01/02/23\r\nPerbaikan 2, 01/06/23\r\nPemeriksaan 3, 01/09/23', '2023-01-11 16:56:49'),
 (140, '2022-12-19 00:00:00', NULL, 16, 11, 31, '2023-01-03 15:28:40', 'Sek.ASPI/001/I/2023', NULL, NULL, NULL, NULL, NULL, 'Terima Dokumen 12/19/22\r\nPemeriksaan 1, 12/21/22\r\nPerbaikan 1, 12/30/22\r\nPemeriksaan 2, 01/03/23 -Done', '2023-01-03 15:28:46'),
-(141, '2022-12-19 00:00:00', NULL, 19, 7, 191, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ISSUER\r\nTerima Dokumen, 12/19/22\r\nPemeriksaan 1, 12/21/22\r\nPerbaikan 1, 01/18/23\r\nPemeriksaan 2, 01/20/23\r\nPerbaikan 2, 01/30/23\r\nPemeriksaan 3, 02/06/23\r\nPerbaikan 3, 02/08/23\r\nPemeriksaan 4, 02/08/23', '2023-02-08 18:41:15'),
+(141, '2022-12-19 00:00:00', NULL, 16, 7, 191, '2023-02-14 18:06:12', 'Sek.ASPI/018/II/2023', NULL, NULL, NULL, NULL, NULL, 'ISSUER\r\nTerima Dokumen, 12/19/22\r\nPemeriksaan 1, 12/21/22\r\nPerbaikan 1, 01/18/23\r\nPemeriksaan 2, 01/20/23\r\nPerbaikan 2, 01/30/23\r\nPemeriksaan 3, 02/06/23\r\nPerbaikan 3, 02/08/23\r\nPemeriksaan 4, 02/08/23', '2023-02-14 18:06:27'),
 (142, '2022-12-22 00:00:00', NULL, 16, 7, 5, '2023-01-13 16:40:47', 'Sek.ASPI/002/1/2023', NULL, NULL, NULL, NULL, NULL, 'ISSUER\r\nTerima Dokumen, 12/22/22\r\nPemeriksaan 1, 12/23/22\r\nPerbaikan 2, 03/01/23\r\nPemeriksaan 2, 06/01/23\r\nPerbaikan 3, 09/01/23\r\nPemeriksaan 3, 10/01/23 - Done', '2023-01-13 16:40:53'),
 (143, '2022-12-22 00:00:00', NULL, 16, 7, 173, '2023-02-02 15:23:16', 'Sek.ASPI/015/II/2023', NULL, NULL, NULL, NULL, NULL, 'PAYLATER\r\nTerima Dokumen 12/22/22\r\nPemeriksaan 1, 01/02/23\r\nPerbaikan 2, 01/13/23\r\nPemeriksaan 2, 01/18/23\r\nPerbaikan 3, 01/27/23\r\nPemeriksaan 3, 02/01/23', '2023-02-02 15:23:20'),
 (144, '2019-10-24 00:00:00', NULL, 16, 7, 47, '2019-11-18 00:00:00', NULL, 'Debet', '', NULL, NULL, NULL, '', '2022-12-29 10:54:27'),
@@ -1339,12 +1467,101 @@ INSERT INTO `qris` (`id`, `waktu_assign_project`, `id_pketerangan`, `id_pstat`, 
 (172, '2019-11-17 00:00:00', NULL, 16, 7, 194, '2019-12-06 00:00:00', NULL, 'Unik', '', NULL, NULL, NULL, '', '2022-12-29 10:54:47'),
 (173, '2019-06-01 00:00:00', NULL, 16, 7, 195, '2019-08-09 00:00:00', NULL, 'Unik', '', NULL, NULL, NULL, '', '2022-12-29 10:54:18'),
 (174, '2019-06-01 00:00:00', NULL, 16, 7, 196, '2019-08-08 00:00:00', NULL, 'Unik', '', NULL, NULL, NULL, '', '2022-12-29 10:54:21'),
-(175, '2023-01-05 00:00:00', NULL, 18, 7, 39, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Paylater\r\nTerima Dokumen 01/06/23\r\nPemeriksaan 1, 01/09/23\r\nPerbaikan 1, 01/10/23\r\nPemeriksaan 2, 01/12/23', '2023-01-12 14:12:47'),
-(176, '2023-01-11 00:00:00', NULL, 17, 8, 175, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Transfer, Tarik Tunai, Setor Tunai\r\nTerima Dokumen, 01/11/23\r\nPemeriksaan 1, 01/18/23\r\nPerbaikan 1, 02/06/23', '2023-02-06 17:29:04'),
-(177, '2023-01-16 00:00:00', NULL, 18, 8, 146, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Terima Dokumen, 01/16/23 -Setor tunai\r\nPemeriksaan 1, 01/20/23', '2023-01-20 18:01:23'),
-(178, '2023-01-16 00:00:00', NULL, 18, 8, 107, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'QRIS Transfer, Tartun dan setor\r\nTerima Dokumen 01/16/23\r\nPemeriksaan 1, 01/26/23', '2023-01-26 11:18:56'),
-(179, '2023-01-18 00:00:00', NULL, 18, 8, 114, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Transfer Tarik Setor\r\nTerima Dokumen 01/18/23\r\nPemeriksaan 1, 01/26/23', '2023-01-26 11:19:02'),
-(180, '2023-01-20 00:00:00', NULL, 18, 7, 219, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Acquirer\r\nTerima Dokumen 01/20/23\r\nPemeriksaan 1, 02/01/23\r\nPerbaikan 1, 02/07/23\r\nPemeriksaan 2, 02/08/23', '2023-02-08 18:40:42');
+(175, '2023-01-05 00:00:00', NULL, 16, 7, 39, '2023-04-17 00:00:00', 'Sek.ASPI/109/IV/2023', NULL, NULL, NULL, NULL, NULL, 'Paylater\r\nTerima Dokumen 01/06/23\r\nPemeriksaan 1, 01/09/23\r\nPerbaikan 1, 01/10/23\r\nPemeriksaan 2, 01/12/23\r\nPerbaikan 2, 03/28/23\r\nPemeriksaan 3, 03/30/23\r\nPerbaikan 3, 04/03/23\r\nPemeriksaan 4, 04/03/23\r\nPerbaikan 4, 04/10/23\r\nPemeriksaan 5, 04/11/23\r\nPerbaikan 5, 04/14/23\r\nPemeriksaan 6, 04/17/23 -', '2023-04-26 08:09:25'),
+(176, '2023-01-11 00:00:00', NULL, 16, 8, 175, NULL, 'Sek.ASPl/044/IV/2023', NULL, NULL, NULL, NULL, NULL, 'Transfer, Tarik Tunai, Setor Tunai\r\nTerima Dokumen, 01/11/23\r\nPemeriksaan 1, 01/18/23\r\nPerbaikan 1, 03/06/23\r\nPemeriksaan 2, 03/09/23\r\nPerbaikan 2, 03/21/23\r\nPemeriksaan 3, 03/24/23 - Done\r\nRekomendasi Transfer', '2023-04-17 08:12:59'),
+(177, '2023-01-16 00:00:00', NULL, 16, 8, 146, '2023-10-09 00:00:00', 'Sek.ASPI/286/X/2023', NULL, NULL, NULL, NULL, NULL, 'Terima Dokumen, 01/16/23 -Setor tunai\r\nPemeriksaan 1, 01/20/23\r\nPerbaikan 1, 04/10/23\r\nPemeriksaan 2, 04/18/23\r\nPerbaikan 2, 08/07/23\r\nPemeriksaan 3, 08/10/23\r\nPerbaikan 3, 09/04/23\r\nPemeriksaan 4 09/07/23\r\nPerbaikan 4, 10/02/23\r\nPemeriksaan 5, 10/04/23', '2023-10-09 16:15:33'),
+(178, '2023-01-16 00:00:00', NULL, 16, 8, 107, '2023-04-27 00:00:00', 'Sek.ASPI/116/IV/2023', NULL, NULL, NULL, NULL, NULL, 'QRIS Transfer, Tartun dan setor\r\nTerima Dokumen 01/16/23\r\nPemeriksaan 1, 01/26/23\r\nPerbaikan 2, 03/28/23\r\nPemeriksaan 2, 03/31/23\r\nPerbaikan 3, 04/12/23\r\nPemeriksaan 3, 04/26/23', '2023-04-28 08:03:42'),
+(179, '2023-01-18 00:00:00', NULL, 16, 8, 114, '2023-05-11 00:00:00', 'Sek.ASPI/143/V/2023', NULL, NULL, NULL, NULL, NULL, 'Transfer Tarik Setor\r\nTerima Dokumen 01/18/23\r\nPemeriksaan 1, 01/26/23\r\nPerbaikan 1, 02/13/23\r\nPemeriksaan 2, 02/22/23\r\nPerbaikan 2, 03/09/23\r\nPemeriksaan 3, 03/16/2023\r\nPerbaikan 3, 05/03/23\r\nPemeriksaan 4, 05/08/23 -Done', '2023-05-11 14:31:12'),
+(180, '2023-01-20 00:00:00', NULL, 16, 7, 219, '2023-02-28 00:00:00', 'Sek.ASPI/025/II/2023', NULL, NULL, NULL, NULL, NULL, 'Acquirer\r\nTerima Dokumen 01/20/23\r\nPemeriksaan 1, 02/01/23\r\nPerbaikan 1, 02/07/23\r\nPemeriksaan 2, 02/08/23\r\nPerbaikan 2, 02/09/23\r\nPemeriksaan 3, 02/21/23', '2023-03-14 11:02:28'),
+(181, '2023-02-13 00:00:00', NULL, 16, 7, 81, '2023-08-08 00:00:00', 'Sek.ASPI/219/VIII/2023', NULL, NULL, NULL, NULL, NULL, 'Issuer\r\nTerima Dokumen, 02/13/23\r\nPemeriksaan 1, 02/22/23\r\nPerbaikan 1, 07/12/23\r\nPemeriksaan 2, 07/14/23\r\nPerbaikan 2, 07/17/23\r\nPemeriksaan 3, 07/25/23\r\nPerbaikan 3, 08/01/23\r\nPemeriksaan 4, 08/03/23 Done', '2023-08-08 16:16:54'),
+(182, '2023-03-01 00:00:00', NULL, 16, 7, 25, '2023-03-13 00:00:00', 'Sek.ASPI/031/III/2023', NULL, NULL, NULL, NULL, NULL, 'Issuer, Terima dokumen 03/02/2023\r\nPemeriksaan 1, 03/07/23\r\nPerbaikan 1, 03/08/23\r\nPemeriksaan 2, 03/09/23', '2023-03-14 11:01:26'),
+(183, '2019-10-24 00:00:00', NULL, 16, 7, 183, '2020-02-03 00:00:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-03-03 11:18:40'),
+(184, '2023-03-03 00:00:00', NULL, 16, 7, 75, '2023-04-12 00:00:00', 'Sek.ASPl/085/IV/2023', NULL, NULL, NULL, NULL, NULL, 'Issuer dan Acquirer, terima dokumen 03/03/2023\r\nPemeriksaan 1, 03/07/23\r\nPerbaikan 1, 03/27/23\r\nPemeriksaan 2, 03/29/23\r\nPerbaikan 2, 04/06/23\r\nPemeriksaan 3, 04/11/23', '2023-04-17 08:12:15'),
+(185, '2023-03-07 00:00:00', NULL, 16, 8, 55, '2023-09-11 00:00:00', 'Sek.ASPI/256/IX/2023', NULL, NULL, NULL, NULL, NULL, 'TTS, 03/07/23\r\nPemeriksaan 1, 03/09/23\r\nPerbaikan 1, 05/28/23\r\nPemeriksaan 2, 06/06/23\r\nPerbaikan 2, 08/07/23\r\nPemeriksaan 3, 08/10/23\r\nPerbaikan 3, 09/05/23\r\nPemeriksaan 4, 09/07/23\r\nPerbaikan 4, 09/07/23\r\nPemeriksaan 5, 09/08/23', '2023-09-13 13:35:30'),
+(186, '2023-03-24 00:00:00', NULL, 16, 8, 46, '2023-07-24 00:00:00', 'sek.ASPl/214/VII/2023', NULL, NULL, NULL, NULL, NULL, 'QRIS Transfer, 03/24/23\r\nPemeriksaan 1, 03/24/23\r\nPerbaikan 1, 07/04/23\r\nPemeriksaan 2, 07/07/23\r\nPerbaikan 2, 07/20/23\r\nPemeriksaan 3, 07/21/23', '2023-07-25 16:59:16'),
+(187, '2023-03-31 00:00:00', NULL, 16, 7, 242, '2023-04-12 00:00:00', 'Sek.ASPl/084/IV/2023', NULL, NULL, NULL, NULL, NULL, 'Acquirer, 03/31/23\r\nPemeriksaan 1, 04/03/23\r\nPerbaikan 1, 04/05/23\r\nPemeriksaan 2, 04/06/23\r\nPerbaikan 2, 04/06/23\r\nPemeriksaan 3, 04/11/23', '2023-04-17 08:11:37'),
+(188, '2023-04-18 00:00:00', NULL, 16, 12, 147, '2023-05-02 00:00:00', 'Sek.ASPI/123/V/2023', NULL, NULL, NULL, NULL, NULL, 'Terima Dokumen, 04/18/23\r\nPemeriksaan 1, 04/27/23\r\nPerbaikan 1, 04/28/23\r\nPemeriksaan 2, 04/28/23', '2023-05-02 16:12:22'),
+(189, '2023-04-18 00:00:00', NULL, 16, 12, 39, '2023-05-03 00:00:00', 'Sek.ASPI/130/V/2023', NULL, NULL, NULL, NULL, NULL, 'Terima Dokumen, 04/18/23\r\nPemeriksaan 1, 04/27/23\r\nPerbaikan 1, 05/03/23\r\nPemeriksaan 2, 05/03/23', '2023-05-04 17:53:54'),
+(190, '2023-04-18 00:00:00', NULL, 16, 7, 153, '2023-08-24 00:00:00', 'Sek.ASPI/237/VIII/2023', NULL, NULL, NULL, NULL, NULL, 'Terima dokumen, 04/28/23\r\nPemeriksaan 1, 05/08/23\r\nPerbaikan 1, 06/07/23\r\nPemeriksaan 2, 06/12/23\r\nPerbaikan 2, 07/04/23\r\nPemeriksaan 3, 07/07/23\r\nPerbaikan 3, 07/24/23\r\nPemeriksaan 4, 07/31/23\r\nPerbaikan 3, 08/15/23\r\nPemeriksaan 5 08/22/23', '2023-08-29 09:21:20'),
+(191, '2023-04-18 00:00:00', NULL, 16, 12, 47, '2023-05-02 00:00:00', 'Sek.ASPI/125/V/2023', NULL, NULL, NULL, NULL, NULL, 'Terima Dokumen, 04/18/23\r\nPemeriksaan 1, 04/27/23\r\nPerbaikan 1, 04/28/23\r\nPemeriksaan 2, 04/28/23', '2023-05-02 16:12:17'),
+(192, '2023-04-18 00:00:00', NULL, 16, 12, 169, '2023-04-28 00:00:00', 'Sek.ASPI/117/IV/2023', NULL, NULL, NULL, NULL, NULL, 'Terima Dokumen, 04/18/23\r\nPemeriksaan 1, 04/27/23', '2023-04-28 08:05:15'),
+(193, '2023-04-26 00:00:00', NULL, 16, 12, 107, '2023-05-02 00:00:00', 'Sek.ASPI/122/V/2023', NULL, NULL, NULL, NULL, NULL, 'Terima Dokumen, 04/26/23\r\nPemeriksaan 1, 04/27/23\r\nPerbaikan 1, 04/28/23\r\nPemeriksaan 2, 04/28/23', '2023-05-02 16:12:25'),
+(194, '2023-04-27 00:00:00', NULL, 16, 12, 170, '2023-05-03 00:00:00', 'Sek.ASPI/126/V/2023', NULL, NULL, NULL, NULL, NULL, 'Terima Dokumen, 04/27/23\r\nPemeriksaan 1, 04/27/23\r\nPerbaikan 1, 04/28/23\r\nPemeriksaan 2, 04/28/23\r\nPerbaikan 2, 05/03/23\r\npemeriksaan 3, 05/03/23', '2023-05-04 17:56:12'),
+(195, '2023-04-27 00:00:00', NULL, 16, 12, 146, '2023-05-05 13:26:52', 'Sek.ASPI/136/V/2023', NULL, NULL, NULL, NULL, NULL, 'Terima Dokumen, 04/27/23\r\nPemeriksaan 1, 04/28/23\r\nPerbaikan 1, 05/04/23\r\nPemeriksaan 2, 05/04/23', '2023-05-05 13:26:56'),
+(196, '2023-04-28 00:00:00', NULL, 16, 12, 168, '2023-05-03 00:00:00', 'Sek.ASPI/129/V/2023', NULL, NULL, NULL, NULL, NULL, 'Terima Dokumen, 04/28/23\r\nPemeriksaan 1, 04/28/23\r\nPerbaikan 1, 05/03/23\r\nPemeriksaan 2, 05/03/23', '2023-05-04 17:54:26'),
+(197, '2023-04-28 00:00:00', NULL, 16, 12, 22, '2023-05-04 17:57:58', 'Sek.ASPI/132/V/2023', NULL, NULL, NULL, NULL, NULL, 'Terima Dokumen, 04/28/23\r\nPemeriksaan 1, 04/28/23\r\nPerbaikan 1, 05/04/23\r\nPemeriksaan 2, 05/04/23', '2023-05-04 17:58:02');
+INSERT INTO `qris` (`id`, `waktu_assign_project`, `id_pketerangan`, `id_pstat`, `id_product`, `id_mitra`, `surat_rekomendasi`, `no_rekomendasi`, `jenis_qrisbi`, `ijin_qrisbi`, `tgl_ijinbi`, `stats_temp`, `pketerangan_status`, `notes_project`, `last_updated`) VALUES
+(198, '2023-05-02 00:00:00', NULL, 16, 12, 172, '2023-05-03 00:00:00', 'Sek.ASPI/128/V/2023', NULL, NULL, NULL, NULL, NULL, 'Terima Dokumen, 05/02/23\r\nPemeriksaan 1, 05/02/23\r\nPerbaikan 1, 05/03/23\r\nPemeriksaan 2, 05/03/23\r\nPemeriksaan 3, 05/03/23', '2023-05-04 17:56:58'),
+(199, '2023-05-03 00:00:00', NULL, 16, 12, 114, '2023-05-04 18:00:45', 'Sek.ASPI/133/V/2023', NULL, NULL, NULL, NULL, NULL, 'Terima Dokumen, 05/03/23\r\nPemeriksaan 1, 05/03/23\r\nPerbaikan 1, 05/04/23\r\nPemeriksaan 2, 05/04/23', '2023-05-04 18:00:49'),
+(200, '2023-05-03 00:00:00', NULL, 16, 12, 171, '2023-05-03 00:00:00', 'Sek.ASPI/127/V/2023', NULL, NULL, NULL, NULL, NULL, 'terima dokumen, 05/03/23\r\nPemeriksaan 1, 05/03/23\r\nPerbaikan 1, 05/03/23\r\nPemeriksaan 2, 05/03/23', '2023-05-04 17:54:57'),
+(201, '2023-05-03 00:00:00', NULL, 16, 12, 184, '2023-05-04 18:00:02', 'Sek.ASPI/135/V/2023', NULL, NULL, NULL, NULL, NULL, 'Terima Dokumen, 05/03/23\r\nPemeriksaan 1, 05/03/23\r\nPerbaikan 1, 05/04/23\r\nPemeriksaan 2, 05/04/23', '2023-05-04 18:00:07'),
+(202, '2023-05-03 00:00:00', NULL, 16, 12, 194, '2023-05-04 17:59:16', 'Sek.ASPI/134/V/2023', NULL, NULL, NULL, NULL, NULL, 'Terima Dokumen, 05/03/23\r\nPemeriksaan 1, 05/04/23\r\nPerbaikan 1, 05/04/23\r\nPemeriksaan 2, 05/04/23', '2023-05-04 17:59:19'),
+(203, '2023-05-11 00:00:00', NULL, 16, 7, 228, '2023-10-26 00:00:00', 'Sek.ASPI/302/X/2023', NULL, NULL, NULL, NULL, NULL, 'ISSUER ACQUIRER Terima Dokumen, 05/11/23\r\nPemeriksaan 1, 05/15/23\r\nPerbaikan 1, 06/15/23\r\nPemeriksaan 2, 06/20/23\r\nPerbaikan 2, 06/21/23\r\nPemeriksaan 3, 06/26/23\r\nPerbaikan 3, 10/03/23\r\nPemeriksaan 4, 10/04/23\r\nPerbaikan 4, 10/25/23\r\nPemeriksaan 5, 10/25/23', '2023-10-26 15:18:53'),
+(204, '2020-02-19 00:00:00', NULL, 16, 7, 187, '2020-03-10 00:00:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-05-16 10:02:12'),
+(205, '2023-05-19 00:00:00', NULL, 16, 7, 234, '2023-05-30 00:00:00', 'Sek.ASPI/157/V/2023', NULL, NULL, NULL, NULL, NULL, 'Issuer Only\r\nTerima Dokumen 05/17/23\r\nPemeriksaan 1, 05/22/23\r\nPerbaikan 1, 05/25/23\r\nPemeriksaan 2, 05/30/23\r\nPerbaikan 2, 05/30/23\r\nPemeriksaan 3, 05/30/23 -Done', '2023-05-31 14:34:25'),
+(206, '2023-05-31 00:00:00', NULL, 16, 7, 174, '2023-09-11 00:00:00', 'Sek.ASPI/254/IX/2023', NULL, NULL, NULL, NULL, NULL, 'Paylater, 05/31/23\r\npemeriksaan 1, 06/05/23\r\nPerbaikan 1, 07/20/23\r\nPemeriksaan 2, 07/25/23\r\nPerbaikan 3 08/20/23\r\nPemeriksaan 3, 08/29/23\r\nPerbaikan 4, 09/05/23\r\nPemeriksaan 4, 09/07/23', '2023-09-13 13:39:09'),
+(207, '2023-06-09 00:00:00', NULL, 16, 7, 63, '2023-11-14 00:00:00', 'Sek.ASPI/338/XI/2023', NULL, NULL, NULL, NULL, NULL, 'Terima Dok, 06/09/23\r\nPemeriksaan 1, 06/12/23\r\nPerbaikan 1, 06/22/23\r\nPemeriksaan 2, 06/30/23\r\nPerbaikan 2, 10/30/23\r\nPemeriksaan 3, 11/02/23\r\nPerbaikan 3, 11/08/23\r\nPemeriksaan 4, 11/10/23', '2023-11-20 08:51:57'),
+(208, '2023-06-14 00:00:00', NULL, 18, 7, 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Paylater, 06/14/23\r\nPemeriksaan 1, 06/21/23', '2023-06-21 12:41:17'),
+(209, '2023-06-15 00:00:00', NULL, 16, 12, 55, '2023-09-22 00:00:00', 'Sek.ASPI/264/IX/2023', NULL, NULL, NULL, NULL, NULL, 'terima dokumen, 06/15/23\r\nPemeriksaan 1, 06/26/23\r\nPerbaikan 1, 09/07/23\r\nPemeriksaan 2, 09/11/23\r\nPemeriksaan 3, 09/14/23', '2023-09-22 19:37:15'),
+(210, '2023-06-15 00:00:00', NULL, 16, 9, 55, '2023-09-22 00:00:00', 'Sek.ASPI/263/IX/2023', NULL, NULL, NULL, NULL, NULL, 'terima dokumen, 06/15/23\r\nPemeriksaan 1, 06/26/23\r\nPemeriksaan 2, 09/11/23\r\nPerbaikan 2, 09/14/23', '2023-09-22 19:37:46'),
+(211, '2023-06-22 00:00:00', NULL, 16, 7, 107, '2023-10-30 00:00:00', 'Sek.ASPI/304/X/2023', NULL, NULL, NULL, NULL, NULL, 'Kartu Kredit Terima dokumen, 06/27/23\r\nPemeriksaan 1, 03/07/23\r\nPerbaikan 1, 08/21/23\r\nPerbaikan 2 08/20/23\r\nPemeriksaan 2, 08/28/23\r\nPerbaikan 3, 10/23/23\r\nPemeriksaan 3, 10/25/23', '2023-11-02 14:19:04'),
+(212, '2023-07-03 00:00:00', NULL, 16, 6, 227, '2023-07-26 00:00:00', 'Sek.ASPI/215/VII/2023', NULL, NULL, NULL, NULL, NULL, 'Acquirer, 07/04/2023\r\nPemeriksaan 1, 07/07/23\r\nPerbaikan 1, 07/11/23\r\nPemeriksaan 2, 07/13/23\r\nPerbaikan 2, 07/20/23\r\nPemeriksaan 3, 07/25/23', '2023-07-27 11:20:17'),
+(214, '2023-07-14 00:00:00', NULL, 16, 11, 18, '2023-09-06 00:00:00', 'Sek.ASPI/246/IX/2023', NULL, NULL, NULL, NULL, NULL, 'QRIS KKPD, 07/14/23\r\nPemeriksaan 1, 07/17/23\r\nPerbaikan 1 08/15/23\r\nPemeriksaan 2 08/21/23\r\nPerbaikan 2, 09/05/23', '2023-09-06 15:04:41'),
+(215, '2023-07-25 00:00:00', NULL, 16, 8, 168, '2023-08-24 00:00:00', 'Sek.ASPI/233/VIII/2023', NULL, NULL, NULL, NULL, NULL, 'QRIS Transfer & Tarik Tunai 07/25/23\r\nPemeriksaan 1, 08/03/23\r\nPerbaikan 1, 08/07/23 (Tarik)\r\nPemeriksaan 2, 08/10/23\r\nPemeriksaan 3, 08/11/23', '2023-08-29 09:28:15'),
+(217, '2023-08-04 00:00:00', NULL, 16, 7, 71, '2023-10-31 00:00:00', 'Sek.ASPI/282/X/2023', NULL, NULL, NULL, NULL, NULL, 'Kartu Kredit, 08/04/23\r\nPemeriksaan 1, 08/07/23\r\nPerbaikan 1, 09/21/23\r\nPemeriksaan 2, 09/25/23\r\nPerbaikan 2, 09/27/23\r\nPemeriksaan 3, 10/03/23', '2023-10-31 15:56:16'),
+(218, '2023-08-08 00:00:00', NULL, 16, 8, 170, '2023-08-21 00:00:00', 'Sek.ASPI/226/VIII/2023', NULL, NULL, NULL, NULL, NULL, 'QRIS TUNTAS, 08/07/23\r\nPemeriksaan 1, 08/10/23\r\nPerbaikan 1 08/10/23\r\nPemeriksaan 2 08/11/23', '2023-08-22 15:29:46'),
+(219, '2023-08-10 00:00:00', NULL, 16, 8, 169, '2023-08-21 00:00:00', 'Sek.ASPI/225/VIII/2023', NULL, NULL, NULL, NULL, NULL, 'QRIS TUNTAS, 08/10/23\r\nPemeriksaan 1 08/10/23\r\nPerbaikan 1 08/10/23\r\nPemeriksaan 2 08/11/23', '2023-08-22 15:29:14'),
+(220, '2023-08-11 00:00:00', NULL, 16, 8, 172, '2023-08-21 00:00:00', 'Sek.ASPI/227/VIII/2023', NULL, NULL, NULL, NULL, NULL, 'TUNTAS, 08/11/23\r\nPemeriksaan 1 08/11/23', '2023-08-22 15:28:50'),
+(221, '2023-08-11 00:00:00', NULL, 16, 8, 37, '2023-08-29 00:00:00', 'Sek.ASPI/232/VIII/2023', NULL, NULL, NULL, NULL, NULL, 'Tarik dan setor tunai sebagai acquirer 08/11/23\r\nHasil Pemeriksaan 1, 08/14/23\r\nHasil Pemeriksaan 2, 08/15/23', '2023-08-29 16:45:25'),
+(222, '2023-08-14 00:00:00', NULL, 16, 8, 171, '2023-08-21 00:00:00', 'Sek.ASPI/230/VIII/2023', NULL, NULL, NULL, NULL, NULL, 'QRIS TUNTAS, 08/11/23\r\nPemeriksaan 1 08/14/23\r\nPemeriksaan 2 08/14/23', '2023-08-22 15:28:24'),
+(223, '2023-08-11 00:00:00', NULL, 16, 8, 96, '2023-09-11 00:00:00', 'Sek.ASPI/255/IX/2023', NULL, NULL, NULL, NULL, NULL, 'QRIS TUNTAS Transfer 08/11/23\r\nPemeriksaan 1, 08/14/23\r\nPerbaikan 1, 08/15/23\r\nPemeriksaan 2 08/21/23\r\nPerbaikan 2 09/04/23\r\nPemeriksaan 3 09/07/23', '2023-09-13 13:37:11'),
+(224, '2023-08-11 00:00:00', NULL, 16, 12, 8, '2023-08-24 00:00:00', 'Sek.ASPI/235/VIII/2023', NULL, NULL, NULL, NULL, NULL, 'MYR 08/11/23\r\nPemeriksaan 1 08/22/23', '2023-08-29 09:24:58'),
+(225, '2023-08-11 00:00:00', NULL, 16, 9, 8, '2023-08-24 00:00:00', 'Sek.ASPI/236/VIII/2023', NULL, NULL, NULL, NULL, NULL, 'THB 08/11/23\r\nPemeriksaan 1 08/22/23', '2023-08-29 09:25:02'),
+(226, '2023-08-15 00:00:00', NULL, 18, 7, 193, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'SoF Paylater, 08/15/23\r\nPemeriksaan 1 08/21/23\r\nPerbaikan 1, 09/11/23\r\nPemeriksaan 2, 09/18/23', '2023-11-20 08:52:53'),
+(227, '2023-08-25 00:00:00', NULL, 16, 6, 86, '2023-11-24 00:00:00', 'Sek.ASPI/360/XI/2023', NULL, NULL, NULL, NULL, NULL, 'Issuer, 08/25/23\r\nPemeriksaan 1 09/01/23\r\nPerbaikan 1, 09/22/23\r\nPemeriksaan 2, 09/25/23\r\nPerbaikan 3, 10/02/23\r\nPemeriksaan 3, 10/04/23\r\nPerbaikan 3, 11/15/23\r\nPemeriksaan 4, 11/22/23\r\nPerbaikan 5, 11/23/23\r\nPemeriksaan 5, 11/23/23', '2023-11-24 16:40:33'),
+(228, '2023-08-30 00:00:00', NULL, 16, 6, 201, '2023-09-22 00:00:00', 'Sek.ASPI/267/IX/2023', NULL, NULL, NULL, NULL, NULL, 'Issuer, 08/30/23\r\nPemeriksaan 1 , 09/05/23\r\nPerbaikan 1, 09/14/23\r\nPemeriksaan 2, 09/20/23\r\nPerbaikan 2, 09/21/23\r\nPemeriksaan 3, 09/22/23', '2023-09-22 19:36:15'),
+(229, '2023-08-31 00:00:00', NULL, 16, 7, 5, '2023-10-26 00:00:00', 'Sek.ASPI/303/X/2023', NULL, NULL, NULL, NULL, NULL, 'Acquirer, 08/31/23\r\nPemeriksaan 1, 09/07/23\r\nPerbaikan 1, 10/02/23\r\nPemeriksaan 2, 10/02/23\r\nPerbaikan 2, 10/17/23\r\nPemeriksaan 3, 10/25/23', '2023-10-26 15:17:31'),
+(230, '2023-09-04 00:00:00', NULL, 16, 7, 259, '2023-10-31 00:00:00', 'Sek.ASPI/317/X/2023', NULL, NULL, NULL, NULL, NULL, 'Acquirer, 09/04/23\r\nPemeriksaan 1, 09/07/23\r\nPerbaikan 1, 10/30/23\r\nPemeriksaan 2, 10/30/23', '2023-10-31 15:42:20'),
+(231, '2023-09-05 00:00:00', NULL, 16, 11, 88, '2023-10-10 00:00:00', 'Sek.ASPI/289/X/2023', NULL, NULL, NULL, NULL, NULL, 'KKP Domestik, 09/05/23\r\nPemeriksaan 1, 09/07/23\r\nPerbaikan 1, 09/20/23\r\nPemeriksaan 2, 09/25/23\r\nPerbaikan 2, 10/05/23\r\nPemeriksaan 3, 10/09/23', '2023-10-23 10:16:48'),
+(232, '2023-09-12 00:00:00', NULL, 18, 7, 180, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Paylater, 09/12/23\r\nPemeriksaan 1, 09/18/23\r\nPerbaikan 1, 10/31/23\r\nPemeriksaan 2, 11/07/23', '2023-11-07 17:27:30'),
+(233, '2023-09-14 00:00:00', NULL, 11, 11, 164, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'KKPD\r\nPemeriksaan 2, 09/18/23', '2024-01-09 15:20:18'),
+(234, '2023-09-20 00:00:00', NULL, 16, 8, 168, '2023-10-02 00:00:00', 'Sek.ASPI/279/X/2023', NULL, NULL, NULL, NULL, NULL, 'QRIS Tarik Tunai, 09/25/23\r\nPemeriksaan 3, 09/29/23', '2023-10-06 09:03:26'),
+(235, '2023-09-22 00:00:00', NULL, 16, 7, 246, '2023-10-31 00:00:00', 'Sek.ASPI/312/X/2023', NULL, NULL, NULL, NULL, NULL, 'Issuer, 09/21/23\r\nPemeriksaan 1, 09/27/23\r\nPerbaikan 1, 10/10/23\r\nPemeriksaan 2, 10/23/23\r\nPerbaikan 2, 10/26/23\r\nPemeriksaan 3, 10/26/23', '2023-10-31 15:39:48'),
+(236, '2023-09-29 00:00:00', NULL, 16, 11, 125, '2023-10-31 00:00:00', 'Sek.ASPI/316/X/2023', NULL, NULL, NULL, NULL, NULL, 'KKPD, 09/29/23\r\nPemeriksaan 1, 10/02/23\r\nPerbaikan 1, 10/27/23\r\nPerbaikan 1, 10/12/23\r\nPemeriksaan 2, 10/25/23\r\nPerbaikan 2, 10/27/23\r\nPemeriksaan 3, 10/30/23', '2023-10-31 15:26:12'),
+(237, '2023-09-29 00:00:00', NULL, 18, 8, 168, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Setor Tunai, 09/29/23\r\nPemeriksaan 1, 10/04/23', '2023-10-27 13:39:02'),
+(238, '2023-10-10 00:00:00', NULL, 18, 7, 149, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Issuer, 10/10/23\r\nPemeriksaan 1, 10/23/23', '2023-10-23 17:28:46'),
+(239, '2023-10-10 00:00:00', NULL, 16, 9, 51, '2023-10-31 00:00:00', 'Sek.ASPI/314/X/2023', NULL, NULL, NULL, NULL, NULL, 'Terima Dok, 10/10/23\r\nPemeriksaan 1, 10/23/23\r\nPerbaikan 1, 10/30/23\r\nPemeriksaan 2, 10/30/23', '2023-10-31 15:47:49'),
+(240, '2023-10-10 00:00:00', NULL, 16, 12, 51, '2023-10-31 00:00:00', 'Sek.ASPI/315/X/2023', NULL, NULL, NULL, NULL, NULL, 'Terima Dok, 10/10/23\r\nPemeriksaan 1, 10/23/23\r\nPerbaikan 1, 10/30/23\r\nPemeriksaan 2, 10/30/23', '2023-10-31 15:47:53'),
+(241, '2023-10-24 00:00:00', NULL, 16, 14, 147, '2023-11-06 00:00:00', 'Sek.ASPI/328/XI/2023', NULL, NULL, NULL, NULL, NULL, 'SGD, 10/24/23\r\nPemeriksaan 1, 10/26/23\r\nPerbaikan 1, 11/01/23\r\nPemeriksaan 2, 11/0\'2/23', '2023-11-06 19:10:00'),
+(242, '2023-10-25 00:00:00', NULL, 16, 14, 47, '2023-10-31 00:00:00', 'Sek.ASPI/311/X/2023', NULL, NULL, NULL, NULL, NULL, 'SGD, 10/25/23\r\nPemeriksaan 1, 10/26/23', '2023-10-31 15:52:58'),
+(243, '2023-10-25 00:00:00', NULL, 16, 14, 146, '2023-10-31 00:00:00', 'Sek.ASPI/310/X/2023', NULL, NULL, NULL, NULL, NULL, 'SGD, 10/25/23\r\nPemeriksaan 1, 10/26/23', '2023-10-31 15:53:02'),
+(244, '2023-10-25 00:00:00', NULL, 18, 8, 184, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'SILA\r\nTransfer, 10/26/23\r\nPemeriksaan 1, 10/27/23\r\nPerbaikan 1, 11/20/23\r\nPemeriksaan 2, 11/23/23', '2023-11-23 17:31:26'),
+(245, '2023-10-26 00:00:00', NULL, 16, 14, 114, '2023-11-06 00:00:00', 'Sek.ASPI/329/XI/2023', NULL, NULL, NULL, NULL, NULL, 'SGD, 10/26/23\r\nPemeriksaan 1, 10/27/23\r\nPerbaikan 1, 11/01/23\r\nPemeriksaan 2, 11/02/23', '2023-11-06 19:07:50'),
+(246, '2023-10-26 00:00:00', NULL, 16, 14, 168, '2023-10-31 00:00:00', 'Sek.ASPI/313/X/2023', NULL, NULL, NULL, NULL, NULL, 'SGD, 10/26/23\r\nPemeriksaan 1, 10/27/23\r\nPerbaikan 1, 10/27/23\r\nPemeriksaan 2, 10/30/23', '2023-10-31 15:53:05'),
+(247, '2023-10-30 00:00:00', NULL, 16, 14, 39, '2023-11-06 00:00:00', 'Sek.ASPI/330/XI/2023', NULL, NULL, NULL, NULL, NULL, 'SGD, 10/30/23\r\nPemeriksaan 1, 10/30/23\r\nPerbaikan 1, 11/03/23\r\nPemeriksaan 2, 11/03/23', '2023-11-06 19:05:25'),
+(248, '2023-10-30 00:00:00', NULL, 16, 14, 188, '2023-11-07 00:00:00', 'Sek.ASPI/320/XI/2023', NULL, NULL, NULL, NULL, NULL, 'SGD SILA, 10/30/23\r\nPemeriksaan 1, 11/02/23\r\nPerbaikan 1, 11/03/23\r\nPemeriksaan 2, 11/06/23\r\nPerbaikan 2, 11/06/23\r\nPemeriksaan 3, 11/06/23', '2023-11-07 08:42:49'),
+(249, '2023-10-31 00:00:00', NULL, 16, 14, 169, '2023-11-06 00:00:00', 'Sek.ASPI/324/XI/2023', NULL, NULL, NULL, NULL, NULL, 'SGD, 10/31/23\r\nPemeriksaan 1, 11/02/23\r\nPerbaikan 1, 11/03/23\r\nPemeriksaan 2, 11/03/23\r\nPerbaikan 3, 11/03/23\r\nPemeriksaan 3, 11/03/23', '2023-11-06 19:18:34'),
+(250, '2023-10-31 00:00:00', NULL, 16, 14, 171, '2023-11-06 00:00:00', 'Sek.ASPI/323/XI/2023', NULL, NULL, NULL, NULL, NULL, 'SGD, 10/31/23\r\nPemeriksaan 1, 11/02/23', '2023-11-06 19:21:29'),
+(251, '2023-11-01 00:00:00', NULL, 16, 14, 46, '2023-11-08 00:00:00', 'Sek.ASPI/334/XI/2023', NULL, NULL, NULL, NULL, NULL, 'SGD, 11/01/23\r\nPemeriksaan 1, 11/02/23\r\nPerbaikan 1, 11/06/23\r\nPemeriksaan 2, 11/07/23\r\nPerbaikan 2, 11/07/23\r\nPemeriksaan 3, 11/08/23', '2023-11-08 13:57:21'),
+(252, '2023-11-01 00:00:00', NULL, 16, 14, 172, '2023-11-06 00:00:00', 'Sek.ASPI/326/XI/2023', NULL, NULL, NULL, NULL, NULL, 'SGD, 11/01/23\r\nPemeriksaan 1, 11/02/23', '2023-11-06 19:16:00'),
+(253, '2023-11-01 00:00:00', NULL, 16, 7, 255, '2023-11-14 00:00:00', 'Sek.ASPI/343/XI/2023', NULL, NULL, NULL, NULL, NULL, 'Terima Dokumen, 11/01/2023\r\nPemeriksaan 1, 11/06/23\r\nPerbaikan 1, 11/10/23\r\nPemeriksaan 2, 11/14/23', '2023-11-20 08:53:38'),
+(254, '2023-11-02 00:00:00', NULL, 16, 14, 170, '2023-11-06 00:00:00', 'Sek.ASPI/327/XI/2023', NULL, NULL, NULL, NULL, NULL, 'SGD, 11/02/23\r\nPemeriksaan 1, 11/02/23', '2023-11-06 19:13:36'),
+(255, '2023-11-02 00:00:00', NULL, 16, 14, 107, '2023-11-06 00:00:00', 'Sek.ASPI/322/XI/2023', NULL, NULL, NULL, NULL, NULL, 'SGD, 11/02/2023\r\nPemeriksaan 1, 11/03/23\r\nPerbaikan 1, 11/03/23\r\nPemeriksaan 2, 11/03/23', '2023-11-06 19:24:05'),
+(256, '2023-11-03 00:00:00', NULL, 16, 14, 22, '2023-11-06 00:00:00', 'Sek.ASPI/321/XI/2023', NULL, NULL, NULL, NULL, NULL, 'SGD, 11/03/23\r\nPemeriksaan 1, 11/03/23\r\nPerbaikan 1, 11/03/23\r\nPemeriksaan 2, 11/03/23', '2023-11-06 19:26:24'),
+(257, '2023-11-07 00:00:00', NULL, 18, 9, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'THB, 11/07/23\r\nPemeriksaan 1, 11/13/23', '2023-11-13 19:05:56'),
+(258, '2023-11-07 00:00:00', NULL, 18, 12, 16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'SGD, 11/07/23\r\nPemeriksaan 1, 11/13/23', '2023-11-13 19:06:04'),
+(259, '2023-11-02 00:00:00', NULL, 18, 11, 35, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'KKI, 11/02/23\r\nPemeriksaan 1, 11/13/23', '2023-11-13 19:11:24'),
+(260, '2023-11-07 00:00:00', NULL, 18, 7, 105, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Issuer, 11/07/23\r\nPemeriksaan 1, 11/13/23', '2023-11-13 19:10:01'),
+(261, '2023-11-02 00:00:00', NULL, 18, 8, 194, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'TUNTAS, 11/02/23\r\nPemeriksaan 1, 11/20/23', '2023-11-21 11:26:27'),
+(262, '2023-11-17 00:00:00', NULL, 16, 7, 260, '2023-12-19 00:00:00', 'Sek.ASPI/398/XII/2023', NULL, NULL, NULL, NULL, NULL, 'Issuer, 11/21/23\r\nPemeriksaan 1, 11/22/23\r\nPerbaikan 1, 11/29/23\r\nPemeriksaan 2, 11/30/23\r\nPerbaikan 2, 12/06/23\r\nPemeriksaan 3, 12/13/23', '2023-12-19 11:15:30'),
+(263, '2023-11-14 00:00:00', NULL, 16, 7, 254, '2023-12-15 00:00:00', 'Sek.ASPI/399/XII/2023', NULL, NULL, NULL, NULL, NULL, 'Issuer, 11/14/23\r\nPemeriksaan 1, 11/22/23\r\nPerbaikan 1, 11/29/23\r\nPemeriksaan 2, 12/04/23', '2023-12-19 11:16:30'),
+(265, '2023-11-30 00:00:00', NULL, 18, 9, 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Paylater, 11/30/23', '2023-12-12 11:21:41'),
+(266, '2023-11-30 00:00:00', NULL, 18, 12, 8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Paylater, 11/30/23', '2023-12-12 11:21:38'),
+(267, '2023-12-08 00:00:00', NULL, 16, 14, 51, '2023-12-15 00:00:00', 'Sek.ASPI/400/XII/2023', NULL, NULL, NULL, NULL, NULL, 'SGD, 12/08/23', '2023-12-19 11:17:07'),
+(268, '2023-12-06 00:00:00', NULL, 16, 7, 84, '2024-01-09 00:00:00', 'Sek.ASPI/SR/026/I/2024', NULL, NULL, NULL, NULL, NULL, 'Issuer, 12/06/23', '2024-01-09 15:17:32'),
+(269, '2023-12-15 00:00:00', NULL, 18, 14, 55, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'SGD, 15122023', '2023-12-27 09:27:32'),
+(270, '2023-12-14 00:00:00', NULL, 18, 8, 22, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Transfer, Tarik, Setor Tunai 14122023', '2023-12-27 09:27:36'),
+(271, '2023-12-19 00:00:00', NULL, 18, 11, 30, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'KKI, 19122023', '2023-12-27 09:27:40');
 
 -- --------------------------------------------------------
 
@@ -1353,18 +1570,18 @@ INSERT INTO `qris` (`id`, `waktu_assign_project`, `id_pketerangan`, `id_pstat`, 
 --
 
 CREATE TABLE `qrisspeks` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `id` bigint UNSIGNED NOT NULL,
   `waktu_assign_project` datetime NOT NULL,
-  `id_pketerangan` bigint(20) UNSIGNED DEFAULT NULL,
-  `id_pstat` bigint(20) UNSIGNED NOT NULL,
-  `id_product` bigint(20) UNSIGNED NOT NULL,
-  `id_mitra` bigint(20) UNSIGNED NOT NULL,
-  `no_formulir` varchar(51) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `no_spek` varchar(301) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id_pketerangan` bigint UNSIGNED DEFAULT NULL,
+  `id_pstat` bigint UNSIGNED NOT NULL,
+  `id_product` bigint UNSIGNED NOT NULL,
+  `id_mitra` bigint UNSIGNED NOT NULL,
+  `no_formulir` varchar(51) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `no_spek` varchar(301) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `spek_qris` datetime DEFAULT NULL,
-  `stats_temp` bigint(20) UNSIGNED DEFAULT NULL,
-  `pketerangan_status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `notes_project` varchar(301) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `stats_temp` bigint UNSIGNED DEFAULT NULL,
+  `pketerangan_status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `notes_project` varchar(301) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `last_updated` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -1560,7 +1777,7 @@ INSERT INTO `qrisspeks` (`id`, `waktu_assign_project`, `id_pketerangan`, `id_pst
 (186, '2022-04-13 00:00:00', NULL, 1, 7, 235, '22QRIS-0413016', '', NULL, NULL, NULL, '', NULL),
 (187, '2022-05-12 00:00:00', NULL, 16, 7, 236, '22QRIS-0512017', 'Sek.ASPI/115/VI/2022', '2022-06-28 00:00:00', NULL, NULL, NULL, '2022-08-22 11:36:07'),
 (188, '2022-05-18 00:00:00', NULL, 1, 6, 86, '22QRIS-0518018', '', NULL, NULL, NULL, '', NULL),
-(189, '2022-05-24 00:00:00', NULL, 1, 7, 226, '22QRIS-0524019', '', NULL, NULL, NULL, '', NULL),
+(189, '2022-05-24 00:00:00', NULL, 16, 7, 226, '22QRIS-0524019', '', NULL, NULL, NULL, '', '2023-11-30 15:10:51'),
 (190, '2022-05-27 00:00:00', NULL, 16, 7, 63, '22QRIS-0527020', 'Sek.ASPI/125/VII/2022', '2022-07-20 00:00:00', NULL, NULL, NULL, '2022-08-22 11:35:45'),
 (191, '2022-06-13 00:00:00', NULL, 16, 6, 218, '22QRIS-0613021', '', NULL, NULL, NULL, '', '2022-12-29 11:16:18'),
 (192, '2022-06-13 00:00:00', NULL, 1, 6, 81, '22QRIS-0613022', '', NULL, NULL, NULL, '', NULL),
@@ -1570,9 +1787,96 @@ INSERT INTO `qrisspeks` (`id`, `waktu_assign_project`, `id_pketerangan`, `id_pst
 (196, '2022-07-07 00:00:00', NULL, 1, 7, 239, '22QRIS-0707026', '', NULL, NULL, NULL, '', NULL),
 (197, '2022-07-15 00:00:00', NULL, 1, 7, 84, '22QRIS-0715027', '', NULL, NULL, NULL, '', NULL),
 (198, '2022-07-18 00:00:00', NULL, 16, 6, 227, '22QRIS-0718028', '', NULL, NULL, NULL, '', '2022-09-07 15:13:41'),
-(199, '2022-07-18 00:00:00', NULL, 1, 7, 136, '22QRIS-0718029', '', NULL, NULL, NULL, '', NULL),
+(199, '2022-07-18 00:00:00', NULL, 16, 7, 136, '22QRIS-0718029', '', NULL, NULL, NULL, '', '2023-07-07 10:16:01'),
 (200, '2022-08-16 00:00:00', NULL, 1, 7, 240, '22QRIS-0816030', '', NULL, NULL, NULL, '', NULL),
-(201, '2022-11-29 00:00:00', NULL, 1, 6, 145, '22QRIS-1129038', '', NULL, NULL, NULL, '', NULL);
+(201, '2022-11-29 00:00:00', NULL, 1, 6, 145, '22QRIS-1129038', '', NULL, NULL, NULL, '', NULL),
+(202, '2022-11-29 00:00:00', NULL, 16, 7, 242, '22QRIS-1129039', '', NULL, NULL, NULL, '', '2023-07-07 10:16:13'),
+(203, '2022-12-07 00:00:00', NULL, 1, 7, 243, '22QRIS-1207040', '', NULL, NULL, NULL, '', NULL),
+(204, '2022-12-08 00:00:00', NULL, 1, 7, 244, '22QRIS-1208041', '', NULL, NULL, NULL, '', NULL),
+(205, '2022-12-15 00:00:00', NULL, 1, 7, 230, '22QRIS-1215042', '', NULL, NULL, NULL, '', NULL),
+(206, '2022-12-15 00:00:00', NULL, 16, 6, 16, '22QRIS-1215043', 'Sek.ASPI/012/I_2023', '2023-01-10 00:00:00', NULL, NULL, NULL, '2023-02-27 12:15:54'),
+(207, '2022-12-21 00:00:00', NULL, 1, 6, 30, '22QRIS-1221044', '', NULL, NULL, NULL, '', NULL),
+(208, '2022-12-22 00:00:00', NULL, 15, 7, 245, '22QRIS-1222045', '', NULL, NULL, NULL, '', '2023-07-20 16:21:48'),
+(209, '2023-01-03 00:00:00', NULL, 1, 7, 246, '23QRIS-0103001', '', NULL, NULL, NULL, '', NULL),
+(210, '2023-01-04 00:00:00', NULL, 1, 7, 31, '23QRIS-0104002', '', NULL, NULL, NULL, '', NULL),
+(211, '2023-01-27 00:00:00', NULL, 1, 6, 86, '23QRIS-0127003', '', NULL, NULL, NULL, '', NULL),
+(212, '2023-02-16 00:00:00', NULL, 1, 7, 247, '23QRIS-0216004', '', NULL, NULL, NULL, '', NULL),
+(213, '2023-02-23 00:00:00', NULL, 16, 7, 248, '23QRIS-0223005', '', NULL, NULL, NULL, '', '2023-07-07 10:08:11'),
+(214, '2023-07-05 00:00:00', NULL, 16, 7, 136, '23QRIS-0620021', '', NULL, NULL, NULL, '', '2023-07-06 14:21:52'),
+(215, '2023-07-05 00:00:00', NULL, 16, 6, 136, '23QRIS-0620021', '', NULL, NULL, NULL, '', '2023-07-06 14:21:56'),
+(216, '2023-07-05 00:00:00', NULL, 16, 6, 225, '23QRIS-0619020', '', NULL, NULL, NULL, '', '2023-07-06 14:22:51'),
+(217, '2023-07-06 00:00:00', NULL, 16, 6, 219, '23QRIS-0614019', '', NULL, NULL, NULL, '', '2023-09-13 15:49:42'),
+(218, '2023-07-05 00:00:00', NULL, 16, 7, 249, '23QRIS-0614018', '', NULL, NULL, NULL, '', '2023-07-06 14:43:57'),
+(219, '2023-06-25 00:00:00', NULL, 16, 7, 250, '23QRIS-0328009', '', NULL, NULL, NULL, '', '2023-07-06 14:48:09'),
+(220, '2023-07-06 00:00:00', NULL, 16, 7, 17, '23QRIS-0228006', '', NULL, NULL, NULL, '', '2023-07-07 10:09:59'),
+(221, '2023-07-06 00:00:00', NULL, 16, 7, 251, '23QRIS-0310007', '', NULL, NULL, NULL, '', '2023-07-07 10:10:28'),
+(222, '2023-07-06 00:00:00', NULL, 1, 7, 252, '23QRIS-0328008', '', NULL, NULL, NULL, '', NULL),
+(223, '2023-07-06 00:00:00', NULL, 16, 7, 253, '23QRIS-0405010', '', NULL, NULL, NULL, '', '2023-07-07 10:13:05'),
+(224, '2023-07-06 00:00:00', NULL, 17, 6, 7, '23QRIS-0411011', '', NULL, NULL, NULL, '', '2023-08-28 10:53:33'),
+(225, '2023-07-06 00:00:00', NULL, 16, 6, 192, '23QRIS-0411012', 'Sek.ASPI/118/III/2023', NULL, NULL, NULL, NULL, '2023-07-07 10:08:00'),
+(226, '2023-07-06 00:00:00', NULL, 16, 7, 254, '23QRIS-0504013', '', NULL, NULL, NULL, '', '2023-07-06 15:58:11'),
+(227, '2023-07-06 00:00:00', NULL, 1, 7, 9, '23QRIS-0516014', '', NULL, NULL, NULL, '', NULL),
+(228, '2023-07-06 00:00:00', NULL, 1, 6, 181, '23QRIS-0519015', '', NULL, NULL, NULL, '', NULL),
+(229, '2023-07-06 00:00:00', NULL, 16, 7, 255, '23QRIS-0525016', '', NULL, NULL, NULL, '', '2023-07-07 10:15:45'),
+(230, '2023-07-06 00:00:00', NULL, 1, 7, 256, '23QRIS-0529017', '', NULL, NULL, NULL, '', NULL),
+(231, '2023-07-20 00:00:00', NULL, 16, 6, 9, '23QRIS-0516014', '', NULL, NULL, NULL, '', '2023-07-20 15:53:28'),
+(232, '2023-07-20 00:00:00', NULL, 16, 7, 245, '22QRIS-1222045', '', NULL, NULL, NULL, '', '2023-07-20 16:21:31'),
+(233, '2023-07-21 00:00:00', NULL, 16, 7, 165, '23QRIS-07122022', '', NULL, NULL, NULL, '', '2023-07-25 17:27:11'),
+(234, '2023-07-21 00:00:00', NULL, 16, 6, 165, '23QRIS-07122022', '', NULL, NULL, NULL, '', '2023-07-25 17:24:30'),
+(235, '2023-07-31 00:00:00', NULL, 16, 6, 157, '23QRIS-0714024', '', NULL, NULL, NULL, '', '2023-08-09 14:21:08'),
+(236, '2023-07-17 00:00:00', NULL, 16, 7, 257, '23QRIS-0714023', '', NULL, NULL, NULL, '', '2023-08-09 14:20:53'),
+(237, '2023-08-08 00:00:00', NULL, 1, 6, 189, '23QRIS-0808026', '', NULL, NULL, NULL, '', NULL),
+(238, '2023-08-22 00:00:00', NULL, 16, 7, 244, '23QRIS-0809026', '', NULL, NULL, NULL, '', '2023-08-29 16:46:41'),
+(239, '2023-08-25 00:00:00', NULL, 16, 7, 126, '23QRIS-0823033', '', NULL, NULL, NULL, '', '2023-08-30 09:25:45'),
+(240, '2023-08-24 00:00:00', NULL, 16, 7, 73, '23QRIS-0824034', '', NULL, NULL, NULL, '', '2023-10-27 10:08:13'),
+(241, '2023-08-25 00:00:00', NULL, 16, 6, 7, '23QRIS-0821032', '', NULL, NULL, NULL, '', '2023-08-30 10:42:56'),
+(242, '2023-08-28 00:00:00', NULL, 21, 6, 147, '23QRIS-0828036', '', NULL, NULL, NULL, '', '2023-08-28 11:10:36'),
+(243, '2023-08-21 00:00:00', NULL, 21, 8, 183, '23QRIS-0821031', '', NULL, NULL, NULL, '', '2023-08-28 11:14:26'),
+(244, '2023-09-01 00:00:00', NULL, 16, 8, 179, '23QRIS-0901037', '', NULL, NULL, NULL, '', '2023-09-13 15:49:12'),
+(245, '2023-08-29 00:00:00', NULL, 16, 8, 180, '23QRIS-0821029', '', NULL, NULL, NULL, '', '2023-09-06 15:11:00'),
+(246, '2023-09-06 00:00:00', NULL, 21, 8, 193, '23QRIS-0906044', '', NULL, NULL, NULL, '', '2023-09-06 15:10:50'),
+(247, '2023-09-04 00:00:00', NULL, 16, 8, 174, '23QRIS-0904039', '', NULL, NULL, NULL, '', '2023-09-13 15:48:59'),
+(248, '2023-09-04 00:00:00', NULL, 16, 8, 207, '23QRIS-0904040', '', NULL, NULL, NULL, '', '2023-09-13 15:49:06'),
+(249, '2023-09-05 00:00:00', NULL, 16, 8, 110, '23QRIS-0905043', '', NULL, NULL, NULL, '', '2023-09-25 09:42:00'),
+(250, '2023-09-04 00:00:00', NULL, 16, 8, 201, '23QRIS-0904041', '', NULL, NULL, NULL, '', '2023-09-25 10:14:08'),
+(251, '2023-09-04 00:00:00', NULL, 21, 7, 88, '23QRIS-0904038', '', NULL, NULL, NULL, '', '2023-09-07 13:23:41'),
+(252, '2023-09-07 00:00:00', NULL, 16, 8, 145, '23QRIS-0907045', '', NULL, NULL, NULL, '', '2023-10-05 10:12:27'),
+(253, '2023-09-08 00:00:00', NULL, 21, 8, 217, '23QRIS-0908046', '', NULL, NULL, NULL, '', '2023-09-08 11:24:47'),
+(254, '2023-09-11 00:00:00', NULL, 21, 8, 145, '23QRIS-0911048', '', NULL, NULL, NULL, '', '2023-09-11 09:19:58'),
+(255, '2023-09-12 00:00:00', NULL, 16, 8, 168, '377/EDIK/LC-Skel/IX/2023', NULL, NULL, NULL, NULL, '', '2023-10-05 14:33:53'),
+(256, '2023-09-12 00:00:00', NULL, 16, 8, 255, '23QRIS-0912050', '', NULL, NULL, NULL, '', '2023-09-13 15:48:44'),
+(257, '2023-09-14 00:00:00', NULL, 19, 8, 203, '23QRIS-0914051', '', NULL, NULL, NULL, '', '2023-09-29 14:49:47'),
+(258, '2023-09-11 00:00:00', NULL, 16, 8, 130, '23QRIS-0911047', '', NULL, NULL, NULL, '', '2023-09-25 09:59:28'),
+(259, '2023-09-18 00:00:00', NULL, 16, 8, 205, '23QRIS-0918052', '', NULL, NULL, NULL, '', '2023-10-26 16:05:17'),
+(260, '2023-09-19 00:00:00', NULL, 16, 8, 123, '23QRIS-0919053', '', NULL, NULL, NULL, '', '2023-11-07 08:55:03'),
+(261, '2023-09-19 00:00:00', NULL, 21, 8, 165, '23QRIS-0919054', '', NULL, NULL, NULL, '', '2023-09-19 16:33:08'),
+(262, '2023-09-20 00:00:00', NULL, 21, 8, 131, '23QRIS-0920055', '', NULL, NULL, NULL, '', '2023-09-20 15:31:52'),
+(263, '2023-09-20 00:00:00', NULL, 16, 8, 157, '23QRIS-0920056', '', NULL, NULL, NULL, '', '2023-10-05 09:41:45'),
+(264, '2023-09-21 00:00:00', NULL, 21, 8, 143, '23QRIS-0921057', '', NULL, NULL, NULL, '', '2023-09-21 09:12:09'),
+(265, '2023-08-21 00:00:00', NULL, 16, 8, 22, '23QRIS-0821030', '', NULL, NULL, NULL, '', '2023-09-25 10:28:53'),
+(266, '2023-09-21 00:00:00', NULL, 16, 8, 183, 'Tel.63/LP 500/JFIN0000000/2023', '', NULL, NULL, NULL, '', '2023-10-05 14:31:35'),
+(267, '2023-09-25 00:00:00', NULL, 21, 8, 31, '23QRIS-0925058', '', NULL, NULL, NULL, '', '2023-09-25 14:40:38'),
+(268, '2023-09-26 00:00:00', NULL, 21, 8, 107, '23QRIS-0926059', '', NULL, NULL, NULL, '', '2023-09-26 15:29:59'),
+(269, '2023-09-26 00:00:00', NULL, 16, 6, 244, '23QRIS-0926060', '', NULL, NULL, NULL, '', '2023-10-05 10:32:03'),
+(270, '2023-10-16 00:00:00', NULL, 16, 8, 170, '23QRIS-1016062', '', NULL, NULL, NULL, '', '2023-10-23 14:38:02'),
+(271, '2023-10-02 00:00:00', NULL, 16, 8, 200, '004/LPPP/YUKK/X/20', '', NULL, NULL, NULL, '', '2023-10-19 10:16:19'),
+(272, '2023-10-16 00:00:00', NULL, 16, 7, 108, '23QRIS-1016063', '', NULL, NULL, NULL, '', '2023-10-26 15:35:06'),
+(273, '2023-11-03 00:00:00', NULL, 16, 8, 146, '23QRIS-1005061', '', NULL, NULL, NULL, '', '2023-11-07 13:12:15'),
+(274, '2023-08-15 00:00:00', NULL, 16, 7, 260, '23QRIS-0815026', '', NULL, NULL, NULL, '', '2023-11-14 15:10:57'),
+(275, '2023-11-15 00:00:00', NULL, 16, 6, 135, '23QRIS-0724025', '', NULL, NULL, NULL, '', '2023-11-23 09:33:46'),
+(276, '2023-11-07 00:00:00', NULL, 16, 6, 261, '1557/MIY-EXT/XI/2023', '', NULL, NULL, NULL, '', '2023-11-23 14:41:10'),
+(277, '2023-11-06 00:00:00', NULL, 16, 7, 261, '1556/MIY-EXT/XI/2023', '', NULL, NULL, NULL, '', '2023-11-23 14:41:47'),
+(278, '2023-11-30 00:00:00', NULL, 16, 6, 143, '09/460/BSS/DIR/XI/23', '', NULL, NULL, NULL, '', '2023-12-12 16:29:51'),
+(279, '2023-11-30 00:00:00', NULL, 16, 8, 62, '141/S/DIB-SURAT/XI/2023', '', NULL, NULL, NULL, '', '2023-12-12 16:30:00'),
+(280, '2023-11-30 00:00:00', NULL, 16, 7, 7, '35/5628/PN/DB', '', NULL, NULL, NULL, '', '2023-12-12 16:30:12'),
+(281, '2023-12-07 00:00:00', NULL, 16, 7, 256, 'RMA/LGL-SPm/XII/2023/094.03', '', NULL, NULL, NULL, '', '2023-12-12 16:31:28'),
+(282, '2023-12-07 00:00:00', NULL, 16, 6, 256, 'RMA/LGL-SPm/XII/2023/093.03', '', NULL, NULL, NULL, '', '2023-12-12 16:32:06'),
+(283, '2023-12-08 00:00:00', NULL, 16, 6, 166, '458/DIR/2023', '', NULL, NULL, NULL, '', '2023-12-12 16:32:47'),
+(284, '2023-12-15 00:00:00', NULL, 16, 8, 51, 'SR/233/DIR/UM/12-2023', '', NULL, NULL, NULL, '', '2023-12-19 10:52:14'),
+(285, '2023-12-22 00:00:00', NULL, 16, 7, 247, '006/LEG/MTI/XII/2023', '', NULL, NULL, NULL, '', '2023-12-22 16:04:42'),
+(286, '2023-12-28 00:00:00', NULL, 16, 8, 143, '09/521/BSS/DIR/XII/23', '', NULL, NULL, NULL, '', '2023-12-28 16:14:51'),
+(287, '2023-12-28 00:00:00', NULL, 16, 8, 39, '027/BCA/DPD/2023', '', NULL, NULL, NULL, '', '2023-12-28 16:15:54'),
+(288, '2023-12-28 00:00:00', NULL, 16, 7, 262, '052/AYO/COMP/XII/2023', '', NULL, NULL, NULL, '', '2024-01-02 14:25:16');
 
 -- --------------------------------------------------------
 
@@ -1581,15 +1885,15 @@ INSERT INTO `qrisspeks` (`id`, `waktu_assign_project`, `id_pketerangan`, `id_pst
 --
 
 CREATE TABLE `users` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `id_ulevel` bigint(20) UNSIGNED NOT NULL,
-  `nama_user` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email_user` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `inisial_user` varchar(3) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `added_by` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `modified_by` varchar(3) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `remember_token` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id` bigint UNSIGNED NOT NULL,
+  `id_ulevel` bigint UNSIGNED NOT NULL,
+  `nama_user` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_user` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `inisial_user` varchar(3) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `added_by` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `modified_by` varchar(3) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `remember_token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status_user` tinyint(1) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -1600,14 +1904,19 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `id_ulevel`, `nama_user`, `email_user`, `inisial_user`, `password`, `added_by`, `modified_by`, `remember_token`, `status_user`, `created_at`, `updated_at`) VALUES
-(1, 4, 'Lily', 'lsuliandari@aspi-indonesia.or.id', 'LSL', '$2y$10$YmAquv3TJqzV8oAJiO4TWO74FcjeMgB5/bqrl2BgCFqdyy5Hc7fIq', 'ASPI', NULL, NULL, 1, '2022-07-22 07:23:40', '2023-02-08 05:15:42'),
-(2, 4, 'Rey', 'renaldy@aspi-indonesia.or.id', 'RBB', '$2y$10$2SHQc6Ofaz4o.AJKhJ8greoCEWlfsx3J7Gb2w0W/4SKQ3QpN8vXrW', 'ASPI', NULL, NULL, 1, '2022-07-22 07:23:40', '2023-02-08 11:40:04'),
-(3, 4, 'Nesta', 'ernestaputri@aspi-indonesia.or.id', 'ENP', '$2y$10$ci3GHfkjfz4tK9o2I4.gKO/IHu/d2tQanoncb2VDxrZFNmiL5z3RO', 'ASPI', NULL, NULL, 1, '2022-07-22 07:23:40', '2023-02-07 08:34:53'),
+(1, 4, 'Lily', 'lsuliandari@aspi-indonesia.or.id', 'LSL', '$2y$10$IfYSvzBK2EIRtz4NAFLMz.B1gs5CF2nK5.mEyXRReMAiPqreyS7pi', 'ASPI', NULL, NULL, 1, '2022-07-22 07:23:40', '2024-01-09 10:02:10'),
+(2, 4, 'Rey', 'renaldy@aspi-indonesia.or.id', 'RBB', '$2y$10$f9mYysfQUYSltOJTV03Hk.vx.3dHiGu7xArRMSc7DW.WKpnmOdjXa', 'ASPI', NULL, NULL, 1, '2022-07-22 07:23:40', '2024-01-16 07:31:39'),
+(3, 4, 'Nesta', 'ernestaputri@aspi-indonesia.or.id', 'ENP', '$2y$10$jLc0AttHMm36ccPtYgoXtOHej1yYbArBsIlJdx3Udkfnl9kh9/26q', 'ASPI', NULL, NULL, 1, '2022-07-22 07:23:40', '2023-05-22 05:53:01'),
 (5, 5, 'Tata Martadinata', 'tata.martadinata@aspi-indonesia.or.id', 'TTM', '$2y$10$4PSdGpFj217iXPYD7M6UJ.dhkADtFV6UchG8k8SdFh4/P4Fvgh3dK', 'RBB', NULL, NULL, 1, '2022-08-01 03:57:47', '2022-08-19 07:38:08'),
-(6, 5, 'Hesty Novianingrum', 'hesty@aspi-indonesia.or.id', 'HST', '$2y$10$/7hvAB.xK4WQMnsxuzEmPuiYGnRJ1J//EoFMIYbcdtEk.DSaVmQMq', 'RBB', NULL, NULL, 1, '2022-08-01 03:58:40', '2023-01-30 06:39:17'),
-(7, 5, 'Iin Nugrohowati', 'iin@aspi-indonesia.or.id', 'IIN', '$2y$10$kqXvtEts6UHUlmS9FErh4Olc02WGW1fFgFa2G07mmAaxdjIXq6XrW', 'RBB', 'LSL', NULL, 1, '2022-08-01 03:59:40', '2022-08-07 10:00:32'),
-(8, 5, 'Reycoba', 're@aspi-indonesia.or.id', 'RRR', '$2y$10$gjKGqroB.PHPJTqRQJbpYuwwuqPCL2Z18NZANwemabnPlHszrZrRm', 'RBB', NULL, NULL, 1, '2022-08-02 03:05:26', '2022-09-06 02:39:53'),
-(9, 5, 'Retno', 'retno@aspi-indonesia.or.id', 'RET', '$2y$10$AUexSrzu8g0UkAWLWaPjmeBf7Q.g7QVNeB7ANZkeG3Vte5Z9xgcwy', 'RBB', NULL, NULL, 1, '2022-10-20 02:52:23', '2022-11-16 11:52:17');
+(6, 5, 'Hesty Novianingrum', 'hesty@aspi-indonesia.or.id', 'HST', '$2y$10$JTcyRTQfvCrP22npXWpUBu2exnMZuO/Cee3y8bdjLUskZQovBo8ci', 'RBB', NULL, NULL, 1, '2022-08-01 03:58:40', '2023-08-23 05:40:57'),
+(7, 5, 'Iin Nugrohowati', 'iin@aspi-indonesia.or.id', 'IIN', '$2y$10$Nt/dMBYKo9U9hpzjPYaZveElGYDkR3039SI4zEgf2e4eU9IRONDEW', 'RBB', 'LSL', NULL, 1, '2022-08-01 03:59:40', '2023-08-09 02:33:38'),
+(8, 2, 'Reycoba', 're@aspi-indonesia.or.id', 'RRR', '$2y$10$yRFSyAVTRCfxl7CcrgPdzeusRoXJ9bSZ2HgvGq.kxL/6OwwPg8uom', 'RBB', 'RBB', NULL, 1, '2022-08-02 03:05:26', '2023-04-28 03:00:05'),
+(10, 5, 'Alfons', 'alfons@aspi-indonesia.or.id', 'ALF', NULL, 'RBB', NULL, NULL, 1, '2023-02-14 05:17:59', '2023-02-14 05:17:59'),
+(11, 5, 'Retno', 'retno@aspi-indonesia.or.id', 'RET', '$2y$10$7d7GVwLspaff4DdpGM3iROrC42hXwaQUm1twcHp/6IIZmY48mPopC', 'RBB', NULL, NULL, 1, '2023-02-14 10:43:36', '2023-08-08 07:17:08'),
+(12, 4, 'Aufar', 'aufar@aspi-indonesia.or.id', 'AUF', '$2y$10$AXVK1Nm6FHtnW/lgg5QM2.0wZScS1njexs37ZxUaUb.tmRAWKxOii', 'RBB', 'RBB', NULL, 1, '2023-05-04 12:13:10', '2023-10-20 02:57:38'),
+(13, 5, 'Restu', 'restu@aspi-indonesia.or.id', 'RST', '$2y$10$/mHvpHNU/tpTNahGm6eFouEC9UjB4CWn1wt9Qplpk0DgON/jixNHu', 'RBB', NULL, NULL, 1, '2023-05-11 09:04:13', '2023-10-06 03:47:45'),
+(14, 4, 'Indira', 'indira@aspi-indonesia.or.id', 'IDR', '$2y$10$5yjVv4iipsgP8DgnrUSUYuiSdYN/96vWgRxPZukHHfI2kTQu8EXaG', 'RBB', NULL, NULL, 1, '2023-07-24 09:44:10', '2024-01-16 03:49:12'),
+(15, 5, 'Edwin', 'edwin@aspi-indonesia.or.id', 'EDW', '$2y$10$FYg7kGRinGls7vwG.kqdcul/PINaHHmVUjqcHke.S6wYhzqyRV6s6', 'RBB', NULL, NULL, 1, '2023-08-03 09:44:41', '2023-08-14 08:48:17');
 
 -- --------------------------------------------------------
 
@@ -1616,8 +1925,8 @@ INSERT INTO `users` (`id`, `id_ulevel`, `nama_user`, `email_user`, `inisial_user
 --
 
 CREATE TABLE `users_levels` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `nama_ulevel` varchar(33) COLLATE utf8mb4_unicode_ci NOT NULL
+  `id` bigint UNSIGNED NOT NULL,
+  `nama_ulevel` varchar(33) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1760,97 +2069,97 @@ ALTER TABLE `users_levels`
 -- AUTO_INCREMENT for table `cas`
 --
 ALTER TABLE `cas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 
 --
 -- AUTO_INCREMENT for table `documents`
 --
 ALTER TABLE `documents`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `documents_categories`
 --
 ALTER TABLE `documents_categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `documents_types`
 --
 ALTER TABLE `documents_types`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ipkcs`
 --
 ALTER TABLE `ipkcs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=190;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=190;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `mitras`
 --
 ALTER TABLE `mitras`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=242;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=263;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=276;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=381;
 
 --
 -- AUTO_INCREMENT for table `projects_keterangans`
 --
 ALTER TABLE `projects_keterangans`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `projects_stats`
 --
 ALTER TABLE `projects_stats`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `projects_types`
 --
 ALTER TABLE `projects_types`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `qris`
 --
 ALTER TABLE `qris`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=181;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=272;
 
 --
 -- AUTO_INCREMENT for table `qrisspeks`
 --
 ALTER TABLE `qrisspeks`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=202;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=289;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `users_levels`
 --
 ALTER TABLE `users_levels`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
