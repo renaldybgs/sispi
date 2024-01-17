@@ -16,7 +16,7 @@ class Surat extends Model
 
     ];
 
-    protected $fillable = ['id_mitra',  'no_surat', 'no_unik', 'perihal', 'notes_surat', 'added_by', 'modified_by', 'waktu_assign_surat'];
+    protected $fillable = ['id_mitra',  'no_surat', 'no_unik', 'perihal', 'notes_surat', 'added_by', 'modified_by', 'waktu_assign_surat', 'file_surat'];
 
     public $timestamps = false;
 }
