@@ -62,7 +62,7 @@ class Controller_EngineerAddSurats extends Controller
         $randomNumber = "";
 
         for($i = 0; $i<$loop; $i++){        //lakukan loop sejumlah jumlah angka
-            $randomUnit = rand(0,999);      //randomize angka
+            $randomUnit = rand(0,9);      //randomize angka
             $randomNumber .= $randomUnit;   //angka pertama dimasukkan ke dalam variabel akhir
 
             if($i != $loop-1){              //loop sesuai dengan jumlah angka - 1
