@@ -33,5 +33,20 @@
 		</div>
 	</div>
 
+	<div class="form-group">
+		<div class ="input-group-addon">
+			<label for="no_unik" style="font-weight:bolder" style="margin-top: -30px">No Unik</label>
+				<br>
+			{!! Form::textarea('no_unik', null,
+				['class'=> 'form-control',
+					'rows' => '1',
+					'id' =>'no_unik',
+					'placeholder' => 'Masukan No Unik',
+					'style' =>'margin-bottom: 10px'
+				])
+			!!}		
+		</div>
+	</div>
+
 
 {!! Form::close() !!}
