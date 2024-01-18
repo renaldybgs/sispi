@@ -1328,7 +1328,7 @@ function changeStatusSurat(id){
 
 				success: function(response){
 					// console.log(response);
-					$('#table1').DataTable().ajax.reload();
+					$('#table1').DataTable();
 
 					Swal.fire({
 						title:'Status berhasil diganti',
@@ -1363,7 +1363,7 @@ function changeStatusSurat(id){
 			$.ajax({
 				success: function(response){
 					// console.log("masuk pak");
-					$('#table1').DataTable().ajax.reload();
+					$('#table1').DataTable();
 					Swal.fire({
 						title:'Status tidak terganti',
 						icon: 'warning',

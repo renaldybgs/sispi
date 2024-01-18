@@ -48,5 +48,20 @@
 		</div>
 	</div>
 
+	<div class="form-group">
+		<div class="custom-file">
+			<input type="file" class="custom-file-input" id="file_surat">
+			<label class="custom-file-label" for="file_surat">Choose file</label>
+			<br>
+			{!! Form::file('file_surat', null,
+				['class'=> 'form-control',
+					'id' =>'file_surat',
+					'placeholder' => 'Masukan Surat Rekomendasi',
+					'style' =>'margin-bottom: 10px'
+				])
+			!!}	
+		</div>
+	</div>
+
 
 {!! Form::close() !!}
