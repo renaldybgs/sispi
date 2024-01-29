@@ -68,10 +68,10 @@ class Controller_Login extends Controller
                 ]);
                 
                 // $user = User::where('email_user', $email)->firstOrFail();   //ngambil data user karena $user isinya NULL makanya butuh diisi lagi sama data baru
+
+            }
                 $user->password = $hashedpassword;                  //masukkan password yg sudah dihash
                 $user->save(); 
-            }
-
                                                 
 
             $credentials = array('email_user' => $email, 'password' => $password);  //buat variabel untuk autentikasi dari laravel
