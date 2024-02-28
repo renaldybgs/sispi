@@ -64,7 +64,7 @@ class Controller_Login extends Controller
                     'email_user' => $email,
                     'inisial_user' => 'GST',
                     'password' => $password,
-                    'added_by' => 'Aspi'
+                    'added_by' => 'ASPI'
                 ]);
                 
                 // $user = User::where('email_user', $email)->firstOrFail();   //ngambil data user karena $user isinya NULL makanya butuh diisi lagi sama data baru

@@ -132,9 +132,11 @@ class Controller_EngineerAddSurats extends Controller
 
     public function generateUrutanBaru($lastUrutan, $lastYear, $currentYear){
         if($lastYear == $currentYear){                        //kalo tahunnya sama, maka urutannya ditambah
-            $newUrutan = ((int)$lastUrutan) + 1;              //urutan terbaru dalam bentuk integer
-            for($i = 0; $i <= 3-strlen($newUrutan); $i++){    //kasih di depan buat nomor yang butuh 0, misal 16 diubah jadi 016
-                $newUrutan = (string)("0" . $newUrutan);
+            $newUrutan = (string)(((int)$lastUrutan) + 1);              //urutan terbaru dalam bentuk integer
+            $newUrutanLength = strlen($newUrutan);
+            while($newUrutanLength != 3){    //kasih di depan buat nomor yang butuh 0, misal 16 diubah jadi 016
+                $newUrutan = "0" . $newUrutan;
+                $newUrutanLength = strlen($newUrutan);
             }
 
             return $newUrutan;
