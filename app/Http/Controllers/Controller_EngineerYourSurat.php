@@ -28,8 +28,10 @@ class Controller_EngineerYourSurat extends Controller
         $surat = $this->getSuratById($id);                                  //ngambil data projek yg mau diubah progressnya
         $perihal = $surat->perihal;                                    
         $notes = $surat->notes_surat;                                       //ngambil notes
+        $no_unik = $surat->no_unik;
+        
 
-        return view('Layouts.FormProgresSurat', compact('surat', 'perihal', 'notes'));  //buka formnya dengan data2 yg udh disiapin sebelumnya
+        return view('Layouts.FormProgresSurat', compact('surat', 'perihal', 'notes', 'no_unik'));  //buka formnya dengan data2 yg udh disiapin sebelumnya
     }
 
     public function updatePenomoran(Request $request, $id){                           //update data setelah nginput di form
@@ -40,10 +42,13 @@ class Controller_EngineerYourSurat extends Controller
         $surat = $this->getSuratById($id);  
                                   //cari projek yg datanya mau diubah
         $surat->perihal = $request->perihal;                      
-        $surat->notes_surat = $request->notes_surat;  
-        $surat->modified_by = $modified_by;                      
+        $surat->notes_surat = $request->notes_surat;
+        $surat->no_unik = $request->no_unik;  
+        $surat->modified_by = $modified_by;                   
         $surat->last_updated = Carbon::now()->toDateTimeString();
         $surat->save();                                                       //simpan perubahan
+
+        return response()->json($surat);
     }
 
     public function changeStatus(Request $request){     //ganti status projek
