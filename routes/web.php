@@ -126,6 +126,16 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::put('/admin/surat/update/{id}', 'Controller_AdminListSurat@updateSurat')->name('adminsurat.update');
 	Route::get('/admin/surat/delete/{id}', 'Controller_AdminListSurat@deleteSurat')->name('adminsurat.delete');
 
+		//List Penomoran Surat PJA
+	Route::get('/admin/suratpja', 'Controller_AdminListSuratPka@openPage');
+	Route::get('/admin/suratpja/table', 'Controller_AdminListSuratPja@dataTable')->name('adminlistsuratPja.table');
+	Route::get('/admin/suratpja/detail/{id}', 'Controller_AdminListSuratPja@detail')->name('adminlistsuratpja.detail');
+	Route::get('/admin/suratpja/export', 'Controller_AdminListSuratPja@export');
+	Route::get('/admin/suratpja/edit/{id}', 'Controller_AdminListSuratPja@editSuratPja')->name('adminsuratpja.edit');
+	Route::put('/admin/suratpja/update/{id}', 'Controller_AdminListSurat@updateSuratPja')->name('adminsuratpja.update');
+	Route::get('/admin/suratpja/delete/{id}', 'Controller_AdminListSurat@deleteSuratPja')->name('adminsuratpja.delete');
+
+
 	// Mitra
 	Route::get('/admin/anggota', 'Controller_AdminMitra@openPage')->name('mitra.open');
 	Route::get('/admin/anggota/table', 'Controller_AdminMitra@dataTable')->name('mitra.table');
@@ -274,6 +284,12 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::put('/engineer/surat/updateprogress/{id}', 'Controller_EngineerYourSurat@updatePenomoran')->name('progresssurat.update');
 	Route::patch('/engineer/surat/changestat', 'Controller_EngineerYourSurat@changeStatus');
 
+		// Own Project Surat PJA
+	Route::get('/engineer/suratpja', 'Controller_EngineerYourSuratPja@openPage');
+	Route::get('/engineer/suratpja/table', 'Controller_EngineerYourSuratPja@dataTable')->name('suratpja.table');
+	Route::get('/engineer/suratpja/editprogress/{id}', 'Controller_EngineerYourSuratPja@editPenomoran')->name('progresssuratpja.edit');
+	Route::put('/engineer/suratpja/updateprogress/{id}', 'Controller_EngineerYourSuratPja@updatePenomoran')->name('progresssuratpja.update');
+	Route::patch('/engineer/suratpja/changestat', 'Controller_EngineerYourSuratPja@changeStatus');
 
 	// Own Project QRIS Spek
 	Route::get('/engineer/qrisspek', 'Controller_EngineerYourQrisspeks@openPage');
