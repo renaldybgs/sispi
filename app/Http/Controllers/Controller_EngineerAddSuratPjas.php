@@ -22,7 +22,7 @@ class Controller_EngineerAddSuratPjas extends Controller
         return view('Pages.Engineer.View_EngineerAddProjectsSuratPja', compact('userLevel', 'mitras', 'users'));
     }
 
-    public function storeNew(Request $request){                         //tambah data projek baru
+public function storeNew(Request $request){                         //tambah data projek baru
         $this->authorize('isEngineer', auth()->user());
 
         $request->validate([                                            //validasi data input projek
@@ -40,29 +40,58 @@ class Controller_EngineerAddSuratPjas extends Controller
 
         $added_by = Auth::user()->inisial_user;
 
+        $this->generateSurat($request);
+
+        return redirect('/engineer/suratpja')->with('success','No Surat berhasil di tambahkan');
+    }
+
+    public function generateSurat($request){
+        $added_by = Auth::user()->inisial_user;
+
         // No Urutan
         // format waktu_assign_surat -> YYYY-DD-MM dengan tiper data string. contoh 16 Maret 2024 = 2024-03-16
         // format nomor surat: Sek.ASPI/SR/(urutan)/(bulan dalam angka romawi)/(tahun)
-        $newSurat = new Surat();
-        $lastUrutan = $newSurat->orderBy('id', 'desc')->first();    //ambil data buat dijadiin patokan urutan baru
+        $newSurat = new Suratpja();
+        $lastSurat = $newSurat->orderBy('id', 'desc')->first();    //ambil data buat dijadiin patokan urutan baru
+        // $lastSurat = substr($lastSurat->no_surat, 12, 3)
 
-        $year = substr($request->waktu_assign_surat, 0, 4);     //ambil tahun
-        $month = substr($request->waktu_assign_surat, 5, 2);    //ambil bulan
-        $monthInRoman = $this->convertToRoman((int)$month);     //ubah bulan ke bentuk angka romawi
-        
-        if($lastUrutan != null) $newUrutan = $this->generateUrutanBaru(substr($lastUrutan->no_surat, 12, 3),substr($lastUrutan->waktu_assign_surat, 0, 4),$year);   //cek db kosong atau gak. kalo gak kosong, maka generate nomor urutan baru
-        else $newUrutan = "001";                //kalo db kosong, set urutan ke 001
+        // dd($lastSurat);
+
+        $year = substr($request->waktu_assign_surat, 0, 4);         //ambil tahun
+        $month = substr($request->waktu_assign_surat, 5, 2);        //ambil bulan
+        $monthInRoman = $this->convertToRoman((int)$month);         //ubah bulan ke bentuk angka romawi
+        $newUrutan = $this->generateNewUrutan($lastSurat, $year);  //generate urutan baru
 
         $nomorSurat = "Sek.ASPI/STT/" . $newUrutan . "/" . $monthInRoman . "/" . $year;
 
         // No Unik
         // formatnnya adalah 5 - 7 angka dengan range angka 0 - 999 yang antara digitnya dipisahkan oleh titik. 
         // contoh no unik: 16.3.1996.777.69 
-        $loop = rand(5,7);                  //randomize jumlah angka
-        $randomNumber = "";
+        $randomNumber = $this->generateRandomNumber();
+               
+        $newprojectsuratpja = Suratpja::create([ 
+            'id_mitra' => $request->id_mitra,   
+            'no_unik'  => $randomNumber,                   
+            'no_surat' => $nomorSurat,
+            'perihal' => $request->perihal,
+            'waktu_assign_surat' => $request->waktu_assign_surat,
+            'added_by' => $added_by,
+        ]);
+    }
 
+    public function generateNewUrutan($lastSurat, $year){
+        if($lastSurat != null) {
+            if(substr($lastSurat->no_surat, 12, 3) == "999") return "001";  // kalo udh 999, reset ke 001
+            else return $this->checkNewUrutanYear(substr($lastSurat->no_surat, 12, 3),substr($lastSurat->waktu_assign_surat, 0, 4),$year);   //cek db kosong atau gak. kalo gak kosong, maka generate nomor urutan baru
+        }
+        else return "001";  //kalo db kosong set urutan ke 001
+    }
+
+    public function generateRandomNumber(){
+        $loop = rand(5,7);                  //randomize panjang random number
+        $randomNumber = "";
         for($i = 0; $i<$loop; $i++){        //lakukan loop sejumlah jumlah angka
-            $randomUnit = rand(0,9);      //randomize angka
+            $randomUnit = rand(0,9);        //randomize angka
             $randomNumber .= $randomUnit;   //angka pertama dimasukkan ke dalam variabel akhir
 
             if($i != $loop-1){              //loop sesuai dengan jumlah angka - 1
@@ -72,17 +101,22 @@ class Controller_EngineerAddSuratPjas extends Controller
                 break;                      //jika sudah diangka terakhir, maka jangan tambahkan titik
             }
         }
-        
-        $newprojectsurat = Suratpja::create([ 
-            'id_mitra' => $request->id_mitra,   
-            'no_unik'  => $randomNumber,                   
-            'no_surat' => $nomorSurat,
-            'perihal' => $request->perihal,
-            'waktu_assign_surat' => $request->waktu_assign_surat,
-            'added_by' => $added_by,
-        ]);
 
-        return redirect('/engineer/suratpja')->with('success','No Surat berhasil di tambahkan');
+        return $randomNumber;
+    }
+
+    public function checkNewUrutanYear($lastSurat, $lastYear, $currentYear){
+        if($lastYear == $currentYear){                        //kalo tahunnya sama, maka urutannya ditambah
+            $newUrutan = (string)(((int)$lastSurat) + 1);              //urutan terbaru dalam bentuk integer
+            $newUrutanLength = strlen($newUrutan);
+            while($newUrutanLength != 3){    //kasih di depan buat nomor yang butuh 0, misal 16 diubah jadi 016
+                $newUrutan = "0" . $newUrutan;
+                $newUrutanLength = strlen($newUrutan);
+            }
+
+            return $newUrutan;
+        }
+        else return "001";                                    //kalo tahunnya udh ganti, maka urutannya reset
     }
 
     public function getUser(){                                      //ngambil data user engineer dan adminxengineer

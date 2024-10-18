@@ -163,4 +163,18 @@ class Controller_EngineerAddSurats extends Controller
         // The Roman numeral should be built, return it.
         return $result;
     }
+
+    public function generateUrutanBaru($lastUrutan, $lastYear, $currentYear){
+        if($lastYear == $currentYear){                        //kalo tahunnya sama, maka urutannya ditambah
+            $newUrutan = (string)(((int)$lastUrutan) + 1);              //urutan terbaru dalam bentuk integer
+            $newUrutanLength = strlen($newUrutan);
+            while($newUrutanLength != 3){    //kasih di depan buat nomor yang butuh 0, misal 16 diubah jadi 016
+                $newUrutan = "0" . $newUrutan;
+                $newUrutanLength = strlen($newUrutan);
+            }
+
+            return $newUrutan;
+        }
+        else return "001";                                    //kalo tahunnya udh ganti, maka urutannya reset
+    }
 }

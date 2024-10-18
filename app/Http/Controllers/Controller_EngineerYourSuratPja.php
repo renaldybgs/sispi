@@ -94,10 +94,10 @@ class Controller_EngineerYourSuratPja extends Controller
     }
 
     public function getSuratData($id){                                    
-        return DB::table('surats')
+        return DB::table('suratpjas')
         ->select(DB::raw('suratpjas.id, mitras.nama_mitra, suratpjas.no_surat, suratpjas.no_unik, suratpjas.perihal, suratpjas.notes_surat, suratpjas.added_by, suratpjas.id_pstat, projects_stats.nama_pstat, Date(suratpjas.waktu_assign_surat) as tanggal_surat, date(suratpjas.last_updated) as last_updated'))
-        ->leftjoin('mitras', 'surats.id_mitra', '=', 'mitras.id')
-        ->leftjoin('projects_stats', 'surats.id_pstat', '=', 'projects_stats.id')
+        ->leftjoin('mitras', 'suratpjas.id_mitra', '=', 'mitras.id')
+        ->leftjoin('projects_stats', 'suratpjas.id_pstat', '=', 'projects_stats.id')
         ->orderBy('tanggal_surat', 'desc')
         ->get();
     }

@@ -64,7 +64,7 @@ class Controller_AdminListSuratPja extends Controller
                 ]);
             })
             ->addColumn('action', function($data){        
-                return view('Layouts.ActionListSurat',[
+                return view('Layouts.ActionListSuratPja',[
                     'data'=> $data,
                     'url_editlist' => route('adminsuratpja.edit', $data->id)
                 ]);
@@ -75,7 +75,7 @@ class Controller_AdminListSuratPja extends Controller
     }
 
     public function getSuratpjaById($id){
-        return Surat::where('id', $id)->firstOrFail();
+        return Suratpja::where('id', $id)->firstOrFail();
     }
 
     public function getOriginalPIC($id){

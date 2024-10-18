@@ -243,10 +243,27 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="/engineer/surat" class="nav-link">
+                            <a href="#" class="nav-link">
                                 <i class="far fa-envelope nav-icon"></i>
-                                <p>Penomoran Surat</p>
+                                <p>
+                                    &nbsp Penomoran Surat
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/engineer/surat" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Penomoran Surat Sertifikasi</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/engineer/suratpja" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Penomoran Surat PJA</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
 
                     </ul>

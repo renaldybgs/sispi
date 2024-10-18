@@ -127,8 +127,8 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/admin/surat/delete/{id}', 'Controller_AdminListSurat@deleteSurat')->name('adminsurat.delete');
 
 		//List Penomoran Surat PJA
-	Route::get('/admin/suratpja', 'Controller_AdminListSuratPka@openPage');
-	Route::get('/admin/suratpja/table', 'Controller_AdminListSuratPja@dataTable')->name('adminlistsuratPja.table');
+	Route::get('/admin/suratpja', 'Controller_AdminListSuratPja@openPage');
+	Route::get('/admin/suratpja/table', 'Controller_AdminListSuratPja@dataTable')->name('adminlistsuratpja.table');
 	Route::get('/admin/suratpja/detail/{id}', 'Controller_AdminListSuratPja@detail')->name('adminlistsuratpja.detail');
 	Route::get('/admin/suratpja/export', 'Controller_AdminListSuratPja@export');
 	Route::get('/admin/suratpja/edit/{id}', 'Controller_AdminListSuratPja@editSuratPja')->name('adminsuratpja.edit');
@@ -200,6 +200,10 @@ Route::group(['middleware' => 'auth'], function(){
 	// Engineer Assign Surat
 	Route::get('/engineer/assignsurat', 'Controller_EngineerAddSurats@openPage');
 	Route::post('/engineer/newprojectsurat', 'Controller_EngineerAddSurats@storeNew');
+
+		// Engineer Assign Surat PJA
+	Route::get('/engineer/assignsuratpja', 'Controller_EngineerAddSuratPjas@openPage');
+	Route::post('/engineer/newprojectsuratpja', 'Controller_EngineerAddSuratPjas@storeNew');
 
 	// Engineer Assign QRIS Spek
 	Route::get('/engineer/assignqrisspek', 'Controller_EngineerAddQrisspeks@openPage');
