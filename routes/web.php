@@ -281,14 +281,14 @@ Route::group(['middleware' => 'auth'], function(){
 
 	Route::get('engineer/projectdir/{id}', 'Conttoller_Engineer@setProjectDirectory')->name('project.dir');
 
-		// Own Project Surat
+	// Own Project Surat
 	Route::get('/engineer/surat', 'Controller_EngineerYourSurat@openPage');
 	Route::get('/engineer/surat/table', 'Controller_EngineerYourSurat@dataTable')->name('surat.table');
 	Route::get('/engineer/surat/editprogress/{id}', 'Controller_EngineerYourSurat@editPenomoran')->name('progresssurat.edit');
 	Route::put('/engineer/surat/updateprogress/{id}', 'Controller_EngineerYourSurat@updatePenomoran')->name('progresssurat.update');
 	Route::patch('/engineer/surat/changestat', 'Controller_EngineerYourSurat@changeStatus');
 
-		// Own Project Surat PJA
+	// Own Project Surat PJA
 	Route::get('/engineer/suratpja', 'Controller_EngineerYourSuratPja@openPage');
 	Route::get('/engineer/suratpja/table', 'Controller_EngineerYourSuratPja@dataTable')->name('suratpja.table');
 	Route::get('/engineer/suratpja/editprogress/{id}', 'Controller_EngineerYourSuratPja@editPenomoran')->name('progresssuratpja.edit');

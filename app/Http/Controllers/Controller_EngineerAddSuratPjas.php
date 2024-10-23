@@ -53,7 +53,7 @@ public function storeNewPja(Request $request){                         //tambah 
         // format nomor surat: Sek.ASPI/STT/(urutan)/(bulan dalam angka romawi)/(tahun)
         $newSurat = new Suratpja();
         $lastSurat = $newSurat->orderBy('id', 'desc')->first();    //ambil data buat dijadiin patokan urutan baru
-        // $lastSurat = substr($lastSurat->no_surat, 12, 3)
+        // $lastSurat = substr($lastSurat->no_surat, 13, 3)
 
         // dd($lastSurat);
 
@@ -81,8 +81,8 @@ public function storeNewPja(Request $request){                         //tambah 
 
     public function generateNewUrutanPja($lastSurat, $year){
         if($lastSurat != null) {
-            if(substr($lastSurat->no_surat, 12, 3) == "999") return "001";  // kalo udh 999, reset ke 001
-            else return $this->checkNewUrutanYear(substr($lastSurat->no_surat, 12, 3),substr($lastSurat->waktu_assign_surat, 0, 4),$year);   //cek db kosong atau gak. kalo gak kosong, maka generate nomor urutan baru
+            if(substr($lastSurat->no_surat, 13, 3) == "999") return "001";  // kalo udh 999, reset ke 001
+            else return $this->checkNewUrutanYear(substr($lastSurat->no_surat, 13, 3),substr($lastSurat->waktu_assign_surat, 0, 4),$year);   //cek db kosong atau gak. kalo gak kosong, maka generate nomor urutan baru
         }
         else return "001";  //kalo db kosong set urutan ke 001
     }

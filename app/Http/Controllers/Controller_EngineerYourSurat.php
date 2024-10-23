@@ -99,6 +99,7 @@ class Controller_EngineerYourSurat extends Controller
         ->leftjoin('mitras', 'surats.id_mitra', '=', 'mitras.id')
         ->leftjoin('projects_stats', 'surats.id_pstat', '=', 'projects_stats.id')
         ->orderBy('tanggal_surat', 'desc')
+        ->orderBy('surats.no_surat', 'desc')
         ->get();
     }
     
