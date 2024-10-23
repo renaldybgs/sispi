@@ -32,6 +32,20 @@
 			!!}		
 		</div>
 	</div>
+	<div class="form-group">
+		<div class ="input-group-addon">
+			<label for="no_surat" style="font-weight:bolder" style="margin-top: -30px">No Surat</label>
+				<br>
+			{!! Form::textarea('no_surat', null,
+				['class'=> 'form-control',
+					'rows' => '1',
+					'id' =>'no_surat',
+					'placeholder' => 'Masukan No Surat',
+					'style' =>'margin-bottom: 10px'
+				])
+			!!}		
+		</div>
+	</div>
 
 	<div class="form-group">
 		<div class ="input-group-addon">

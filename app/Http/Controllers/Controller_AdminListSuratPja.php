@@ -46,11 +46,11 @@ class Controller_AdminListSuratPja extends Controller
         $surat->save(); 
     }
 
-    public function deleteSurat($id){
+    public function deleteSuratPja($id){
         $this->authorize('isAdmin', auth()->user());
 
         Suratpja::where('id', $id)->delete();                            //cari data project berdasarkan id lalu didelete
-        $suratData['data'] = Surat::orderby("id", "desc")->get();    //mengambil semua data mitra yg baru, setelah sudah menghapus data, untuk direturn
+        $suratData['data'] = Suratpja::orderby("id", "desc")->get();    //mengambil semua data mitra yg baru, setelah sudah menghapus data, untuk direturn
 
         return response()->json($suratData);
     }

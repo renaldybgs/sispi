@@ -29,9 +29,11 @@ class Controller_EngineerYourSuratPja extends Controller
         $perihal = $surat->perihal;                                    
         $notes = $surat->notes_surat;                                       //ngambil notes
         $no_unik = $surat->no_unik;
+        $no_surat = $surat->no_surat;
+
         
 
-        return view('Layouts.FormProgresSuratPja', compact('surat', 'perihal', 'notes', 'no_unik'));  //buka formnya dengan data2 yg udh disiapin sebelumnya
+        return view('Layouts.FormProgresSuratPja', compact('surat', 'perihal', 'notes', 'no_unik', 'no_surat'));  //buka formnya dengan data2 yg udh disiapin sebelumnya
     }
 
     public function updatePenomoran(Request $request, $id){                           //update data setelah nginput di form
@@ -44,6 +46,7 @@ class Controller_EngineerYourSuratPja extends Controller
         $surat->perihal = $request->perihal;                      
         $surat->notes_surat = $request->notes_surat;
         $surat->no_unik = $request->no_unik;  
+        $surat->no_surat = $request->no_surat; 
         $surat->modified_by = $modified_by;                   
         $surat->last_updated = Carbon::now()->toDateTimeString();
         $surat->save();                                                       //simpan perubahan
@@ -95,7 +98,7 @@ class Controller_EngineerYourSuratPja extends Controller
 
     public function getSuratData($id){                                    
         return DB::table('suratpjas')
-        ->select(DB::raw('suratpjas.id, mitras.nama_mitra, suratpjas.no_surat, suratpjas.no_unik, suratpjas.perihal, suratpjas.notes_surat, suratpjas.added_by, suratpjas.id_pstat, projects_stats.nama_pstat, Date(suratpjas.waktu_assign_surat) as tanggal_surat, date(suratpjas.last_updated) as last_updated'))
+        ->select(DB::raw('suratpjas.id, mitras.nama_mitra, suratpjas.no_surat, suratpjas.no_unik, suratpjas.no_surat, suratpjas.perihal, suratpjas.notes_surat, suratpjas.added_by, suratpjas.id_pstat, projects_stats.nama_pstat, Date(suratpjas.waktu_assign_surat) as tanggal_surat, date(suratpjas.last_updated) as last_updated'))
         ->leftjoin('mitras', 'suratpjas.id_mitra', '=', 'mitras.id')
         ->leftjoin('projects_stats', 'suratpjas.id_pstat', '=', 'projects_stats.id')
         ->orderBy('tanggal_surat', 'desc')

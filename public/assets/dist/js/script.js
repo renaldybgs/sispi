@@ -518,6 +518,80 @@ function deleteQrisspeks(id){
 	})
 }
 
+function deleteSuratPja(id){
+	// console.log(id);
+	event.preventDefault();
+	const href = $(this).attr('href');
+
+	var idDel = id;
+
+	Swal.fire({
+	  title: 'Yakin hapus data ini?',
+	  icon: 'warning',
+	  showCancelButton: true,
+	  confirmButtonColor: '#3085d6',
+	  cancelButtonColor: '#d33',
+	  confirmButtonText: 'Ya',
+	  cancelButtonText: 'Tidak',
+
+	}).then((result)=>{
+		if(result.value){
+			$.ajaxSetup({
+				headers: {
+					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				}
+			});
+
+			$.ajax({
+				url: '/admin/suratpja/delete/'+idDel,
+				type: 'get',
+				data: {
+					'_method': 'DELETE'
+				},
+
+				success: function(response){
+					console.log(response);
+					$('#table1').DataTable().ajax.reload();
+
+					Swal.fire({
+						title:'Data Surat berhasil dihapus',
+						icon:'success',
+						toast:true,
+						showConfirmButton:false,
+						position: 'top-end',
+						timer:1500,
+						// timerProgressBar:true,
+						background:'#a3ffa3'
+					})
+				},
+
+				error: function(xhr){
+					Swal.fire({
+						icon: 'error',
+						toast:true,
+						title: 'Error',
+						text: 'Project Surat cant be deleted',
+						timer: 4000,
+						background: 'bisque'
+					})
+				}
+			})
+		} else if (result.dismiss === 'cancel') {
+			Swal.fire({
+				title:'Data Surat tetap tersimpan',
+				icon:'info',
+				toast:true,
+				showConfirmButton:false,
+				position:'top-end',
+				grow:'row',
+				timer:1500,
+				// timerProgressBar:true,
+				background:'#B4F5F0'
+			})
+		}
+	})
+}
+
 function deleteSurat(id){
 	// console.log(id);
 	event.preventDefault();

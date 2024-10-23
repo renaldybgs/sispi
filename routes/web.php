@@ -132,8 +132,8 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/admin/suratpja/detail/{id}', 'Controller_AdminListSuratPja@detail')->name('adminlistsuratpja.detail');
 	Route::get('/admin/suratpja/export', 'Controller_AdminListSuratPja@export');
 	Route::get('/admin/suratpja/edit/{id}', 'Controller_AdminListSuratPja@editSuratPja')->name('adminsuratpja.edit');
-	Route::put('/admin/suratpja/update/{id}', 'Controller_AdminListSurat@updateSuratPja')->name('adminsuratpja.update');
-	Route::get('/admin/suratpja/delete/{id}', 'Controller_AdminListSurat@deleteSuratPja')->name('adminsuratpja.delete');
+	Route::put('/admin/suratpja/update/{id}', 'Controller_AdminListSuratPja@updateSuratPja')->name('adminsuratpja.update');
+	Route::get('/admin/suratpja/delete/{id}', 'Controller_AdminListSuratPja@deleteSuratPja')->name('adminsuratpja.delete');
 
 
 	// Mitra
