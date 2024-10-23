@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Suratpja;
+use App\Suratpja; 
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -22,7 +22,7 @@ class Controller_EngineerAddSuratPjas extends Controller
         return view('Pages.Engineer.View_EngineerAddProjectsSuratPja', compact('userLevel', 'mitras', 'users'));
     }
 
-public function storeNew(Request $request){                         //tambah data projek baru
+public function storeNewPja(Request $request){                         //tambah data projek baru
         $this->authorize('isEngineer', auth()->user());
 
         $request->validate([                                            //validasi data input projek
@@ -40,17 +40,17 @@ public function storeNew(Request $request){                         //tambah dat
 
         $added_by = Auth::user()->inisial_user;
 
-        $this->generateSurat($request);
+        $this->generateSuratpja($request);
 
         return redirect('/engineer/suratpja')->with('success','No Surat berhasil di tambahkan');
     }
 
-    public function generateSurat($request){
+    public function generateSuratpja($request){
         $added_by = Auth::user()->inisial_user;
 
         // No Urutan
         // format waktu_assign_surat -> YYYY-DD-MM dengan tiper data string. contoh 16 Maret 2024 = 2024-03-16
-        // format nomor surat: Sek.ASPI/SR/(urutan)/(bulan dalam angka romawi)/(tahun)
+        // format nomor surat: Sek.ASPI/STT/(urutan)/(bulan dalam angka romawi)/(tahun)
         $newSurat = new Suratpja();
         $lastSurat = $newSurat->orderBy('id', 'desc')->first();    //ambil data buat dijadiin patokan urutan baru
         // $lastSurat = substr($lastSurat->no_surat, 12, 3)
@@ -60,7 +60,7 @@ public function storeNew(Request $request){                         //tambah dat
         $year = substr($request->waktu_assign_surat, 0, 4);         //ambil tahun
         $month = substr($request->waktu_assign_surat, 5, 2);        //ambil bulan
         $monthInRoman = $this->convertToRoman((int)$month);         //ubah bulan ke bentuk angka romawi
-        $newUrutan = $this->generateNewUrutan($lastSurat, $year);  //generate urutan baru
+        $newUrutan = $this->generateNewUrutanPja($lastSurat, $year);  //generate urutan baru
 
         $nomorSurat = "Sek.ASPI/STT/" . $newUrutan . "/" . $monthInRoman . "/" . $year;
 
@@ -79,7 +79,7 @@ public function storeNew(Request $request){                         //tambah dat
         ]);
     }
 
-    public function generateNewUrutan($lastSurat, $year){
+    public function generateNewUrutanPja($lastSurat, $year){
         if($lastSurat != null) {
             if(substr($lastSurat->no_surat, 12, 3) == "999") return "001";  // kalo udh 999, reset ke 001
             else return $this->checkNewUrutanYear(substr($lastSurat->no_surat, 12, 3),substr($lastSurat->waktu_assign_surat, 0, 4),$year);   //cek db kosong atau gak. kalo gak kosong, maka generate nomor urutan baru
@@ -123,7 +123,7 @@ public function storeNew(Request $request){                         //tambah dat
         return User::select(DB::raw('*'))->whereIn('id_ulevel', [1, 2, 4, 5])->get();
     }
 
-    public function getSuratById($id){                                        //ngamabil data projek berdasarkan idnya
+    public function getSuratPjaById($id){                                        //ngamabil data projek berdasarkan idnya
         return Suratpja::where('id', $id)->firstOrFail();
     }
 

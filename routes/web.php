@@ -203,7 +203,7 @@ Route::group(['middleware' => 'auth'], function(){
 
 		// Engineer Assign Surat PJA
 	Route::get('/engineer/assignsuratpja', 'Controller_EngineerAddSuratPjas@openPage');
-	Route::post('/engineer/newprojectsuratpja', 'Controller_EngineerAddSuratPjas@storeNew');
+	Route::post('/engineer/newprojectsuratpja', 'Controller_EngineerAddSuratPjas@storeNewPja');
 
 	// Engineer Assign QRIS Spek
 	Route::get('/engineer/assignqrisspek', 'Controller_EngineerAddQrisspeks@openPage');
